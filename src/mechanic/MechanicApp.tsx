@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Button, Card, Avatar, StarRating, PriceDisplay, EmptyState } from '../shared/components';
-import { ArrowLeft, Power, PowerOff, Wrench, Wallet, TrendingUp, ShoppingBag, XCircle, MapPin, Clock, CheckCircle2, Navigation, MessageCircle, Phone, AlertTriangle, ChevronRight, Star } from 'lucide-react';
+import { ArrowLeft, Power, PowerOff, Wrench, Wallet, TrendingUp, TrendingDown, ShoppingBag, XCircle, MapPin, Clock, CheckCircle2, Navigation, MessageCircle, Phone, AlertTriangle, ChevronRight, Star } from 'lucide-react';
 
 export function MechanicLogin() {
   const { setUser, setMechanicProfile } = useApp();
@@ -146,17 +146,78 @@ export function MechanicActiveJob() {
 
 export function MechanicWallet() {
   const navigate = useNavigate();
+  const [balance] = React.useState(15000); // 150 MAD in centimes
+  const minThreshold = 5000; // 50 MAD
+  const isBlocked = balance < minThreshold;
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-white px-4 py-3 border-b flex items-center gap-3">
+    <div className="min-h-screen bg-slate-50 pb-20">
+      <div className="bg-white px-4 py-3 border-b flex items-center gap-3 sticky top-0 z-10">
         <button onClick={() => navigate('/mechanic/home')} className="p-1.5"><ArrowLeft className="w-5 h-5" /></button>
         <h1 className="font-semibold">Portefeuille</h1>
       </div>
-      <div className="p-4">
-        <Card className="p-6 bg-gradient-to-br from-blue-600 to-blue-700 text-white mb-4">
-          <p className="text-sm opacity-80">Solde</p>
-          <p className="text-4xl font-bold">150 <span className="text-lg font-normal opacity-80">MAD</span></p>
+      <div className="p-4 space-y-4">
+        {/* Balance Card */}
+        <div className={`rounded-2xl p-6 text-white ${isBlocked ? 'bg-gradient-to-br from-red-500 to-red-600' : 'bg-gradient-to-br from-blue-600 to-blue-700'}`}>
+          <p className="text-sm opacity-80 mb-1">Solde disponible</p>
+          <p className="text-4xl font-bold">{(balance / 100).toFixed(0)} <span className="text-lg font-normal opacity-80">MAD</span></p>
+          <div className="mt-3 flex items-center gap-2">
+            <div className="flex-1 h-2 bg-white/20 rounded-full overflow-hidden">
+              <div className={`h-full rounded-full ${isBlocked ? 'bg-red-300' : 'bg-white'}`} style={{ width: `${Math.min(100, (balance / (minThreshold * 4)) * 100)}%` }} />
+            </div>
+            <span className="text-xs opacity-80">Min: {(minThreshold / 100).toFixed(0)} MAD</span>
+          </div>
+        </div>
+
+        {/* Blocked Warning */}
+        {isBlocked && (
+          <Card className="p-4 border-2 border-red-200 bg-red-50">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+              <div>
+                <p className="text-sm font-semibold text-red-800">Vous êtes bloqué</p>
+                <p className="text-xs text-red-700 mt-1">Votre solde est en dessous du minimum. Rechargez pour recevoir des demandes.</p>
+                <Button size="sm" variant="danger" className="mt-3">Recharger maintenant</Button>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {/* Commission Info */}
+        <Card className="p-4">
+          <h3 className="font-semibold text-slate-800 mb-3">Commission plateforme</h3>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between"><span className="text-slate-600">Taux</span><span className="font-medium">10%</span></div>
+            <div className="flex justify-between"><span className="text-slate-600">Minimum</span><span className="font-medium">10 MAD</span></div>
+            <div className="flex justify-between"><span className="text-slate-600">Maximum</span><span className="font-medium">100 MAD</span></div>
+          </div>
+          <p className="text-xs text-slate-500 mt-3 bg-slate-50 rounded-lg p-2">💡 Déduite automatiquement après chaque job</p>
         </Card>
+
+        {/* Ledger */}
+        <div>
+          <h3 className="font-semibold text-slate-800 mb-3">Historique</h3>
+          {[
+            { type: 'top_up', amount: 20000, label: 'Rechargement', date: '15 Mar' },
+            { type: 'commission', amount: -2500, label: 'Commission job #J-150', date: '16 Mar' },
+            { type: 'commission', amount: -2500, label: 'Commission job #J-156', date: '17 Mar' },
+          ].map((entry, i) => (
+            <Card key={i} className="p-3 mb-2">
+              <div className="flex items-center gap-3">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${entry.amount > 0 ? 'bg-emerald-100' : 'bg-red-100'}`}>
+                  {entry.amount > 0 ? <TrendingUp className="w-4 h-4 text-emerald-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium">{entry.label}</p>
+                  <p className="text-xs text-slate-500">{entry.date}</p>
+                </div>
+                <span className={`font-bold ${entry.amount > 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                  {entry.amount > 0 ? '+' : ''}{(entry.amount / 100).toFixed(0)} MAD
+                </span>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

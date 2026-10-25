@@ -91,6 +91,25 @@ export function CustomerHome() {
           <h3 className="font-semibold text-slate-800">✅ Check-list du jour</h3>
           <p className="text-xs text-slate-500">Vérifiez votre voiture en 2 min</p>
         </button>
+
+        {/* Business Features Quick Access */}
+        <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-4 text-white">
+          <h3 className="font-semibold mb-2">💼 Business & Sécurité</h3>
+          <div className="grid grid-cols-3 gap-2">
+            <button onClick={() => navigate('/customer/business/wallet')} className="bg-white/10 rounded-xl p-2 text-center hover:bg-white/20">
+              <div className="text-xl mb-1">💳</div>
+              <p className="text-[10px]">Wallet</p>
+            </button>
+            <button onClick={() => navigate('/customer/business/anti-bypass')} className="bg-white/10 rounded-xl p-2 text-center hover:bg-white/20">
+              <div className="text-xl mb-1">🛡️</div>
+              <p className="text-[10px]">Sécurité</p>
+            </button>
+            <button onClick={() => navigate('/customer/business/local')} className="bg-white/10 rounded-xl p-2 text-center hover:bg-white/20">
+              <div className="text-xl mb-1">🇲🇦</div>
+              <p className="text-[10px]">Maroc</p>
+            </button>
+          </div>
+        </div>
       </div>
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-2 flex items-center justify-around z-50">
         {[

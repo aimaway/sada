@@ -15,6 +15,7 @@ import { OffersScreen, MechanicProfileScreen } from './customer/OffersAndProfile
 import { LiveTrackingScreen, PaymentScreen, OrdersTab } from './customer/TrackingAndPayment';
 import { MessagesTab, ProfileScreen } from './customer/TabsAndProfile';
 import { AIAssistantScreen, WarningLightScanner } from './customer/SmartFeatures';
+import { MechanicWalletScreen, AntiBypassingScreen, LocalSpecificsScreen } from './customer/BusinessFeatures';
 
 // Mechanic
 import { MechanicLogin, MechanicHome, MechanicRequestDetail, MechanicActiveJob, MechanicWallet, MechanicEarnings, MechanicShop } from './mechanic/MechanicApp';
@@ -62,6 +63,9 @@ function AppRoutes() {
       <Route path="/customer/documents" element={<ProtectedRoute role="customer"><LegalDocumentsScreen /></ProtectedRoute>} />
       <Route path="/customer/ai-assistant" element={<ProtectedRoute role="customer"><AIAssistantScreen /></ProtectedRoute>} />
       <Route path="/customer/warning-scanner" element={<ProtectedRoute role="customer"><WarningLightScanner /></ProtectedRoute>} />
+      <Route path="/customer/business/wallet" element={<ProtectedRoute role="customer"><MechanicWalletScreen /></ProtectedRoute>} />
+      <Route path="/customer/business/anti-bypass" element={<ProtectedRoute role="customer"><AntiBypassingScreen /></ProtectedRoute>} />
+      <Route path="/customer/business/local" element={<ProtectedRoute role="customer"><LocalSpecificsScreen /></ProtectedRoute>} />
 
       {/* Mechanic */}
       <Route path="/mechanic/login" element={<MechanicLogin />} />
