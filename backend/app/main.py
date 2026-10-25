@@ -6,6 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config.settings import settings
 from app.database import engine, Base
 from app.api import global_config
+from app.api import urgent_requests
+from app.api import inspections
+from app.api import on_behalf
+from app.api import mechanic_profiles
+from app.api import recurring_invoices
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -27,8 +32,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
+# Include routers - Phase 1
 app.include_router(global_config.router, prefix="/api/v1", tags=["Global Configuration"])
+
+# Include routers - Phase 2
+app.include_router(urgent_requests.router, prefix="/api/v1", tags=["Urgent Requests"])
+app.include_router(inspections.router, prefix="/api/v1", tags=["Inspections"])
+app.include_router(on_behalf.router, prefix="/api/v1", tags=["On-behalf Requests"])
+app.include_router(mechanic_profiles.router, prefix="/api/v1", tags=["Mechanic Profiles"])
+app.include_router(recurring_invoices.router, prefix="/api/v1", tags=["Recurring Plans & Invoices"])
 
 
 @app.get("/")
