@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Button, Card, Avatar, StarRating, PriceDisplay, CountdownTimer, EmptyState } from '../shared/components';
-import { ArrowLeft, Plus, MapPin, Camera, Clock, Star, MessageCircle, Phone, Navigation, CheckCircle2, XCircle, Wrench, Car, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Plus, MapPin, Camera, Clock, Star, MessageCircle, Phone, Navigation, CheckCircle2, XCircle, Wrench, Car, ShoppingBag, Bell, AlertTriangle } from 'lucide-react';
 
 export function CustomerLogin() {
   const { setUser } = useApp();
@@ -60,9 +60,31 @@ export function CustomerHome() {
             <p className="text-sm text-slate-500">Bonjour 👋</p>
             <h1 className="text-xl font-bold text-slate-800">{user?.full_name || 'Client'}</h1>
           </div>
-          <button onClick={() => { logout(); navigate('/'); }} className="p-2 rounded-xl bg-slate-100">
-            <XCircle className="w-5 h-5 text-slate-400" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => navigate('/customer/notifications')} className="p-2 rounded-xl bg-slate-100 relative">
+              <Bell className="w-5 h-5 text-slate-600" />
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center font-bold">
+                3
+              </span>
+            </button>
+            <button onClick={() => { logout(); navigate('/'); }} className="p-2 rounded-xl bg-slate-100">
+              <XCircle className="w-5 h-5 text-slate-400" />
+            </button>
+          </div>
+        </div>
+        
+        {/* Critical Alert Banner */}
+        <div className="mt-3 bg-gradient-to-r from-red-500 to-amber-500 rounded-xl p-3 text-white">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+            <div className="flex-1">
+              <p className="text-sm font-bold">3 documents à renouveler</p>
+              <p className="text-xs opacity-90">Assurance, contrôle technique, vignette</p>
+            </div>
+            <button onClick={() => navigate('/customer/notifications')} className="px-3 py-1 bg-white/20 rounded-lg text-xs font-medium">
+              Voir →
+            </button>
+          </div>
         </div>
       </div>
       <div className="px-4 py-4 space-y-4">

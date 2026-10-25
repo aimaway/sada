@@ -7,6 +7,7 @@ import LandingPage from './landing/LandingPage';
 
 // Customer
 import { CustomerLogin, CustomerHome, CustomerNewRequest, CustomerWaiting, CustomerTracking, CustomerRate, CustomerHistory } from './customer/CustomerApp';
+import { NotificationsScreen } from './customer/NotificationsApp';
 import { CustomerProfileSetup } from './customer/CustomerProfileSetup';
 import { MaintenanceDashboard, ShopScreen, MaintenanceLogScreen, RemindersScreen } from './customer/MaintenanceApp';
 import { LegalDocumentsScreen } from './customer/LegalDocumentsApp';
@@ -20,6 +21,7 @@ import { MechanicWalletScreen, AntiBypassingScreen, LocalSpecificsScreen } from 
 // Mechanic
 import { MechanicLogin, MechanicHome, MechanicRequestDetail, MechanicActiveJob, MechanicWallet, MechanicEarnings, MechanicShop } from './mechanic/MechanicApp';
 import { MechanicProfileSetup } from './mechanic/MechanicProfileSetup';
+import { MechanicProfileDetail, MechanicProfileSettings } from './mechanic/MechanicProfileDetail';
 
 // Seller
 import { SellerLogin, SellerDashboard, SellerProducts, SellerOrders, SellerPartnerships, SellerSettings } from './seller/SellerApp';
@@ -44,6 +46,7 @@ function AppRoutes() {
       <Route path="/customer/login" element={<CustomerLogin />} />
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />
       <Route path="/customer/home" element={<ProtectedRoute role="customer"><CustomerHome /></ProtectedRoute>} />
+      <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><NotificationsScreen /></ProtectedRoute>} />
       <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><CustomerNewRequest /></ProtectedRoute>} />
       <Route path="/customer/waiting" element={<ProtectedRoute role="customer"><CustomerWaiting /></ProtectedRoute>} />
       <Route path="/customer/offers" element={<ProtectedRoute role="customer"><OffersScreen /></ProtectedRoute>} />
@@ -71,6 +74,8 @@ function AppRoutes() {
       <Route path="/mechanic/login" element={<MechanicLogin />} />
       <Route path="/mechanic/profile-setup" element={<ProtectedRoute role="mechanic"><MechanicProfileSetup /></ProtectedRoute>} />
       <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><MechanicHome /></ProtectedRoute>} />
+      <Route path="/mechanic/profile" element={<ProtectedRoute role="mechanic"><MechanicProfileDetail /></ProtectedRoute>} />
+      <Route path="/mechanic/profile-settings" element={<ProtectedRoute role="mechanic"><MechanicProfileSettings /></ProtectedRoute>} />
       <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><MechanicRequestDetail /></ProtectedRoute>} />
       <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><MechanicActiveJob /></ProtectedRoute>} />
       <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><MechanicWallet /></ProtectedRoute>} />

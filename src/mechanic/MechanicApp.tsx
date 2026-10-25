@@ -69,10 +69,10 @@ export function MechanicHome() {
     <div className="min-h-screen bg-slate-50 pb-20">
       <div className="bg-white px-4 pt-6 pb-4 border-b">
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
+          <button onClick={() => navigate('/mechanic/profile')} className="flex items-center gap-3">
             <Avatar name={user?.full_name || ''} />
-            <div><p className="text-sm text-slate-500">Bonjour 👋</p><p className="font-bold">{user?.full_name}</p></div>
-          </div>
+            <div className="text-start"><p className="text-sm text-slate-500">Bonjour 👋</p><p className="font-bold">{user?.full_name}</p></div>
+          </button>
           <div className="flex gap-2">
             <button onClick={() => setIsOnline(!isOnline)} className={`px-4 py-2 rounded-full text-sm font-medium ${isOnline ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100'}`}>
               {isOnline ? '🟢 En ligne' : '⚫ Hors ligne'}
