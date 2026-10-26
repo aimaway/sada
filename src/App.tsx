@@ -52,6 +52,10 @@ import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
 
+// Content Pages
+import { ContactPage } from './pages/ContactPage';
+import { AboutPage, CareersPage, BlogPage, FAQPage, TermsPage, PrivacyPage } from './pages/ContentPages';
+
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role: string }) {
   const { user } = useApp();
   if (!user) return <Navigate to="/" replace />;
