@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider, useApp } from './shared/context';
+import { DemoProvider } from './shared/DemoContext';
+import { DemoToggle } from './components/DemoToggle';
 
 // Landing
 import LandingPage from './landing/LandingPage';
@@ -163,9 +165,12 @@ function AppRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppProvider>
-        <AppRoutes />
-      </AppProvider>
+      <DemoProvider>
+        <AppProvider>
+          <AppRoutes />
+          <DemoToggle />
+        </AppProvider>
+      </DemoProvider>
     </BrowserRouter>
   );
 }
