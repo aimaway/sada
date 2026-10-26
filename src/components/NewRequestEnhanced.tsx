@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, MapPin, Camera, CheckCircle2, TrendingUp, AlertCircle, Info } from 'lucide-react';
+import { ArrowLeft, MapPin, Camera, CheckCircle2, TrendingUp, AlertCircle, Info, CheckCircle, AlertTriangle, Send } from 'lucide-react';
 import { IntentTiles } from './IntentTiles';
 import {
   SCENARIOS,
@@ -72,34 +72,34 @@ export const NewRequestEnhanced: React.FC = () => {
   if (step === 1 && !selectedFamily) {
     return (
       <div className="min-h-screen bg-slate-50">
-        <div className="bg-white px-4 py-3 border-b border-slate-200 sticky top-0 z-10">
-          <div className="flex items-center gap-3">
-            <button onClick={() => navigate(-1)} className="p-1">
-              <ArrowLeft className="w-6 h-6" />
+        <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
+          <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
+            <button onClick={() => navigate(-1)} className="p-2 hover:bg-slate-100 rounded-xl transition-colors">
+              <ArrowLeft className="w-5 h-5 text-slate-700" />
             </button>
-            <h1 className="text-xl font-bold text-slate-800">Nouvelle demande</h1>
+            <h1 className="text-lg font-semibold text-slate-900">Nouvelle demande</h1>
           </div>
         </div>
 
-        <div className="px-4 py-6 space-y-6">
+        <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
           {/* Intent Tiles */}
           <IntentTiles />
 
           {/* Vehicle Type */}
-          <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-3">Type de véhicule</h2>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <h2 className="text-sm font-semibold text-slate-900 mb-4">Type de véhicule</h2>
             <div className="grid grid-cols-4 gap-3">
               {vehicleTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => setVehicleType(type)}
-                  className={`p-4 rounded-2xl border-2 transition-all ${
+                  className={`p-4 rounded-xl border-2 transition-all ${
                     vehicleType === type
-                      ? 'border-emerald-500 bg-emerald-50'
+                      ? 'border-slate-900 bg-slate-50'
                       : 'border-slate-200 bg-white hover:border-slate-300'
                   }`}
                 >
-                  <div className="text-3xl mb-1">
+                  <div className="text-2xl mb-1">
                     {type === 'Voiture' && '🚗'}
                     {type === 'Moto' && '🏍️'}
                     {type === 'Scooter' && '🛵'}
@@ -112,27 +112,19 @@ export const NewRequestEnhanced: React.FC = () => {
           </div>
 
           {/* Service Families */}
-          <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-3">Catégorie de service</h2>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <h2 className="text-sm font-semibold text-slate-900 mb-4">Catégorie de service</h2>
             <div className="grid grid-cols-2 gap-3">
               {FAMILIES.map((family, index) => {
                 const scenarios = getScenariosByFamily(index);
-                const colors = [
-                  'from-red-500 to-red-600',
-                  'from-green-500 to-green-600',
-                  'from-blue-500 to-blue-600',
-                  'from-purple-500 to-purple-600',
-                  'from-orange-500 to-orange-600',
-                  'from-pink-500 to-pink-600',
-                ];
                 return (
                   <button
                     key={index}
                     onClick={() => setSelectedFamily(index)}
-                    className={`bg-gradient-to-br ${colors[index]} text-white rounded-2xl p-4 text-left shadow-lg hover:shadow-xl transition-all hover:scale-105`}
+                    className="p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-900 hover:bg-slate-50 transition-all text-left"
                   >
-                    <h3 className="font-bold text-lg mb-1">{family}</h3>
-                    <p className="text-xs opacity-90">{scenarios.length} services</p>
+                    <h3 className="font-semibold text-slate-900 mb-1">{family}</h3>
+                    <p className="text-xs text-slate-500">{scenarios.length} services</p>
                   </button>
                 );
               })}
@@ -148,39 +140,50 @@ export const NewRequestEnhanced: React.FC = () => {
     const scenarios = getScenariosByFamily(selectedFamily);
     return (
       <div className="min-h-screen bg-slate-50">
-        <div className="bg-white px-4 py-3 border-b border-slate-200 sticky top-0 z-10">
-          <div className="flex items-center gap-3">
-            <button onClick={() => setSelectedFamily(null)} className="p-1">
-              <ArrowLeft className="w-6 h-6" />
+        <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
+          <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
+            <button onClick={() => setSelectedFamily(null)} className="p-2 hover:bg-slate-100 rounded-xl transition-colors">
+              <ArrowLeft className="w-5 h-5 text-slate-700" />
             </button>
-            <h1 className="text-xl font-bold text-slate-800">{getFamilyName(selectedFamily)}</h1>
+            <h1 className="text-lg font-semibold text-slate-900">{getFamilyName(selectedFamily)}</h1>
           </div>
         </div>
 
-        <div className="px-4 py-6">
-          <div className="grid grid-cols-2 gap-3">
-            {scenarios.map((scenario) => (
-              <button
-                key={scenario.slug}
-                onClick={() => handleScenarioSelect(scenario)}
-                className="bg-white rounded-2xl p-4 border-2 border-slate-200 hover:border-emerald-500 transition-all text-left"
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="text-3xl">{scenario.icon}</div>
-                  <div className="flex items-center gap-1 text-xs text-slate-500">
-                    <TrendingUp className="w-3 h-3" />
-                    <span>{scenario.price[0]}-{scenario.price[1]} MAD</span>
+        <div className="max-w-2xl mx-auto px-4 py-6">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <div className="grid grid-cols-1 gap-3">
+              {scenarios.map((scenario) => (
+                <button
+                  key={scenario.slug}
+                  onClick={() => handleScenarioSelect(scenario)}
+                  className="p-4 rounded-xl border-2 border-slate-200 hover:border-slate-900 hover:bg-slate-50 transition-all text-left"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="text-3xl flex-shrink-0">{scenario.icon}</div>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-semibold text-slate-900">{scenario.title}</h3>
+                        <span className="text-xs font-medium text-slate-600">
+                          {scenario.price[0]}-{scenario.price[1]} MAD
+                        </span>
+                      </div>
+                      <p className="text-sm text-slate-600 mb-2">{scenario.desc}</p>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                          scenario.mode === 'urgent' 
+                            ? 'bg-red-50 text-red-700' 
+                            : scenario.mode === 'planned'
+                            ? 'bg-blue-50 text-blue-700'
+                            : 'bg-purple-50 text-purple-700'
+                        }`}>
+                          {getModeLabel(scenario.mode)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h3 className="font-bold text-slate-800 mb-1">{scenario.title}</h3>
-                <p className="text-xs text-slate-600 mb-2">{scenario.desc}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">
-                    {getModeLabel(scenario.mode)}
-                  </span>
-                </div>
-              </button>
-            ))}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -191,53 +194,53 @@ export const NewRequestEnhanced: React.FC = () => {
   if (step === 2 && selectedScenario) {
     return (
       <div className="min-h-screen bg-slate-50">
-        <div className="bg-white px-4 py-3 border-b border-slate-200 sticky top-0 z-10">
-          <div className="flex items-center gap-3">
-            <button onClick={() => setStep(1)} className="p-1">
-              <ArrowLeft className="w-6 h-6" />
+        <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
+          <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
+            <button onClick={() => setStep(1)} className="p-2 hover:bg-slate-100 rounded-xl transition-colors">
+              <ArrowLeft className="w-5 h-5 text-slate-700" />
             </button>
             <div className="flex-1">
-              <h1 className="text-xl font-bold text-slate-800">{selectedScenario.title}</h1>
+              <h1 className="text-lg font-semibold text-slate-900">{selectedScenario.title}</h1>
               <p className="text-sm text-slate-600">{selectedScenario.desc}</p>
             </div>
           </div>
         </div>
 
-        <div className="px-4 py-6 space-y-6">
+        <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
           {/* Scenario Info */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="text-4xl">{selectedScenario.icon}</div>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="text-4xl flex-shrink-0">{selectedScenario.icon}</div>
               <div className="flex-1">
-                <h2 className="font-bold text-slate-800 mb-1">{selectedScenario.title}</h2>
+                <h2 className="font-semibold text-slate-900 mb-1">{selectedScenario.title}</h2>
                 <p className="text-sm text-slate-600">{selectedScenario.desc}</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
               <div>
-                <p className="text-slate-500">Prix indicatif</p>
-                <p className="font-bold text-emerald-600">
+                <p className="text-xs text-slate-500 mb-1">Prix indicatif</p>
+                <p className="text-sm font-semibold text-slate-900">
                   {selectedScenario.price[0]} - {selectedScenario.price[1]} MAD
                 </p>
               </div>
               <div>
-                <p className="text-slate-500">Mode</p>
-                <p className="font-medium text-slate-800">{getModeLabel(selectedScenario.mode)}</p>
+                <p className="text-xs text-slate-500 mb-1">Mode</p>
+                <p className="text-sm font-medium text-slate-900">{getModeLabel(selectedScenario.mode)}</p>
               </div>
               <div>
-                <p className="text-slate-500">Véhicules</p>
-                <p className="font-medium text-slate-800">{selectedScenario.vehicles.join(', ')}</p>
+                <p className="text-xs text-slate-500 mb-1">Véhicules</p>
+                <p className="text-sm font-medium text-slate-900">{selectedScenario.vehicles.join(', ')}</p>
               </div>
               <div>
-                <p className="text-slate-500">Répondants</p>
-                <p className="font-medium text-slate-800 text-xs">{selectedScenario.responders}</p>
+                <p className="text-xs text-slate-500 mb-1">Répondants</p>
+                <p className="text-xs font-medium text-slate-900">{selectedScenario.responders}</p>
               </div>
             </div>
           </div>
 
           {/* Dynamic Fields */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200 space-y-4">
-            <h3 className="font-bold text-slate-800">Détails du problème</h3>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 space-y-4">
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">Détails du problème</h3>
             {selectedScenario.fields.map((field, index) => {
               // Handle note fields separately (they don't have a name)
               if (field.type === 'note') {
@@ -258,34 +261,35 @@ export const NewRequestEnhanced: React.FC = () => {
           </div>
 
           {/* Description */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200">
-            <h3 className="font-bold text-slate-800 mb-3">Description supplémentaire</h3>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">Description supplémentaire</h3>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Décrivez le problème en détail..."
-              className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+              className="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none resize-none text-slate-900 placeholder-slate-400"
               rows={4}
             />
-            <button className="w-full mt-3 p-4 border-2 border-dashed border-slate-300 rounded-xl hover:border-emerald-500 transition-colors">
-              <Camera className="w-6 h-6 mx-auto text-slate-400 mb-2" />
-              <p className="text-sm text-slate-600">Ajouter des photos</p>
+            <button className="w-full mt-4 p-6 border-2 border-dashed border-slate-300 rounded-xl hover:border-slate-900 transition-colors">
+              <Camera className="w-8 h-8 mx-auto text-slate-400 mb-2" />
+              <p className="text-sm font-medium text-slate-700">Ajouter des photos</p>
+              <p className="text-xs text-slate-500 mt-1">Jusqu'à 5 photos</p>
             </button>
           </div>
 
           {/* Flow */}
-          <div className="bg-blue-50 rounded-2xl p-4 border border-blue-200">
-            <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-              <Info className="w-5 h-5" />
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <h3 className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
+              <Info className="w-4 h-4" />
               Comment ça marche ?
             </h3>
-            <ol className="space-y-2">
+            <ol className="space-y-3">
               {selectedScenario.flow.map((step, index) => (
-                <li key={index} className="flex items-start gap-2 text-sm text-blue-800">
-                  <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+                <li key={index} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs font-bold">
                     {index + 1}
                   </span>
-                  <span>{step}</span>
+                  <span className="text-sm text-slate-700 pt-0.5">{step}</span>
                 </li>
               ))}
             </ol>
@@ -295,13 +299,13 @@ export const NewRequestEnhanced: React.FC = () => {
           <div className="flex gap-3">
             <button
               onClick={() => setStep(1)}
-              className="flex-1 py-3 border border-slate-300 rounded-xl font-medium text-slate-700 hover:bg-slate-50"
+              className="flex-1 py-4 border-2 border-slate-200 rounded-xl font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
             >
               Retour
             </button>
             <button
               onClick={() => setStep(3)}
-              className="flex-1 py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700"
+              className="flex-1 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-colors"
             >
               Suivant
             </button>
@@ -316,21 +320,21 @@ export const NewRequestEnhanced: React.FC = () => {
     const verdictData = getPriceVerdict();
     return (
       <div className="min-h-screen bg-slate-50">
-        <div className="bg-white px-4 py-3 border-b border-slate-200 sticky top-0 z-10">
-          <div className="flex items-center gap-3">
-            <button onClick={() => setStep(2)} className="p-1">
-              <ArrowLeft className="w-6 h-6" />
+        <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
+          <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
+            <button onClick={() => setStep(2)} className="p-2 hover:bg-slate-100 rounded-xl transition-colors">
+              <ArrowLeft className="w-5 h-5 text-slate-700" />
             </button>
-            <h1 className="text-xl font-bold text-slate-800">Proposez votre prix</h1>
+            <h1 className="text-lg font-semibold text-slate-900">Proposez votre prix</h1>
           </div>
         </div>
 
-        <div className="px-4 py-6 space-y-6">
+        <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
           {/* Price Input */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm text-slate-600">Prix indicatif</span>
-              <span className="text-lg font-bold text-slate-800">
+              <span className="text-lg font-semibold text-slate-900">
                 {selectedScenario.price[0]} - {selectedScenario.price[1]} MAD
               </span>
             </div>
@@ -340,7 +344,7 @@ export const NewRequestEnhanced: React.FC = () => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="Votre prix"
-                className="w-full p-4 pr-16 border-2 border-slate-200 rounded-xl text-2xl font-bold text-center focus:ring-2 focus:ring-emerald-500 outline-none"
+                className="w-full p-4 pr-16 border-2 border-slate-200 rounded-xl text-2xl font-bold text-center focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 font-medium">
                 MAD
@@ -350,7 +354,7 @@ export const NewRequestEnhanced: React.FC = () => {
             {/* Price Verdict */}
             {verdictData && (
               <div
-                className={`mt-4 p-3 rounded-xl border-2 ${
+                className={`mt-4 p-4 rounded-xl border-2 ${
                   verdictData.info.tone === 'ok'
                     ? 'bg-green-50 border-green-200'
                     : verdictData.info.tone === 'warn'
@@ -358,18 +362,18 @@ export const NewRequestEnhanced: React.FC = () => {
                     : 'bg-red-50 border-red-200'
                 }`}
               >
-                <div className="flex items-start gap-2">
-                  {verdictData.info.tone === 'ok' && <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5" />}
-                  {verdictData.info.tone === 'warn' && <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5" />}
-                  {verdictData.info.tone === 'bad' && <AlertCircle className="w-5 h-5 text-red-600 mt-0.5" />}
+                <div className="flex items-start gap-3">
+                  {verdictData.info.tone === 'ok' && <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />}
+                  {verdictData.info.tone === 'warn' && <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />}
+                  {verdictData.info.tone === 'bad' && <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />}
                   <div>
                     <p
                       className={`text-sm font-semibold ${
                         verdictData.info.tone === 'ok'
-                          ? 'text-green-800'
+                          ? 'text-green-900'
                           : verdictData.info.tone === 'warn'
-                          ? 'text-amber-800'
-                          : 'text-red-800'
+                          ? 'text-amber-900'
+                          : 'text-red-900'
                       }`}
                     >
                       {verdictData.info.label}
@@ -392,18 +396,31 @@ export const NewRequestEnhanced: React.FC = () => {
           </div>
 
           {/* Summary */}
-          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
-              <div>
-                <p className="text-sm font-semibold text-emerald-800">Récapitulatif</p>
-                <div className="text-xs text-emerald-700 mt-2 space-y-1">
-                  <p>• Service: {selectedScenario.title}</p>
-                  <p>• Véhicule: {vehicleType}</p>
-                  {description && <p>• Description: {description.slice(0, 50)}...</p>}
-                  {price && <p>• Prix proposé: {price} MAD</p>}
-                </div>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200">
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">Récapitulatif</h3>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-sm text-slate-600">Service</span>
+                <span className="text-sm font-medium text-slate-900">{selectedScenario.title}</span>
               </div>
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-sm text-slate-600">Véhicule</span>
+                <span className="text-sm font-medium text-slate-900">{vehicleType}</span>
+              </div>
+              {description && (
+                <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                  <span className="text-sm text-slate-600">Description</span>
+                  <span className="text-sm font-medium text-slate-900 text-right max-w-[200px] truncate">
+                    {description.slice(0, 50)}...
+                  </span>
+                </div>
+              )}
+              {price && (
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-sm text-slate-600">Prix proposé</span>
+                  <span className="text-lg font-semibold text-slate-900">{price} MAD</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -411,16 +428,17 @@ export const NewRequestEnhanced: React.FC = () => {
           <div className="flex gap-3">
             <button
               onClick={() => setStep(2)}
-              className="flex-1 py-3 border border-slate-300 rounded-xl font-medium text-slate-700 hover:bg-slate-50"
+              className="flex-1 py-4 border-2 border-slate-200 rounded-xl font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
             >
               Retour
             </button>
             <button
               onClick={handleSubmit}
               disabled={!price}
-              className="flex-1 py-3 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 disabled:opacity-50"
+              className="flex-1 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Envoyer la demande
+              <Send className="w-5 h-5" />
+              Envoyer
             </button>
           </div>
         </div>

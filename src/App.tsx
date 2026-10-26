@@ -51,6 +51,9 @@ import { SellerPublicProfile } from './components/SellerPublicProfile';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
+import { ExplainProblem } from './components/ExplainProblem';
+import { DiagnosticRequest } from './components/DiagnosticRequest';
+import { MaintenanceRequest } from './components/MaintenanceRequest';
 
 // Addendum Components - Phase A to F
 import { ProviderDirectory } from './components/ProviderDirectory';
@@ -86,6 +89,9 @@ function AppRoutes() {
       <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><NotificationsScreen /></ProtectedRoute>} />
       <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
       <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
+      <Route path="/customer/explain-problem" element={<ProtectedRoute role="customer"><ExplainProblem /></ProtectedRoute>} />
+      <Route path="/customer/diagnostic" element={<ProtectedRoute role="customer"><DiagnosticRequest /></ProtectedRoute>} />
+      <Route path="/customer/maintenance-request" element={<ProtectedRoute role="customer"><MaintenanceRequest /></ProtectedRoute>} />
       <Route path="/customer/waiting" element={<ProtectedRoute role="customer"><CustomerWaiting /></ProtectedRoute>} />
       <Route path="/customer/offers" element={<ProtectedRoute role="customer"><OffersScreen /></ProtectedRoute>} />
       <Route path="/customer/mechanic-profile/:id" element={<ProtectedRoute role="customer"><MechanicProfileScreen /></ProtectedRoute>} />
