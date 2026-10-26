@@ -52,6 +52,13 @@ import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
 
+// Addendum Components - Phase A to F
+import { ProviderDirectory } from './components/ProviderDirectory';
+import { ProviderPortal } from './components/ProviderPortal';
+import { JobManagement } from './components/JobManagement';
+import { ClientPortal } from './components/ClientPortal';
+import { ChoosePlan } from './components/ChoosePlan';
+
 // Content Pages
 import { ContactPage } from './pages/ContactPage';
 import { AboutPage, CareersPage, BlogPage, FAQPage, TermsPage, PrivacyPage } from './pages/ContentPages';
@@ -154,10 +161,16 @@ function AppRoutes() {
       <Route path="/customer/home-enhanced" element={<ProtectedRoute role="customer"><CustomerHomeEnhanced /></ProtectedRoute>} />
       <Route path="/customer/wallet" element={<ProtectedRoute role="customer"><ClientWallet /></ProtectedRoute>} />
       <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><DocumentsManager /></ProtectedRoute>} />
+      <Route path="/customer/portal" element={<ProtectedRoute role="customer"><ClientPortal /></ProtectedRoute>} />
       <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><MechanicProfileEnhanced /></ProtectedRoute>} />
+      <Route path="/mechanic/portal" element={<ProtectedRoute role="mechanic"><ProviderPortal /></ProtectedRoute>} />
+      <Route path="/mechanic/jobs" element={<ProtectedRoute role="mechanic"><JobManagement /></ProtectedRoute>} />
       <Route path="/tuner/:slug" element={<TunerProfile />} />
       <Route path="/seller/:slug" element={<SellerPublicProfile />} />
+      <Route path="/seller/portal" element={<ProtectedRoute role="seller"><ProviderPortal /></ProtectedRoute>} />
       <Route path="/gift-plans" element={<GiftPlans />} />
+      <Route path="/choose-plan" element={<ChoosePlan />} />
+      <Route path="/discover" element={<ProtectedRoute role="customer"><ProviderDirectory /></ProtectedRoute>} />
       <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
 
       {/* Catch all */}

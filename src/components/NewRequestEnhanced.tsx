@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, MapPin, Camera, CheckCircle2 } from 'lucide-react';
+import { IntentTiles } from './IntentTiles';
 
 export const NewRequestEnhanced: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const preselectedService = searchParams.get('service');
+  const intent = searchParams.get('intent');
   
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(intent ? 2 : 1); // Si intent, skip les tiles
   const [selectedService, setSelectedService] = useState(preselectedService || '');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -115,9 +117,12 @@ export const NewRequestEnhanced: React.FC = () => {
           ))}
         </div>
 
-        {/* Step 1: Vehicle Type & Service */}
+        {/* Step 1: Intent Tiles + Vehicle Type & Service */}
         {step === 1 && (
           <div className="space-y-6">
+            {/* Intent Tiles - Phase A */}
+            <IntentTiles />
+
             <div>
               <h2 className="text-lg font-bold text-slate-800 mb-3">Type de véhicule</h2>
               <div className="grid grid-cols-4 gap-3">
