@@ -160,7 +160,7 @@ export const RoleSelectionLogin: React.FC = () => {
             {/* Download Buttons */}
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
               <a
-                href="https://apps.apple.com/app/mecacasablanca"
+                href="https://apps.apple.com/app/mecago"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black text-white rounded-2xl p-6 hover:bg-slate-800 transition-colors flex items-center gap-4"
@@ -174,7 +174,7 @@ export const RoleSelectionLogin: React.FC = () => {
               </a>
 
               <a
-                href="https://play.google.com/store/apps/details?id=com.mecacasablanca"
+                href="https://play.google.com/store/apps/details?id=com.mecago"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black text-white rounded-2xl p-6 hover:bg-slate-800 transition-colors flex items-center gap-4"

@@ -19,7 +19,7 @@ export const OnBehalfRequest: React.FC = () => {
   ];
 
   const handleSubmit = () => {
-    const mockShareLink = `https://mecacasablanca.ma/on-behalf/abc123xyz`;
+    const mockShareLink = `https://mecago.app/on-behalf/abc123xyz`;
     setShareLink(mockShareLink);
     setStep(4);
   };

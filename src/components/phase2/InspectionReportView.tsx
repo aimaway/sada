@@ -50,7 +50,7 @@ export const InspectionReportView: React.FC = () => {
   const VerdictIcon = verdictConfig.icon;
 
   const handleShare = () => {
-    const shareUrl = `https://mecacasablanca.ma/inspection-report/${mockInspectionReport.publicSlug}`;
+    const shareUrl = `https://mecago.app/inspection-report/${mockInspectionReport.publicSlug}`;
     if (navigator.share) {
       navigator.share({ title: `Rapport d'inspection - ${mockInspectionReport.vehicle.make} ${mockInspectionReport.vehicle.model}`, text: `Rapport d'inspection complet`, url: shareUrl });
     } else {

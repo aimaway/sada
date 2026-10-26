@@ -40,7 +40,7 @@ export const SellerPublicProfile: React.FC = () => {
   };
 
   const handleShare = () => {
-    const shareUrl = `https://mecacasablanca.ma/seller/${slug}`;
+    const shareUrl = `https://mecago.app/seller/${slug}`;
     if (navigator.share) {
       navigator.share({ title: sellerProfile.name, text: sellerProfile.description, url: shareUrl });
     } else {

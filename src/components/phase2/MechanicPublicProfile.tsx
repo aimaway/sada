@@ -38,7 +38,7 @@ export const MechanicPublicProfile: React.FC = () => {
   };
 
   const handleShare = () => {
-    const shareUrl = `https://mecacasablanca.ma/m/${slug}`;
+    const shareUrl = `https://mecago.app/m/${slug}`;
     if (navigator.share) {
       navigator.share({ title: `${mockMechanicProfile.name} - MécaCasablanca`, text: mockMechanicProfile.bio, url: shareUrl });
     } else {
