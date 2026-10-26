@@ -16,7 +16,7 @@ export const IntentTiles: React.FC<IntentTilesProps> = ({ onIntentSelect }) => {
       title: 'Expliquer mon problème',
       description: 'Décrivez en texte, voix ou photos',
       color: 'from-blue-500 to-blue-600',
-      route: '/customer/new-request?intent=explain&family=urgent',
+      route: '/customer/new-request-enhanced?intent=explain',
     },
     {
       id: 'urgent',
@@ -24,7 +24,7 @@ export const IntentTiles: React.FC<IntentTilesProps> = ({ onIntentSelect }) => {
       title: "J'ai un problème précis",
       description: 'Batterie, pneu, freins, clim, SOS',
       color: 'from-red-500 to-red-600',
-      route: '/customer/new-request?intent=urgent&family=urgent',
+      route: '/customer/new-request-enhanced?intent=urgent&family=0',
     },
     {
       id: 'diagnostic',
@@ -32,7 +32,7 @@ export const IntentTiles: React.FC<IntentTilesProps> = ({ onIntentSelect }) => {
       title: 'Diagnostic',
       description: 'Scan électronique et analyse',
       color: 'from-purple-500 to-purple-600',
-      route: '/customer/new-request?intent=diagnostic&family=diagnostic',
+      route: '/customer/new-request-enhanced?intent=diagnostic&family=1',
     },
     {
       id: 'maintenance',
@@ -40,7 +40,7 @@ export const IntentTiles: React.FC<IntentTilesProps> = ({ onIntentSelect }) => {
       title: 'Vidange et entretien',
       description: 'Entretien régulier et maintenance',
       color: 'from-green-500 to-green-600',
-      route: '/customer/new-request?intent=maintenance&family=maintenance',
+      route: '/customer/new-request-enhanced?intent=maintenance&family=1',
     },
     {
       id: 'parts',
@@ -48,7 +48,7 @@ export const IntentTiles: React.FC<IntentTilesProps> = ({ onIntentSelect }) => {
       title: 'Acheter un produit',
       description: 'Pièces détachées et accessoires',
       color: 'from-orange-500 to-orange-600',
-      route: '/customer/shop',
+      route: '/customer/new-request-enhanced?intent=parts&family=5',
     },
   ];
 
