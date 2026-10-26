@@ -84,7 +84,8 @@ function AppRoutes() {
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />
       <Route path="/customer/home" element={<ProtectedRoute role="customer"><CustomerHome /></ProtectedRoute>} />
       <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><NotificationsScreen /></ProtectedRoute>} />
-      <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><CustomerNewRequest /></ProtectedRoute>} />
+      <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
+      <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
       <Route path="/customer/waiting" element={<ProtectedRoute role="customer"><CustomerWaiting /></ProtectedRoute>} />
       <Route path="/customer/offers" element={<ProtectedRoute role="customer"><OffersScreen /></ProtectedRoute>} />
       <Route path="/customer/mechanic-profile/:id" element={<ProtectedRoute role="customer"><MechanicProfileScreen /></ProtectedRoute>} />
