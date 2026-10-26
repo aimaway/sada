@@ -48,12 +48,15 @@ import { DocumentsManager } from './components/DocumentsManager';
 import { MechanicProfileEnhanced } from './components/MechanicProfileEnhanced';
 import { TunerProfile } from './components/TunerProfile';
 import { SellerPublicProfile } from './components/SellerPublicProfile';
-import { GiftPlans } from './components/GiftPlans';
-import { NewRequestEnhanced } from './components/NewRequestEnhanced';
-import { RoleSelectionLogin } from './components/RoleSelectionLogin';
 import { ExplainProblem } from './components/ExplainProblem';
 import { DiagnosticRequest } from './components/DiagnosticRequest';
 import { MaintenanceRequest } from './components/MaintenanceRequest';
+import { TunerLogin } from './components/TunerLogin';
+import { TunerRegistration } from './components/TunerRegistration';
+import { TunerDashboard } from './components/TunerDashboard';
+import { GiftPlans } from './components/GiftPlans';
+import { NewRequestEnhanced } from './components/NewRequestEnhanced';
+import { RoleSelectionLogin } from './components/RoleSelectionLogin';
 
 // Addendum Components - Phase A to F
 import { ProviderDirectory } from './components/ProviderDirectory';
@@ -133,6 +136,11 @@ function AppRoutes() {
       <Route path="/seller/orders" element={<ProtectedRoute role="seller"><SellerOrders /></ProtectedRoute>} />
       <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><SellerPartnerships /></ProtectedRoute>} />
       <Route path="/seller/settings" element={<ProtectedRoute role="seller"><SellerSettings /></ProtectedRoute>} />
+
+      {/* Tuner */}
+      <Route path="/tuner/login" element={<TunerLogin />} />
+      <Route path="/tuner/register" element={<TunerRegistration />} />
+      <Route path="/tuner/dashboard" element={<ProtectedRoute role="tuner"><TunerDashboard /></ProtectedRoute>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />

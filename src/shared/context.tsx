@@ -5,7 +5,7 @@ export type Language = 'fr' | 'ar';
 interface User {
   id: string;
   phone: string;
-  role: 'customer' | 'mechanic' | 'admin' | 'seller';
+  role: 'customer' | 'mechanic' | 'admin' | 'seller' | 'tuner';
   full_name: string;
   status: string;
   language: Language;
