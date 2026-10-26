@@ -5,11 +5,90 @@
 // USERS
 export const mockUsers = {
   customers: [
+    // PREMIUM CLIENT - 2500 jobs, 5 stars
+    { 
+      id: 'u_c_premium', 
+      phone: '+212600000099', 
+      full_name: 'Amine Khalid', 
+      role: 'customer', 
+      status: 'active', 
+      language: 'fr', 
+      created_at: '2021-03-15',
+      loyalty_points: 12500,
+      subscription: 'gold',
+      total_jobs: 2500,
+      rating_given: 5.0,
+      member_since: '2021',
+      bio: 'Client fidèle depuis 3 ans. Utilise MécaCasablanca pour tous ses besoins automobiles.',
+      vehicles: [
+        { make: 'BMW', model: 'Serie 3', year: 2020, plate: '12345-A-1' },
+        { make: 'Mercedes', model: 'Classe C', year: 2019, plate: '67890-B-2' },
+      ],
+      favorite_mechanics: ['u_m_expert', 'u_m3'],
+      total_spent: 450000, // 4500 MAD in centimes
+    },
     { id: 'u_c1', phone: '+212600000010', full_name: 'Amine Khalid', role: 'customer', status: 'active', language: 'fr', created_at: '2024-01-15', loyalty_points: 1250 },
     { id: 'u_c2', phone: '+212600000011', full_name: 'Sara Mansouri', role: 'customer', status: 'active', language: 'fr', created_at: '2024-02-01', loyalty_points: 890 },
     { id: 'u_c3', phone: '+212600000012', full_name: 'Youssef Rachidi', role: 'customer', status: 'active', language: 'ar', created_at: '2024-02-15', loyalty_points: 450 },
   ],
   mechanics: [
+    // EXPERT MECHANIC - 3000 jobs, 5 stars
+    {
+      id: 'u_m_expert', 
+      phone: '+212600000088', 
+      full_name: 'Ahmed Benali', 
+      role: 'mechanic', 
+      status: 'active', 
+      language: 'fr', 
+      created_at: '2019-01-10',
+      profile: {
+        verification_status: 'approved', 
+        is_online: true, 
+        city: 'Casablanca', 
+        service_radius_km: 25,
+        categories: ['1', '2', '3', '4'], 
+        rating_avg: 5.0, 
+        jobs_completed: 3000, 
+        response_time_min: 2, 
+        completion_rate: 100,
+        years_experience: 15, 
+        brands: ['Toutes marques', 'BMW', 'Mercedes', 'Audi', 'Toyota', 'Dacia', 'Renault', 'Peugeot'], 
+        languages: ['Darija', 'Français', 'العربية', 'English'],
+        specialties: ['Toutes marques', 'Diagnostic avancé', 'Système électrique', 'Moteur', 'Transmission'], 
+        warranty_days: 60, 
+        lat: 33.5731, 
+        lng: -7.5898,
+        verifications: { 
+          id_card: true, 
+          workshop: true, 
+          certificates: true, 
+          references: true, 
+          insurance: true 
+        },
+        wallet_balance: 85000, // 850 MAD
+        badges: ['verified', 'top_rated', 'fast_response', 'expert'],
+        certificates: [
+          { name: 'Certification BMW', issuer: 'BMW Maroc', date: '2020-05-15', verified: true },
+          { name: 'Formation Bosch', issuer: 'Bosch Car Service', date: '2019-08-20', verified: true },
+          { name: 'Expert Diagnostic', issuer: 'Snap-on', date: '2021-03-10', verified: true },
+        ],
+        skills: [
+          'Diagnostic électronique',
+          'Système de freinage',
+          'Climatisation',
+          'Système électrique',
+          'Transmission',
+          'Suspension',
+          'Direction',
+          'Échappement',
+          'Injection diesel',
+          'Hybride/Électrique',
+        ],
+        bio: 'Mécanicien expert avec 15 ans d\'expérience. Spécialisé dans toutes marques avec certification BMW et Bosch. Plus de 3000 interventions réalisées avec une note de 5 étoiles.',
+        profile_image: null,
+        subscription: 'expert',
+      }
+    },
     {
       id: 'u_m1', phone: '+212600000001', full_name: 'Ahmed Benali', role: 'mechanic', status: 'active', language: 'fr', created_at: '2024-01-10',
       profile: {
@@ -55,7 +134,123 @@ export const mockUsers = {
       }
     },
   ],
+  // TUNERS - 1500 jobs, 5 stars
+  tuners: [
+    {
+      id: 'u_t1',
+      phone: '+212600000077',
+      full_name: 'Youssef "Speed" El Mansouri',
+      role: 'tuner',
+      status: 'active',
+      language: 'fr',
+      created_at: '2020-06-15',
+      shop: {
+        shop_name: 'Speed Tuning Casa',
+        description: 'Spécialiste du tuning automobile à Casablanca. Stage 1 à Stage 3, préparations moteur, échappements sport, et plus encore.',
+        logo_emoji: '🏎️',
+        city: 'Casablanca',
+        address: 'Quartier Industriel, Casablanca',
+        phone: '+212522000077',
+        rating_avg: 5.0,
+        total_sales: 1500,
+        verification_status: 'verified',
+        partnered_mechanics: ['u_m_expert', 'u_m3'],
+        delivery_radius_km: 30,
+        delivery_fee_mad: 0,
+        free_delivery_above_mad: 0,
+        is_online: true,
+        years_experience: 12,
+        certifications: ['Stage 1 Certified', 'Stage 2 Specialist', 'ECU Remapping Expert'],
+        stages: [
+          {
+            level: 1,
+            name: 'Stage 1',
+            description: 'Optimisation de base - Gain de puissance 10-15%',
+            features: ['Reprogrammation ECU', 'Filtre à air sport', 'Échappement sport', 'Bougies haute performance'],
+            priceRange: '2000-4000 MAD',
+            popular: true,
+          },
+          {
+            level: 2,
+            name: 'Stage 2',
+            description: 'Préparation intermédiaire - Gain de puissance 20-30%',
+            features: ['Tout Stage 1', 'Downpipe sport', 'Intercooler upgrade', 'Injecteurs haute performance'],
+            priceRange: '5000-8000 MAD',
+            popular: false,
+          },
+          {
+            level: 3,
+            name: 'Stage 3',
+            description: 'Préparation avancée - Gain de puissance 40-60%',
+            features: ['Tout Stage 2', 'Turbo upgrade', 'Fuel pump haute performance', 'Freins upgrade', 'Suspension sport'],
+            priceRange: '10000-20000 MAD',
+            popular: false,
+          },
+        ],
+        gallery: [
+          { id: '1', type: 'before', vehicle: 'Golf GTI', stage: 'Stage 2', label: 'Avant préparation' },
+          { id: '2', type: 'after', vehicle: 'Golf GTI', stage: 'Stage 2', label: 'Après Stage 2 (+35% puissance)' },
+          { id: '3', type: 'before', vehicle: 'Clio RS', stage: 'Stage 1', label: 'Avant préparation' },
+          { id: '4', type: 'after', vehicle: 'Clio RS', stage: 'Stage 1', label: 'Après Stage 1 (+15% puissance)' },
+        ],
+        videos: [
+          { url: 'https://youtube.com/watch?v=example1', title: 'Préparation Golf GTI Stage 2' },
+          { url: 'https://youtube.com/watch?v=example2', title: 'Reprogrammation ECU - Tutoriel' },
+        ],
+        reviews: [
+          { id: '1', customer: 'Mohamed K.', rating: 5, vehicle: 'Golf GTI 2019', comment: 'Excellent travail ! Ma voiture est méconnaissable. Gain de puissance incroyable.', date: '2024-03-10' },
+          { id: '2', customer: 'Youssef B.', rating: 5, vehicle: 'Clio RS 2018', comment: 'Professionnels et passionnés. Je recommande vivement !', date: '2024-03-05' },
+        ],
+        bio: 'Passionné de tuning depuis plus de 12 ans. Spécialisé dans les préparations Stage 1 à Stage 3. Plus de 1500 véhicules préparés avec une note de 5 étoiles.',
+      }
+    },
+  ],
+
   sellers: [
+    // PREMIUM SELLER - 2000 jobs, 5 stars
+    {
+      id: 'u_s_premium',
+      phone: '+212600000066',
+      full_name: 'Karim Tazi',
+      role: 'seller',
+      status: 'active',
+      language: 'fr',
+      created_at: '2019-05-20',
+      shop: {
+        shop_name: 'AutoPièces Maroc',
+        description: 'Votre spécialiste en pièces détachées automobile à Casablanca. Large stock, prix compétitifs, livraison rapide. Plus de 2000 ventes réalisées avec une note de 5 étoiles.',
+        logo_emoji: '🏪',
+        city: 'Casablanca',
+        address: 'Bd Mohammed V, Casablanca',
+        phone: '+212522000066',
+        rating_avg: 5.0,
+        total_sales: 2000,
+        verification_status: 'verified',
+        partnered_mechanics: ['u_m_expert', 'u_m1', 'u_m2', 'u_m3'],
+        partnered_tuners: ['u_t1'],
+        delivery_radius_km: 20,
+        delivery_fee_mad: 0,
+        free_delivery_above_mad: 300,
+        is_online: true,
+        years_active: 5,
+        total_products: 342,
+        categories: ['Huiles', 'Batteries', 'Filtres', 'Freins', 'Pneus', 'Accessoires'],
+        services: ['Livraison à domicile', 'Conseil technique', 'Installation partenaire', 'Garantie produit'],
+        certifications: ['Vendeur Certifié', 'Partenaire Premium'],
+        badges: ['verified', 'top_seller', 'fast_delivery'],
+        subscription: 'premium',
+        products: [
+          { id: 'p1', name: 'Huile Total 5W-30 5L', price: 280, stock: 45, category: 'Huiles', popular: true },
+          { id: 'p2', name: 'Batterie Bosch 60Ah', price: 850, stock: 12, category: 'Batteries', popular: true },
+          { id: 'p3', name: 'Filtre à huile Mann', price: 65, stock: 100, category: 'Filtres', popular: false },
+          { id: 'p4', name: 'Plaquettes frein Brembo', price: 320, stock: 20, category: 'Freins', popular: false },
+        ],
+        reviews: [
+          { id: '1', customer: 'Amine K.', rating: 5, comment: 'Produits de qualité et livraison rapide. Je recommande !', date: '2024-03-10' },
+          { id: '2', customer: 'Sara M.', rating: 5, comment: 'Excellent service client. Prix compétitifs.', date: '2024-03-05' },
+        ],
+      }
+    },
     {
       id: 'u_s1', phone: '+212600000100', full_name: 'AutoPièces Maroc', role: 'seller', status: 'active', language: 'fr', created_at: '2024-01-01',
       shop: {
