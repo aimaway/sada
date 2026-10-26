@@ -29,6 +29,16 @@ import { SellerLogin, SellerDashboard, SellerProducts, SellerOrders, SellerPartn
 // Admin
 import { AdminLogin, AdminDashboard, AdminVerification, AdminRequests, AdminUsers, AdminSettingsPage, AdminDisputes } from './admin/AdminApp';
 
+// Phase 2 Components
+import { UrgentRequestFlow } from './components/phase2/UrgentRequestFlow';
+import { PrePurchaseInspection } from './components/phase2/PrePurchaseInspection';
+import { OnBehalfRequest } from './components/phase2/OnBehalfRequest';
+import { MechanicPublicProfile } from './components/phase2/MechanicPublicProfile';
+import { MechanicDashboard } from './components/phase2/MechanicDashboard';
+import { RecurringPlansDashboard } from './components/phase2/RecurringPlansDashboard';
+import { BeneficiaryShareLink } from './components/phase2/BeneficiaryShareLink';
+import { InspectionReportView } from './components/phase2/InspectionReportView';
+
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role: string }) {
   const { user } = useApp();
   if (!user) return <Navigate to="/" replace />;
@@ -98,6 +108,27 @@ function AppRoutes() {
       <Route path="/admin/users" element={<ProtectedRoute role="admin"><AdminUsers /></ProtectedRoute>} />
       <Route path="/admin/settings" element={<ProtectedRoute role="admin"><AdminSettingsPage /></ProtectedRoute>} />
       <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><AdminDisputes /></ProtectedRoute>} />
+
+      {/* Phase 2 - Two-Wheelers & Pros */}
+      <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer"><UrgentRequestFlow vehicleType="motorcycle" /></ProtectedRoute>} />
+      <Route path="/customer/urgent/scooter" element={<ProtectedRoute role="customer"><UrgentRequestFlow vehicleType="scooter" /></ProtectedRoute>} />
+      <Route path="/customer/urgent/ebike" element={<ProtectedRoute role="customer"><UrgentRequestFlow vehicleType="ebike" /></ProtectedRoute>} />
+
+      {/* Phase 2 - Pre-purchase Inspection */}
+      <Route path="/customer/inspection/book" element={<ProtectedRoute role="customer"><PrePurchaseInspection /></ProtectedRoute>} />
+      <Route path="/inspection-report/:slug" element={<InspectionReportView />} />
+
+      {/* Phase 2 - On-behalf Request */}
+      <Route path="/customer/on-behalf/new" element={<ProtectedRoute role="customer"><OnBehalfRequest /></ProtectedRoute>} />
+      <Route path="/on-behalf/:token" element={<BeneficiaryShareLink />} />
+
+      {/* Phase 2 - Mechanic Public Profile & Dashboard */}
+      <Route path="/m/:slug" element={<MechanicPublicProfile />} />
+      <Route path="/mechanic/dashboard" element={<ProtectedRoute role="mechanic"><MechanicDashboard /></ProtectedRoute>} />
+      <Route path="/mechanic/public-profile" element={<ProtectedRoute role="mechanic"><MechanicPublicProfile /></ProtectedRoute>} />
+
+      {/* Phase 2 - Recurring Plans & Invoices */}
+      <Route path="/customer/recurring-plans" element={<ProtectedRoute role="customer"><RecurringPlansDashboard /></ProtectedRoute>} />
 
       {/* Catch all */}
       <Route path="*" element={<Navigate to="/" replace />} />
