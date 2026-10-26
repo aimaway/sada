@@ -57,7 +57,7 @@ export default function LandingPage() {
       text: 'En 15 ans de métier, c\'est la meilleure plateforme que j\'ai utilisée. Plus de 3000 interventions réalisées avec une note de 5 étoiles.',
     },
     {
-      name: 'Youssef El Mansouri',
+      name: 'Youssef "Speed" El Mansouri',
       role: 'Tuner Spécialiste',
       avatar: '🏎️',
       rating: 5,
@@ -89,7 +89,7 @@ export default function LandingPage() {
             <button onClick={() => setLanguage(language === 'fr' ? 'ar' : 'fr')} className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 rounded-lg">
               {language === 'fr' ? 'العربية' : 'Français'}
             </button>
-            <Button size="sm" onClick={() => navigate('/customer/login')}>Commencer</Button>
+            <Button size="sm" onClick={() => navigate('/login')}>Se connecter</Button>
           </div>
         </div>
       </header>

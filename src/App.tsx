@@ -48,6 +48,7 @@ import { TunerProfile } from './components/TunerProfile';
 import { SellerPublicProfile } from './components/SellerPublicProfile';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
+import { RoleSelectionLogin } from './components/RoleSelectionLogin';
 
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role: string }) {
   const { user } = useApp();
@@ -61,6 +62,9 @@ function AppRoutes() {
     <Routes>
       {/* Landing */}
       <Route path="/" element={<LandingPage />} />
+
+      {/* Role Selection Login */}
+      <Route path="/login" element={<RoleSelectionLogin />} />
 
       {/* Customer */}
       <Route path="/customer/login" element={<CustomerLogin />} />
