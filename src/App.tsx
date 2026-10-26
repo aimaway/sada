@@ -39,6 +39,16 @@ import { RecurringPlansDashboard } from './components/phase2/RecurringPlansDashb
 import { BeneficiaryShareLink } from './components/phase2/BeneficiaryShareLink';
 import { InspectionReportView } from './components/phase2/InspectionReportView';
 
+// Enhanced Components
+import { CustomerHomeEnhanced } from './components/CustomerHomeEnhanced';
+import { ClientWallet } from './components/ClientWallet';
+import { DocumentsManager } from './components/DocumentsManager';
+import { MechanicProfileEnhanced } from './components/MechanicProfileEnhanced';
+import { TunerProfile } from './components/TunerProfile';
+import { SellerPublicProfile } from './components/SellerPublicProfile';
+import { GiftPlans } from './components/GiftPlans';
+import { NewRequestEnhanced } from './components/NewRequestEnhanced';
+
 function ProtectedRoute({ children, role }: { children: React.ReactNode; role: string }) {
   const { user } = useApp();
   if (!user) return <Navigate to="/" replace />;
@@ -129,6 +139,16 @@ function AppRoutes() {
 
       {/* Phase 2 - Recurring Plans & Invoices */}
       <Route path="/customer/recurring-plans" element={<ProtectedRoute role="customer"><RecurringPlansDashboard /></ProtectedRoute>} />
+
+      {/* Enhanced Features */}
+      <Route path="/customer/home-enhanced" element={<ProtectedRoute role="customer"><CustomerHomeEnhanced /></ProtectedRoute>} />
+      <Route path="/customer/wallet" element={<ProtectedRoute role="customer"><ClientWallet /></ProtectedRoute>} />
+      <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><DocumentsManager /></ProtectedRoute>} />
+      <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><MechanicProfileEnhanced /></ProtectedRoute>} />
+      <Route path="/tuner/:slug" element={<TunerProfile />} />
+      <Route path="/seller/:slug" element={<SellerPublicProfile />} />
+      <Route path="/gift-plans" element={<GiftPlans />} />
+      <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
 
       {/* Catch all */}
       <Route path="*" element={<Navigate to="/" replace />} />
