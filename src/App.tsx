@@ -64,6 +64,19 @@ import { TunerRequestsMap } from './components/TunerRequestsMap';
 import { MechanicPlans } from './components/MechanicPlans';
 import { SellerPlans } from './components/SellerPlans';
 import { TunerPlans } from './components/TunerPlans';
+import { CustomerProfileComplete } from './components/CustomerProfileComplete';
+import { CustomerVehicles } from './components/CustomerVehicles';
+import { CustomerAddresses } from './components/CustomerAddresses';
+import { CustomerPaymentMethods } from './components/CustomerPaymentMethods';
+import { CustomerNotifications } from './components/CustomerNotifications';
+import { CustomerTransactions } from './components/CustomerTransactions';
+import { CustomerReviews } from './components/CustomerReviews';
+import { CustomerFavorites } from './components/CustomerFavorites';
+import { CustomerLanguage } from './components/CustomerLanguage';
+import { CustomerSecurity } from './components/CustomerSecurity';
+import { CustomerHelp } from './components/CustomerHelp';
+import { CustomerContact } from './components/CustomerContact';
+import { CustomerTerms } from './components/CustomerTerms';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
@@ -115,7 +128,8 @@ function AppRoutes() {
       <Route path="/customer/history" element={<ProtectedRoute role="customer"><CustomerHistory /></ProtectedRoute>} />
       <Route path="/customer/orders" element={<ProtectedRoute role="customer"><OrdersTab /></ProtectedRoute>} />
       <Route path="/customer/messages" element={<ProtectedRoute role="customer"><MessagesTab /></ProtectedRoute>} />
-      <Route path="/customer/profile" element={<ProtectedRoute role="customer"><ProfileScreen /></ProtectedRoute>} />
+      <Route path="/customer/profile" element={<ProtectedRoute role="customer"><CustomerProfileComplete /></ProtectedRoute>} />
+      <Route path="/customer/profile-old" element={<ProtectedRoute role="customer"><ProfileScreen /></ProtectedRoute>} />
       <Route path="/customer/maintenance" element={<ProtectedRoute role="customer"><MaintenanceDashboard /></ProtectedRoute>} />
       <Route path="/customer/shop" element={<ProtectedRoute role="customer"><ShopScreen /></ProtectedRoute>} />
       <Route path="/customer/maintenance-log" element={<ProtectedRoute role="customer"><MaintenanceLogScreen /></ProtectedRoute>} />
@@ -161,6 +175,21 @@ function AppRoutes() {
       <Route path="/tuner/plans" element={<ProtectedRoute role="tuner"><TunerPlans /></ProtectedRoute>} />
       <Route path="/mechanic/plans" element={<ProtectedRoute role="mechanic"><MechanicPlans /></ProtectedRoute>} />
       <Route path="/seller/plans" element={<ProtectedRoute role="seller"><SellerPlans /></ProtectedRoute>} />
+
+      {/* Customer Profile Complete */}
+      <Route path="/customer/profile" element={<ProtectedRoute role="customer"><CustomerProfileComplete /></ProtectedRoute>} />
+      <Route path="/customer/profile/vehicles" element={<ProtectedRoute role="customer"><CustomerVehicles /></ProtectedRoute>} />
+      <Route path="/customer/profile/addresses" element={<ProtectedRoute role="customer"><CustomerAddresses /></ProtectedRoute>} />
+      <Route path="/customer/profile/payment-methods" element={<ProtectedRoute role="customer"><CustomerPaymentMethods /></ProtectedRoute>} />
+      <Route path="/customer/profile/notifications" element={<ProtectedRoute role="customer"><CustomerNotifications /></ProtectedRoute>} />
+      <Route path="/customer/profile/transactions" element={<ProtectedRoute role="customer"><CustomerTransactions /></ProtectedRoute>} />
+      <Route path="/customer/profile/reviews" element={<ProtectedRoute role="customer"><CustomerReviews /></ProtectedRoute>} />
+      <Route path="/customer/profile/favorites" element={<ProtectedRoute role="customer"><CustomerFavorites /></ProtectedRoute>} />
+      <Route path="/customer/profile/language" element={<ProtectedRoute role="customer"><CustomerLanguage /></ProtectedRoute>} />
+      <Route path="/customer/profile/security" element={<ProtectedRoute role="customer"><CustomerSecurity /></ProtectedRoute>} />
+      <Route path="/customer/profile/help" element={<ProtectedRoute role="customer"><CustomerHelp /></ProtectedRoute>} />
+      <Route path="/customer/profile/contact" element={<ProtectedRoute role="customer"><CustomerContact /></ProtectedRoute>} />
+      <Route path="/customer/profile/terms" element={<ProtectedRoute role="customer"><CustomerTerms /></ProtectedRoute>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />
