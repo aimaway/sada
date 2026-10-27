@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { PortalSidebar } from '../components/PortalSidebar';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Package,
@@ -102,8 +101,7 @@ export function SellerDashboard() {
   }
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="min-h-screen bg-slate-50">
+    <main className="h-full overflow-y-auto bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <header className="rounded-2xl bg-gradient-to-r from-slate-950 to-blue-950 p-6 text-white sm:p-8">
@@ -241,6 +239,5 @@ export function SellerDashboard() {
         </section>
       </div>
     </main>
-    </PortalSidebar>
   );
 }

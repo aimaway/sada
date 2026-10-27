@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { PortalSidebar } from '../../components/PortalSidebar';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, Package, Plus, Trash2, Truck, X } from 'lucide-react';
 import { OrderStatusBadge } from '../../components/ui/OrderStatusBadge';
@@ -38,8 +37,7 @@ export function SellerOrdersPage() {
   const filters: Array<'all' | SellerOrder['status']> = ['all', 'pending', 'processing', 'shipped', 'delivered'];
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-slate-950 to-blue-950 p-6 text-white">
         <h1 className="text-2xl font-bold">Commandes</h1>
         <p className="mt-1 text-sm text-slate-300">Traitez et suivez vos commandes clients.</p>
@@ -119,8 +117,8 @@ export function SellerOrdersPage() {
           </div>
         ))}
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -139,7 +137,7 @@ export function SellerOrderDetailPage() {
 
   if (orders && !order) {
     return (
-      <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+      <main className="flex h-full items-center justify-center">
         <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center">
           <p className="text-sm text-slate-500">Commande introuvable.</p>
           <Link to="/seller/orders" className="mt-4 inline-block text-sm font-medium text-blue-600">
@@ -167,8 +165,7 @@ export function SellerOrderDetailPage() {
   };
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6 lg:p-8">
       <button
         onClick={() => navigate('/seller/orders')}
         className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900"
@@ -255,8 +252,8 @@ export function SellerOrderDetailPage() {
           )}
         </div>
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -288,8 +285,7 @@ export function SellerInventoryPage() {
   const lowStock = products.filter((p) => p.stock < 5);
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-slate-950 to-blue-950 p-6 text-white">
         <h1 className="text-2xl font-bold">Gestion du stock</h1>
         <p className="mt-1 text-sm text-slate-300">Réapprovisionnez vos produits rapidement.</p>
@@ -370,8 +366,8 @@ export function SellerInventoryPage() {
           </tbody>
         </table>
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -410,8 +406,7 @@ export function SellerAnalyticsPage() {
   }, [products]);
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-slate-950 to-blue-950 p-6 text-white">
         <h1 className="text-2xl font-bold">Statistiques</h1>
         <p className="mt-1 text-sm text-slate-300">Analysez les performances de votre boutique.</p>
@@ -460,8 +455,8 @@ export function SellerAnalyticsPage() {
           })}
         </div>
       </section>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -498,8 +493,7 @@ export function SellerNewProductPage() {
     'w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20';
 
   return (
-    <PortalSidebar title="Espace Vendeur">
-    <main className="mx-auto max-w-2xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-2xl space-y-6 p-4 sm:p-6 lg:p-8">
       <button
         onClick={() => navigate(-1)}
         className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900"
@@ -576,7 +570,7 @@ export function SellerNewProductPage() {
           Enregistrer le produit
         </button>
       </form>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }

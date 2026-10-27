@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { PortalSidebar } from '../../components/PortalSidebar';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Eye, Star } from 'lucide-react';
 import { StatCard } from '../../components/ui/StatCard';
@@ -51,8 +50,7 @@ export function TunerRequestsPage() {
   const visible = filter === 'all' ? requests : requests.filter((r) => r.status === filter);
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white">
         <h1 className="text-2xl font-bold">Demandes de tuning</h1>
         <p className="mt-1 text-sm text-red-100">Répondez aux demandes des clients et convertissez-les en projets.</p>
@@ -137,8 +135,8 @@ export function TunerRequestsPage() {
           </div>
         ))}
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -158,8 +156,7 @@ export function TunerProjectsPage() {
   };
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white">
         <h1 className="text-2xl font-bold">Projets de tuning</h1>
         <p className="mt-1 text-sm text-red-100">Suivez l'avancement de vos projets.</p>
@@ -219,8 +216,8 @@ export function TunerProjectsPage() {
           </div>
         ))}
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -237,7 +234,7 @@ export function TunerProjectDetailPage() {
 
   if (projects && !project) {
     return (
-      <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+      <main className="flex h-full items-center justify-center">
         <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center">
           <p className="text-sm text-slate-500">Projet introuvable.</p>
           <Link to="/tuner/projects" className="mt-4 inline-block text-sm font-medium text-red-600">
@@ -271,8 +268,7 @@ export function TunerProjectDetailPage() {
   };
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6 lg:p-8">
       <button
         onClick={() => navigate(-1)}
         className="flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-slate-900"
@@ -315,8 +311,8 @@ export function TunerProjectDetailPage() {
           </button>
         )}
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -348,8 +344,7 @@ export function TunerCalendarPage() {
   };
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="mx-auto max-w-5xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-5xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white">
         <h1 className="text-2xl font-bold">Agenda</h1>
         <p className="mt-1 text-sm text-red-100">Gérez vos rendez-vous clients.</p>
@@ -403,8 +398,8 @@ export function TunerCalendarPage() {
           </div>
         ))}
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }
 
@@ -415,8 +410,7 @@ export function TunerPortfolioPage() {
   );
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+    <main className="h-full overflow-y-auto"><div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
       <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white">
         <div className="flex items-center justify-between">
           <div>
@@ -448,7 +442,7 @@ export function TunerPortfolioPage() {
           <span className="text-sm font-medium">Ajouter des photos / vidéos</span>
         </button>
       </div>
+      </div>
     </main>
-    </PortalSidebar>
   );
 }

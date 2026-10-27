@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { getPortalConfig } from '../shared/portalConfig';
 import {
@@ -29,7 +29,12 @@ export function PortalSidebar({
   const config = getPortalConfig(user?.role);
   const [open, setOpen] = useState(false);
 
-  const currentPath = window.location.pathname;
+  // Use the router location (always in sync) instead of window.location
+  const currentPath = useLocation().pathname;
+  const isItemActive = (route: string) =>
+    route.startsWith('/tuner/projects') || route.startsWith('/seller/orders')
+      ? currentPath === route || currentPath.startsWith(route + '/')
+      : currentPath === route;
 
   const panel = (
     <div className="flex h-full flex-col bg-slate-900 text-slate-100">
@@ -39,7 +44,7 @@ export function PortalSidebar({
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl">
             {config.avatarEmoji}
           </div>
-          <div className="min-w-0 flex-1">
+          <div className="flex min-w-0 flex-1 flex-col">
             <p className="truncate text-sm font-bold">{user?.full_name || config.roleLabel}</p>
             <p className="text-xs opacity-80">{config.roleLabel}</p>
           </div>
@@ -70,7 +75,7 @@ export function PortalSidebar({
             <div className="space-y-0.5">
               {section.items.map((item) => {
                 const Icon = item.icon;
-                const active = currentPath === item.route;
+                const active = isItemActive(item.route);
                 return (
                   <button
                     key={item.id}
@@ -125,7 +130,7 @@ export function PortalSidebar({
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 lg:flex">
+    <div className="flex h-screen overflow-hidden bg-slate-50">
       {/* Desktop permanent sidebar */}
       <aside className="hidden w-72 shrink-0 lg:block">
         <div className="sticky top-0 h-screen">{panel}</div>
@@ -140,7 +145,7 @@ export function PortalSidebar({
       )}
 
       {/* Content */}
-      <div className="min-w-0 flex-1">
+      <div className="flex min-w-0 flex-1 flex-col">
         {/* Top bar */}
         <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-3">
           <button

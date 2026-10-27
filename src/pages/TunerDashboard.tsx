@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { PortalSidebar } from '../components/PortalSidebar';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Wrench,
@@ -136,8 +135,7 @@ export function TunerDashboard() {
   }
 
   return (
-    <PortalSidebar title="Espace Tuner">
-    <main className="min-h-screen bg-slate-50">
+    <main className="h-full overflow-y-auto bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white sm:p-8">
@@ -336,6 +334,5 @@ export function TunerDashboard() {
         </section>
       </div>
     </main>
-    </PortalSidebar>
   );
 }

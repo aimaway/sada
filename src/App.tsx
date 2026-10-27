@@ -26,7 +26,7 @@ import { MechanicProfileSetup } from './mechanic/MechanicProfileSetup';
 import { MechanicProfileDetail, MechanicProfileSettings } from './mechanic/MechanicProfileDetail';
 
 // Seller
-import { SellerLogin, SellerDashboard, SellerProducts, SellerOrders, SellerPartnerships, SellerSettings } from './seller/SellerApp';
+import { SellerLogin, SellerPartnerships, SellerSettings } from './seller/SellerApp';
 
 // Admin
 import { AdminLogin, AdminDashboard, AdminVerification, AdminRequests, AdminUsers, AdminSettingsPage, AdminDisputes } from './admin/AdminApp';
@@ -53,7 +53,6 @@ import { DiagnosticRequest } from './components/DiagnosticRequest';
 import { MaintenanceRequest } from './components/MaintenanceRequest';
 import { TunerLogin } from './components/TunerLogin';
 import { TunerRegistration } from './components/TunerRegistration';
-import { TunerDashboard } from './components/TunerDashboard';
 import { TunerProfileEdit } from './components/TunerProfileEdit';
 import { TunerServices } from './components/TunerServices';
 import { TunerNotifications } from './components/TunerNotifications';
