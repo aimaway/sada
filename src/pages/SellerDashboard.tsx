@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { PortalSidebar } from '../components/PortalSidebar';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Package,
@@ -14,6 +15,13 @@ import { StatCard } from '../components/ui/StatCard';
 import { RevenueChart } from '../components/ui/RevenueChart';
 import { OrderStatusBadge } from '../components/ui/OrderStatusBadge';
 import { useApp } from '../shared/context';
+import {
+  formatMoney,
+  loadState,
+  seedSellerOrders,
+  seedSellerProducts,
+  SellerOrder,
+} from '../shared/portalStore';
 
 type DashboardData = {
   totalOrders: number;
@@ -38,70 +46,38 @@ export function SellerDashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
 
   useEffect(() => {
-    // TODO: Fetch real data from API
-    // For now, use mock data
-    const mockData: DashboardData = {
-      totalOrders: 156,
-      totalSales: 4580000, // 45,800 MAD in cents
-      pendingOrders: 12,
-      lowStockProducts: 8,
-      revenueData: [
-        { date: '01/03', revenue: 125000 },
-        { date: '02/03', revenue: 198000 },
-        { date: '03/03', revenue: 156000 },
-        { date: '04/03', revenue: 234000 },
-        { date: '05/03', revenue: 189000 },
-        { date: '06/03', revenue: 267000 },
-        { date: '07/03', revenue: 312000 },
-      ],
-      recentOrders: [
-        {
-          id: 1,
-          orderNumber: 'CMD-2024-001',
-          customerName: 'Amine Khalid',
-          total: 35000,
-          status: 'pending',
-          date: '2024-03-15',
-        },
-        {
-          id: 2,
-          orderNumber: 'CMD-2024-002',
-          customerName: 'Sara Mansouri',
-          total: 48000,
-          status: 'processing',
-          date: '2024-03-14',
-        },
-        {
-          id: 3,
-          orderNumber: 'CMD-2024-003',
-          customerName: 'Youssef Rachidi',
-          total: 12500,
-          status: 'shipped',
-          date: '2024-03-13',
-        },
-        {
-          id: 4,
-          orderNumber: 'CMD-2024-004',
-          customerName: 'Fatima Zahra',
-          total: 67000,
-          status: 'delivered',
-          date: '2024-03-12',
-        },
-      ],
+    // Data comes from the local portal store (persisted in localStorage).
+    // When the backend endpoints are ready, replace this with an API fetch.
+    const orders = loadState<SellerOrder[]>('seller.orders', seedSellerOrders);
+    const products = loadState('seller.products', seedSellerProducts);
+
+    const dashboardData: DashboardData = {
+      totalOrders: orders.length,
+      totalSales: orders.reduce((sum, o) => sum + o.total, 0),
+      pendingOrders: orders.filter((o) => o.status === 'pending' || o.status === 'processing').length,
+      lowStockProducts: products.filter((p) => p.stock < 5).length,
+      revenueData: [...orders]
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map((o) => ({
+          date: new Date(o.date).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }),
+          revenue: o.total,
+        })),
+      recentOrders: [...orders]
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 5)
+        .map((o) => ({
+          id: o.id,
+          orderNumber: o.orderNumber,
+          customerName: o.customerName,
+          total: o.total,
+          status: o.status,
+          date: o.date,
+        })),
     };
 
-    setTimeout(() => {
-      setData(mockData);
-      setLoading(false);
-    }, 500);
+    setData(dashboardData);
+    setLoading(false);
   }, []);
-
-  const formatMoney = (value: number) =>
-    new Intl.NumberFormat('fr-MA', {
-      style: 'currency',
-      currency: 'MAD',
-      maximumFractionDigits: 0,
-    }).format(value / 100);
 
   if (loading) {
     return (
@@ -126,6 +102,7 @@ export function SellerDashboard() {
   }
 
   return (
+    <PortalSidebar title="Espace Vendeur">
     <main className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
         {/* Header */}
@@ -264,5 +241,6 @@ export function SellerDashboard() {
         </section>
       </div>
     </main>
+    </PortalSidebar>
   );
 }

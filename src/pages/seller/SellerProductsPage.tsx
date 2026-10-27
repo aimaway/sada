@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PortalSidebar } from '../../components/PortalSidebar';
 import { Link } from 'react-router-dom';
 import { Plus, Search, Filter } from 'lucide-react';
 
@@ -24,6 +25,7 @@ export function SellerProductsPage() {
     new Intl.NumberFormat('fr-MA', { style: 'currency', currency: 'MAD', maximumFractionDigits: 0 }).format(value / 100);
 
   return (
+    <PortalSidebar title="Espace Vendeur">
     <main className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
         <header className="rounded-2xl bg-gradient-to-r from-slate-950 to-blue-950 p-6 text-white">
@@ -129,5 +131,6 @@ export function SellerProductsPage() {
         </div>
       </div>
     </main>
+    </PortalSidebar>
   );
 }
