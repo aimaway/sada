@@ -7,6 +7,38 @@ from sqlalchemy.sql import func
 from app.database import Base
 import enum
 
+# Import tous les modèles
+from app.models.seller import (
+    ProductCategory,
+    Product,
+    ProductImage,
+    Order,
+    OrderItem,
+    InventoryMovement,
+    ProductReview,
+)
+
+from app.models.tuner import (
+    TuningService,
+    TuningRequest,
+    TuningProject,
+    ProjectEstimate,
+    Appointment,
+    WorkLog,
+    PortfolioEntry,
+    Invoice,
+)
+
+from app.models.financial import (
+    Transaction,
+    Commission,
+    Payout,
+    WalletTransaction,
+    FinancialReport,
+    PaymentProvider,
+    PayoutMethod,
+)
+
 
 # Enums
 class UserRole(str, enum.Enum):

@@ -15,6 +15,9 @@ from app.database import get_db, engine
 from app.models import User, UserRole, ProviderProfile, Job, JobStatus, ServiceRequest, Plan, Subscription
 from app.websocket.manager import ConnectionManager
 
+# Import seller and tuner routers
+from app.api import seller, tuner
+
 # Create tables
 from app.database import Base
 Base.metadata.create_all(bind=engine)
@@ -650,6 +653,11 @@ def health_check():
         "version": settings.APP_VERSION,
         "environment": settings.ENVIRONMENT
     }
+
+
+# Include Seller and Tuner routers
+app.include_router(seller.router, prefix="/api/v1", tags=["Seller Portal"])
+app.include_router(tuner.router, prefix="/api/v1", tags=["Tuner Portal"])
 
 
 @app.get("/")

@@ -99,6 +99,10 @@ import { JobManagement } from './components/JobManagement';
 import { ClientPortal } from './components/ClientPortal';
 import { ChoosePlan } from './components/ChoosePlan';
 
+// New Seller & Tuner Portal Pages
+import { SellerDashboard as NewSellerDashboard } from './pages/SellerDashboard';
+import { TunerDashboard as NewTunerDashboard } from './pages/TunerDashboard';
+
 // Content Pages
 import { ContactPage } from './pages/ContactPage';
 import { AboutPage, CareersPage, BlogPage, FAQPage, TermsPage, PrivacyPage } from './pages/ContentPages';
@@ -253,6 +257,10 @@ function AppRoutes() {
       <Route path="/seller/portal" element={<ProtectedRoute role="seller"><ProviderPortal /></ProtectedRoute>} />
       <Route path="/gift-plans" element={<GiftPlans />} />
       <Route path="/choose-plan" element={<ChoosePlan />} />
+
+      {/* New Seller & Tuner Portal Pages */}
+      <Route path="/seller/portal-new" element={<ProtectedRoute role="seller"><NewSellerDashboard /></ProtectedRoute>} />
+      <Route path="/tuner/portal-new" element={<ProtectedRoute role="tuner"><NewTunerDashboard /></ProtectedRoute>} />
       <Route path="/discover" element={<ProtectedRoute role="customer"><ProviderDirectory /></ProtectedRoute>} />
       <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
 
