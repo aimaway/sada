@@ -54,6 +54,13 @@ import { MaintenanceRequest } from './components/MaintenanceRequest';
 import { TunerLogin } from './components/TunerLogin';
 import { TunerRegistration } from './components/TunerRegistration';
 import { TunerDashboard } from './components/TunerDashboard';
+import { TunerProfileEdit } from './components/TunerProfileEdit';
+import { TunerServices } from './components/TunerServices';
+import { TunerNotifications } from './components/TunerNotifications';
+import { TunerPaymentMethods } from './components/TunerPaymentMethods';
+import { TunerWalletRecharge } from './components/TunerWalletRecharge';
+import { TunerGalleryUpload } from './components/TunerGalleryUpload';
+import { TunerRequestsMap } from './components/TunerRequestsMap';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
@@ -141,6 +148,13 @@ function AppRoutes() {
       <Route path="/tuner/login" element={<TunerLogin />} />
       <Route path="/tuner/register" element={<TunerRegistration />} />
       <Route path="/tuner/dashboard" element={<ProtectedRoute role="tuner"><TunerDashboard /></ProtectedRoute>} />
+      <Route path="/tuner/profile-edit" element={<ProtectedRoute role="tuner"><TunerProfileEdit /></ProtectedRoute>} />
+      <Route path="/tuner/services" element={<ProtectedRoute role="tuner"><TunerServices /></ProtectedRoute>} />
+      <Route path="/tuner/notifications" element={<ProtectedRoute role="tuner"><TunerNotifications /></ProtectedRoute>} />
+      <Route path="/tuner/payment-methods" element={<ProtectedRoute role="tuner"><TunerPaymentMethods /></ProtectedRoute>} />
+      <Route path="/tuner/wallet-recharge" element={<ProtectedRoute role="tuner"><TunerWalletRecharge /></ProtectedRoute>} />
+      <Route path="/tuner/gallery-upload" element={<ProtectedRoute role="tuner"><TunerGalleryUpload /></ProtectedRoute>} />
+      <Route path="/tuner/requests-map" element={<ProtectedRoute role="tuner"><TunerRequestsMap /></ProtectedRoute>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />
