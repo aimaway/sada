@@ -17,7 +17,7 @@ export const TunerDashboard: React.FC = () => {
             <ArrowLeft className="w-6 h-6" />
           </button>
           <div className="flex gap-2">
-            <button onClick={() => navigate('/tuner/settings')} className="p-2 bg-white/20 rounded-full">
+            <button onClick={() => setActiveTab('settings')} className="p-2 bg-white/20 rounded-full">
               <Settings className="w-5 h-5" />
             </button>
             <button className="p-2 bg-white/20 rounded-full">
@@ -109,7 +109,7 @@ export const TunerDashboard: React.FC = () => {
                 ))}
               </div>
               <button
-                onClick={() => navigate('/gift-plans')}
+                onClick={() => navigate('/tuner/plans')}
                 className="w-full py-2 bg-amber-500 text-white rounded-xl font-medium hover:bg-amber-600"
               >
                 Gérer mon abonnement
@@ -370,11 +370,22 @@ export const TunerDashboard: React.FC = () => {
 
               <button
                 onClick={() => navigate('/tuner/payment-methods')}
-                className="w-full p-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
+                className="w-full p-4 flex items-center justify-between hover:bg-slate-50 transition-colors border-b border-slate-100"
               >
                 <div className="flex items-center gap-3">
                   <DollarSign className="w-5 h-5 text-slate-600" />
                   <span className="text-sm font-medium text-slate-800">Méthodes de paiement</span>
+                </div>
+                <ChevronRight className="w-5 h-5 text-slate-400" />
+              </button>
+
+              <button
+                onClick={() => navigate('/tuner/plans')}
+                className="w-full p-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Star className="w-5 h-5 text-slate-600" />
+                  <span className="text-sm font-medium text-slate-800">Plans & Abonnements</span>
                 </div>
                 <ChevronRight className="w-5 h-5 text-slate-400" />
               </button>

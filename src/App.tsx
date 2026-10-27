@@ -61,6 +61,9 @@ import { TunerPaymentMethods } from './components/TunerPaymentMethods';
 import { TunerWalletRecharge } from './components/TunerWalletRecharge';
 import { TunerGalleryUpload } from './components/TunerGalleryUpload';
 import { TunerRequestsMap } from './components/TunerRequestsMap';
+import { MechanicPlans } from './components/MechanicPlans';
+import { SellerPlans } from './components/SellerPlans';
+import { TunerPlans } from './components/TunerPlans';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
@@ -155,6 +158,9 @@ function AppRoutes() {
       <Route path="/tuner/wallet-recharge" element={<ProtectedRoute role="tuner"><TunerWalletRecharge /></ProtectedRoute>} />
       <Route path="/tuner/gallery-upload" element={<ProtectedRoute role="tuner"><TunerGalleryUpload /></ProtectedRoute>} />
       <Route path="/tuner/requests-map" element={<ProtectedRoute role="tuner"><TunerRequestsMap /></ProtectedRoute>} />
+      <Route path="/tuner/plans" element={<ProtectedRoute role="tuner"><TunerPlans /></ProtectedRoute>} />
+      <Route path="/mechanic/plans" element={<ProtectedRoute role="mechanic"><MechanicPlans /></ProtectedRoute>} />
+      <Route path="/seller/plans" element={<ProtectedRoute role="seller"><SellerPlans /></ProtectedRoute>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />

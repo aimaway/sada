@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Gift, Star, Crown, Zap, TrendingUp, CheckCircle2 } from 'lucide-react';
 
 export const GiftPlans: React.FC = () => {
   const navigate = useNavigate();
-  const [userType, setUserType] = useState<'customer' | 'mechanic' | 'seller'>('customer');
 
   const customerPlans = [
     {
@@ -71,107 +70,7 @@ export const GiftPlans: React.FC = () => {
     },
   ];
 
-  const mechanicPlans = [
-    {
-      id: 'starter',
-      name: 'Starter',
-      price: 0,
-      color: 'from-slate-500 to-slate-600',
-      icon: '🔧',
-      benefits: [
-        'Commission 10%',
-        'Accès aux demandes',
-        'Profil de base',
-        'Support standard',
-      ],
-      current: true,
-    },
-    {
-      id: 'pro',
-      name: 'Pro',
-      price: 149,
-      color: 'from-blue-500 to-blue-600',
-      icon: '⭐',
-      benefits: [
-        'Commission 8%',
-        'Badge "Pro" vérifié',
-        'Visibilité accrue',
-        'Support prioritaire',
-        'Statistiques avancées',
-      ],
-      current: false,
-    },
-    {
-      id: 'expert',
-      name: 'Expert',
-      price: 299,
-      color: 'from-purple-500 to-purple-600',
-      icon: '🏆',
-      benefits: [
-        'Commission 5%',
-        'Badge "Expert" premium',
-        'Top visibilité',
-        'Support VIP 24/7',
-        'Formation continue',
-        'Outils marketing',
-      ],
-      current: false,
-      popular: true,
-    },
-  ];
-
-  const sellerPlans = [
-    {
-      id: 'basic',
-      name: 'Basic',
-      price: 0,
-      color: 'from-slate-500 to-slate-600',
-      icon: '🏪',
-      benefits: [
-        'Jusqu\'à 50 produits',
-        'Commission 5%',
-        'Profil de base',
-        'Support standard',
-      ],
-      current: true,
-    },
-    {
-      id: 'business',
-      name: 'Business',
-      price: 199,
-      color: 'from-green-500 to-green-600',
-      icon: '📈',
-      benefits: [
-        'Produits illimités',
-        'Commission 3%',
-        'Badge "Business"',
-        'Visibilité accrue',
-        'Statistiques avancées',
-        'Support prioritaire',
-      ],
-      current: false,
-    },
-    {
-      id: 'premium',
-      name: 'Premium',
-      price: 499,
-      color: 'from-amber-500 to-amber-600',
-      icon: '💎',
-      benefits: [
-        'Tout Business +',
-        'Commission 2%',
-        'Badge "Premium"',
-        'Top visibilité',
-        'Marketing dédié',
-        'Account manager',
-        'Formation gratuite',
-      ],
-      current: false,
-      popular: true,
-    },
-  ];
-
-  const plans = userType === 'customer' ? customerPlans : userType === 'mechanic' ? mechanicPlans : sellerPlans;
+  const plans = customerPlans;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -186,27 +85,11 @@ export const GiftPlans: React.FC = () => {
         <p className="text-sm opacity-90">Choisissez le plan qui vous convient</p>
       </div>
 
-      {/* User Type Selector */}
+      {/* Info Banner */}
       <div className="bg-white px-4 py-3 border-b border-slate-200">
-        <div className="flex gap-2">
-          {[
-            { id: 'customer', label: 'Client', icon: '👤' },
-            { id: 'mechanic', label: 'Mécanicien', icon: '🔧' },
-            { id: 'seller', label: 'Vendeur', icon: '🏪' },
-          ].map((type) => (
-            <button
-              key={type.id}
-              onClick={() => setUserType(type.id as any)}
-              className={`flex-1 py-2 rounded-xl text-sm font-medium transition-colors ${
-                userType === type.id
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              {type.icon} {type.label}
-            </button>
-          ))}
-        </div>
+        <p className="text-sm text-slate-600 text-center">
+          Choisissez le plan client qui vous convient
+        </p>
       </div>
 
       <div className="px-4 py-6 space-y-4">

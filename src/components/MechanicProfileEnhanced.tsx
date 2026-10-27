@@ -4,7 +4,7 @@ import { ArrowLeft, Plus, Award, Star, Shield, Edit, Upload, CheckCircle2 } from
 
 export const MechanicProfileEnhanced: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'info' | 'skills' | 'certificates' | 'products'>('info');
+  const [activeTab, setActiveTab] = useState<'info' | 'skills' | 'certificates' | 'products' | 'plans'>('info');
 
   const [profile, setProfile] = useState({
     name: 'Ahmed Benali',
@@ -141,6 +141,7 @@ export const MechanicProfileEnhanced: React.FC = () => {
             { id: 'skills', label: 'Compétences' },
             { id: 'certificates', label: 'Certificats' },
             { id: 'products', label: 'Produits' },
+            { id: 'plans', label: 'Plans' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -410,6 +411,78 @@ export const MechanicProfileEnhanced: React.FC = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Plans Tab */}
+        {activeTab === 'plans' && (
+          <div className="space-y-4">
+            {/* Current Plan */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-200">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-slate-800 flex items-center gap-2">
+                  <Star className="w-5 h-5 text-blue-600" />
+                  Plan actuel
+                </h3>
+                <span className="text-sm font-bold text-blue-600">Starter</span>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-600">Commission</span>
+                  <span className="font-medium text-slate-800">10%</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-600">Services débloqués</span>
+                  <span className="font-medium text-slate-800">3 / 8</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-600">Visibilité</span>
+                  <span className="font-medium text-slate-800">Standard</span>
+                </div>
+              </div>
+              <button
+                onClick={() => navigate('/mechanic/plans')}
+                className="w-full mt-4 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700"
+              >
+                Gérer mon abonnement
+              </button>
+            </div>
+
+            {/* Plan Benefits */}
+            <div className="bg-white rounded-2xl p-4 border border-slate-200">
+              <h3 className="font-semibold text-slate-800 mb-3">Avantages de votre plan</h3>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
+                  <span className="text-sm text-slate-700">Accès aux demandes basiques</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
+                  <span className="text-sm text-slate-700">3 services débloqués</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
+                  <span className="text-sm text-slate-700">Profil de base</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
+                  <span className="text-sm text-slate-700">Support standard</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Upgrade Info */}
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 border border-amber-200">
+              <div className="flex items-start gap-3">
+                <div className="text-3xl">💡</div>
+                <div>
+                  <p className="text-sm font-semibold text-amber-800 mb-1">Passez au niveau supérieur</p>
+                  <p className="text-xs text-amber-700">
+                    Débloquez plus de services, réduisez votre commission et augmentez votre visibilité avec un plan Pro ou Expert.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
