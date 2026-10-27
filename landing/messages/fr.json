@@ -1,0 +1,122 @@
+{
+  "landing": {
+    "title": "MécaCasablanca",
+    "tagline": "Prix juste, zéro arnaque",
+    "description": "Réparation auto à domicile à la demande. Proposez votre prix, choisissez votre mécanicien vérifié.",
+    
+    "hero": {
+      "title": "Votre mécanicien vient chez vous",
+      "subtitle": "Proposez votre prix. Choisissez votre mécanicien. Réparation à domicile.",
+      "cta_primary": "Demander un mécanicien",
+      "cta_secondary": "Je suis mécanicien",
+      "trust": {
+        "verified": "Mécaniciens vérifiés",
+        "protection": "Protection des prix",
+        "warranty": "Garantie 30 jours"
+      },
+      "slider": {
+        "scene1": { "title": "Amine - Voiture réparée", "caption": "En 2h chez moi, prix juste" },
+        "scene2": { "title": "Karim - Scooter sauvé", "caption": "Panne évitée grâce à MécaCasa" },
+        "scene3": { "title": "Famille Benali", "caption": "Entretien annuel sans stress" }
+      }
+    },
+
+    "how_it_works": {
+      "title": "Comment ça marche",
+      "subtitle": "4 étapes simples pour faire réparer votre véhicule",
+      "step1": { "title": "Décrivez le problème", "description": "Expliquez le problème et proposez votre prix" },
+      "step2": { "title": "Recevez des offres", "description": "Les mécaniciens vérifiés vous font des offres" },
+      "step3": { "title": "Comparez et choisissez", "description": "Comparez les prix, avis et délais" },
+      "step4": { "title": "Payez après le travail", "description": "Payez uniquement quand le travail est terminé" }
+    },
+
+    "who": {
+      "title": "Pour qui ?",
+      "subtitle": "Une solution pour chaque besoin",
+      "segment1": { "title": "Propriétaires de voitures", "description": "Entretien et réparation sans déplacement" },
+      "segment2": { "title": "Motards et deux-roues", "description": "Intervention rapide pour reprendre la route" },
+      "segment3": { "title": "Chauffeurs taxi/VTC", "description": "Minimisez les temps d'arrêt" },
+      "segment4": { "title": "Acheteurs d'occasion", "description": "Inspection avant achat" },
+      "segment5": { "title": "Familles", "description": "Gérez les véhicules de toute la famille" },
+      "segment6": { "title": "Touristes & MRE", "description": "Assistance en anglais, service rapide" }
+    },
+
+    "fair_price": {
+      "title": "Prix juste garanti",
+      "subtitle": "Comparez avec notre index de prix transparent",
+      "select_service": "Choisir un service",
+      "select_vehicle": "Choisir un véhicule",
+      "typical_range": "Fourchette typique",
+      "average_price": "Prix moyen",
+      "based_on": "Basé sur",
+      "jobs": "jobs complétés",
+      "sample_verdict": {
+        "title": "✅ Bonne affaire",
+        "description": "Cette offre est 15% en dessous du prix moyen"
+      },
+      "cta": "Voir l'index complet des prix"
+    },
+
+    "community": {
+      "title": "Communauté & Tuning",
+      "subtitle": "Rejoignez des milliers de passionnés",
+      "feed_title": "Dernières discussions",
+      "tuning_title": "Tuning Hub",
+      "join_cta": "Rejoindre la communauté",
+      "view_profile": "Voir le profil"
+    },
+
+    "partners": {
+      "title": "Partenaires & Mécaniciens",
+      "subtitle": "Rejoignez notre réseau en croissance",
+      "insurance": "Assurances",
+      "rental": "Location",
+      "delivery": "Livraison",
+      "mechanics": "Mécaniciens",
+      "waitlist_title": "Rejoignez la waitlist",
+      "waitlist_description": "Soyez parmi les premiers à bénéficier de nos avantages partenaires",
+      "form": {
+        "name": "Votre nom",
+        "email": "Email professionnel",
+        "type": "Type de partenaire",
+        "consent": "J'accepte d'être contacté par l'équipe MécaCasablanca",
+        "submit": "Rejoindre la waitlist"
+      }
+    },
+
+    "faq": {
+      "title": "Questions fréquentes",
+      "subtitle": "Tout ce que vous devez savoir",
+      "q1": "Comment sont vérifiés les mécaniciens ?",
+      "a1": "Tous nos mécaniciens passent par un processus de vérification rigoureux : pièce d'identité, certificats professionnels, photos de l'atelier, et références clients.",
+      "q2": "Que se passe-t-il si je ne suis pas satisfait ?",
+      "a2": "Nous offrons une garantie de 30 jours sur tous les travaux. Si vous n'êtes pas satisfait, nous intervenons gratuitement ou vous remboursons.",
+      "q3": "Comment fonctionne la protection des prix ?",
+      "a3": "Notre algorithme compare chaque offre avec notre index de prix basé sur des milliers de jobs. Vous voyez si l'offre est bonne, moyenne ou élevée.",
+      "q4": "Puis-je payer en espèces ?",
+      "a4": "Oui, vous pouvez payer en espèces directement au mécanicien après le travail. Nous acceptons aussi les cartes bancaires et les portefeuilles mobiles.",
+      "q5": "Dans quelles villes êtes-vous disponibles ?",
+      "a5": "Nous sommes actuellement disponibles à Casablanca. Rabat et Marrakech arrivent bientôt !"
+    },
+
+    "footer": {
+      "tagline": "Réparation auto à domicile, prix juste, zéro arnaque.",
+      "country": "Pays",
+      "product": "Produit",
+      "how_it_works": "Comment ça marche",
+      "pricing": "Tarifs",
+      "for_mechanics": "Pour les mécaniciens",
+      "for_partners": "Pour les partenaires",
+      "company": "Entreprise",
+      "about": "À propos",
+      "blog": "Blog",
+      "careers": "Carrières",
+      "contact": "Contact",
+      "legal": "Légal",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Cookies",
+      "rights": "Tous droits réservés."
+    }
+  }
+}
