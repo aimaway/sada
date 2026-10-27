@@ -16,7 +16,7 @@ export function MechanicLogin() {
     if (known.some(p => phone.includes(p))) {
       setUser({ id: 'u_m1', phone: '+212' + phone, role: 'mechanic', full_name: 'Ahmed Benali', status: 'active', language: 'fr', created_at: new Date().toISOString() });
       setMechanicProfile({ id: 'm1', user_id: 'u_m1', verification_status: 'approved', is_online: false });
-      navigate('/mechanic/home');
+      navigate('/mechanic/dashboard');
     } else {
       setUser({ id: 'u_new_m', phone: '+212' + phone, role: 'mechanic', full_name: '', status: 'active', language: 'fr', created_at: new Date().toISOString() });
       navigate('/mechanic/profile-setup');

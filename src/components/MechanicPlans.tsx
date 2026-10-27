@@ -67,7 +67,7 @@ export const MechanicPlans: React.FC = () => {
       {/* Header */}
       <div className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white px-4 py-6">
         <div className="flex items-center gap-3 mb-4">
-          <button onClick={() => navigate('/mechanic/profile-enhanced')} className="p-1">
+          <button onClick={() => navigate('/mechanic/profile')} className="p-1">
             <ArrowLeft className="w-6 h-6" />
           </button>
           <div>

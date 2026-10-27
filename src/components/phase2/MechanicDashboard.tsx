@@ -115,9 +115,9 @@ export const MechanicDashboard: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <button onClick={() => navigate('/mechanic/public-profile')} className="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 transition-colors">
+          <button onClick={() => navigate('/mechanic/profile')} className="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 transition-colors">
             <Eye className="w-6 h-6 text-blue-600 mb-2" />
-            <p className="text-sm font-medium text-slate-800">Voir profil public</p>
+            <p className="text-sm font-medium text-slate-800">Mon profil</p>
           </button>
           <button onClick={() => navigate('/mechanic/wallet')} className="p-4 bg-white rounded-xl border border-slate-200 hover:border-emerald-300 transition-colors">
             <DollarSign className="w-6 h-6 text-emerald-600 mb-2" />

@@ -57,7 +57,7 @@ export const PremiumAccounts = () => {
           verification_status: 'approved',
           is_online: true,
         });
-        navigate('/mechanic/profile-enhanced');
+        navigate('/mechanic/profile');
       },
     },
     {

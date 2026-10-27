@@ -36,7 +36,7 @@ export const CustomerHomeEnhanced: React.FC = () => {
             <h1 className="text-2xl font-bold">Bonjour 👋</h1>
             <p className="text-sm opacity-90">Que pouvons-nous faire pour vous ?</p>
           </div>
-          <button className="p-2 bg-white/20 rounded-full">
+          <button onClick={() => navigate('/customer/profile')} className="p-2 bg-white/20 rounded-full">
             <Settings className="w-5 h-5" />
           </button>
         </div>

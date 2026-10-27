@@ -122,7 +122,7 @@ function AppRoutes() {
       {/* Customer */}
       <Route path="/customer/login" element={<CustomerLogin />} />
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />
-      <Route path="/customer/home" element={<ProtectedRoute role="customer"><CustomerHome /></ProtectedRoute>} />
+      <Route path="/customer/home" element={<ProtectedRoute role="customer"><CustomerHomeEnhanced /></ProtectedRoute>} />
       <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><NotificationsScreen /></ProtectedRoute>} />
       <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
       <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
@@ -155,9 +155,7 @@ function AppRoutes() {
       {/* Mechanic */}
       <Route path="/mechanic/login" element={<MechanicLogin />} />
       <Route path="/mechanic/profile-setup" element={<ProtectedRoute role="mechanic"><MechanicProfileSetup /></ProtectedRoute>} />
-      <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><MechanicHome /></ProtectedRoute>} />
-      <Route path="/mechanic/profile" element={<ProtectedRoute role="mechanic"><MechanicProfileDetail /></ProtectedRoute>} />
-      <Route path="/mechanic/profile-settings" element={<ProtectedRoute role="mechanic"><MechanicProfileSettings /></ProtectedRoute>} />
+      <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><MechanicDashboard /></ProtectedRoute>} />
       <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><MechanicRequestDetail /></ProtectedRoute>} />
       <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><MechanicActiveJob /></ProtectedRoute>} />
       <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><MechanicWallet /></ProtectedRoute>} />
@@ -187,8 +185,7 @@ function AppRoutes() {
       <Route path="/mechanic/plans" element={<ProtectedRoute role="mechanic"><MechanicPlans /></ProtectedRoute>} />
       <Route path="/seller/plans" element={<ProtectedRoute role="seller"><SellerPlans /></ProtectedRoute>} />
 
-      {/* Customer Profile Complete */}
-      <Route path="/customer/profile" element={<ProtectedRoute role="customer"><CustomerProfileComplete /></ProtectedRoute>} />
+      {/* Customer Profile Complete - Sub-routes */}
       <Route path="/customer/profile/vehicles" element={<ProtectedRoute role="customer"><CustomerVehicles /></ProtectedRoute>} />
       <Route path="/customer/profile/addresses" element={<ProtectedRoute role="customer"><CustomerAddresses /></ProtectedRoute>} />
       <Route path="/customer/profile/payment-methods" element={<ProtectedRoute role="customer"><CustomerPaymentMethods /></ProtectedRoute>} />
