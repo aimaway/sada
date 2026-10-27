@@ -77,6 +77,17 @@ import { CustomerSecurity } from './components/CustomerSecurity';
 import { CustomerHelp } from './components/CustomerHelp';
 import { CustomerContact } from './components/CustomerContact';
 import { CustomerTerms } from './components/CustomerTerms';
+import { MechanicProfileComplete } from './components/MechanicProfileComplete';
+import { MechanicPersonalInfo } from './components/MechanicPersonalInfo';
+import { MechanicServices } from './components/MechanicServices';
+import { MechanicServiceArea } from './components/MechanicServiceArea';
+import { MechanicPricing } from './components/MechanicPricing';
+import { MechanicVerification } from './components/MechanicVerification';
+import { MechanicStats } from './components/MechanicStats';
+import { MechanicReviews } from './components/MechanicReviews';
+import { MechanicPayouts } from './components/MechanicPayouts';
+import { MechanicNotifications } from './components/MechanicNotifications';
+import { MechanicVisibility } from './components/MechanicVisibility';
 import { GiftPlans } from './components/GiftPlans';
 import { NewRequestEnhanced } from './components/NewRequestEnhanced';
 import { RoleSelectionLogin } from './components/RoleSelectionLogin';
@@ -227,6 +238,17 @@ function AppRoutes() {
       <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><DocumentsManager /></ProtectedRoute>} />
       <Route path="/customer/portal" element={<ProtectedRoute role="customer"><ClientPortal /></ProtectedRoute>} />
       <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><MechanicProfileEnhanced /></ProtectedRoute>} />
+      <Route path="/mechanic/profile" element={<ProtectedRoute role="mechanic"><MechanicProfileComplete /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/info" element={<ProtectedRoute role="mechanic"><MechanicPersonalInfo /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/services" element={<ProtectedRoute role="mechanic"><MechanicServices /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/area" element={<ProtectedRoute role="mechanic"><MechanicServiceArea /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/pricing" element={<ProtectedRoute role="mechanic"><MechanicPricing /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/verification" element={<ProtectedRoute role="mechanic"><MechanicVerification /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/stats" element={<ProtectedRoute role="mechanic"><MechanicStats /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/reviews" element={<ProtectedRoute role="mechanic"><MechanicReviews /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/payouts" element={<ProtectedRoute role="mechanic"><MechanicPayouts /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/notifications" element={<ProtectedRoute role="mechanic"><MechanicNotifications /></ProtectedRoute>} />
+      <Route path="/mechanic/profile/visibility" element={<ProtectedRoute role="mechanic"><MechanicVisibility /></ProtectedRoute>} />
       <Route path="/mechanic/portal" element={<ProtectedRoute role="mechanic"><ProviderPortal /></ProtectedRoute>} />
       <Route path="/mechanic/jobs" element={<ProtectedRoute role="mechanic"><JobManagement /></ProtectedRoute>} />
       <Route path="/tuner/:slug" element={<TunerProfile />} />
