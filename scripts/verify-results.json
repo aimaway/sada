@@ -1,0 +1,2562 @@
+[
+  {
+    "vp": "desktop",
+    "path": "/",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/about",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_about.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/contact",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_contact.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/faq",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_faq.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/terms",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_terms.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/privacy",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_privacy.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile-setup",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_setup.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/home",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_home.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/notifications",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_notifications.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/new-request",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_new_request.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/explain-problem",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_explain_problem.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/diagnostic",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_diagnostic.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/maintenance-request",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_maintenance_request.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/waiting",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_waiting.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/offers",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_offers.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/mechanic-profile/:id",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_mechanic_profile_r1.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/tracking",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_tracking.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/negotiation",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_negotiation.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/payment",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_payment.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/rate",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_rate.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/history",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_history.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/orders",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_orders.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/messages",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_messages.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile-old",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_old.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/maintenance",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_maintenance.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/shop",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_shop.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/maintenance-log",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_maintenance_log.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/reminders",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_reminders.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/documents",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_documents.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/ai-assistant",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_ai_assistant.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/warning-scanner",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_warning_scanner.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/business/wallet",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_business_wallet.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/business/anti-bypass",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_business_anti_bypass.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/business/local",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_business_local.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile-setup",
+    "role": "mechanic",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_setup.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/home",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_home.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/request/:id",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_request_r1.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/active-job",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_active_job.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/wallet",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_wallet.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/earnings",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_earnings.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/shop",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_shop.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/dashboard",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_dashboard.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/partnerships",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_partnerships.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/settings",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_settings.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/register",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_register.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/dashboard",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_dashboard.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/profile-edit",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_profile_edit.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/services",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_services.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/notifications",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_notifications.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/payment-methods",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_payment_methods.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/wallet-recharge",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_wallet_recharge.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/gallery-upload",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_gallery_upload.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/requests-map",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_requests_map.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/plans",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_plans.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/plans",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_plans.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/plans",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_plans.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/vehicles",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_vehicles.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/addresses",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_addresses.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/payment-methods",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_payment_methods.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/notifications",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_notifications.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/transactions",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_transactions.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/reviews",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_reviews.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/favorites",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_favorites.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/language",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_language.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/security",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_security.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/help",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_help.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/contact",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_contact.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/profile/terms",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_profile_terms.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_login.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/dashboard",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_dashboard.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/verification",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_verification.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/requests",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_requests.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/users",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_users.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/settings",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_settings.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/admin/disputes",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_admin_disputes.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/urgent/motorcycle",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_urgent_motorcycle.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/urgent/scooter",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_urgent_scooter.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/urgent/ebike",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_urgent_ebike.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/inspection/book",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_inspection_book.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/inspection-report/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_inspection_report_demo_slug.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/on-behalf/new",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_on_behalf_new.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/on-behalf/:token",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_on_behalf_demo_token.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/m/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_m_demo_slug.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/dashboard",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_dashboard.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/public-profile",
+    "role": "mechanic",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_public_profile.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/recurring-plans",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_recurring_plans.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/wallet",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_wallet.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/documents-manage",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_documents_manage.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/customer/portal",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_customer_portal.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile-enhanced",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_enhanced.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/info",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_info.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/services",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_services.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/area",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_area.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/pricing",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_pricing.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/verification",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_verification.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/stats",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_stats.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/reviews",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_reviews.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/payouts",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_payouts.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/notifications",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_notifications.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/profile/visibility",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_profile_visibility.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/portal",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_portal.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/mechanic/jobs",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_mechanic_jobs.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_demo_slug.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_demo_slug.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/gift-plans",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_gift_plans.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/choose-plan",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_choose_plan.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/portal",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_portal.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/products",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_products.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/products/new",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_products_new.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/orders",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_orders.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/orders/:id",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_orders_r1.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/inventory",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_inventory.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/seller/analytics",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_seller_analytics.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/portal",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_portal.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/requests",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_requests.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/projects",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_projects.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/projects/:id",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_projects_r1.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/calendar",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_calendar.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/appointments/:id",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_appointments_r1.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/tuner/portfolio",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_tuner_portfolio.png"
+  },
+  {
+    "vp": "desktop",
+    "path": "/discover",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/desktop-_discover.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/about",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_about.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/contact",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_contact.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/faq",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_faq.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/terms",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_terms.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/privacy",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_privacy.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile-setup",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_setup.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/home",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_home.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/notifications",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_notifications.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/new-request",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_new_request.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/explain-problem",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_explain_problem.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/diagnostic",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_diagnostic.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/maintenance-request",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_maintenance_request.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/waiting",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_waiting.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/offers",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_offers.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/mechanic-profile/:id",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_mechanic_profile_r1.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/tracking",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_tracking.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/negotiation",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_negotiation.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/payment",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_payment.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/rate",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_rate.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/history",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_history.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/orders",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_orders.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/messages",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_messages.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile-old",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_old.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/maintenance",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_maintenance.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/shop",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_shop.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/maintenance-log",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_maintenance_log.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/reminders",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_reminders.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/documents",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_documents.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/ai-assistant",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_ai_assistant.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/warning-scanner",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_warning_scanner.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/business/wallet",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_business_wallet.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/business/anti-bypass",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_business_anti_bypass.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/business/local",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_business_local.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile-setup",
+    "role": "mechanic",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_setup.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/home",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_home.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/request/:id",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_request_r1.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/active-job",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_active_job.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/wallet",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_wallet.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/earnings",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_earnings.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/shop",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_shop.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/dashboard",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_dashboard.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/partnerships",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_partnerships.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/settings",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_settings.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/register",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_register.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/dashboard",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_dashboard.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/profile-edit",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_profile_edit.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/services",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_services.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/notifications",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_notifications.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/payment-methods",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_payment_methods.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/wallet-recharge",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_wallet_recharge.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/gallery-upload",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_gallery_upload.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/requests-map",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_requests_map.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/plans",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_plans.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/plans",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_plans.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/plans",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_plans.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/vehicles",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_vehicles.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/addresses",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_addresses.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/payment-methods",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_payment_methods.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/notifications",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_notifications.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/transactions",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_transactions.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/reviews",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_reviews.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/favorites",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_favorites.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/language",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_language.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/security",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_security.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/help",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_help.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/contact",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_contact.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/profile/terms",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_profile_terms.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/login",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_login.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/dashboard",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_dashboard.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/verification",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_verification.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/requests",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_requests.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/users",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_users.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/settings",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_settings.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/admin/disputes",
+    "role": "admin",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_admin_disputes.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/urgent/motorcycle",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_urgent_motorcycle.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/urgent/scooter",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_urgent_scooter.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/urgent/ebike",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_urgent_ebike.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/inspection/book",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_inspection_book.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/inspection-report/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_inspection_report_demo_slug.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/on-behalf/new",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_on_behalf_new.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/on-behalf/:token",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_on_behalf_demo_token.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/m/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_m_demo_slug.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/dashboard",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_dashboard.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/public-profile",
+    "role": "mechanic",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_public_profile.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/recurring-plans",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_recurring_plans.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/wallet",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_wallet.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/documents-manage",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_documents_manage.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/customer/portal",
+    "role": "customer",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_customer_portal.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile-enhanced",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_enhanced.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/info",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_info.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/services",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_services.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/area",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_area.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/pricing",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_pricing.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/verification",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_verification.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/stats",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_stats.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/reviews",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_reviews.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/payouts",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_payouts.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/notifications",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_notifications.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/profile/visibility",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_profile_visibility.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/portal",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_portal.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/mechanic/jobs",
+    "role": "mechanic",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_mechanic_jobs.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_demo_slug.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/:slug",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_demo_slug.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/gift-plans",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_gift_plans.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/choose-plan",
+    "role": "public",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_choose_plan.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/portal",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_portal.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/products",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_products.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/products/new",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_products_new.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/orders",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_orders.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/orders/:id",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_orders_r1.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/inventory",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_inventory.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/seller/analytics",
+    "role": "seller",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_seller_analytics.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/portal",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_portal.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/requests",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_requests.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/projects",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_projects.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/projects/:id",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_projects_r1.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/calendar",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_calendar.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/appointments/:id",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_appointments_r1.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/tuner/portfolio",
+    "role": "tuner",
+    "shell": true,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_tuner_portfolio.png"
+  },
+  {
+    "vp": "mobile",
+    "path": "/discover",
+    "role": "customer",
+    "shell": false,
+    "overflowPx": 0,
+    "ok": true,
+    "consoleErrors": [],
+    "screenshot": "shots/mobile-_discover.png"
+  }
+]

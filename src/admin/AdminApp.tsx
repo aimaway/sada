@@ -56,7 +56,7 @@ function AdminLayout({ children, activeTab }: { children: React.ReactNode; activ
           </button>
         </div>
       </aside>
-      <main className="flex-1 ms-64 p-6">{children}</main>
+      <div className="h-full overflow-y-auto bg-slate-50"><div className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">{children}</div></div>
     </div>
   );
 }
