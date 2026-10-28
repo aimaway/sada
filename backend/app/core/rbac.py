@@ -51,13 +51,24 @@ def get_current_user(
             detail="Utilisateur non trouvé"
         )
     
-    if user.status != "active":
+    if (user.status or "active") != "active":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Compte désactivé"
         )
-    
-    return user
+
+    # Snapshot des attributs : les sessions d'injection de dependances sont
+    # closes en fin de requete et certains handlers appellent db.commit()
+    # (expire_on_commit=True) ; un objet attache accede plus tard (ex.
+    # user.id dans marketplace.accept_offer apres commit) leverait un
+    # DetachedInstanceError. On renvoie donc une instance User detachee dont
+    # tous les attributs colonnes sont pré-charges dans __dict__ — le handler
+    # peut lire n'importe quel champ sans session ni refresh. Pour les
+    # endpoints qui MUTENT current_user, utiliser rebind_user() (app.main).
+    state = {c.key: getattr(user, c.key) for c in User.__mapper__.column_attrs}
+    detached = User.__new__(User)
+    detached.__dict__.update(state)
+    return detached
 
 
 def require_role(*roles: str) -> Callable:

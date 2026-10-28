@@ -309,8 +309,9 @@ class Payment(Base):
     transaction_id = Column(String(100), nullable=True)
     provider_reference = Column(String(100), nullable=True)
     
-    # Metadata
-    metadata = Column(JSON, default={})
+    # Metadata ("metadata" est réservé par l'API Declarative de SQLAlchemy ;
+    # la colonne SQL conserve son nom via metafor)
+    metadata_json = Column("metadata", JSON, default={})
     
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
