@@ -28,9 +28,24 @@ client = TestClient(app)
 
 @pytest.fixture(autouse=True)
 def setup_database():
-    """Créer les tables avant chaque test"""
+    """Base propre pour chaque test (isolation).
+
+    drop_all seul laisse des lignes orphelines quand un modèle n'est pas
+    importé dans Base.metadata au moment du drop; on supprime donc aussi
+    explicitement toutes les tables existantes, dans l'ordre inverse des FK.
+    """
     Base.metadata.create_all(bind=engine)
     yield
+    from sqlalchemy import inspect as sa_inspect, text
+    with engine.begin() as conn:
+        try:
+            conn.execute(text("PRAGMA foreign_keys=OFF"))
+            insp = sa_inspect(engine)
+            for t in reversed(insp.get_table_names()):
+                conn.execute(text(f'DELETE FROM "{t}"'))
+            conn.execute(text("PRAGMA foreign_keys=ON"))
+        except Exception:
+            pass
     Base.metadata.drop_all(bind=engine)
 
 

@@ -15,6 +15,10 @@ import { MaintenanceDashboard, ShopScreen, MaintenanceLogScreen, RemindersScreen
 import { LegalDocumentsScreen } from './customer/LegalDocumentsApp';
 import { NegotiationScreen } from './customer/NegotiationApp';
 import { OffersScreen, MechanicProfileScreen } from './customer/OffersAndProfile';
+import { IfixAssistantPage } from './ifix/IfixAssistantPage';
+import { OffersScreen as IfixOffersScreen } from './ifix/OffersScreen';
+import { ProviderInbox } from './ifix/ProviderInbox';
+import { RequestOfferDetail } from './ifix/RequestOfferDetail';
 import { LiveTrackingScreen, PaymentScreen, OrdersTab } from './customer/TrackingAndPayment';
 import { MessagesTab, ProfileScreen } from './customer/TabsAndProfile';
 import { AIAssistantScreen, WarningLightScanner } from './customer/SmartFeatures';
@@ -156,7 +160,8 @@ function AppRoutes() {
       <Route path="/customer/diagnostic" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande de diagnostic" backRoute="/customer/home"><DiagnosticRequest /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/maintenance-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande d'entretien" backRoute="/customer/home"><MaintenanceRequest /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/waiting" element={<ProtectedRoute role="customer"><CustomerWaiting /></ProtectedRoute>} />
-      <Route path="/customer/offers" element={<ProtectedRoute role="customer"><PortalSidebar title="Offres reçues"><OffersScreen /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/offers" element={<ProtectedRoute role="customer"><PortalSidebar title="Offres reçues"><IfixOffersScreen /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/ifix" element={<ProtectedRoute role="customer"><PortalSidebar title="IFIX AI"><IfixAssistantPage /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/mechanic-profile/:id" element={<ProtectedRoute role="customer"><MechanicProfileScreen /></ProtectedRoute>} />
       <Route path="/customer/tracking" element={<ProtectedRoute role="customer"><PortalSidebar title="Suivi en direct"><LiveTrackingScreen /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/negotiation" element={<ProtectedRoute role="customer"><PortalSidebar title="Négociation" backRoute="/customer/offers"><NegotiationScreen /></PortalSidebar></ProtectedRoute>} />
@@ -192,7 +197,8 @@ function AppRoutes() {
       <Route path="/mechanic/login" element={<MechanicLogin />} />
       <Route path="/mechanic/profile-setup" element={<ProtectedRoute role="mechanic"><MechanicProfileSetup /></ProtectedRoute>} />
       <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tableau de bord"><MechanicDashboard /></PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Détail de la demande" backRoute="/mechanic/home"><MechanicRequestDetail /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Détail de la demande" backRoute="/mechanic/inbox"><RequestOfferDetail /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/inbox" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boîte de réception"><ProviderInbox /></PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Job actif"><MechanicActiveJob /></PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portefeuille"><MechanicWallet /></PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/earnings" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Gains"><MechanicEarnings /></PortalSidebar></ProtectedRoute>} />

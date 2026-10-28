@@ -17,6 +17,8 @@ from app.websocket.manager import ConnectionManager
 
 # Import seller and tuner routers
 from app.api import seller, tuner
+# Import marketplace & IFIX AI routers (SADA)
+from app.api import marketplace, ifix_ai
 
 # Create tables
 from app.database import Base
@@ -26,7 +28,7 @@ Base.metadata.create_all(bind=engine)
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Security
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False)
 
 # WebSocket manager
 ws_manager = ConnectionManager()
@@ -58,8 +60,8 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def get_password_hash(password: str) -> str:
-    """Hasher un mot de passe"""
-    return pwd_context.hash(password)
+    """Hasher un mot de passe (bcrypt limite à 72 octets — tronqué ici)."""
+    return pwd_context.hash(password.encode("utf-8")[:72].decode("utf-8", errors="ignore"))
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
@@ -79,9 +81,19 @@ def get_current_user(
     db: Session = Depends(get_db)
 ) -> User:
     """Obtenir l'utilisateur actuel depuis le token JWT"""
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentification requise",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     try:
         payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        user_id: int = payload.get("sub")
+        user_id = payload.get("sub")
+        try:
+            user_id = int(user_id)
+        except (TypeError, ValueError):
+            user_id = None
         if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -655,8 +667,13 @@ def health_check():
     }
 
 
+from app.api import global_config as _gc
+app.include_router(_gc.router, prefix="/api/v1", tags=["Global Config"])
+
 # Include Seller and Tuner routers
 app.include_router(seller.router, prefix="/api/v1", tags=["Seller Portal"])
+app.include_router(marketplace.router)
+app.include_router(ifix_ai.router)
 app.include_router(tuner.router, prefix="/api/v1", tags=["Tuner Portal"])
 
 

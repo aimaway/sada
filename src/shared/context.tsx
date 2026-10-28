@@ -66,3 +66,30 @@ export function useApp() {
   if (!ctx) throw new Error('useApp must be used within AppProvider');
   return ctx;
 }
+
+// ------------------------------------------------------------
+// Demo/test-phase identity resolution (documented in DEMO_MODE.md)
+// The lightweight login screens create users with ids like 'u_new' /
+// 'u_new_m' that don't exist in the unified mock dataset. Marketplace
+// pages need a canonical seeded identity so the customer↔provider loop
+// works end-to-end during development. Real auth will replace this.
+// ------------------------------------------------------------
+import { mockUsers } from './unifiedMockData';
+
+export function resolveDemoIdentity(user: User | null): User | null {
+  if (!user) return null;
+  if (user.role === 'customer') {
+    const known = (mockUsers as any).customers?.find((c: any) => c.id === user.id);
+    if (known) return { ...user, full_name: known.full_name };
+    // unknown/new customer -> fall back to seeded demo customer for marketplace flow
+    const fallback = (mockUsers as any).customers?.find((c: any) => c.id === 'u_c1');
+    return fallback ? { ...user, id: fallback.id, full_name: fallback.full_name } : user;
+  }
+  if (user.role === 'mechanic') {
+    const known = (mockUsers as any).mechanics?.find((m: any) => m.id === user.id);
+    if (known) return { ...user, full_name: known.full_name };
+    const fallback = (mockUsers as any).mechanics?.find((m: any) => m.id === 'u_m1');
+    return fallback ? { ...user, id: fallback.id, full_name: fallback.full_name } : user;
+  }
+  return user;
+}
