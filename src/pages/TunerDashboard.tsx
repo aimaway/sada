@@ -15,6 +15,16 @@ import {
 import { StatCard } from '../components/ui/StatCard';
 import { RevenueChart } from '../components/ui/RevenueChart';
 import { useApp } from '../shared/context';
+import {
+  formatMoney,
+  loadState,
+  seedTunerAppointments,
+  seedTunerProjects,
+  seedTunerRequests,
+  Appointment,
+  TunerProject,
+  TunerRequest,
+} from '../shared/portalStore';
 
 type DashboardData = {
   newRequests: number;
@@ -50,75 +60,57 @@ export function TunerDashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
 
   useEffect(() => {
-    // TODO: Fetch real data from API
-    // For now, use mock data
-    const mockData: DashboardData = {
-      newRequests: 8,
-      activeProjects: 5,
-      completedProjects: 47,
-      upcomingAppointments: 3,
-      revenue: 2850000, // 28,500 MAD in cents
+    // Data comes from the local portal store (persisted in localStorage).
+    // When the backend endpoints are ready, replace this with an API fetch.
+    const requests = loadState<TunerRequest[]>('tuner.requests', seedTunerRequests);
+    const projects = loadState<TunerProject[]>('tuner.projects', seedTunerProjects);
+    const appointments = loadState<Appointment[]>('tuner.appointments', seedTunerAppointments);
+
+    const active = projects.filter((p) => p.status !== 'completed');
+    const current = active[0] ?? null;
+
+    const dashboardData: DashboardData = {
+      newRequests: requests.filter((r) => r.status === 'new').length,
+      activeProjects: active.length,
+      completedProjects: projects.filter((p) => p.status === 'completed').length,
+      upcomingAppointments: appointments.filter(
+        (a) => a.status === 'scheduled' || a.status === 'confirmed'
+      ).length,
+      revenue: projects.reduce((sum, p) => sum + p.budget, 0),
       customerSatisfaction: 4.8,
-      revenueData: [
-        { date: '01/03', revenue: 180000 },
-        { date: '02/03', revenue: 245000 },
-        { date: '03/03', revenue: 198000 },
-        { date: '04/03', revenue: 312000 },
-        { date: '05/03', revenue: 267000 },
-        { date: '06/03', revenue: 345000 },
-        { date: '07/03', revenue: 298000 },
-      ],
-      currentProject: {
-        id: 1,
-        vehicle: 'BMW M3 2020',
-        projectType: 'Stage 2 Tuning',
-        status: 'work_in_progress',
-        nextAppointment: '2024-03-18 14:00',
-        budget: 850000,
-      },
-      upcomingAppointmentsList: [
-        {
-          id: 1,
-          vehicle: 'Golf GTI 2019',
-          service: 'Reprogrammation ECU',
-          date: '2024-03-16',
-          time: '10:00',
-          customerName: 'Mohamed K.',
-          status: 'confirmed',
-        },
-        {
-          id: 2,
-          vehicle: 'Clio RS 2018',
-          service: 'Échappement sport',
-          date: '2024-03-17',
-          time: '14:30',
-          customerName: 'Youssef B.',
-          status: 'scheduled',
-        },
-        {
-          id: 3,
-          vehicle: 'Audi A4 2021',
-          service: 'Diagnostic complet',
-          date: '2024-03-18',
-          time: '09:00',
-          customerName: 'Karim L.',
-          status: 'scheduled',
-        },
-      ],
+      revenueData: [...projects]
+        .sort((a, b) => a.nextAppointment.localeCompare(b.nextAppointment))
+        .map((p) => ({
+          date: new Date(p.nextAppointment).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }),
+          revenue: p.budget,
+        })),
+      currentProject: current
+        ? {
+            id: current.id,
+            vehicle: current.vehicle,
+            projectType: current.projectType,
+            status: current.status,
+            nextAppointment: current.nextAppointment,
+            budget: current.budget,
+          }
+        : null,
+      upcomingAppointmentsList: [...appointments]
+        .filter((a) => a.status === 'scheduled' || a.status === 'confirmed')
+        .sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`))
+        .map((a) => ({
+          id: a.id,
+          vehicle: a.vehicle,
+          service: a.service,
+          date: a.date,
+          time: a.time,
+          customerName: a.customerName,
+          status: a.status,
+        })),
     };
 
-    setTimeout(() => {
-      setData(mockData);
-      setLoading(false);
-    }, 500);
+    setData(dashboardData);
+    setLoading(false);
   }, []);
-
-  const formatMoney = (value: number) =>
-    new Intl.NumberFormat('fr-MA', {
-      style: 'currency',
-      currency: 'MAD',
-      maximumFractionDigits: 0,
-    }).format(value / 100);
 
   if (loading) {
     return (
@@ -143,7 +135,7 @@ export function TunerDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="h-full overflow-y-auto bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <header className="rounded-2xl bg-gradient-to-r from-red-600 to-orange-600 p-6 text-white sm:p-8">

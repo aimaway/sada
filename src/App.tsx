@@ -26,7 +26,7 @@ import { MechanicProfileSetup } from './mechanic/MechanicProfileSetup';
 import { MechanicProfileDetail, MechanicProfileSettings } from './mechanic/MechanicProfileDetail';
 
 // Seller
-import { SellerLogin, SellerDashboard, SellerProducts, SellerOrders, SellerPartnerships, SellerSettings } from './seller/SellerApp';
+import { SellerLogin, SellerPartnerships, SellerSettings } from './seller/SellerApp';
 
 // Admin
 import { AdminLogin, AdminDashboard, AdminVerification, AdminRequests, AdminUsers, AdminSettingsPage, AdminDisputes } from './admin/AdminApp';
@@ -53,7 +53,6 @@ import { DiagnosticRequest } from './components/DiagnosticRequest';
 import { MaintenanceRequest } from './components/MaintenanceRequest';
 import { TunerLogin } from './components/TunerLogin';
 import { TunerRegistration } from './components/TunerRegistration';
-import { TunerDashboard } from './components/TunerDashboard';
 import { TunerProfileEdit } from './components/TunerProfileEdit';
 import { TunerServices } from './components/TunerServices';
 import { TunerNotifications } from './components/TunerNotifications';
@@ -102,6 +101,23 @@ import { ChoosePlan } from './components/ChoosePlan';
 // New Seller & Tuner Portal Pages
 import { SellerDashboard as NewSellerDashboard } from './pages/SellerDashboard';
 import { TunerDashboard as NewTunerDashboard } from './pages/TunerDashboard';
+// Standard sidebar shell shared by ALL roles (customer, mechanic, seller, tuner)
+import { PortalSidebar } from './components/PortalSidebar';
+import { SellerProductsPage } from './pages/seller/SellerProductsPage';
+import {
+  SellerOrdersPage,
+  SellerOrderDetailPage,
+  SellerInventoryPage,
+  SellerAnalyticsPage,
+  SellerNewProductPage,
+} from './pages/seller/SellerPortalPages';
+import {
+  TunerRequestsPage,
+  TunerProjectsPage,
+  TunerProjectDetailPage,
+  TunerCalendarPage,
+  TunerPortfolioPage,
+} from './pages/tuner/TunerPortalPages';
 
 // Content Pages
 import { ContactPage } from './pages/ContactPage';
@@ -123,6 +139,13 @@ function AppRoutes() {
       {/* Role Selection Login */}
       <Route path="/login" element={<RoleSelectionLogin />} />
 
+      {/* Public content pages */}
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/faq" element={<FAQPage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+
       {/* Customer */}
       <Route path="/customer/login" element={<CustomerLogin />} />
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />
@@ -143,7 +166,17 @@ function AppRoutes() {
       <Route path="/customer/history" element={<ProtectedRoute role="customer"><CustomerHistory /></ProtectedRoute>} />
       <Route path="/customer/orders" element={<ProtectedRoute role="customer"><OrdersTab /></ProtectedRoute>} />
       <Route path="/customer/messages" element={<ProtectedRoute role="customer"><MessagesTab /></ProtectedRoute>} />
-      <Route path="/customer/profile" element={<ProtectedRoute role="customer"><CustomerProfileComplete /></ProtectedRoute>} />
+      {/* Same standard sidebar shell for the customer profile */}
+      <Route
+        path="/customer/profile"
+        element={
+          <ProtectedRoute role="customer">
+            <PortalSidebar title="Mon Profil">
+              <CustomerProfileComplete />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
       <Route path="/customer/profile-old" element={<ProtectedRoute role="customer"><ProfileScreen /></ProtectedRoute>} />
       <Route path="/customer/maintenance" element={<ProtectedRoute role="customer"><MaintenanceDashboard /></ProtectedRoute>} />
       <Route path="/customer/shop" element={<ProtectedRoute role="customer"><ShopScreen /></ProtectedRoute>} />
@@ -168,16 +201,36 @@ function AppRoutes() {
 
       {/* Seller */}
       <Route path="/seller/login" element={<SellerLogin />} />
-      <Route path="/seller/dashboard" element={<ProtectedRoute role="seller"><SellerDashboard /></ProtectedRoute>} />
-      <Route path="/seller/products" element={<ProtectedRoute role="seller"><SellerProducts /></ProtectedRoute>} />
-      <Route path="/seller/orders" element={<ProtectedRoute role="seller"><SellerOrders /></ProtectedRoute>} />
+      {/* Old seller dashboard now renders the NEW experience inside the standard sidebar */}
+      <Route
+        path="/seller/dashboard"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <NewSellerDashboard />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/seller/products" element={<ProtectedRoute role="seller"><PortalSidebar><SellerProductsPage /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/seller/orders" element={<ProtectedRoute role="seller"><PortalSidebar><SellerOrdersPage /></PortalSidebar></ProtectedRoute>} />
       <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><SellerPartnerships /></ProtectedRoute>} />
       <Route path="/seller/settings" element={<ProtectedRoute role="seller"><SellerSettings /></ProtectedRoute>} />
 
       {/* Tuner */}
       <Route path="/tuner/login" element={<TunerLogin />} />
       <Route path="/tuner/register" element={<TunerRegistration />} />
-      <Route path="/tuner/dashboard" element={<ProtectedRoute role="tuner"><TunerDashboard /></ProtectedRoute>} />
+      {/* Old tuner dashboard now renders the NEW experience inside the standard sidebar */}
+      <Route
+        path="/tuner/dashboard"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <NewTunerDashboard />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
       <Route path="/tuner/profile-edit" element={<ProtectedRoute role="tuner"><TunerProfileEdit /></ProtectedRoute>} />
       <Route path="/tuner/services" element={<ProtectedRoute role="tuner"><TunerServices /></ProtectedRoute>} />
       <Route path="/tuner/notifications" element={<ProtectedRoute role="tuner"><TunerNotifications /></ProtectedRoute>} />
@@ -239,7 +292,17 @@ function AppRoutes() {
       <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><DocumentsManager /></ProtectedRoute>} />
       <Route path="/customer/portal" element={<ProtectedRoute role="customer"><ClientPortal /></ProtectedRoute>} />
       <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><MechanicProfileEnhanced /></ProtectedRoute>} />
-      <Route path="/mechanic/profile" element={<ProtectedRoute role="mechanic"><MechanicProfileComplete /></ProtectedRoute>} />
+      {/* Same standard sidebar shell for the mechanic profile */}
+      <Route
+        path="/mechanic/profile"
+        element={
+          <ProtectedRoute role="mechanic">
+            <PortalSidebar title="Mon Profil Pro">
+              <MechanicProfileComplete />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
       <Route path="/mechanic/profile/info" element={<ProtectedRoute role="mechanic"><MechanicPersonalInfo /></ProtectedRoute>} />
       <Route path="/mechanic/profile/services" element={<ProtectedRoute role="mechanic"><MechanicServices /></ProtectedRoute>} />
       <Route path="/mechanic/profile/area" element={<ProtectedRoute role="mechanic"><MechanicServiceArea /></ProtectedRoute>} />
@@ -260,7 +323,151 @@ function AppRoutes() {
 
       {/* New Seller & Tuner Portal Pages */}
       <Route path="/seller/portal-new" element={<ProtectedRoute role="seller"><NewSellerDashboard /></ProtectedRoute>} />
+
+      {/* Full Seller Portal (new pages) */}
+      <Route
+        path="/seller/portal"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <NewSellerDashboard />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/products"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerProductsPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/products/new"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerNewProductPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/orders"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerOrdersPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/orders/:id"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerOrderDetailPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/inventory"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerInventoryPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/seller/analytics"
+        element={
+          <ProtectedRoute role="seller">
+            <PortalSidebar>
+              <SellerAnalyticsPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Full Tuner Portal (new pages) */}
       <Route path="/tuner/portal-new" element={<ProtectedRoute role="tuner"><NewTunerDashboard /></ProtectedRoute>} />
+      <Route
+        path="/tuner/portal"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <NewTunerDashboard />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/requests"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerRequestsPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/projects"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerProjectsPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/projects/:id"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerProjectDetailPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/calendar"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerCalendarPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/appointments/:id"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerCalendarPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tuner/portfolio"
+        element={
+          <ProtectedRoute role="tuner">
+            <PortalSidebar>
+              <TunerPortfolioPage />
+            </PortalSidebar>
+          </ProtectedRoute>
+        }
+      />
       <Route path="/discover" element={<ProtectedRoute role="customer"><ProviderDirectory /></ProtectedRoute>} />
       <Route path="/customer/new-request-enhanced" element={<ProtectedRoute role="customer"><NewRequestEnhanced /></ProtectedRoute>} />
 

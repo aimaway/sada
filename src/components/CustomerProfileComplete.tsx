@@ -104,7 +104,7 @@ export const CustomerProfileComplete: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
+    <div className="h-full overflow-y-auto bg-slate-50">
       {/* Header */}
       <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white px-4 py-6">
         <div className="flex items-center gap-3 mb-4">
