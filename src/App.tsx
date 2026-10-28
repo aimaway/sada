@@ -139,6 +139,13 @@ function AppRoutes() {
       {/* Role Selection Login */}
       <Route path="/login" element={<RoleSelectionLogin />} />
 
+      {/* Public content pages */}
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/faq" element={<FAQPage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+
       {/* Customer */}
       <Route path="/customer/login" element={<CustomerLogin />} />
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />

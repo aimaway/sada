@@ -1,561 +1,665 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useApp } from '../shared/context';
-import { Button } from '../shared/components';
-import { 
-  Wrench, MapPin, Shield, Star, Clock, Users, Award, TrendingUp, 
-  CheckCircle, Zap, Heart, Gift, Percent, Calendar, Phone, Mail, 
-  Facebook, Instagram, Twitter, Youtube, ChevronRight, Play, ArrowRight, 
-  Car, Settings, DollarSign, ThumbsUp, MessageCircle, FileText, 
-  HelpCircle, BookOpen, Video, Image as ImageIcon, Menu, X
+import {
+  Wrench,
+  Package,
+  Gauge,
+  ClipboardList,
+  Car,
+  Smartphone,
+  MousePointerClick,
+  FileText,
+  SearchCheck,
+  ShieldCheck,
+  Wallet,
+  Sparkles,
+  ArrowRight,
+  ChevronRight,
+  Compass,
+  Menu,
+  X,
+  Info,
 } from 'lucide-react';
+import './landing.css';
+
+/* -------------------------------------------------------------------------- */
+/*  Local image assets (verified against /public — .jpg where noted)          */
+/* -------------------------------------------------------------------------- */
+
+interface MediaItem {
+  src: string;
+  alt: string;
+}
+
+const serviceItems: Array<{
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  media: MediaItem;
+}> = [
+  {
+    icon: <Wrench className="w-5 h-5" />,
+    title: 'Mécanique & Réparation',
+    desc: 'À domicile ou en atelier, trouvez un professionnel qualifié près de chez vous.',
+    media: { src: '/service-mechanic.jpg', alt: 'Mécanicien professionnel intervenant sur un véhicule' },
+  },
+  {
+    icon: <Package className="w-5 h-5" />,
+    title: 'Pièces & Accessoires',
+    desc: 'Découvrez des pièces et accessoires pour tous types de véhicules.',
+    media: { src: '/service-parts.jpg', alt: 'Pièces détachées et accessoires automobiles' },
+  },
+  {
+    icon: <Gauge className="w-5 h-5" />,
+    title: 'Tuning & Personnalisation',
+    desc: 'Trouvez des experts et réalisez vos projets de personnalisation.',
+    media: { src: '/service-tuning.jpg', alt: 'Véhicule personnalisé par un préparateur' },
+  },
+  {
+    icon: <ClipboardList className="w-5 h-5" />,
+    title: 'Gestion de votre véhicule',
+    desc: 'Entretenez, suivez vos rendez-vous, vos documents et votre historique.',
+    media: {
+      src: '/service-vehicle-management.jpg',
+      alt: 'Suivi de l’entretien et des documents d’un véhicule',
+    },
+  },
+];
+
+const heroHighlights = [
+  { icon: <Wrench className="w-6 h-6" />, title: 'Mécanique & Réparation', label: 'À domicile ou en atelier' },
+  { icon: <Package className="w-6 h-6" />, title: 'Pièces détachées & accessoires', label: 'Auto & moto' },
+  { icon: <Gauge className="w-6 h-6" />, title: 'Tuning & personnalisation', label: 'Donnez vie à vos projets' },
+  { icon: <ClipboardList className="w-6 h-6" />, title: 'Gestion & suivi', label: 'Votre véhicule au quotidien' },
+];
+
+const steps = [
+  {
+    icon: <MousePointerClick className="w-6 h-6" />,
+    num: '01',
+    title: 'Choisissez un service',
+    desc: 'Réparation, pièces, tuning ou gestion de votre véhicule.',
+  },
+  {
+    icon: <Car className="w-6 h-6" />,
+    num: '02',
+    title: 'Sélectionnez votre véhicule',
+    desc: 'Voiture, moto ou scooter — chaque demande est adaptée.',
+  },
+  {
+    icon: <FileText className="w-6 h-6" />,
+    num: '03',
+    title: 'Précisez vos besoins',
+    desc: 'Décrivez votre besoin et indiquez ce qui vous convient.',
+  },
+  {
+    icon: <SearchCheck className="w-6 h-6" />,
+    num: '04',
+    title: 'Suivez votre demande',
+    desc: 'Visualisez l’avancement de bout en bout.',
+  },
+];
+
+const profiles: Array<{
+  title: string;
+  desc: string;
+  media: MediaItem;
+  cta: string;
+  to: string;
+}> = [
+  {
+    title: 'Clients',
+    desc: 'Trouvez le bon service, au bon prix, et en toute simplicité.',
+    media: { src: '/profile-clients.jpg', alt: 'Client utilisant la plateforme mecaGO' },
+    cta: 'En savoir plus',
+    to: '/login',
+  },
+  {
+    title: 'Mécaniciens',
+    desc: 'Développez votre activité et gérez vos interventions.',
+    media: { src: '/profile-mechanics.jpg', alt: 'Mécanicien partenaire au travail' },
+    cta: 'Rejoindre',
+    to: '/mechanic/login',
+  },
+  {
+    title: 'Vendeurs de pièces',
+    desc: 'Vendez vos produits et gérez votre stock facilement.',
+    media: { src: '/profile-parts-sellers.jpg', alt: 'Vendeur de pièces détachées' },
+    cta: 'Rejoindre',
+    to: '/seller/login',
+  },
+  {
+    title: 'Préparateurs & Tuners',
+    desc: 'Présentez vos réalisations et développez votre clientèle.',
+    media: { src: '/profile-tuners.jpg', alt: 'Atelier de préparation et personnalisation' },
+    cta: 'Rejoindre',
+    to: '/tuner/register',
+  },
+  {
+    title: 'Entreprises & Flottes',
+    desc: 'Gérez vos véhicules et optimisez vos coûts.',
+    media: { src: '/profile-fleets.jpg', alt: 'Gestion d’une flotte de véhicules' },
+    cta: 'Nous contacter',
+    to: '/contact',
+  },
+];
+
+const values = [
+  {
+    icon: <ShieldCheck className="w-5 h-5" />,
+    title: 'Une expérience moderne',
+    desc: 'Un parcours clair, du premier besoin jusqu’au suivi final de votre demande.',
+  },
+  {
+    icon: <Wallet className="w-5 h-5" />,
+    title: 'Maîtrise des coûts',
+    desc: 'Comparez les possibilités et gardez une vision complète de votre budget véhicule.',
+  },
+  {
+    icon: <Sparkles className="w-5 h-5" />,
+    title: 'Un écosystème complet',
+    desc: 'Mécanique, pièces, tuning et gestion réunis sur une seule plateforme.',
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  Small helpers                                                             */
+/* -------------------------------------------------------------------------- */
+
+/** Renders an <img> with lazy loading + a restrained CSS placeholder on error. */
+function CardImage({
+  source,
+  eager,
+  imgClassName,
+}: {
+  source: MediaItem;
+  eager?: boolean;
+  imgClassName?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="lp-img-placeholder" role="presentation">
+        <Info className="w-7 h-7" aria-hidden="true" />
+      </div>
+    );
+  }
+  return (
+    <img
+      src={source.src}
+      alt={source.alt}
+      className={imgClassName}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Landing page                                                              */
+/* -------------------------------------------------------------------------- */
 
 export default function LandingPage() {
   const { language, setLanguage } = useApp();
   const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // Auto-slide for testimonials
+  /* Close the mobile menu with Escape and reset it when resizing up to desktop */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3);
-    }, 5000);
-    return () => clearInterval(interval);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  const stats = [
-    { value: '10,000+', label: 'Interventions réalisées', icon: <CheckCircle className="w-6 h-6" /> },
-    { value: '500+', label: 'Mécaniciens vérifiés', icon: <Users className="w-6 h-6" /> },
-    { value: '4.9/5', label: 'Note moyenne', icon: <Star className="w-6 h-6" /> },
-    { value: '30 min', label: 'Temps de réponse', icon: <Clock className="w-6 h-6" /> },
-  ];
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = () => mq.matches && setMobileMenuOpen(false);
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+  }, []);
 
-  const features = [
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: 'Mécaniciens Vérifiés',
-      description: 'Tous nos mécaniciens sont certifiés et vérifiés pour votre tranquillité',
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Prix Transparents',
-      description: 'Proposez votre prix et comparez les offres en toute transparence',
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: 'Intervention Rapide',
-      description: 'Mécaniciens disponibles 24/7 avec temps de réponse moyen de 30 minutes',
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: 'Garantie Qualité',
-      description: 'Garantie sur toutes les interventions avec support client dédié',
-    },
-  ];
+  /* Keep focus reachable when the panel opens */
+  useEffect(() => {
+    if (mobileMenuOpen) menuRef.current?.focus({ preventScroll: true });
+  }, [mobileMenuOpen]);
 
-  const weeklyPromos = [
-    {
-      title: 'Pack Vidange Premium',
-      discount: '-20%',
-      description: 'Vidange + filtre à huile + diagnostic complet',
-      originalPrice: '450 MAD',
-      promoPrice: '360 MAD',
-      validUntil: 'Dimanche',
-      icon: '🛢️',
-    },
-    {
-      title: 'Check-up Complet',
-      discount: '-15%',
-      description: 'Inspection 50 points de contrôle + rapport détaillé',
-      originalPrice: '350 MAD',
-      promoPrice: '297 MAD',
-      validUntil: 'Vendredi',
-      icon: '🔍',
-    },
-    {
-      title: 'Pack Freins Sécurité',
-      discount: '-25%',
-      description: 'Remplacement plaquettes + disques + purge liquide',
-      originalPrice: '1,200 MAD',
-      promoPrice: '900 MAD',
-      validUntil: 'Samedi',
-      icon: '🛑',
-    },
-  ];
+  const goToSection = useCallback((id: string) => {
+    setMobileMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
 
-  const giftPlans = [
-    {
-      name: 'Bronze',
-      price: 'Gratuit',
-      color: 'from-amber-600 to-amber-700',
-      icon: '🥉',
-      benefits: ['Accès basique', '1 point/10 MAD', 'Support standard'],
-    },
-    {
-      name: 'Silver',
-      price: '99 MAD/mois',
-      color: 'from-slate-400 to-slate-500',
-      icon: '🥈',
-      benefits: ['Diagnostic gratuit/mois', '10% réduction', '2x points', 'Support prioritaire'],
-      popular: false,
-    },
-    {
-      name: 'Gold',
-      price: '199 MAD/mois',
-      color: 'from-yellow-500 to-yellow-600',
-      icon: '🥇',
-      benefits: ['1 vidange offerte/mois', '15% réduction', '3x points', 'Mécanicien dédié'],
-      popular: true,
-    },
-    {
-      name: 'Platinum',
-      price: '399 MAD/mois',
-      color: 'from-purple-500 to-purple-600',
-      icon: '💎',
-      benefits: ['Entretien complet offert', '20% réduction', '5x points', 'VIP 24/7', 'Voiture de remplacement'],
-    },
-  ];
-
-  const successStories = [
-    {
-      image: 'https://images.pexels.com/photos/3804425/pexels-photo-3804425.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Amine a trouvé sa BMW série 3',
-      description: 'Grâce à mecaGO, Amine a fait inspecter sa BMW par un expert certifié. Résultat : voiture en parfait état achetée 15% moins cher que le prix du marché !',
-      savings: '12,000 MAD économisés',
-      rating: 5,
-    },
-    {
-      image: 'https://images.pexels.com/photos/3762840/pexels-photo-3762840.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Sara a évité une mauvaise affaire',
-      description: 'Notre inspection pré-achat a révélé des problèmes cachés sur une voiture d\'occasion. Sara a évité une mauvaise affaire et trouvé mieux ailleurs.',
-      savings: '25,000 MAD évités',
-      rating: 5,
-    },
-    {
-      image: 'https://images.pexels.com/photos/3804460/pexels-photo-3804460.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Karim a vendu sa voiture plus cher',
-      description: 'Avec le passeport véhicule mecaGO, Karim a prouvé l\'entretien régulier de sa voiture et l\'a vendue 20% plus cher que le prix du marché.',
-      savings: '8,000 MAD de plus',
-      rating: 5,
-    },
-  ];
-
-  const opportunities = [
-    {
-      icon: <Wrench className="w-6 h-6" />,
-      title: 'Devenez Mécanicien Partenaire',
-      description: 'Rejoignez notre réseau de 500+ mécaniciens vérifiés et développez votre activité',
-      cta: 'Postuler maintenant',
-      route: '/mechanic/login',
-    },
-    {
-      icon: <Car className="w-6 h-6" />,
-      title: 'Vendez vos Pièces',
-      description: 'Ouvrez votre boutique sur mecaGO et atteignez des milliers de clients',
-      cta: 'Ouvrir une boutique',
-      route: '/seller/login',
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: 'Spécialiste Tuning',
-      description: 'Proposez vos préparations Stage 1-3 à une communauté de passionnés',
-      cta: 'Rejoindre comme tuner',
-      route: '/login',
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: 'Programme de Parrainage',
-      description: 'Gagnez 50 MAD pour chaque ami invité qui effectue sa première intervention',
-      cta: 'Inviter des amis',
-      route: '/gift-plans',
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: 'Amine Khalid',
-      role: 'Client Premium',
-      avatar: '👨‍💼',
-      rating: 5,
-      jobs: 2500,
-      text: 'Service exceptionnel ! J\'ai utilisé mecaGO plus de 2500 fois. Les mécaniciens sont professionnels et les prix sont très compétitifs.',
-    },
-    {
-      name: 'Ahmed Benali',
-      role: 'Mécanicien Expert',
-      avatar: '👨‍🔧',
-      rating: 5,
-      jobs: 3000,
-      text: 'En 15 ans de métier, c\'est la meilleure plateforme que j\'ai utilisée. Plus de 3000 interventions réalisées avec une note de 5 étoiles.',
-    },
-    {
-      name: 'Youssef "Speed" El Mansouri',
-      role: 'Tuner Spécialiste',
-      avatar: '🏎️',
-      rating: 5,
-      jobs: 1500,
-      text: 'Spécialiste Stage 1-3 avec 1500 préparations réussies. La plateforme m\'a permis de développer mon activité de tuning.',
-    },
-  ];
-
-  const services = [
-    { icon: '🛞', title: 'Pneus', description: 'Crevaison, changement, équilibrage' },
-    { icon: '🛢️', title: 'Vidange', description: 'Huile moteur, filtre' },
-    { icon: '🔍', title: 'Diagnostic', description: 'Scan électronique, erreurs' },
-    { icon: '🔋', title: 'Batterie', description: 'Remplacement, test' },
-    { icon: '🛑', title: 'Freins', description: 'Plaquettes, disques' },
-    { icon: '❄️', title: 'Climatisation', description: 'Recharge, réparation' },
-    { icon: '🏎️', title: 'Tuning', description: 'Préparation moteur' },
-    { icon: '🔧', title: 'Accessoires', description: 'Pièces, accessoires' },
+  const navLinks: Array<{ label: string; to?: string; section?: string }> = [
+    { label: 'Accueil', section: 'top' },
+    { label: 'Services', section: 'services' },
+    { label: 'Produits', to: '/login' },
+    { label: 'Professionnels', section: 'profils' },
+    { label: 'À propos', to: '/about' },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center">
-              <Wrench className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-lg text-slate-800">mecaGO</span>
-          </div>
-          
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#services" className="text-sm text-slate-600 hover:text-emerald-600 transition-colors">Services</a>
-            <a href="#promos" className="text-sm text-slate-600 hover:text-emerald-600 transition-colors">Promos</a>
-            <a href="#opportunities" className="text-sm text-slate-600 hover:text-emerald-600 transition-colors">Opportunités</a>
-            <a href="#stories" className="text-sm text-slate-600 hover:text-emerald-600 transition-colors">Succès</a>
-            <button onClick={() => setLanguage(language === 'fr' ? 'ar' : 'fr')} className="text-sm text-slate-600 hover:text-emerald-600 transition-colors">
-              {language === 'fr' ? 'العربية' : 'Français'}
-            </button>
-            <Button size="sm" onClick={() => navigate('/login')}>Se connecter</Button>
-          </nav>
+    <div className="lp-page min-h-screen" id="top">
+      {/* ============================== HEADER / HERO ============================== */}
+      <header className="lp-hero">
+        <div className="lp-header">
+          <div className="lp-header-inner">
+            {/* Logo (existing brand mark: wrench tile + wordmark) */}
+            <Link to="/" className="lp-logo" aria-label="mecaGO — Accueil">
+              <span className="lp-logo-mark" aria-hidden="true">
+                <Wrench className="w-[21px] h-[21px]" />
+              </span>
+              <span className="lp-logo-word">
+                meca<em>GO</em>
+              </span>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
+            {/* Desktop navigation */}
+            <nav className="lp-nav-desktop" aria-label="Navigation principale">
+              {navLinks.map((link) =>
+                link.to ? (
+                  <Link key={link.label} to={link.to} className="lp-nav-link">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.label}
+                    className="lp-nav-link text-left"
+                    onClick={() => goToSection(link.section!)}
+                  >
+                    {link.label}
+                  </button>
+                ),
+              )}
+            </nav>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-slate-100 py-4">
-            <nav className="flex flex-col gap-4 px-4">
-              <a href="#services" className="text-sm text-slate-600" onClick={() => setMobileMenuOpen(false)}>Services</a>
-              <a href="#promos" className="text-sm text-slate-600" onClick={() => setMobileMenuOpen(false)}>Promos</a>
-              <a href="#opportunities" className="text-sm text-slate-600" onClick={() => setMobileMenuOpen(false)}>Opportunités</a>
-              <a href="#stories" className="text-sm text-slate-600" onClick={() => setMobileMenuOpen(false)}>Succès</a>
-              <button onClick={() => setLanguage(language === 'fr' ? 'ar' : 'fr')} className="text-sm text-slate-600 text-left">
+            <div className="lp-header-actions">
+              <button
+                className="lp-lang"
+                onClick={() => setLanguage(language === 'fr' ? 'ar' : 'fr')}
+                aria-label={language === 'fr' ? 'Passer à l’arabe' : 'Passer au français'}
+              >
                 {language === 'fr' ? 'العربية' : 'Français'}
               </button>
-              <Button size="sm" onClick={() => { navigate('/login'); setMobileMenuOpen(false); }}>Se connecter</Button>
-            </nav>
+              <Link to="/login" className="lp-btn lp-btn-outline-light">
+                Se connecter
+              </Link>
+              <Link to="/login" className="lp-btn lp-btn-primary">
+                S’inscrire
+              </Link>
+            </div>
+
+            {/* Mobile menu toggle */}
+            <button
+              className="lp-menu-toggle"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="lp-mobile-nav"
+              aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-        )}
+
+          {/* Mobile navigation panel */}
+          {mobileMenuOpen && (
+            <div
+              id="lp-mobile-nav"
+              className="lp-mobile-nav"
+              ref={menuRef}
+              tabIndex={-1}
+              role="dialog"
+              aria-label="Menu de navigation"
+            >
+              {navLinks.map((link) =>
+                link.to ? (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    className="lp-nav-link"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.label}
+                    className="lp-nav-link text-left"
+                    onClick={() => goToSection(link.section!)}
+                  >
+                    {link.label}
+                  </button>
+                ),
+              )}
+              <div className="lp-mobile-nav-actions">
+                <Link to="/login" className="lp-btn lp-btn-outline-light" onClick={() => setMobileMenuOpen(false)}>
+                  Se connecter
+                </Link>
+                <Link to="/login" className="lp-btn lp-btn-primary" onClick={() => setMobileMenuOpen(false)}>
+                  S’inscrire
+                </Link>
+              </div>
+              <button
+                className="lp-lang mt-3 self-start"
+                onClick={() => {
+                  setLanguage(language === 'fr' ? 'ar' : 'fr');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                {language === 'fr' ? 'العربية' : 'Français'}
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Hero copy */}
+        <div className="lp-hero-body">
+          <div className="lp-hero-copy">
+            <p className="lp-eyebrow">Tout l’univers automobile et moto, au même endroit</p>
+            <h1 className="lp-hero-title">
+              Votre véhicule.
+              <span className="accent">Notre priorité.</span>
+            </h1>
+            <p className="lp-hero-sub">
+              Réparez, achetez, personnalisez, gérez. Une seule plateforme pour tous vos besoins
+              automobiles et moto, simplement et en toute confiance.
+            </p>
+            <div className="lp-hero-actions">
+              <button className="lp-btn lp-btn-primary" onClick={() => goToSection('services')}>
+                Trouver un service
+                <ArrowRight className="w-[18px] h-[18px]" aria-hidden="true" />
+              </button>
+              <Link to="/about" className="lp-btn lp-btn-outline-light">
+                <Compass className="w-[18px] h-[18px]" aria-hidden="true" />
+                Découvrir la plateforme
+              </Link>
+            </div>
+          </div>
+
+          {/* Four service highlights */}
+          <div className="lp-hero-highlights">
+            {heroHighlights.map((h) => (
+              <div key={h.title} className="lp-highlight">
+                <span className="lp-highlight-icon" aria-hidden="true">
+                  {h.icon}
+                </span>
+                <div>
+                  <div className="lp-highlight-title">{h.title}</div>
+                  <div className="lp-highlight-label">{h.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-blue-50" />
-        <div className="relative max-w-6xl mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-              <MapPin className="w-3.5 h-3.5" /> Casablanca, Maroc
+      {/* ================================ SERVICES ================================ */}
+      <section id="services" className="lp-section lp-services">
+        <div className="lp-container">
+          <div className="lp-head-row">
+            <div>
+              <p className="lp-section-eyebrow">Nos services</p>
+              <h2 className="lp-section-title">Une plateforme complète pour tous les conducteurs</h2>
+              <p className="lp-section-sub">
+                Que vous ayez besoin d’un mécanicien, de pièces, d’accessoires, d’un professionnel
+                du tuning ou simplement de gérer votre véhicule, la plateforme est faite pour vous.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
-              Votre mécanicien vient chez vous
-            </h1>
-            <p className="text-lg text-slate-600 mb-8 max-w-lg">
-              Proposez votre prix. Choisissez votre mécanicien vérifié. Réparation à domicile à Casablanca.
+            <Link to="/login" className="lp-link-cyan">
+              Explorer tous les services
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="lp-card-grid cols-4">
+            {serviceItems.map((s) => (
+              <article key={s.title} className="lp-service-card">
+                <div className="lp-service-media">
+                  <CardImage source={s.media} imgClassName="lp-cover-img" />
+                  <span className="lp-service-badge" aria-hidden="true">
+                    {s.icon}
+                  </span>
+                </div>
+                <div className="lp-service-body">
+                  <h3 className="lp-service-title">{s.title}</h3>
+                  <p className="lp-service-desc">{s.desc}</p>
+                  <button className="lp-link-cyan self-start text-sm" onClick={() => navigate('/login')}>
+                    Découvrir
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================== MOBILE APP =============================== */}
+      <section className="lp-section lp-app" aria-labelledby="lp-app-title">
+        <div className="lp-container">
+          <div className="lp-app-grid">
+            <div>
+              <p className="lp-section-eyebrow">Votre véhicule dans votre poche</p>
+              <h2 id="lp-app-title" className="lp-app-title">
+                Une application simple et puissante
+              </h2>
+              <p className="lp-app-sub">
+                Accédez à vos services, suivez vos demandes et gérez votre véhicule depuis une
+                expérience conçue pour vous simplifier la vie.
+              </p>
+              {/* No public store URLs are configured — PWA install is the real path */}
+              <div className="lp-app-note">
+                <Smartphone className="w-5 h-5" aria-hidden="true" />
+                <span>
+                  Installez mecaGO comme application web (PWA) depuis votre navigateur pour un accès
+                  rapide, comme sur votre téléphone.
+                </span>
+              </div>
+            </div>
+            <figure className="lp-app-figure m-0">
+              <CardImage
+                source={{
+                  src: '/mobile-app-promo.jpg',
+                  alt: 'Utilisateur consultant l’application mecaGO sur son smartphone',
+                }}
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================== HOW IT WORKS ============================== */}
+      <section className="lp-section bg-white" aria-labelledby="lp-steps-title">
+        <div className="lp-container">
+          <div className="text-center mb-12 md:mb-14">
+            <p className="lp-section-eyebrow">Comment ça marche&nbsp;?</p>
+            <h2 id="lp-steps-title" className="lp-section-title">
+              En quelques étapes, tout devient simple
+            </h2>
+          </div>
+          <div className="lp-steps">
+            {steps.map((step) => (
+              <div key={step.num} className="lp-step">
+                <span className="lp-step-icon" aria-hidden="true">
+                  {step.icon}
+                </span>
+                <span className="lp-step-num">{step.num}</span>
+                <h3 className="lp-step-title">{step.title}</h3>
+                <p className="lp-step-desc">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================ PROFILES ================================ */}
+      <section id="profils" className="lp-section lp-profiles" aria-labelledby="lp-profiles-title">
+        <div className="lp-container">
+          <div className="text-center mb-12 md:mb-14">
+            <h2 id="lp-profiles-title" className="lp-section-title">
+              5 profils pour une même passion
+            </h2>
+            <p className="lp-section-sub mx-auto">
+              Notre plateforme connecte tous les acteurs de l’écosystème automobile et moto.
             </p>
-            <div className="flex flex-wrap gap-3 mb-12">
-              <Button size="lg" onClick={() => navigate('/login')}>
-                Demander une réparation →
-              </Button>
-              <Button variant="outline" size="lg" onClick={() => navigate('/login')}>
-                Je suis mécanicien
-              </Button>
-            </div>
+          </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {stats.map((stat, i) => (
-                <div key={i} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100">
-                  <div className="text-emerald-600 mb-2">{stat.icon}</div>
-                  <div className="text-2xl font-bold text-slate-900">{stat.value}</div>
-                  <div className="text-xs text-slate-500">{stat.label}</div>
+          <div className="lp-card-grid cols-5">
+            {profiles.map((p) => (
+              <article key={p.title} className="lp-profile-card">
+                <div className="lp-profile-media">
+                  <CardImage source={p.media} imgClassName="lp-cover-img" />
                 </div>
-              ))}
-            </div>
+                <div className="lp-profile-body">
+                  <h3 className="lp-profile-title">{p.title}</h3>
+                  <p className="lp-profile-desc">{p.desc}</p>
+                  <Link to={p.to} className="lp-link-cyan self-start text-sm">
+                    {p.cta}
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Nos Services</h2>
-            <p className="text-lg text-slate-600">8 services essentiels pour votre véhicule</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {services.map((service, i) => (
-              <div key={i} className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/customer/new-request-enhanced')}>
-                <div className="text-4xl mb-3">{service.icon}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
-                <p className="text-sm text-slate-600">{service.description}</p>
+      {/* ============================= VALUE PROPOSITION =========================== */}
+      <section className="lp-section lp-vision" aria-labelledby="lp-vision-title">
+        <div className="lp-container">
+          <p className="lp-section-eyebrow">Notre ambition</p>
+          <h2 id="lp-vision-title" className="lp-vision-title">
+            Plus qu’une application, une vision pour l’avenir
+          </h2>
+          <p className="lp-vision-sub">
+            Une plateforme pensée pour simplifier votre quotidien, réduire vos coûts et vous offrir
+            une expérience automobile moderne et sécurisée.
+          </p>
+          <div className="lp-values">
+            {values.map((v) => (
+              <div key={v.title} className="lp-value">
+                <span className="lp-value-icon" aria-hidden="true">
+                  {v.icon}
+                </span>
+                <h3 className="lp-value-title">{v.title}</h3>
+                <p className="lp-value-desc">{v.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Weekly Promos Section */}
-      <section id="promos" className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <Calendar className="w-4 h-4" />
-              Promotions Hebdomadaires
+      {/* ================================= CTA BAND ================================ */}
+      <section className="lp-section lp-cta-band">
+        <div className="lp-container">
+          <div className="lp-cta-panel">
+            <h2 className="lp-cta-title">Rejoignez une communauté de passionnés</h2>
+            <p className="lp-cta-sub">
+              Que vous soyez un conducteur, un professionnel ou une entreprise, notre plateforme est
+              faite pour vous.
+            </p>
+            <div className="lp-cta-actions">
+              <Link to="/login" className="lp-btn lp-btn-primary">
+                S’inscrire maintenant
+                <ArrowRight className="w-[18px] h-[18px]" aria-hidden="true" />
+              </Link>
+              <Link to="/about" className="lp-btn lp-btn-ghost-navy">
+                Découvrir mecaGO
+              </Link>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Offres de la Semaine</h2>
-            <p className="text-lg text-slate-600">Économisez jusqu'à 25% sur nos services</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {weeklyPromos.map((promo, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl">{promo.icon}</div>
-                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    {promo.discount}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{promo.title}</h3>
-                <p className="text-sm text-slate-600 mb-4">{promo.description}</p>
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-sm text-slate-400 line-through">{promo.originalPrice}</span>
-                  <span className="text-2xl font-bold text-emerald-600">{promo.promoPrice}</span>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span className="text-xs text-slate-500">Valable jusqu'à {promo.validUntil}</span>
-                  <Button size="sm" onClick={() => navigate('/customer/new-request-enhanced')}>
-                    Profiter →
-                  </Button>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Gift Plans Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <Gift className="w-4 h-4" />
-              Programme Fidélité
+      {/* ================================== FOOTER ================================= */}
+      <footer className="lp-footer">
+        <div className="lp-container">
+          <div className="lp-footer-grid">
+            <div className="lp-footer-brand">
+              <Link to="/" className="lp-logo" aria-label="mecaGO — Accueil">
+                <span className="lp-logo-mark" aria-hidden="true">
+                  <Wrench className="w-[21px] h-[21px]" />
+                </span>
+                <span className="lp-logo-word">
+                  meca<em>GO</em>
+                </span>
+              </Link>
+              <p>
+                La plateforme qui connecte conducteurs, mécaniciens, vendeurs de pièces, tuners et
+                flottes autour de l’automobile et de la moto.
+              </p>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Nos Plans Gift</h2>
-            <p className="text-lg text-slate-600">Choisissez le plan qui vous convient</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {giftPlans.map((plan, i) => (
-              <div key={i} className={`bg-white rounded-2xl p-6 border-2 ${plan.popular ? 'border-purple-500 shadow-xl' : 'border-slate-200'} hover:shadow-lg transition-shadow`}>
-                {plan.popular && (
-                  <div className="bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block mb-4">
-                    ⭐ Le plus populaire
-                  </div>
-                )}
-                <div className={`w-16 h-16 bg-gradient-to-br ${plan.color} rounded-2xl flex items-center justify-center text-3xl mb-4`}>
-                  {plan.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                <div className="text-2xl font-bold text-slate-900 mb-4">{plan.price}</div>
-                <ul className="space-y-2 mb-6">
-                  {plan.benefits.map((benefit, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button fullWidth variant={plan.popular ? 'primary' : 'outline'} onClick={() => navigate('/gift-plans')}>
-                  Choisir ce plan
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Opportunities Section */}
-      <section id="opportunities" className="py-16 bg-gradient-to-br from-slate-50 to-emerald-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Opportunités</h2>
-            <p className="text-lg text-slate-600">Rejoignez notre communauté et développez votre activité</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {opportunities.map((opportunity, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 flex-shrink-0">
-                    {opportunity.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{opportunity.title}</h3>
-                    <p className="text-sm text-slate-600 mb-4">{opportunity.description}</p>
-                    <Button size="sm" onClick={() => navigate(opportunity.route)}>
-                      {opportunity.cta} →
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories Section */}
-      <section id="stories" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <Heart className="w-4 h-4" />
-              Histoires de Succès
-            </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Ils ont trouvé la bonne voiture</h2>
-            <p className="text-lg text-slate-600">Grâce à notre service d'inspection expert</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {successStories.map((story, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-48">
-                  <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
-                  <div className="absolute top-4 right-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    {story.savings}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(story.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{story.title}</h3>
-                  <p className="text-sm text-slate-600 mb-4">{story.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-50 to-emerald-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Ils nous font confiance</h2>
-            <p className="text-lg text-slate-600">Découvrez les témoignages de notre communauté</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-4xl">{testimonial.avatar}</div>
-                  <div>
-                    <div className="font-bold text-slate-900">{testimonial.name}</div>
-                    <div className="text-xs text-slate-500">{testimonial.role}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(testimonial.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                  <span className="text-xs text-slate-500 ml-2">{testimonial.jobs} jobs</span>
-                </div>
-                <p className="text-sm text-slate-600">{testimonial.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Prêt à essayer mecaGO ?</h2>
-          <p className="text-lg opacity-90 mb-8">Rejoignez plus de 10,000 clients satisfaits</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" variant="secondary" onClick={() => navigate('/login')}>
-              Commencer maintenant →
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => navigate('/gift-plans')}>
-              Voir nos plans
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center">
-                  <Wrench className="w-5 h-5 text-white" />
-                </div>
-                <span className="font-bold text-lg text-white">mecaGO</span>
-              </div>
-              <p className="text-sm mb-4">La plateforme de référence pour la réparation automobile à domicile à Casablanca.</p>
-              <div className="flex gap-3">
-                <a href="#" className="hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-white transition-colors"><Twitter className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-4">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li><button onClick={() => navigate('/customer/new-request-enhanced')} className="hover:text-white transition-colors">Réparation auto</button></li>
-                <li><button onClick={() => navigate('/customer/inspection/book')} className="hover:text-white transition-colors">Inspection pré-achat</button></li>
-                <li><button onClick={() => navigate('/customer/new-request-enhanced')} className="hover:text-white transition-colors">Diagnostic</button></li>
-                <li><button onClick={() => navigate('/tuner/speed-tuning-casa')} className="hover:text-white transition-colors">Tuning</button></li>
-                <li><button onClick={() => navigate('/customer/maintenance')} className="hover:text-white transition-colors">Entretien régulier</button></li>
+            <nav aria-label="Navigation du pied de page">
+              <h3 className="lp-footer-heading">Plateforme</h3>
+              <ul className="lp-footer-links">
+                <li>
+                  <button onClick={() => goToSection('top')}>Accueil</button>
+                </li>
+                <li>
+                  <button onClick={() => goToSection('services')}>Services</button>
+                </li>
+                <li>
+                  <Link to="/login">Produits</Link>
+                </li>
+                <li>
+                  <Link to="/about">À propos</Link>
+                </li>
+                <li>
+                  <Link to="/faq">FAQ</Link>
+                </li>
               </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-4">Entreprise</h4>
-              <ul className="space-y-2 text-sm">
-                <li><button onClick={() => navigate('/about')} className="hover:text-white transition-colors">À propos</button></li>
-                <li><button onClick={() => navigate('/careers')} className="hover:text-white transition-colors">Carrières</button></li>
-                <li><button onClick={() => navigate('/blog')} className="hover:text-white transition-colors">Blog</button></li>
-                <li><button onClick={() => navigate('/contact')} className="hover:text-white transition-colors">Contact</button></li>
-                <li><button onClick={() => navigate('/press')} className="hover:text-white transition-colors">Presse</button></li>
+            </nav>
+
+            <nav aria-label="Liens professionnels">
+              <h3 className="lp-footer-heading">Professionnels</h3>
+              <ul className="lp-footer-links">
+                <li>
+                  <Link to="/mechanic/login">Mécaniciens</Link>
+                </li>
+                <li>
+                  <Link to="/seller/login">Vendeurs de pièces</Link>
+                </li>
+                <li>
+                  <Link to="/tuner/register">Préparateurs & Tuners</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Entreprises & Flottes</Link>
+                </li>
               </ul>
-            </div>
+            </nav>
+
             <div>
-              <h4 className="font-semibold text-white mb-4">Support</h4>
-              <ul className="space-y-2 text-sm">
-                <li><button onClick={() => navigate('/help')} className="hover:text-white transition-colors">Centre d'aide</button></li>
-                <li><button onClick={() => navigate('/faq')} className="hover:text-white transition-colors">FAQ</button></li>
-                <li><button onClick={() => navigate('/terms')} className="hover:text-white transition-colors">Conditions d'utilisation</button></li>
-                <li><button onClick={() => navigate('/privacy')} className="hover:text-white transition-colors">Politique de confidentialité</button></li>
-                <li><button onClick={() => navigate('/safety')} className="hover:text-white transition-colors">Sécurité</button></li>
+              <h3 className="lp-footer-heading">Langue</h3>
+              <ul className="lp-footer-links">
+                <li>
+                  <button
+                    onClick={() => setLanguage(language === 'fr' ? 'ar' : 'fr')}
+                    aria-label={language === 'fr' ? 'Passer à l’arabe' : 'Passer au français'}
+                  >
+                    {language === 'fr' ? 'العربية' : 'Français'}
+                  </button>
+                </li>
+                <li>
+                  <Link to="/contact">Support & contact</Link>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-sm">
-            <p>© 2024 mecaGO. Tous droits réservés.</p>
+
+          <div className="lp-footer-bottom">
+            <span className="lp-footer-copy">© 2026 mecaGO. Tous droits réservés.</span>
+            <div className="lp-footer-legal">
+              <Link to="/terms" className="lp-footer-copy hover:text-[color:var(--lp-cyan)]">
+                Conditions d’utilisation
+              </Link>
+              <Link to="/privacy" className="lp-footer-copy hover:text-[color:var(--lp-cyan)]">
+                Politique de confidentialité
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
