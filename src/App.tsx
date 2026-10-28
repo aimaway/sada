@@ -33,7 +33,7 @@ import { MechanicProfileDetail, MechanicProfileSettings } from './mechanic/Mecha
 import { SellerLogin, SellerPartnerships, SellerSettings } from './seller/SellerApp';
 
 // Admin
-import { AdminLogin, AdminDashboard, AdminVerification, AdminRequests, AdminUsers, AdminSettingsPage, AdminDisputes } from './admin/AdminApp';
+import { AdminLogin, AdminDashboard, AdminVerification, AdminRequests, AdminUsers, AdminSettingsPage, AdminDisputes, AdminAudit } from './admin/AdminApp';
 
 // Phase 2 Components
 import { UrgentRequestFlow } from './components/phase2/UrgentRequestFlow';
@@ -267,6 +267,7 @@ function AppRoutes() {
       <Route path="/admin/users" element={<ProtectedRoute role="admin"><PortalSidebar title="Utilisateurs" autoShell={false}><AdminUsers /></PortalSidebar></ProtectedRoute>} />
       <Route path="/admin/settings" element={<ProtectedRoute role="admin"><PortalSidebar title="Paramètres plateforme" autoShell={false}><AdminSettingsPage /></PortalSidebar></ProtectedRoute>} />
       <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><PortalSidebar title="Litiges" autoShell={false}><AdminDisputes /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><PortalSidebar title="Journal d'audit" autoShell={false}><AdminAudit /></PortalSidebar></ProtectedRoute>} />
 
       {/* Phase 2 - Two-Wheelers & Pros */}
       <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer"><UrgentRequestFlow vehicleType="motorcycle" /></ProtectedRoute>} />

@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.database import Base, get_db
 from app.core.rbac import get_current_user
+from app.config import settings
 from app.models import User, UserRole, ProviderProfile
 
 router = APIRouter(prefix="/api/v1/ifix", tags=["ifix-ai"])
@@ -112,6 +113,88 @@ def _match_rule(text: str):
     return {"rule": RULE_SETS["default"]}
 
 
+# ---- Integration LLM externe (OpenAI-compatible : OpenAI, Groq, Together, Ollama...) ----
+# Activée par IFIX_LLM_API_KEY (via .env). Sans cle, ou en cas d'erreur reseau,
+# on retombe sur le moteur de regles local. La reponse est TOUJOURS etiquettee
+# avec sa source reelle ("LLM <modele>" ou "moteur de regles local") — jamais
+# de faux LLM. Les conseils de SECURITE (SAFETY_KEYWORDS) sont determines par
+# les regles locales et ne peuvent pas etre remplacees/hallucinees par le LLM.
+
+IFIX_SYSTEM_PROMPT = (
+    "Tu es IFIX, l'assistant de diagnostic automobile de la plateforme TomoBily. "
+    "Langue : francais simple (marocain accepte). Regles absolues : "
+    "(1) Tu ne confirmes JAMAIS un diagnostic : tu donnes des pistes non confirmees. "
+    "(2) Tu orientes vers une inspection professionnelle via TomoBily. "
+    "(3) Tu n'inventes ni pieces, ni prix fixes, ni prestataires. "
+    "(4) Si urgence de securite (freins, fumee, surchauffe, carburant, direction), "
+    "conseille d'abord d'arreter le vehicule en securite. "
+    "(5) Reponse courte (max 5 phrases), utile, sans jargon."
+)
+
+
+def llm_active() -> bool:
+    return bool(settings.IFIX_LLM_ENABLED and settings.IFIX_LLM_API_KEY)
+
+
+def llm_reply(history: List[dict], user_text: str) -> Optional[str]:
+    """Appel reel au LLM externe. Retourne None si indisponible/erreur (fallback regles)."""
+    if not llm_active():
+        return None
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=settings.IFIX_LLM_API_KEY,
+                        base_url=settings.IFIX_LLM_BASE_URL, timeout=20.0, max_retries=1)
+        messages = [{"role": "system", "content": IFIX_SYSTEM_PROMPT}]
+        for h in history[-10:]:
+            role = h.get("role")
+            if role in ("user", "assistant"):
+                messages.append({"role": role, "content": str(h.get("content", ""))[:2000]})
+        messages.append({"role": "user", "content": user_text[:2000]})
+        resp = client.chat.completions.create(
+            model=settings.IFIX_LLM_MODEL, messages=messages,
+            temperature=0.4, max_tokens=400)
+        text = (resp.choices[0].message.content or "").strip()
+        return text[:2000] if text else None
+    except Exception:
+        # Erreur reseau / quota / cle invalide -> fallback transparent sur les regles locales
+        return None
+
+
+def _engine_tag() -> str:
+    return f"LLM externe {settings.IFIX_LLM_MODEL}" if llm_active() else "moteur de regles local"
+
+
+def _generate_reply(db: Session, sess: AiSession, user_text: str) -> tuple:
+    """Construit (reply, result_json). Securite = regles locales toujours appliquees ;
+    puis LLM reel si configure, sinon moteur de regles. Source toujours etiquettee."""
+    match = _match_rule(user_text)
+    tag = _engine_tag()
+    disclaimer = "[IFIX AI — %s, orientation informationnelle, diagnostic non confirme] " % tag
+    if "safety" in match:
+        # Urgence de securite : conseil determine par regles locales, prioritaire
+        # sur toute sortie LLM (anti-hallucination sur les cas critiques).
+        reply = disclaimer + "⚠️ " + match["safety"]
+        result = {"engine": "local-rule-v1", "llm": False, "source": "rules-safety",
+                  "scenario_slug": "safety", **match}
+        return reply, result
+    rs = match["rule"]
+    scenario = next((k for k, v in RULE_SETS.items() if v is rs), "default")
+    history = [{"role": m.role, "content": m.content} for m in
+               db.query(AiMessage).filter(AiMessage.session_id == sess.id)
+               .order_by(AiMessage.id).all()]
+    ai_text = llm_reply(history, user_text)
+    if ai_text:
+        reply = disclaimer + ai_text
+        result = {"engine": "llm-external-v1", "llm": True, "source": tag,
+                  "model": settings.IFIX_LLM_MODEL, "scenario_slug": scenario,
+                  "rule_fallback": rs}
+    else:
+        reply = disclaimer + "Questions utiles : " + " ; ".join(rs["questions"])
+        result = {"engine": "local-rule-v1", "llm": False, "source": "rules-local",
+                  "scenario_slug": scenario, **match}
+    return reply, result
+
+
 # ---- Droits d'usage (server-side, resistant aux requetes concurrentes) ----
 
 def used_sessions(db: Session, customer_id: int) -> int:
@@ -171,19 +254,11 @@ def start_session(body: StartSessionBody, db: Session = Depends(get_db),
         raise HTTPException(status.HTTP_402_PAYMENT_REQUIRED,
                             {"error": "allowance_exhausted",
                              "message": "Sessions gratuites epuisees."})
-    match = _match_rule(body.first_message)
+    reply, result = _generate_reply(db, sess, body.first_message)
     intro = body.first_message[:200]
     db.add(AiMessage(session_id=sess.id, role="user", content=intro))
-    reply = ("[IFIX AI — moteur de regles local, orientation informationnelle, "
-             "diagnostic non confirme] ")
-    if "safety" in match:
-        reply += "⚠️ " + match["safety"]
-        sess.scenario_slug = "safety"
-    else:
-        rs = match["rule"]
-        sess.scenario_slug = next((k for k, v in RULE_SETS.items() if v is rs), "default")
-        reply += "Questions utiles : " + " ; ".join(rs["questions"])
-    sess.result_json = {"engine": "local-rule-v1", "llm": False, **match}
+    sess.scenario_slug = result.get("scenario_slug") or ("safety" if "safety" in result else "default")
+    sess.result_json = result
     db.add(AiMessage(session_id=sess.id, role="assistant", content=reply))
     db.commit(); db.refresh(sess)
     return {"ok": True, "session_id": sess.id, "reply": reply,
@@ -203,15 +278,11 @@ def add_message(session_id: int, body: MessageBody, db: Session = Depends(get_db
     if not sess or sess.customer_id != user.id:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Session introuvable")
     db.add(AiMessage(session_id=sess.id, role="user", content=body.content))
-    match = _match_rule(body.content)
-    reply = "[IFIX AI — moteur de regles local] "
-    if "safety" in match:
-        reply += "⚠️ " + match["safety"]
-    else:
-        reply += "Pistes envisagees (non confirmees) : " + " ; ".join(match["rule"]["causes"])
+    reply, result = _generate_reply(db, sess, body.content)
     db.add(AiMessage(session_id=sess.id, role="assistant", content=reply))
     db.commit()
-    return {"ok": True, "reply": reply}
+    return {"ok": True, "reply": reply, "engine": result.get("source"),
+            "llm": result.get("llm", False)}
 
 
 @router.get("/sessions")

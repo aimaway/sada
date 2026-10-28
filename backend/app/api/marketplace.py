@@ -21,8 +21,19 @@ MIN_PRICE_CENTS = 50 * 100      # 50 MAD
 MAX_PRICE_CENTS = 20000 * 100   # 20 000 MAD
 REQUEST_EXPIRY_HOURS = 48
 
-OPEN_STATUSES = ("open", "offers_received")
-CLOSED_FOR_OFFERS = ("accepted", "cancelled", "expired", "closed")
+class _ReqStatus:
+    """Statuts canoniques de ServiceRequest. La colonne `status` est une String;
+    les valeurs stockees sont les noms des membres de l'Enum legacy
+    (open/offers_received/accepted/cancelled/expired). Un seul point de verite."""
+    OPEN = "open"
+    OFFERS_RECEIVED = "offers_received"
+    ACCEPTED = "accepted"
+    CANCELLED = "cancelled"
+    EXPIRED = "expired"
+
+
+OPEN_STATUSES = (_ReqStatus.OPEN, _ReqStatus.OFFERS_RECEIVED)
+CLOSED_FOR_OFFERS = (_ReqStatus.ACCEPTED, _ReqStatus.CANCELLED, _ReqStatus.EXPIRED, "closed")
 
 
 def _ensure_columns(db: Session, table: str, cols: List[tuple]):
@@ -166,8 +177,9 @@ def create_request(body: CreateRequestBody, db: Session = Depends(get_db),
     sets = ", ".join(f"{k} = :{k}" for k in ext)
     db.execute(_text(f"UPDATE service_requests SET {sets} WHERE id = :rid"),
                {**ext, "rid": req.id})
-    db.commit(); db.expire_all()
+    db.commit()
     req = db.get(ServiceRequest, req.id)
+    db.refresh(req)
     return {"ok": True, "request": _request_dict(req), "eligible_provider_ids": eligible}
 
 
@@ -276,7 +288,7 @@ def create_offer(body: CreateOfferBody, response: Response,
                {**ext, "rid": offer.id})
     if req.status == "open":
         req.status = "offers_received"
-    db.commit(); db.expire_all()
+    db.commit()
     return {"ok": True, "offer_id": offer.id}
 
 
@@ -292,21 +304,26 @@ def accept_offer(body: AcceptBody, db: Session = Depends(get_db),
     offer = db.query(Offer).filter(Offer.id == body.offer_id).first()
     if not offer:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Offre introuvable")
-    # Relecture fraîche de la demande : le cache d'identité SQLAlchemy peut
-    # servir un statut périmé quand la même Session est réutilisée entre
-    # deux requêtes HTTP (cas TestClient + SQLite).
-    db.expire_on_commit = True
-    db.expunge_all()
+    # Relecture fraiche de la demande : le cache d'identite SQLAlchemy peut
+    # servir un statut perime quand la meme Session est reutilisee entre
+    # deux requetes HTTP (cas TestClient + SQLite). db.expire_all() n'existe
+    # pas sur Session (API 2.x) et db.expunge_all() detacherait `offer` en
+    # plein milieu du handler -> DetachedInstanceError. La solution correcte
+    # est db.refresh(obj) qui force un SELECT depuis la base.
     req = db.get(ServiceRequest, offer.request_id)
     if not req:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Demande introuvable")
     db.refresh(req)
+    db.refresh(offer)
     if req.customer_id != user.id:
         raise HTTPException(status.HTTP_403_FORBIDDEN, "Accès refusé")
-    # Idempotence : si la demande est déjà acceptée par CE client, renvoyer le Job.
+    # Idempotence stricte : une demande deja acceptee n'accepte QUE l'offre
+    # qui a gagne le verrou (la seule en status='accepted'). Reaccepter la
+    # meme offre renvoie le meme Job (rejeu reseau sur /offers/accept) ;
+    # toute autre offre recoit 409 -> invariant "1 demande = 1 Job".
     if req.status == "accepted":
         existing_job = db.query(Job).filter(Job.request_id == req.id).first()
-        if existing_job:
+        if existing_job and offer.status == "accepted" and offer.provider_id == existing_job.provider_id:
             return {"ok": True, "job_id": existing_job.id, "already_accepted": True}
         raise HTTPException(status.HTTP_409_CONFLICT, "Demande déjà acceptée")
     if req.status not in OPEN_STATUSES:
@@ -314,17 +331,23 @@ def accept_offer(body: AcceptBody, db: Session = Depends(get_db),
     from sqlalchemy import text as _text
     # 1) Verrou atomique au niveau SQL sur la DEMANDE (open->accepted).
     #    Un seul appel concurrent réussit — indépendant du dialecte
-    #    (SQLite ignore FOR UPDATE).
+    #    (SQLite ignore FOR UPDATE). NB: le statut est stocké en colonne
+    #    String ; on compare via bind params pour éviter tout formatage
+    #    repr()/Enum qui rendrait le WHERE jamais vérifié (deux acceptations
+    #    concurrentes passeraient alors toutes les deux -> 2 Jobs).
     placeholders = ", ".join(f":st{i}" for i in range(len(OPEN_STATUSES)))
     params = {"rid": req.id}
     for i, st in enumerate(OPEN_STATUSES):
-        params[f"st{i}"] = str(st)
+        params[f"st{i}"] = str(getattr(st, "value", st))
     claimed = db.execute(_text(
         f"UPDATE service_requests SET status='accepted' "
         f"WHERE id=:rid AND status IN ({placeholders})"),
         params).rowcount
     if not claimed:
         db.rollback()
+        # La demande a ete acceptee par un autre appel concurrent : on
+        # retombe sur la branche idempotente au prochain appel. Pas de
+        # expunge_all ici (detacherait offer/req en plein milieu).
         raise HTTPException(status.HTTP_409_CONFLICT, "Demande déjà attribuée")
     # 2) Verrou atomique sur l'OFFRE (pending->accepted). Si échec : rollback
     #    du verrou demande -> aucune incohérence possible.
@@ -335,9 +358,16 @@ def accept_offer(body: AcceptBody, db: Session = Depends(get_db),
     if not c2:
         db.rollback()
         raise HTTPException(status.HTTP_409_CONFLICT, "Offre non disponible")
-    db.expire_all()
+    # Publier le verrou AVANT d'inserer le Job : un accept concurrent qui
+    # arrive apres ce commit verra status='accepted' (rowcount=0 -> 409),
+    # garantissant l'invariant "1 demande = 1 Job" meme en ecriture simultanee.
+    # Publier le verrou, puis recharger proprement via refresh (jamais
+    # expire_all/expunge_all : absents de Session 2.x / detachent les objets).
+    db.commit()
     req = db.get(ServiceRequest, req.id)
     offer = db.get(Offer, offer.id)
+    db.refresh(req)
+    db.refresh(offer)
     # 3) Rejeter les offres rivales encore pending.
     for other in req.offers:
         if other.id != offer.id and other.status == "pending":
