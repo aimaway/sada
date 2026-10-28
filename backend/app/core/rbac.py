@@ -12,7 +12,7 @@ from app.database import get_db
 from app.models import User
 from app.config import settings
 
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False)
 
 
 def get_current_user(
@@ -20,9 +20,19 @@ def get_current_user(
     db: Session = Depends(get_db)
 ) -> User:
     """Obtenir l'utilisateur actuel depuis le token JWT"""
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentification requise",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     try:
         payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        user_id: int = payload.get("sub")
+        user_id = payload.get("sub")
+        try:
+            user_id = int(user_id)
+        except (TypeError, ValueError):
+            user_id = None
         if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,

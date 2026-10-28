@@ -53,6 +53,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"  # dev .env may carry keys from other settings modules
 
 
 settings = Settings()
