@@ -20,6 +20,40 @@ function useAsync<T>(fn: () => Promise<T>, deps: any[] = []) {
   return { data, error, loading, reload };
 }
 
+// ---------------------------------------------------------------------------
+// Bandeau "source des données" — permet de voir si le dashboard admin tourne
+// sur les données réelles du backend ou sur le jeu de démo (mock) local.
+// Le toggle Démo global (bouton flottant bas-droite) force le jeu mock même
+// quand l'API répond.
+// ---------------------------------------------------------------------------
+import { getLastDataSource, onDataSourceChange } from '../shared/demoFallback';
+import { useDemo } from '../shared/DemoContext';
+
+export function DataSourceBanner() {
+  const { isDemoMode, toggleDemoMode } = useDemo();
+  const [src, setSrc] = useState(getLastDataSource());
+  useEffect(() => {
+    const off = onDataSourceChange(setSrc);
+    return () => { off(); };
+  }, []);
+  const enhanced = isDemoMode || src === 'mock';
+  return (
+    <div className={`mb-6 flex flex-wrap items-center gap-3 rounded-2xl border px-4 py-3 text-sm ${enhanced ? 'border-violet-200 bg-violet-50 text-violet-800' : 'border-emerald-200 bg-emerald-50 text-emerald-800'}`}>
+      <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${enhanced ? 'bg-violet-600 text-white' : 'bg-emerald-600 text-white'}`}>
+        {enhanced ? '🎭 Dashboard ENHANCED — données DÉMO (mock)' : '✅ Dashboard standard — données RÉELLES (API)'}
+      </span>
+      <span className="flex-1 min-w-[220px]">
+        {enhanced
+          ? 'Le tableau de bord affiche le jeu de données de démonstration (backend hors ligne ou mode Démo activé).'
+          : 'Le tableau de bord affiche les statistiques renvoyées par le backend FastAPI.'}
+      </span>
+      <button onClick={toggleDemoMode} className="rounded-lg border border-current/30 px-3 py-1 text-xs font-semibold hover:opacity-80">
+        Basculer en {isDemoMode ? 'Live (API réelle)' : 'Démo (mock)'}
+      </button>
+    </div>
+  );
+}
+
 export function AdminLogin() {
   const { setUser } = useApp();
   const navigate = useNavigate();
@@ -111,8 +145,9 @@ export function AdminDashboard() {
   return (
     <AdminLayout activeTab="dashboard">
       <h1 className="text-2xl font-bold mb-6">Tableau de bord</h1>
+      <DataSourceBanner />
       {error && <Card className="p-4 mb-4 text-red-600 text-sm">Backend indisponible : {error}. Vérifiez que l’API tourne et que vous êtes connecté·e en admin.</Card>}
-      {loading && !error && <p className="text-sm text-slate-500">Chargement des données réelles…</p>}
+      {loading && !error && <p className="text-sm text-slate-500">Chargement des données…</p>}
       {data && (
         <>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
