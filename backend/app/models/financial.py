@@ -82,7 +82,9 @@ class Transaction(Base):
     
     # Metadata
     description = Column(Text, nullable=True)
-    metadata = Column(JSON, default={})
+    # "metadata" est réservé par l'API Declarative de SQLAlchemy ;
+    # la colonne SQL conserve son nom via metafor
+    metadata_json = Column("metadata", JSON, default={})
     
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())

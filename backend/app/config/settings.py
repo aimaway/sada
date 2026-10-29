@@ -49,10 +49,19 @@ class Settings(BaseSettings):
     
     # Demo mode
     DEMO_MODE: bool = True
+
+    # IFIX AI — LLM externe (OpenAI-compatible : OpenAI, Groq, Together, Ollama...)
+    # Si IFIX_LLM_API_KEY est vide, IFIX fonctionne en moteur de regles local
+    # (reponses explicitement etiquettees "moteur de regles", jamais un faux LLM).
+    IFIX_LLM_API_KEY: str = ""
+    IFIX_LLM_BASE_URL: str = "https://api.openai.com/v1"
+    IFIX_LLM_MODEL: str = "gpt-4o-mini"
+    IFIX_LLM_ENABLED: bool = True   # inert si pas de cle ; permet de forcer le mode regles
     
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"  # dev .env may carry keys from other settings modules
 
 
 settings = Settings()

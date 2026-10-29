@@ -12,7 +12,7 @@ from app.database import get_db
 from app.models import User
 from app.config import settings
 
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False)
 
 
 def get_current_user(
@@ -20,9 +20,19 @@ def get_current_user(
     db: Session = Depends(get_db)
 ) -> User:
     """Obtenir l'utilisateur actuel depuis le token JWT"""
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentification requise",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     try:
         payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        user_id: int = payload.get("sub")
+        user_id = payload.get("sub")
+        try:
+            user_id = int(user_id)
+        except (TypeError, ValueError):
+            user_id = None
         if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -41,13 +51,24 @@ def get_current_user(
             detail="Utilisateur non trouvé"
         )
     
-    if user.status != "active":
+    if (user.status or "active") != "active":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Compte désactivé"
         )
-    
-    return user
+
+    # Snapshot des attributs : les sessions d'injection de dependances sont
+    # closes en fin de requete et certains handlers appellent db.commit()
+    # (expire_on_commit=True) ; un objet attache accede plus tard (ex.
+    # user.id dans marketplace.accept_offer apres commit) leverait un
+    # DetachedInstanceError. On renvoie donc une instance User detachee dont
+    # tous les attributs colonnes sont pré-charges dans __dict__ — le handler
+    # peut lire n'importe quel champ sans session ni refresh. Pour les
+    # endpoints qui MUTENT current_user, utiliser rebind_user() (app.main).
+    state = {c.key: getattr(user, c.key) for c in User.__mapper__.column_attrs}
+    detached = User.__new__(User)
+    detached.__dict__.update(state)
+    return detached
 
 
 def require_role(*roles: str) -> Callable:

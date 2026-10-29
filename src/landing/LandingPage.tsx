@@ -20,6 +20,15 @@ import {
   Menu,
   X,
   Info,
+  Bot,
+  BrainCircuit,
+  Lock,
+  Check,
+  AlertTriangle,
+  MessageSquare,
+  UserCheck,
+  BadgeCheck,
+  Crown,
 } from 'lucide-react';
 import './landing.css';
 
@@ -163,6 +172,127 @@ const values = [
   },
 ];
 
+/* ------------------------------- IFIX AI ---------------------------------- */
+
+const ifixAdvantages = [
+  {
+    icon: <BrainCircuit className="w-5 h-5" />,
+    title: 'Un diagnostic instantané, 24/7',
+    desc: 'Décrivez un bruit, un voyant ou un comportement étrange : IFIX analyse vos symptômes en langage naturel et vous répond en quelques secondes, jour et nuit.',
+  },
+  {
+    icon: <MessageSquare className="w-5 h-5" />,
+    title: 'Des explications claires, pas du jargon',
+    desc: 'IFIX vous explique les causes probables et les vérifications simples à faire vous-même — sans jamais inventer de panne confirmée.',
+  },
+  {
+    icon: <AlertTriangle className="w-5 h-5" />,
+    title: 'La sécurité avant tout',
+    desc: 'Freins, direction, surchauffe… IFIX détecte les signaux critiques et vous guide immédiatement vers les bons réflexes, même hors quota.',
+  },
+  {
+    icon: <UserCheck className="w-5 h-5" />,
+    title: 'Les bons professionnels, près de chez vous',
+    desc: 'À la fin de chaque diagnostic, IFIX recommande des mécaniciens et tuners réellement disponibles sur la plateforme, classés par pertinence.',
+  },
+  {
+    icon: <Lock className="w-5 h-5" />,
+    title: 'Confidentialité garantie',
+    desc: 'Votre conversation reste privée. Rien n’est transmis à un professionnel sans votre consentement explicite, à tout moment.',
+  },
+  {
+    icon: <BadgeCheck className="w-5 h-5" />,
+    title: '3 diagnostics offerts',
+    desc: 'Chaque client bénéficie de 3 cas de diagnostic complets et gratuits. Les messages d’un même cas ne consomment jamais de quota.',
+  },
+];
+
+const ifixSteps = [
+  { num: '1', title: 'Décrivez le problème', desc: 'Bruit, voyant, comportement : avec vos mots.' },
+  { num: '2', title: 'IFIX pose ses questions', desc: 'Un entretien guidé pour affiner le diagnostic.' },
+  { num: '3', title: 'Recevez l’analyse', desc: 'Causes probables, contrôles simples, niveau d’urgence.' },
+  { num: '4', title: 'Choisissez la suite', desc: 'Partagez le résumé (avec accord) et recevez des offres réelles.' },
+];
+
+/* ------------------------------- Pricing ---------------------------------- */
+
+interface PricingPlan {
+  id: string;
+  name: string;
+  icon: string;
+  gradient: string;
+  price: number | null;
+  priceLabel: string;
+  highlight?: boolean;
+  features: string[];
+}
+
+/** Plans clients (offres & cadeaux) — identiques à la page /gift-plans. */
+const clientGiftPlans: PricingPlan[] = [
+  {
+    id: 'bronze',
+    name: 'Bronze',
+    icon: '🥉',
+    gradient: 'from-amber-600 to-amber-700',
+    price: 0,
+    priceLabel: 'Gratuit',
+    features: [
+      'Accès à tous les services',
+      'Support client standard',
+      '1 point par 10 MAD dépensés',
+    ],
+  },
+  {
+    id: 'silver',
+    name: 'Silver',
+    icon: '🥈',
+    gradient: 'from-slate-400 to-slate-500',
+    price: 99,
+    priceLabel: '99 MAD',
+    features: [
+      'Tout Bronze +',
+      'Diagnostic gratuit 1x/mois',
+      '10% réduction sur entretiens',
+      'Support prioritaire',
+      '2x points fidélité',
+    ],
+  },
+  {
+    id: 'gold',
+    name: 'Gold',
+    icon: '🥇',
+    gradient: 'from-yellow-500 to-yellow-600',
+    price: 199,
+    priceLabel: '199 MAD',
+    highlight: true,
+    features: [
+      'Tout Silver +',
+      '1 vidange offerte/mois',
+      '15% réduction sur tout',
+      'Mécanicien dédié',
+      '3x points fidélité',
+      'Annulations gratuites',
+    ],
+  },
+  {
+    id: 'platinum',
+    name: 'Platinum',
+    icon: '💎',
+    gradient: 'from-purple-500 to-purple-600',
+    price: 399,
+    priceLabel: '399 MAD',
+    features: [
+      'Tout Gold +',
+      'Entretien complet offert/mois',
+      '20% réduction sur tout',
+      'Service VIP 24/7',
+      '5x points fidélité',
+      'Voiture de remplacement',
+      'Garantie étendue 1 an',
+    ],
+  },
+];
+
 /* -------------------------------------------------------------------------- */
 /*  Small helpers                                                             */
 /* -------------------------------------------------------------------------- */
@@ -236,6 +366,8 @@ export default function LandingPage() {
   const navLinks: Array<{ label: string; to?: string; section?: string }> = [
     { label: 'Accueil', section: 'top' },
     { label: 'Services', section: 'services' },
+    { label: 'IFIX AI', section: 'ifix' },
+    { label: 'Tarifs', section: 'tarifs' },
     { label: 'Produits', to: '/login' },
     { label: 'Professionnels', section: 'profils' },
     { label: 'À propos', to: '/about' },
@@ -437,6 +569,161 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ================================= IFIX AI ================================ */}
+      <section id="ifix" className="lp-section lp-ifix" aria-labelledby="lp-ifix-title">
+        <div className="lp-container">
+          <div className="lp-ifix-hero">
+            <figure className="lp-ifix-figure m-0">
+              <img
+                src="/IFIX AI Garage Mascot.png"
+                alt="IFIX AI, la mascotte experte en diagnostic automobile de mecaGO"
+                className="lp-ifix-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className="lp-ifix-figure-caption">
+                <Bot className="w-4 h-4" aria-hidden="true" />
+                IFIX — votre copilote de diagnostic
+              </figcaption>
+            </figure>
+
+            <div className="lp-ifix-copy">
+              <p className="lp-ifix-eyebrow">
+                <Sparkles className="w-4 h-4" aria-hidden="true" />
+                Nouveauté&nbsp;: l’expertise d’un diagnostician IA
+              </p>
+              <h2 id="lp-ifix-title" className="lp-ifix-title">
+                IFIX AI diagnostique votre véhicule
+                <span className="accent">avant même le mécanicien.</span>
+              </h2>
+              <p className="lp-ifix-sub">
+                Un bruit suspect&nbsp;? Un voyant allumé&nbsp;? Une perte de puissance&nbsp;? Décrivez
+                le problème à IFIX avec vos mots. Notre expert de diagnostic IA vous pose les bonnes
+                questions, identifie les causes probables, veille à votre sécurité et vous oriente
+                vers les professionnels vérifiés les plus pertinents — tout ça, gratuitement.
+              </p>
+              <ul className="lp-ifix-badges" role="list">
+                <li><BadgeCheck className="w-4 h-4" aria-hidden="true" /> 3 diagnostics offerts</li>
+                <li><Lock className="w-4 h-4" aria-hidden="true" /> Confidentialité totale</li>
+                <li><ShieldCheck className="w-4 h-4" aria-hidden="true" /> Alertes de sécurité</li>
+              </ul>
+              <div className="lp-ifix-actions">
+                <Link to="/customer/ifix" className="lp-btn lp-btn-primary">
+                  <Bot className="w-[18px] h-[18px]" aria-hidden="true" />
+                  Essayer IFIX AI
+                </Link>
+                <button className="lp-btn lp-btn-outline-light" onClick={() => goToSection('tarifs')}>
+                  Voir les tarifs
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="lp-card-grid cols-3 mt-14">
+            {ifixAdvantages.map((a) => (
+              <article key={a.title} className="lp-ifix-card">
+                <span className="lp-ifix-card-icon" aria-hidden="true">
+                  {a.icon}
+                </span>
+                <h3 className="lp-ifix-card-title">{a.title}</h3>
+                <p className="lp-ifix-card-desc">{a.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="lp-ifix-steps" aria-label="Comment IFIX fonctionne">
+            {ifixSteps.map((s, i) => (
+              <React.Fragment key={s.num}>
+                {i > 0 && <span className="lp-ifix-step-arrow" aria-hidden="true">→</span>}
+                <div className="lp-ifix-step">
+                  <span className="lp-ifix-step-num">{s.num}</span>
+                  <div>
+                    <div className="lp-ifix-step-title">{s.title}</div>
+                    <div className="lp-ifix-step-desc">{s.desc}</div>
+                  </div>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+
+          <p className="lp-ifix-note">
+            <Info className="w-4 h-4 shrink-0" aria-hidden="true" />
+            IFIX AI est un assistant d’orientation : il évoque des causes probables et ne remplace
+            jamais l’inspection d’un professionnel qualifié. Vos échanges restent privés et ne sont
+            partagés qu’avec votre accord explicite.
+          </p>
+        </div>
+      </section>
+
+      {/* ================================= PRICING ================================ */}
+      <section id="tarifs" className="lp-section bg-white" aria-labelledby="lp-pricing-title">
+        <div className="lp-container">
+          <div className="text-center mb-12 md:mb-14">
+            <p className="lp-section-eyebrow">Tarifs — Clients uniquement</p>
+            <h2 id="lp-pricing-title" className="lp-section-title">
+              Nos offres & cadeaux pour les conducteurs
+            </h2>
+            <p className="lp-section-sub mx-auto">
+              S’inscrire et publier une demande restent gratuits. Choisissez ensuite le plan client
+              qui vous offre le plus de cadeaux : diagnostics offerts, réductions, vidanges
+              gratuites et bien plus.
+            </p>
+          </div>
+
+          <div className="lp-pricing-grid lp-pricing-grid-4">
+            {clientGiftPlans.map((plan) => (
+              <article
+                key={plan.id}
+                className={`lp-price-card${plan.highlight ? ' featured' : ''}`}
+              >
+                {plan.highlight && (
+                  <span className="lp-price-flag">
+                    <Crown className="w-4 h-4" aria-hidden="true" />
+                    Le plus populaire
+                  </span>
+                )}
+                <div
+                  className={`lp-price-icon bg-gradient-to-br ${plan.gradient}`}
+                  role="img"
+                  aria-label={`Plan ${plan.name}`}
+                >
+                  <span aria-hidden="true">{plan.icon}</span>
+                </div>
+                <h3 className="lp-price-name">{plan.name}</h3>
+                <p className="lp-price-audience">Plan client</p>
+                <div className="lp-price-value">
+                  <span className="lp-price-amount">{plan.priceLabel}</span>
+                  <span className="lp-price-period">
+                    {plan.price === 0 ? 'pour toujours' : '/ mois'}
+                  </span>
+                </div>
+                <ul className="lp-price-features" role="list">
+                  {plan.features.map((f) => (
+                    <li key={f}>
+                      <Check className="w-4 h-4 shrink-0" aria-hidden="true" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/gift-plans"
+                  className={`lp-btn w-full ${plan.highlight ? 'lp-btn-primary' : 'lp-btn-ghost-navy'}`}
+                >
+                  Choisir {plan.name}
+                  <ArrowRight className="w-[18px] h-[18px]" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <p className="lp-pricing-note">
+            Ces plans et cadeaux sont réservés aux clients (conducteurs). Les demandes de service
+            et la mise en relation avec les professionnels restent gratuites pour tous. Les
+            tarifs affichés peuvent évoluer — le contrat en vigueur fait foi.
+          </p>
+        </div>
+      </section>
+
       {/* =============================== MOBILE APP =============================== */}
       <section className="lp-section lp-app" aria-labelledby="lp-app-title">
         <div className="lp-container">
@@ -601,6 +888,12 @@ export default function LandingPage() {
                 </li>
                 <li>
                   <button onClick={() => goToSection('services')}>Services</button>
+                </li>
+                <li>
+                  <button onClick={() => goToSection('ifix')}>IFIX AI</button>
+                </li>
+                <li>
+                  <button onClick={() => goToSection('tarifs')}>Tarifs</button>
                 </li>
                 <li>
                   <Link to="/login">Produits</Link>

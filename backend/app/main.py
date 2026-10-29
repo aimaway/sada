@@ -17,6 +17,10 @@ from app.websocket.manager import ConnectionManager
 
 # Import seller and tuner routers
 from app.api import seller, tuner
+# Import marketplace & IFIX AI routers (SADA)
+from app.api import marketplace, ifix_ai
+# Import admin router (contrôle total des comptes)
+from app.api import admin as _admin
 
 # Create tables
 from app.database import Base
@@ -26,7 +30,7 @@ Base.metadata.create_all(bind=engine)
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Security
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False)
 
 # WebSocket manager
 ws_manager = ConnectionManager()
@@ -58,8 +62,8 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 
 def get_password_hash(password: str) -> str:
-    """Hasher un mot de passe"""
-    return pwd_context.hash(password)
+    """Hasher un mot de passe (bcrypt limite à 72 octets — tronqué ici)."""
+    return pwd_context.hash(password.encode("utf-8")[:72].decode("utf-8", errors="ignore"))
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
@@ -79,9 +83,19 @@ def get_current_user(
     db: Session = Depends(get_db)
 ) -> User:
     """Obtenir l'utilisateur actuel depuis le token JWT"""
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentification requise",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     try:
         payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        user_id: int = payload.get("sub")
+        user_id = payload.get("sub")
+        try:
+            user_id = int(user_id)
+        except (TypeError, ValueError):
+            user_id = None
         if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -99,7 +113,44 @@ def get_current_user(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Utilisateur non trouvé"
         )
-    return user
+
+    if (user.status or "active") != "active":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Compte désactivé"
+        )
+
+    # Snapshot des attributs : les sessions d'injection de dépendances sont
+    # closes en fin de requête et certains handlers appellent db.commit()
+    # (expire_on_commit=True) ; un objet attaché accédé plus tard (ex.
+    # current_user.role dans rbac.get_current_user, ou req.customer_id !=
+    # user.id après commit dans marketplace.accept_offer) lèverait un
+    # DetachedInstanceError. On renvoie donc une instance User détachée
+    # dont tous les attributs colonnes sont pré-chargés — le handler peut
+    # lire n'importe quel champ sans session. Pour les endpoints qui
+    # MUTENT current_user, utiliser rebind_user() ci-dessous.
+    state = {c.key: getattr(user, c.key) for c in User.__mapper__.column_attrs}
+    # Instance detachee « fully loaded » : __new__ sans passer par __init__
+    # (qui marquerait l'objet pending) + __dict__ pré-rempli => SQLAlchemy
+    # considere tous les attributs comme charges ; aucun refresh apres commit.
+    detached = User.__new__(User)
+    detached.__dict__.update(state)
+    return detached
+
+
+def rebind_user(db: Session, current_user: User) -> User:
+    """Recharger current_user depuis la base dans la session `db` courante.
+
+    À appeler dans les handlers qui modifient current_user (le snapshot
+    renvoyé par get_current_user est détaché et ne peut pas être persisté).
+    """
+    fresh = db.query(User).filter(User.id == current_user.id).first()
+    if fresh is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Utilisateur non trouvé"
+        )
+    return fresh
 
 
 # ============ Authentication Endpoints ============
@@ -134,7 +185,7 @@ def register(
     db.refresh(user)
     
     # Créer le token
-    access_token = create_access_token(data={"sub": user.id})
+    access_token = create_access_token(data={"sub": str(user.id)})
     
     return {
         "access_token": access_token,
@@ -167,7 +218,7 @@ def login(
     db.commit()
     
     # Créer le token
-    access_token = create_access_token(data={"sub": user.id})
+    access_token = create_access_token(data={"sub": str(user.id)})
     
     return {
         "access_token": access_token,
@@ -208,6 +259,9 @@ def update_current_user_profile(
     db: Session = Depends(get_db)
 ):
     """Modifier le profil de l'utilisateur actuel"""
+    # get_current_user renvoie un snapshot détaché ; recharger l'instance
+    # persistante avant mutation.
+    current_user = rebind_user(db, current_user)
     if full_name:
         current_user.full_name = full_name
     if email:
@@ -655,9 +709,15 @@ def health_check():
     }
 
 
+from app.api import global_config as _gc
+app.include_router(_gc.router, prefix="/api/v1", tags=["Global Config"])
+
 # Include Seller and Tuner routers
 app.include_router(seller.router, prefix="/api/v1", tags=["Seller Portal"])
+app.include_router(marketplace.router)
+app.include_router(ifix_ai.router)
 app.include_router(tuner.router, prefix="/api/v1", tags=["Tuner Portal"])
+app.include_router(_admin.router)
 
 
 @app.get("/")

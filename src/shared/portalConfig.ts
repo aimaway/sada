@@ -40,6 +40,7 @@ const customerSections: PortalMenuSection[] = [
     items: [
       { id: 'home', label: 'Nouvelle demande', route: '/customer/home', icon: LayoutDashboard },
       { id: 'offers', label: 'Offres reçues', route: '/customer/offers', icon: Inbox },
+      { id: 'ifix', label: 'IFIX AI — diagnostic', route: '/customer/ifix', icon: AlertTriangle },
       { id: 'tracking', label: 'Suivi en direct', route: '/customer/tracking', icon: Wrench },
       { id: 'history', label: 'Historique', route: '/customer/history', icon: Clock },
     ],
@@ -87,6 +88,7 @@ const mechanicSections: PortalMenuSection[] = [
     color: 'bg-blue-100 text-blue-600',
     items: [
       { id: 'dashboard', label: 'Tableau de bord', route: '/mechanic/home', icon: LayoutDashboard },
+      { id: 'inbox', label: 'Boîte de réception', route: '/mechanic/inbox', icon: Inbox },
       { id: 'jobs', label: 'Mes jobs', route: '/mechanic/jobs', icon: Briefcase },
       { id: 'portal', label: 'Portail Pro', route: '/mechanic/portal', icon: Store },
       { id: 'active', label: 'Job actif', route: '/mechanic/active-job', icon: Wrench },

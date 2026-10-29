@@ -209,7 +209,17 @@ class ServiceRequest(Base):
     # Status
     status = Column(String(50), default="open")
     expires_at = Column(DateTime(timezone=True), nullable=True)
-    
+
+    # Marketplace extensions (ifix store parity)
+    category_id = Column(Integer, nullable=True)
+    urgency = Column(String(20), nullable=True)
+    source = Column(String(20), nullable=True, default="customer")  # customer | ai_assisted
+    ai_session_id = Column(Integer, nullable=True)
+    eligible_provider_ids = Column(Text, nullable=True)  # comma-separated ids
+    preferred_time = Column(String(100), nullable=True)
+    service_mode = Column(String(30), nullable=True)  # garage | home | either
+    vehicle_summary = Column(String(200), nullable=True)
+
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
@@ -236,7 +246,12 @@ class Offer(Base):
     
     # Status
     status = Column(String(50), default="pending")  # pending, accepted, rejected
-    
+
+    # Offer extensions (ifix store parity)
+    availability_at = Column(DateTime(timezone=True), nullable=True)
+    estimated_duration_min = Column(Integer, nullable=True)
+    client_request_id = Column(String(64), nullable=True)  # idempotency key
+
     # Timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())

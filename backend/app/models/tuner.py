@@ -104,7 +104,16 @@ class TuningService(Base):
     
     # Relationships
     tuner = relationship("ProviderProfile")
-    projects = relationship("TuningProject", back_populates="service")
+    requests = relationship("TuningRequest")
+    # Dev-phase fix: no direct FK between tuning_services and tuning_projects;
+    # they link through TuningRequest.service_id (secondary join, viewonly).
+    projects = relationship(
+        "TuningProject",
+        secondary="tuning_requests",
+        primaryjoin="TuningService.id == foreign(TuningRequest.service_id)",
+        secondaryjoin="TuningRequest.id == foreign(TuningProject.request_id)",
+        viewonly=True,
+    )
 
 
 class TuningRequest(Base):
@@ -153,7 +162,7 @@ class TuningRequest(Base):
     # Relationships
     customer = relationship("User")
     tuner = relationship("ProviderProfile")
-    service = relationship("TuningService")
+    service = relationship("TuningService", viewonly=True)
     project = relationship("TuningProject", back_populates="request", uselist=False)
     appointments = relationship("Appointment", back_populates="request")
 

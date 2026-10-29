@@ -7,22 +7,31 @@ import {
 } from 'lucide-react';
 
 /**
- * Standard sidebar shown for every role (customer, mechanic, seller, tuner, admin).
+ * Standard shell shown for every role (customer, mechanic, seller, tuner, admin).
  * It is the destination of the "Réglages" button: on first connection the user lands
  * on their role's main list (orders / jobs / requests), and from the sidebar they can
  * navigate to any other section or account settings.
  *
- * - Desktop (>=1024px): permanent left sidebar, content slot on the right.
+ * - Desktop (>=1024px): permanent left sidebar, scrollable content slot on the right.
  * - Mobile: a drawer opened via the hamburger / settings button.
+ *
+ * `autoShell` (default true) detects pages that render their own full-screen root
+ * (`min-h-screen …`) and wraps them in an independent scroll container so they keep
+ * working inside the shell without double-scroll glitches. New portal pages should
+ * simply return a normal `<div className="p-4 md:p-6">…</div>` block instead.
  */
+const SELF_SCROLLING = /className="[^"]*min-h-screen[^"]*bg-slate-50/;
+
 export function PortalSidebar({
   children,
   title,
   backRoute,
+  autoShell = true,
 }: {
   children?: React.ReactNode;
   title?: string;
   backRoute?: string;
+  autoShell?: boolean;
 }) {
   const navigate = useNavigate();
   const { user, logout } = useApp();
@@ -172,7 +181,12 @@ export function PortalSidebar({
           </button>
         </header>
 
-        {children}
+        {autoShell && SELF_SCROLLING.test(String(children)) ? (
+          // Legacy full-screen page: give it its own scroll container inside the shell.
+          <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>
+        ) : (
+          <main className="flex-1 overflow-y-auto">{children}</main>
+        )}
       </div>
     </div>
   );

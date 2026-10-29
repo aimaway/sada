@@ -1,0 +1,794 @@
+[
+  {
+    "path": "/",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/about",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/contact",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/faq",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/terms",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/privacy",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile-setup",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/home",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/notifications",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/new-request",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/explain-problem",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/diagnostic",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/maintenance-request",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/waiting",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/offers",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/mechanic-profile/:id",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/tracking",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/negotiation",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/payment",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/rate",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/history",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/orders",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/messages",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile-old",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/maintenance",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/shop",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/maintenance-log",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/reminders",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/documents",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/ai-assistant",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/warning-scanner",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/business/wallet",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/business/anti-bypass",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/business/local",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile-setup",
+    "role": "mechanic",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/home",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/request/:id",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/active-job",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/wallet",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/earnings",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/shop",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/seller/dashboard",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/partnerships",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/settings",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/register",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/dashboard",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/profile-edit",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/services",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/notifications",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/payment-methods",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/wallet-recharge",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/gallery-upload",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/requests-map",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/plans",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/plans",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/plans",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/vehicles",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/addresses",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/payment-methods",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/notifications",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/transactions",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/reviews",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/favorites",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/language",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/security",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/help",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/contact",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/profile/terms",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/login",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/admin/dashboard",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/verification",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/requests",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/users",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/settings",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/admin/disputes",
+    "role": "admin",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/urgent/motorcycle",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/urgent/scooter",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/urgent/ebike",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/inspection/book",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/inspection-report/:slug",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/on-behalf/new",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/on-behalf/:token",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/m/:slug",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/dashboard",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/public-profile",
+    "role": "mechanic",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/customer/recurring-plans",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/home-enhanced",
+    "role": "public",
+    "shell": false,
+    "redirect": "/customer/home"
+  },
+  {
+    "path": "/customer/wallet",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/documents-manage",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/customer/portal",
+    "role": "customer",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile-enhanced",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/info",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/services",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/area",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/pricing",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/verification",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/stats",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/reviews",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/payouts",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/notifications",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/profile/visibility",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/portal",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/mechanic/jobs",
+    "role": "mechanic",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/:slug",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/seller/:slug",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/gift-plans",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/choose-plan",
+    "role": "public",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "/seller/portal",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/portal-new",
+    "role": "public",
+    "shell": false,
+    "redirect": "/seller/portal"
+  },
+  {
+    "path": "/seller/products",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/products/new",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/orders",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/orders/:id",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/inventory",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/seller/analytics",
+    "role": "seller",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/portal",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/portal-new",
+    "role": "public",
+    "shell": false,
+    "redirect": "/tuner/portal"
+  },
+  {
+    "path": "/tuner/requests",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/projects",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/projects/:id",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/calendar",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/appointments/:id",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/tuner/portfolio",
+    "role": "tuner",
+    "shell": true,
+    "redirect": null
+  },
+  {
+    "path": "/discover",
+    "role": "customer",
+    "shell": false,
+    "redirect": null
+  },
+  {
+    "path": "*",
+    "role": "public",
+    "shell": false,
+    "redirect": "/"
+  }
+]
