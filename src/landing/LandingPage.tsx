@@ -385,7 +385,7 @@ export default function LandingPage() {
                 <Wrench className="w-[21px] h-[21px]" />
               </span>
               <span className="lp-logo-word">
-                meca<em>GO</em>
+                TomoBily
               </span>
             </Link>
 
@@ -871,7 +871,7 @@ export default function LandingPage() {
                   <Wrench className="w-[21px] h-[21px]" />
                 </span>
                 <span className="lp-logo-word">
-                  meca<em>GO</em>
+                  TomoBily
                 </span>
               </Link>
               <p>
