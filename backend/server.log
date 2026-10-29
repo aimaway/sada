@@ -1,0 +1,1750 @@
+2026-10-29 07:43:15,274 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:15,274 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("product_categories")
+2026-10-29 07:43:15,274 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("product_categories")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("products")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("products")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("product_images")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("product_images")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("orders")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("orders")
+2026-10-29 07:43:15,275 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("order_items")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("order_items")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("inventory_movements")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("inventory_movements")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("product_reviews")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("product_reviews")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payments")
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,276 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("payments")
+2026-10-29 07:43:15,277 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,277 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("refunds")
+2026-10-29 07:43:15,277 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,287 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("refunds")
+2026-10-29 07:43:15,287 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,287 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("tuning_services")
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("tuning_services")
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("tuning_requests")
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("tuning_requests")
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,288 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("tuning_projects")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("tuning_projects")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("project_estimates")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("project_estimates")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("appointments")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("appointments")
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,289 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("work_logs")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("work_logs")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("portfolio_entries")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("portfolio_entries")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("invoices")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("invoices")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("transactions")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("transactions")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("commissions")
+2026-10-29 07:43:15,290 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("commissions")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payouts")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("payouts")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("wallet_transactions")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("wallet_transactions")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("financial_reports")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("financial_reports")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payment_providers")
+2026-10-29 07:43:15,291 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("payment_providers")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("payout_methods")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("payout_methods")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user_totp_secrets")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("user_totp_secrets")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("sms_verification_codes")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("sms_verification_codes")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("partnership_invitations")
+2026-10-29 07:43:15,292 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("partnership_invitations")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("notifications")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("notifications")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("users")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("customer_profiles")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("customer_profiles")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("provider_profiles")
+2026-10-29 07:43:15,293 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("provider_profiles")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("service_requests")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("service_requests")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("offers")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("offers")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("jobs")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("jobs")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("reviews")
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,294 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("reviews")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("plans")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("plans")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("subscriptions")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("subscriptions")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("audit_logs")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("audit_logs")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("ai_sessions")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("ai_sessions")
+2026-10-29 07:43:15,295 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("ai_messages")
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("ai_messages")
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("ifix_consent_audit")
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("ifix_consent_audit")
+2026-10-29 07:43:15,296 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-29 07:43:15,298 INFO sqlalchemy.engine.Engine 
+CREATE TABLE product_categories (
+	id INTEGER NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	slug VARCHAR(100) NOT NULL, 
+	description TEXT, 
+	parent_id INTEGER, 
+	is_active BOOLEAN, 
+	display_order INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(parent_id) REFERENCES product_categories (id)
+)
+
+
+2026-10-29 07:43:15,298 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,299 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_product_categories_slug ON product_categories (slug)
+2026-10-29 07:43:15,299 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,300 INFO sqlalchemy.engine.Engine CREATE INDEX ix_product_categories_id ON product_categories (id)
+2026-10-29 07:43:15,300 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,300 INFO sqlalchemy.engine.Engine 
+CREATE TABLE payment_providers (
+	id INTEGER NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	slug VARCHAR(100) NOT NULL, 
+	method VARCHAR(13) NOT NULL, 
+	is_active BOOLEAN, 
+	is_test_mode BOOLEAN, 
+	api_key VARCHAR(500), 
+	api_secret VARCHAR(500), 
+	merchant_id VARCHAR(100), 
+	settings JSON, 
+	fee_percent FLOAT, 
+	fee_fixed INTEGER, 
+	min_amount INTEGER, 
+	max_amount INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-10-29 07:43:15,300 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,301 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_payment_providers_slug ON payment_providers (slug)
+2026-10-29 07:43:15,301 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,301 INFO sqlalchemy.engine.Engine CREATE INDEX ix_payment_providers_id ON payment_providers (id)
+2026-10-29 07:43:15,301 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,302 INFO sqlalchemy.engine.Engine 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	phone VARCHAR(20) NOT NULL, 
+	email VARCHAR(255), 
+	password_hash VARCHAR(255) NOT NULL, 
+	full_name VARCHAR(255) NOT NULL, 
+	role VARCHAR(8) NOT NULL, 
+	status VARCHAR(50), 
+	language VARCHAR(10), 
+	is_demo BOOLEAN, 
+	first_name VARCHAR(120), 
+	last_name VARCHAR(120), 
+	display_name VARCHAR(160), 
+	avatar_url VARCHAR(500), 
+	country VARCHAR(100), 
+	city VARCHAR(100), 
+	address VARCHAR(500), 
+	notification_prefs JSON, 
+	support_contact_email VARCHAR(255), 
+	support_email_verified BOOLEAN, 
+	twofa_method VARCHAR(10), 
+	phone_verified BOOLEAN, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	last_login DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-10-29 07:43:15,302 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_users_phone ON users (phone)
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_users_email ON users (email)
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine CREATE INDEX ix_users_id ON users (id)
+2026-10-29 07:43:15,303 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,304 INFO sqlalchemy.engine.Engine 
+CREATE TABLE plans (
+	id INTEGER NOT NULL, 
+	slug VARCHAR(50) NOT NULL, 
+	audience VARCHAR(8) NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	price INTEGER NOT NULL, 
+	features JSON, 
+	status VARCHAR(50), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-10-29 07:43:15,304 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,305 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_plans_slug ON plans (slug)
+2026-10-29 07:43:15,305 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,305 INFO sqlalchemy.engine.Engine CREATE INDEX ix_plans_id ON plans (id)
+2026-10-29 07:43:15,305 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,306 INFO sqlalchemy.engine.Engine 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	transaction_id VARCHAR(100) NOT NULL, 
+	type VARCHAR(10) NOT NULL, 
+	from_user_id INTEGER, 
+	to_user_id INTEGER, 
+	amount INTEGER NOT NULL, 
+	currency VARCHAR(3), 
+	fee_amount INTEGER, 
+	net_amount INTEGER NOT NULL, 
+	status VARCHAR(10), 
+	reference_type VARCHAR(50), 
+	reference_id INTEGER, 
+	reference_number VARCHAR(100), 
+	payment_method VARCHAR(13), 
+	external_transaction_id VARCHAR(200), 
+	description TEXT, 
+	metadata JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	completed_at DATETIME, 
+	failed_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(from_user_id) REFERENCES users (id), 
+	FOREIGN KEY(to_user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,306 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,307 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_transactions_transaction_id ON transactions (transaction_id)
+2026-10-29 07:43:15,307 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,307 INFO sqlalchemy.engine.Engine CREATE INDEX ix_transactions_id ON transactions (id)
+2026-10-29 07:43:15,307 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,308 INFO sqlalchemy.engine.Engine 
+CREATE TABLE user_totp_secrets (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	secret_encrypted TEXT NOT NULL, 
+	status VARCHAR(20), 
+	last_counter INTEGER, 
+	activated_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,308 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,309 INFO sqlalchemy.engine.Engine CREATE INDEX ix_user_totp_secrets_id ON user_totp_secrets (id)
+2026-10-29 07:43:15,309 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,309 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_user_totp_secrets_user_id ON user_totp_secrets (user_id)
+2026-10-29 07:43:15,309 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,310 INFO sqlalchemy.engine.Engine 
+CREATE TABLE sms_verification_codes (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	code_hash VARCHAR(64) NOT NULL, 
+	purpose VARCHAR(30) NOT NULL, 
+	expires_at DATETIME NOT NULL, 
+	attempts INTEGER, 
+	max_attempts INTEGER, 
+	consumed_at DATETIME, 
+	invalidated_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,310 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,310 INFO sqlalchemy.engine.Engine CREATE INDEX ix_sms_verification_codes_user_id ON sms_verification_codes (user_id)
+2026-10-29 07:43:15,310 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,311 INFO sqlalchemy.engine.Engine CREATE INDEX ix_sms_verification_codes_id ON sms_verification_codes (id)
+2026-10-29 07:43:15,311 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,311 INFO sqlalchemy.engine.Engine 
+CREATE TABLE notifications (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	type VARCHAR(50) NOT NULL, 
+	title VARCHAR(255) NOT NULL, 
+	body TEXT, 
+	link VARCHAR(255), 
+	data JSON, 
+	read BOOLEAN, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,311 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,312 INFO sqlalchemy.engine.Engine CREATE INDEX ix_notifications_user_id ON notifications (user_id)
+2026-10-29 07:43:15,312 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,312 INFO sqlalchemy.engine.Engine CREATE INDEX ix_notifications_id ON notifications (id)
+2026-10-29 07:43:15,312 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,313 INFO sqlalchemy.engine.Engine 
+CREATE TABLE customer_profiles (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	loyalty_points INTEGER, 
+	total_jobs INTEGER, 
+	total_spent INTEGER, 
+	favorite_providers JSON, 
+	saved_addresses JSON, 
+	vehicles JSON, 
+	notification_prefs JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	UNIQUE (user_id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,313 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,313 INFO sqlalchemy.engine.Engine CREATE INDEX ix_customer_profiles_id ON customer_profiles (id)
+2026-10-29 07:43:15,313 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,314 INFO sqlalchemy.engine.Engine 
+CREATE TABLE provider_profiles (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	type VARCHAR(8) NOT NULL, 
+	slug VARCHAR(100) NOT NULL, 
+	name VARCHAR(255) NOT NULL, 
+	avatar VARCHAR(500), 
+	cover VARCHAR(500), 
+	bio TEXT, 
+	verified BOOLEAN, 
+	badges JSON, 
+	verification_status VARCHAR(50), 
+	verification_data JSON, 
+	rating FLOAT, 
+	review_count INTEGER, 
+	jobs_completed INTEGER, 
+	response_time INTEGER, 
+	completion_rate FLOAT, 
+	city VARCHAR(100) NOT NULL, 
+	address VARCHAR(500), 
+	service_zone VARCHAR(255), 
+	lat FLOAT, 
+	lng FLOAT, 
+	is_online BOOLEAN, 
+	languages JSON, 
+	specialties JSON, 
+	brands JSON, 
+	vehicle_types JSON, 
+	services JSON, 
+	certificates JSON, 
+	equipment JSON, 
+	gallery JSON, 
+	videos JSON, 
+	wallet_balance INTEGER, 
+	min_wallet_balance INTEGER, 
+	member_since DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	UNIQUE (user_id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,315 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,315 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_provider_profiles_slug ON provider_profiles (slug)
+2026-10-29 07:43:15,315 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,315 INFO sqlalchemy.engine.Engine CREATE INDEX ix_provider_profiles_id ON provider_profiles (id)
+2026-10-29 07:43:15,315 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,316 INFO sqlalchemy.engine.Engine 
+CREATE TABLE service_requests (
+	id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	scenario VARCHAR(100) NOT NULL, 
+	family VARCHAR(100), 
+	vehicle_type VARCHAR(50) NOT NULL, 
+	description TEXT NOT NULL, 
+	photos JSON, 
+	lat FLOAT NOT NULL, 
+	lng FLOAT NOT NULL, 
+	address VARCHAR(500), 
+	proposed_price INTEGER NOT NULL, 
+	status VARCHAR(50), 
+	expires_at DATETIME, 
+	category_id INTEGER, 
+	urgency VARCHAR(20), 
+	source VARCHAR(20), 
+	ai_session_id INTEGER, 
+	eligible_provider_ids TEXT, 
+	preferred_time VARCHAR(100), 
+	service_mode VARCHAR(30), 
+	vehicle_summary VARCHAR(200), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,316 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,317 INFO sqlalchemy.engine.Engine CREATE INDEX ix_service_requests_id ON service_requests (id)
+2026-10-29 07:43:15,317 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,317 INFO sqlalchemy.engine.Engine 
+CREATE TABLE subscriptions (
+	id INTEGER NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	plan_id INTEGER NOT NULL, 
+	status VARCHAR(50), 
+	started_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	expires_at DATETIME, 
+	cancelled_at DATETIME, 
+	payment_method VARCHAR(50), 
+	last_payment_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id), 
+	FOREIGN KEY(plan_id) REFERENCES plans (id)
+)
+
+
+2026-10-29 07:43:15,317 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,318 INFO sqlalchemy.engine.Engine CREATE INDEX ix_subscriptions_id ON subscriptions (id)
+2026-10-29 07:43:15,318 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,318 INFO sqlalchemy.engine.Engine 
+CREATE TABLE audit_logs (
+	id INTEGER NOT NULL, 
+	user_id INTEGER, 
+	action VARCHAR(100) NOT NULL, 
+	resource_type VARCHAR(100) NOT NULL, 
+	resource_id INTEGER, 
+	details JSON, 
+	ip_address VARCHAR(50), 
+	user_agent VARCHAR(500), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,319 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,319 INFO sqlalchemy.engine.Engine CREATE INDEX ix_audit_logs_id ON audit_logs (id)
+2026-10-29 07:43:15,319 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,320 INFO sqlalchemy.engine.Engine 
+CREATE TABLE ai_sessions (
+	id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	vehicle_summary VARCHAR(255), 
+	scenario_slug VARCHAR(100), 
+	status VARCHAR(30), 
+	result_json JSON, 
+	consent_status VARCHAR(20), 
+	shared_summary_json JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	completed_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,320 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,320 INFO sqlalchemy.engine.Engine CREATE INDEX ix_ai_sessions_id ON ai_sessions (id)
+2026-10-29 07:43:15,320 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,321 INFO sqlalchemy.engine.Engine CREATE INDEX ix_ai_sessions_customer_id ON ai_sessions (customer_id)
+2026-10-29 07:43:15,321 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,322 INFO sqlalchemy.engine.Engine 
+CREATE TABLE products (
+	id INTEGER NOT NULL, 
+	seller_id INTEGER NOT NULL, 
+	category_id INTEGER NOT NULL, 
+	name VARCHAR(255) NOT NULL, 
+	slug VARCHAR(255) NOT NULL, 
+	sku VARCHAR(100) NOT NULL, 
+	description TEXT, 
+	short_description VARCHAR(500), 
+	price INTEGER NOT NULL, 
+	cost_price INTEGER, 
+	discount_percent INTEGER, 
+	currency VARCHAR(3), 
+	stock_quantity INTEGER, 
+	low_stock_threshold INTEGER, 
+	stock_location VARCHAR(100), 
+	track_inventory BOOLEAN, 
+	status VARCHAR(8), 
+	condition VARCHAR(11), 
+	is_featured BOOLEAN, 
+	compatible_makes JSON, 
+	compatible_models JSON, 
+	compatible_years JSON, 
+	compatible_engines JSON, 
+	weight FLOAT, 
+	length FLOAT, 
+	width FLOAT, 
+	height FLOAT, 
+	shipping_options JSON, 
+	main_image VARCHAR(500), 
+	additional_images JSON, 
+	views_count INTEGER, 
+	sales_count INTEGER, 
+	rating_avg FLOAT, 
+	review_count INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	published_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(seller_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(category_id) REFERENCES product_categories (id)
+)
+
+
+2026-10-29 07:43:15,322 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,322 INFO sqlalchemy.engine.Engine CREATE INDEX ix_products_id ON products (id)
+2026-10-29 07:43:15,322 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,322 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_products_sku ON products (sku)
+2026-10-29 07:43:15,323 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,323 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_products_slug ON products (slug)
+2026-10-29 07:43:15,323 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,324 INFO sqlalchemy.engine.Engine 
+CREATE TABLE orders (
+	id INTEGER NOT NULL, 
+	order_number VARCHAR(50) NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	seller_id INTEGER NOT NULL, 
+	status VARCHAR(10), 
+	payment_status VARCHAR(9), 
+	subtotal INTEGER NOT NULL, 
+	shipping_fee INTEGER, 
+	tax_amount INTEGER, 
+	discount_amount INTEGER, 
+	total INTEGER NOT NULL, 
+	shipping_address JSON NOT NULL, 
+	shipping_method VARCHAR(100), 
+	tracking_number VARCHAR(100), 
+	payment_method VARCHAR(50), 
+	payment_reference VARCHAR(100), 
+	paid_at DATETIME, 
+	customer_notes TEXT, 
+	seller_notes TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	confirmed_at DATETIME, 
+	shipped_at DATETIME, 
+	delivered_at DATETIME, 
+	cancelled_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(seller_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,324 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,324 INFO sqlalchemy.engine.Engine CREATE INDEX ix_orders_id ON orders (id)
+2026-10-29 07:43:15,324 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,325 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_orders_order_number ON orders (order_number)
+2026-10-29 07:43:15,325 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine 
+CREATE TABLE tuning_services (
+	id INTEGER NOT NULL, 
+	tuner_id INTEGER NOT NULL, 
+	name VARCHAR(255) NOT NULL, 
+	slug VARCHAR(255) NOT NULL, 
+	description TEXT, 
+	category VARCHAR(12) NOT NULL, 
+	indicative_price INTEGER, 
+	price_range_min INTEGER, 
+	price_range_max INTEGER, 
+	currency VARCHAR(3), 
+	estimated_duration INTEGER, 
+	requires_appointment BOOLEAN, 
+	supported_vehicles JSON, 
+	supported_makes JSON, 
+	is_available BOOLEAN, 
+	availability_schedule JSON, 
+	service_conditions TEXT, 
+	times_booked INTEGER, 
+	rating_avg FLOAT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(tuner_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_tuning_services_slug ON tuning_services (slug)
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine CREATE INDEX ix_tuning_services_id ON tuning_services (id)
+2026-10-29 07:43:15,326 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,327 INFO sqlalchemy.engine.Engine 
+CREATE TABLE payouts (
+	id INTEGER NOT NULL, 
+	payout_id VARCHAR(100) NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	amount INTEGER NOT NULL, 
+	currency VARCHAR(3), 
+	fee_amount INTEGER, 
+	net_amount INTEGER NOT NULL, 
+	payout_method VARCHAR(13) NOT NULL, 
+	payout_details JSON NOT NULL, 
+	status VARCHAR(10), 
+	external_reference VARCHAR(200), 
+	requested_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	approved_at DATETIME, 
+	processed_at DATETIME, 
+	completed_at DATETIME, 
+	failed_at DATETIME, 
+	approval_notes TEXT, 
+	failure_reason TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,327 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,328 INFO sqlalchemy.engine.Engine CREATE INDEX ix_payouts_id ON payouts (id)
+2026-10-29 07:43:15,328 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,328 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_payouts_payout_id ON payouts (payout_id)
+2026-10-29 07:43:15,328 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,329 INFO sqlalchemy.engine.Engine 
+CREATE TABLE wallet_transactions (
+	id INTEGER NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	type VARCHAR(50) NOT NULL, 
+	amount INTEGER NOT NULL, 
+	balance_before INTEGER NOT NULL, 
+	balance_after INTEGER NOT NULL, 
+	reference_type VARCHAR(50), 
+	reference_id INTEGER, 
+	description TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,329 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,330 INFO sqlalchemy.engine.Engine CREATE INDEX ix_wallet_transactions_id ON wallet_transactions (id)
+2026-10-29 07:43:15,330 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,330 INFO sqlalchemy.engine.Engine 
+CREATE TABLE financial_reports (
+	id INTEGER NOT NULL, 
+	report_type VARCHAR(50) NOT NULL, 
+	period_start DATETIME NOT NULL, 
+	period_end DATETIME NOT NULL, 
+	provider_id INTEGER, 
+	total_revenue INTEGER, 
+	total_commissions INTEGER, 
+	total_payouts INTEGER, 
+	total_refunds INTEGER, 
+	net_revenue INTEGER, 
+	revenue_breakdown JSON, 
+	commission_breakdown JSON, 
+	total_transactions INTEGER, 
+	total_orders INTEGER, 
+	total_projects INTEGER, 
+	generated_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	generated_by INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(generated_by) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,330 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,331 INFO sqlalchemy.engine.Engine CREATE INDEX ix_financial_reports_id ON financial_reports (id)
+2026-10-29 07:43:15,331 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,332 INFO sqlalchemy.engine.Engine 
+CREATE TABLE payout_methods (
+	id INTEGER NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	payment_method VARCHAR(13) NOT NULL, 
+	is_default BOOLEAN, 
+	is_verified BOOLEAN, 
+	account_details JSON NOT NULL, 
+	min_payout INTEGER, 
+	max_payout INTEGER, 
+	is_active BOOLEAN, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	verified_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,332 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,332 INFO sqlalchemy.engine.Engine CREATE INDEX ix_payout_methods_id ON payout_methods (id)
+2026-10-29 07:43:15,332 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,333 INFO sqlalchemy.engine.Engine 
+CREATE TABLE partnership_invitations (
+	id INTEGER NOT NULL, 
+	inviter_user_id INTEGER NOT NULL, 
+	invitee_user_id INTEGER NOT NULL, 
+	inviter_provider_id INTEGER NOT NULL, 
+	invitee_provider_id INTEGER NOT NULL, 
+	status VARCHAR(20), 
+	message TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	responded_at DATETIME, 
+	extra JSON, 
+	PRIMARY KEY (id), 
+	CONSTRAINT uq_partnership_pair UNIQUE (inviter_provider_id, invitee_provider_id), 
+	FOREIGN KEY(inviter_user_id) REFERENCES users (id), 
+	FOREIGN KEY(invitee_user_id) REFERENCES users (id), 
+	FOREIGN KEY(inviter_provider_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(invitee_provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,333 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,333 INFO sqlalchemy.engine.Engine CREATE INDEX ix_partnership_invitations_inviter_user_id ON partnership_invitations (inviter_user_id)
+2026-10-29 07:43:15,333 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,334 INFO sqlalchemy.engine.Engine CREATE INDEX ix_partnership_invitations_invitee_user_id ON partnership_invitations (invitee_user_id)
+2026-10-29 07:43:15,334 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,334 INFO sqlalchemy.engine.Engine CREATE INDEX ix_partnership_invitations_status ON partnership_invitations (status)
+2026-10-29 07:43:15,334 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,335 INFO sqlalchemy.engine.Engine CREATE INDEX ix_partnership_invitations_id ON partnership_invitations (id)
+2026-10-29 07:43:15,335 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,335 INFO sqlalchemy.engine.Engine 
+CREATE TABLE offers (
+	id INTEGER NOT NULL, 
+	request_id INTEGER NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	price INTEGER NOT NULL, 
+	estimated_arrival INTEGER, 
+	message TEXT, 
+	includes_parts BOOLEAN, 
+	status VARCHAR(50), 
+	availability_at DATETIME, 
+	estimated_duration_min INTEGER, 
+	client_request_id VARCHAR(64), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(request_id) REFERENCES service_requests (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,336 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,336 INFO sqlalchemy.engine.Engine CREATE INDEX ix_offers_id ON offers (id)
+2026-10-29 07:43:15,336 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,337 INFO sqlalchemy.engine.Engine 
+CREATE TABLE jobs (
+	id INTEGER NOT NULL, 
+	request_id INTEGER, 
+	customer_id INTEGER NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	status VARCHAR(11), 
+	agreed_price INTEGER NOT NULL, 
+	diagnosis JSON, 
+	quote_update JSON, 
+	quote_update_approved BOOLEAN, 
+	accepted_at DATETIME, 
+	started_at DATETIME, 
+	completed_at DATETIME, 
+	auto_close_deadline DATETIME, 
+	auto_closed BOOLEAN, 
+	before_photos JSON, 
+	after_photos JSON, 
+	final_amount INTEGER, 
+	dispute_open BOOLEAN, 
+	dispute_reason TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(request_id) REFERENCES service_requests (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,337 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,337 INFO sqlalchemy.engine.Engine CREATE INDEX ix_jobs_id ON jobs (id)
+2026-10-29 07:43:15,337 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,338 INFO sqlalchemy.engine.Engine 
+CREATE TABLE ai_messages (
+	id INTEGER NOT NULL, 
+	session_id INTEGER NOT NULL, 
+	role VARCHAR(20) NOT NULL, 
+	content TEXT NOT NULL, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(session_id) REFERENCES ai_sessions (id)
+)
+
+
+2026-10-29 07:43:15,338 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,338 INFO sqlalchemy.engine.Engine CREATE INDEX ix_ai_messages_id ON ai_messages (id)
+2026-10-29 07:43:15,338 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,339 INFO sqlalchemy.engine.Engine CREATE INDEX ix_ai_messages_session_id ON ai_messages (session_id)
+2026-10-29 07:43:15,339 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,339 INFO sqlalchemy.engine.Engine 
+CREATE TABLE ifix_consent_audit (
+	id INTEGER NOT NULL, 
+	session_id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	decision VARCHAR(20) NOT NULL, 
+	shared_fields JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(session_id) REFERENCES ai_sessions (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,339 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,340 INFO sqlalchemy.engine.Engine CREATE INDEX ix_ifix_consent_audit_id ON ifix_consent_audit (id)
+2026-10-29 07:43:15,340 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,341 INFO sqlalchemy.engine.Engine 
+CREATE TABLE product_images (
+	id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	image_url VARCHAR(500) NOT NULL, 
+	alt_text VARCHAR(255), 
+	display_order INTEGER, 
+	is_main BOOLEAN, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id)
+)
+
+
+2026-10-29 07:43:15,341 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,341 INFO sqlalchemy.engine.Engine CREATE INDEX ix_product_images_id ON product_images (id)
+2026-10-29 07:43:15,341 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,342 INFO sqlalchemy.engine.Engine 
+CREATE TABLE order_items (
+	id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	quantity INTEGER NOT NULL, 
+	unit_price INTEGER NOT NULL, 
+	total_price INTEGER NOT NULL, 
+	product_name VARCHAR(255) NOT NULL, 
+	product_sku VARCHAR(100) NOT NULL, 
+	product_image VARCHAR(500), 
+	status VARCHAR(50), 
+	shipped_at DATETIME, 
+	delivered_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id)
+)
+
+
+2026-10-29 07:43:15,342 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,342 INFO sqlalchemy.engine.Engine CREATE INDEX ix_order_items_id ON order_items (id)
+2026-10-29 07:43:15,342 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,343 INFO sqlalchemy.engine.Engine 
+CREATE TABLE inventory_movements (
+	id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	type VARCHAR(50) NOT NULL, 
+	quantity INTEGER NOT NULL, 
+	previous_stock INTEGER NOT NULL, 
+	new_stock INTEGER NOT NULL, 
+	reference_type VARCHAR(50), 
+	reference_id INTEGER, 
+	reason TEXT, 
+	performed_by INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id), 
+	FOREIGN KEY(performed_by) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,343 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,343 INFO sqlalchemy.engine.Engine CREATE INDEX ix_inventory_movements_id ON inventory_movements (id)
+2026-10-29 07:43:15,344 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,344 INFO sqlalchemy.engine.Engine 
+CREATE TABLE product_reviews (
+	id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	order_id INTEGER, 
+	rating INTEGER NOT NULL, 
+	title VARCHAR(255), 
+	comment TEXT, 
+	images JSON, 
+	seller_response TEXT, 
+	responded_at DATETIME, 
+	is_verified BOOLEAN, 
+	is_approved BOOLEAN, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id)
+)
+
+
+2026-10-29 07:43:15,344 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,345 INFO sqlalchemy.engine.Engine CREATE INDEX ix_product_reviews_id ON product_reviews (id)
+2026-10-29 07:43:15,345 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,345 INFO sqlalchemy.engine.Engine 
+CREATE TABLE payments (
+	id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	amount INTEGER NOT NULL, 
+	currency VARCHAR(3), 
+	method VARCHAR(50) NOT NULL, 
+	status VARCHAR(9), 
+	transaction_id VARCHAR(100), 
+	provider_reference VARCHAR(100), 
+	metadata JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	completed_at DATETIME, 
+	failed_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id)
+)
+
+
+2026-10-29 07:43:15,345 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,346 INFO sqlalchemy.engine.Engine CREATE INDEX ix_payments_id ON payments (id)
+2026-10-29 07:43:15,346 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,347 INFO sqlalchemy.engine.Engine 
+CREATE TABLE tuning_requests (
+	id INTEGER NOT NULL, 
+	request_number VARCHAR(50) NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	tuner_id INTEGER, 
+	service_id INTEGER, 
+	vehicle_make VARCHAR(100) NOT NULL, 
+	vehicle_model VARCHAR(100) NOT NULL, 
+	vehicle_year INTEGER NOT NULL, 
+	vehicle_engine VARCHAR(100), 
+	vehicle_mileage INTEGER, 
+	vehicle_vin VARCHAR(17), 
+	requested_modifications TEXT NOT NULL, 
+	desired_outcomes TEXT, 
+	customer_notes TEXT, 
+	reference_photos JSON, 
+	budget_min INTEGER, 
+	budget_max INTEGER, 
+	preferred_appointment DATETIME, 
+	urgency_level VARCHAR(50), 
+	status VARCHAR(50), 
+	assigned_at DATETIME, 
+	required_parts JSON, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(tuner_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(service_id) REFERENCES tuning_services (id)
+)
+
+
+2026-10-29 07:43:15,347 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,347 INFO sqlalchemy.engine.Engine CREATE INDEX ix_tuning_requests_id ON tuning_requests (id)
+2026-10-29 07:43:15,347 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,348 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_tuning_requests_request_number ON tuning_requests (request_number)
+2026-10-29 07:43:15,348 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,349 INFO sqlalchemy.engine.Engine 
+CREATE TABLE reviews (
+	id INTEGER NOT NULL, 
+	job_id INTEGER NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	provider_id INTEGER NOT NULL, 
+	rating INTEGER NOT NULL, 
+	comment TEXT, 
+	photos JSON, 
+	provider_reply TEXT, 
+	replied_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(job_id) REFERENCES jobs (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,349 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2026-10-29 07:43:15,350 INFO sqlalchemy.engine.Engine CREATE INDEX ix_reviews_id ON reviews (id)
+2026-10-29 07:43:15,350 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,350 INFO sqlalchemy.engine.Engine 
+CREATE TABLE refunds (
+	id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	payment_id INTEGER, 
+	amount INTEGER NOT NULL, 
+	reason TEXT, 
+	status VARCHAR(50), 
+	processed_by INTEGER, 
+	processed_at DATETIME, 
+	refund_reference VARCHAR(100), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id), 
+	FOREIGN KEY(payment_id) REFERENCES payments (id), 
+	FOREIGN KEY(processed_by) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,350 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,351 INFO sqlalchemy.engine.Engine CREATE INDEX ix_refunds_id ON refunds (id)
+2026-10-29 07:43:15,351 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,352 INFO sqlalchemy.engine.Engine 
+CREATE TABLE tuning_projects (
+	id INTEGER NOT NULL, 
+	project_number VARCHAR(50) NOT NULL, 
+	request_id INTEGER NOT NULL, 
+	vehicle_make VARCHAR(100) NOT NULL, 
+	vehicle_model VARCHAR(100) NOT NULL, 
+	vehicle_year INTEGER NOT NULL, 
+	vehicle_engine VARCHAR(100), 
+	vehicle_mileage INTEGER, 
+	vehicle_specs JSON, 
+	title VARCHAR(255) NOT NULL, 
+	description TEXT, 
+	category VARCHAR(12) NOT NULL, 
+	status VARCHAR(21), 
+	status_history JSON, 
+	estimated_budget INTEGER, 
+	final_budget INTEGER, 
+	approved_amount INTEGER, 
+	start_date DATETIME, 
+	expected_completion DATETIME, 
+	actual_completion DATETIME, 
+	work_description TEXT, 
+	parts_used JSON, 
+	labor_hours FLOAT, 
+	before_photos JSON, 
+	after_photos JSON, 
+	videos JSON, 
+	quality_check_passed BOOLEAN, 
+	quality_check_notes TEXT, 
+	handover_date DATETIME, 
+	handover_notes TEXT, 
+	customer_satisfaction INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(request_id) REFERENCES tuning_requests (id)
+)
+
+
+2026-10-29 07:43:15,352 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,352 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_tuning_projects_project_number ON tuning_projects (project_number)
+2026-10-29 07:43:15,352 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,353 INFO sqlalchemy.engine.Engine CREATE INDEX ix_tuning_projects_id ON tuning_projects (id)
+2026-10-29 07:43:15,353 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,354 INFO sqlalchemy.engine.Engine 
+CREATE TABLE project_estimates (
+	id INTEGER NOT NULL, 
+	estimate_number VARCHAR(50) NOT NULL, 
+	project_id INTEGER NOT NULL, 
+	status VARCHAR(18), 
+	version INTEGER, 
+	line_items JSON NOT NULL, 
+	parts_subtotal INTEGER NOT NULL, 
+	labor_subtotal INTEGER NOT NULL, 
+	other_fees INTEGER, 
+	tax_amount INTEGER, 
+	total_estimate INTEGER NOT NULL, 
+	estimated_duration INTEGER, 
+	notes TEXT, 
+	terms_conditions TEXT, 
+	approved_by INTEGER, 
+	approved_at DATETIME, 
+	rejection_reason TEXT, 
+	revision_notes TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	submitted_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id), 
+	FOREIGN KEY(approved_by) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,354 INFO sqlalchemy.engine.Engine [no key 0.00010s] ()
+2026-10-29 07:43:15,354 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_project_estimates_estimate_number ON project_estimates (estimate_number)
+2026-10-29 07:43:15,354 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,355 INFO sqlalchemy.engine.Engine CREATE INDEX ix_project_estimates_id ON project_estimates (id)
+2026-10-29 07:43:15,355 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,355 INFO sqlalchemy.engine.Engine 
+CREATE TABLE appointments (
+	id INTEGER NOT NULL, 
+	appointment_number VARCHAR(50) NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	tuner_id INTEGER NOT NULL, 
+	request_id INTEGER, 
+	project_id INTEGER, 
+	title VARCHAR(255) NOT NULL, 
+	description TEXT, 
+	service_type VARCHAR(100), 
+	scheduled_date DATETIME NOT NULL, 
+	scheduled_time DATETIME NOT NULL, 
+	duration INTEGER NOT NULL, 
+	end_time DATETIME, 
+	location_type VARCHAR(50), 
+	location_address TEXT, 
+	location_lat FLOAT, 
+	location_lng FLOAT, 
+	status VARCHAR(11), 
+	confirmation_code VARCHAR(10), 
+	customer_notes TEXT, 
+	tuner_notes TEXT, 
+	rescheduled_from INTEGER, 
+	reschedule_reason TEXT, 
+	rescheduled_at DATETIME, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	confirmed_at DATETIME, 
+	completed_at DATETIME, 
+	cancelled_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(tuner_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(request_id) REFERENCES tuning_requests (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id), 
+	FOREIGN KEY(rescheduled_from) REFERENCES appointments (id)
+)
+
+
+2026-10-29 07:43:15,356 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,356 INFO sqlalchemy.engine.Engine CREATE INDEX ix_appointments_id ON appointments (id)
+2026-10-29 07:43:15,356 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,357 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_appointments_appointment_number ON appointments (appointment_number)
+2026-10-29 07:43:15,357 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,357 INFO sqlalchemy.engine.Engine 
+CREATE TABLE work_logs (
+	id INTEGER NOT NULL, 
+	project_id INTEGER NOT NULL, 
+	logged_by INTEGER NOT NULL, 
+	work_date DATETIME NOT NULL, 
+	hours_worked FLOAT NOT NULL, 
+	work_description TEXT NOT NULL, 
+	parts_used JSON, 
+	progress_percent INTEGER, 
+	next_steps TEXT, 
+	photos JSON, 
+	notes TEXT, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id), 
+	FOREIGN KEY(logged_by) REFERENCES users (id)
+)
+
+
+2026-10-29 07:43:15,357 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,358 INFO sqlalchemy.engine.Engine CREATE INDEX ix_work_logs_id ON work_logs (id)
+2026-10-29 07:43:15,358 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,359 INFO sqlalchemy.engine.Engine 
+CREATE TABLE portfolio_entries (
+	id INTEGER NOT NULL, 
+	project_id INTEGER NOT NULL, 
+	tuner_id INTEGER NOT NULL, 
+	title VARCHAR(255) NOT NULL, 
+	slug VARCHAR(255) NOT NULL, 
+	description TEXT, 
+	vehicle_make VARCHAR(100) NOT NULL, 
+	vehicle_model VARCHAR(100) NOT NULL, 
+	vehicle_year INTEGER NOT NULL, 
+	modification_categories JSON, 
+	modifications_description TEXT, 
+	performance_gains JSON, 
+	dyno_results JSON, 
+	before_photos JSON, 
+	after_photos JSON, 
+	videos JSON, 
+	parts_used JSON, 
+	work_description TEXT, 
+	labor_hours FLOAT, 
+	publication_status VARCHAR(50), 
+	published_at DATETIME, 
+	featured BOOLEAN, 
+	customer_consent BOOLEAN, 
+	consent_date DATETIME, 
+	views_count INTEGER, 
+	likes_count INTEGER, 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id), 
+	FOREIGN KEY(tuner_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,359 INFO sqlalchemy.engine.Engine [no key 0.00009s] ()
+2026-10-29 07:43:15,359 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_portfolio_entries_slug ON portfolio_entries (slug)
+2026-10-29 07:43:15,359 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,360 INFO sqlalchemy.engine.Engine CREATE INDEX ix_portfolio_entries_id ON portfolio_entries (id)
+2026-10-29 07:43:15,360 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,361 INFO sqlalchemy.engine.Engine 
+CREATE TABLE invoices (
+	id INTEGER NOT NULL, 
+	invoice_number VARCHAR(50) NOT NULL, 
+	customer_id INTEGER NOT NULL, 
+	tuner_id INTEGER NOT NULL, 
+	project_id INTEGER, 
+	issue_date DATETIME NOT NULL, 
+	due_date DATETIME, 
+	line_items JSON NOT NULL, 
+	subtotal INTEGER NOT NULL, 
+	tax_rate FLOAT, 
+	tax_amount INTEGER, 
+	discount_amount INTEGER, 
+	total INTEGER NOT NULL, 
+	status VARCHAR(50), 
+	payment_method VARCHAR(50), 
+	payment_reference VARCHAR(100), 
+	paid_at DATETIME, 
+	notes TEXT, 
+	terms TEXT, 
+	pdf_url VARCHAR(500), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	updated_at DATETIME, 
+	sent_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(customer_id) REFERENCES users (id), 
+	FOREIGN KEY(tuner_id) REFERENCES provider_profiles (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id)
+)
+
+
+2026-10-29 07:43:15,361 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,361 INFO sqlalchemy.engine.Engine CREATE INDEX ix_invoices_id ON invoices (id)
+2026-10-29 07:43:15,361 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,361 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_invoices_invoice_number ON invoices (invoice_number)
+2026-10-29 07:43:15,362 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,362 INFO sqlalchemy.engine.Engine 
+CREATE TABLE commissions (
+	id INTEGER NOT NULL, 
+	commission_id VARCHAR(100) NOT NULL, 
+	transaction_id INTEGER NOT NULL, 
+	order_id INTEGER, 
+	project_id INTEGER, 
+	provider_id INTEGER NOT NULL, 
+	provider_type VARCHAR(50) NOT NULL, 
+	gross_amount INTEGER NOT NULL, 
+	commission_rate FLOAT NOT NULL, 
+	commission_amount INTEGER NOT NULL, 
+	status VARCHAR(50), 
+	created_at DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	collected_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(transaction_id) REFERENCES transactions (id), 
+	FOREIGN KEY(order_id) REFERENCES orders (id), 
+	FOREIGN KEY(project_id) REFERENCES tuning_projects (id), 
+	FOREIGN KEY(provider_id) REFERENCES provider_profiles (id)
+)
+
+
+2026-10-29 07:43:15,362 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,363 INFO sqlalchemy.engine.Engine CREATE INDEX ix_commissions_id ON commissions (id)
+2026-10-29 07:43:15,363 INFO sqlalchemy.engine.Engine [no key 0.00008s] ()
+2026-10-29 07:43:15,363 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_commissions_commission_id ON commissions (commission_id)
+2026-10-29 07:43:15,363 INFO sqlalchemy.engine.Engine [no key 0.00007s] ()
+2026-10-29 07:43:15,364 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Started server process [386]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:36182 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36184 - "POST /api/v1/auth/register HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:36186 - "POST /api/v1/auth/register HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:36188 - "POST /api/v1/auth/login HTTP/1.1" 422 Unprocessable Entity
+2026-10-29 07:43:42,101 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:42,105 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:42,105 INFO sqlalchemy.engine.Engine [generated in 0.00027s] ('+212600000999', 1, 0)
+2026-10-29 07:43:42,413 INFO sqlalchemy.engine.Engine INSERT INTO users (phone, email, password_hash, full_name, role, status, language, is_demo, first_name, last_name, display_name, avatar_url, country, city, address, notification_prefs, support_contact_email, support_email_verified, twofa_method, phone_verified, updated_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-10-29 07:43:42,413 INFO sqlalchemy.engine.Engine [generated in 0.00048s] ('+212600000999', None, '$2b$12$z7kQmwa.ywbC3fUo.EVfaeH3iZLIJevMYO03lR7YJ7ZyvJWnRP5Zi', 'DB Test User', 'CUSTOMER', 'active', 'fr', 0, None, None, None, None, None, None, None, '{}', None, 0, None, 0, None, None)
+2026-10-29 07:43:42,414 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:43:42,415 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:42,416 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone, users.email, users.password_hash, users.full_name, users.role, users.status, users.language, users.is_demo, users.first_name, users.last_name, users.display_name, users.avatar_url, users.country, users.city, users.address, users.notification_prefs, users.support_contact_email, users.support_email_verified, users.twofa_method, users.phone_verified, users.created_at, users.updated_at, users.last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:43:42,416 INFO sqlalchemy.engine.Engine [generated in 0.00015s] (1,)
+/usr/local/lib/python3.12/site-packages/jwt/api_jwt.py:149: InsecureKeyLengthWarning: The HMAC key is 20 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  return self._jws.encode(
+2026-10-29 07:43:42,418 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36190 - "POST /api/v1/auth/register?phone=%2B212600000999&password=Test1234%21&full_name=DB%20Test%20User&role=customer HTTP/1.1" 201 Created
+2026-10-29 07:43:47,334 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:47,334 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:47,334 INFO sqlalchemy.engine.Engine [cached since 5.23s ago] ('+212600000999', 1, 0)
+2026-10-29 07:43:47,625 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:43:47,625 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ('2026-10-29 07:43:47.623316', 1)
+2026-10-29 07:43:47,626 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:43:47,626 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:47,628 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:43:47,628 INFO sqlalchemy.engine.Engine [generated in 0.00022s] (1,)
+2026-10-29 07:43:47,629 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36192 - "POST /api/v1/auth/login?phone=%2B212600000999&password=Test1234%21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36194 - "POST /api/v1/jobs?title=Frein%20avant%20a%20remplacer&description=Test%20d%27enregistrement%20BD&vehicle=Toyota%20Corolla&budget=800 HTTP/1.1" 405 Method Not Allowed
+2026-10-29 07:43:57,515 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:57,515 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:57,515 INFO sqlalchemy.engine.Engine [cached since 15.41s ago] ('+212600000999', 1, 0)
+2026-10-29 07:43:57,820 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:43:57,820 INFO sqlalchemy.engine.Engine [cached since 10.19s ago] ('2026-10-29 07:43:57.810241', 1)
+2026-10-29 07:43:57,820 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:43:57,821 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:57,821 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:43:57,821 INFO sqlalchemy.engine.Engine [cached since 10.19s ago] (1,)
+2026-10-29 07:43:57,822 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36196 - "POST /api/v1/auth/login?phone=%2B212600000999&password=Test1234%21 HTTP/1.1" 200 OK
+/usr/local/lib/python3.12/site-packages/jwt/api_jwt.py:370: InsecureKeyLengthWarning: The HMAC key is 20 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  decoded = self.decode_complete(
+2026-10-29 07:43:57,838 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:57,839 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:57,839 INFO sqlalchemy.engine.Engine [generated in 0.00017s] (1, 1, 0)
+2026-10-29 07:43:57,843 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.user_id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:57,844 INFO sqlalchemy.engine.Engine [generated in 0.00017s] (1, 1, 0)
+2026-10-29 07:43:57,845 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.slug = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:43:57,845 INFO sqlalchemy.engine.Engine [generated in 0.00018s] ('garage-db-test', 1, 0)
+2026-10-29 07:43:57,848 INFO sqlalchemy.engine.Engine INSERT INTO provider_profiles (user_id, type, slug, name, avatar, cover, bio, verified, badges, verification_status, verification_data, rating, review_count, jobs_completed, response_time, completion_rate, city, address, service_zone, lat, lng, is_online, languages, specialties, brands, vehicle_types, services, certificates, equipment, gallery, videos, wallet_balance, min_wallet_balance, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, member_since, created_at
+2026-10-29 07:43:57,848 INFO sqlalchemy.engine.Engine [generated in 0.00061s] (1, 'MECHANIC', 'garage-db-test', 'Garage DB Test', None, None, None, 0, '[]', 'pending', '{}', 0.0, 0, 0, 0, 0.0, 'Casablanca', None, None, None, None, 0, '[]', '[]', '[]', '[]', '[]', '[]', '[]', '[]', '[]', 0, 5000, None)
+2026-10-29 07:43:57,850 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:43:57,850 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:43:57,851 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id, provider_profiles.user_id, provider_profiles.type, provider_profiles.slug, provider_profiles.name, provider_profiles.avatar, provider_profiles.cover, provider_profiles.bio, provider_profiles.verified, provider_profiles.badges, provider_profiles.verification_status, provider_profiles.verification_data, provider_profiles.rating, provider_profiles.review_count, provider_profiles.jobs_completed, provider_profiles.response_time, provider_profiles.completion_rate, provider_profiles.city, provider_profiles.address, provider_profiles.service_zone, provider_profiles.lat, provider_profiles.lng, provider_profiles.is_online, provider_profiles.languages, provider_profiles.specialties, provider_profiles.brands, provider_profiles.vehicle_types, provider_profiles.services, provider_profiles.certificates, provider_profiles.equipment, provider_profiles.gallery, provider_profiles.videos, provider_profiles.wallet_balance, provider_profiles.min_wallet_balance, provider_profiles.member_since, provider_profiles.created_at, provider_profiles.updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.id = ?
+2026-10-29 07:43:57,851 INFO sqlalchemy.engine.Engine [generated in 0.00015s] (1,)
+2026-10-29 07:43:57,852 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36198 - "POST /api/v1/providers?type=mechanic&slug=garage-db-test&name=Garage%20DB%20Test&city=Casablanca HTTP/1.1" 201 Created
+2026-10-29 07:44:04,885 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:04,886 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:04,886 INFO sqlalchemy.engine.Engine [cached since 22.78s ago] ('+212600000999', 1, 0)
+2026-10-29 07:44:05,169 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:44:05,169 INFO sqlalchemy.engine.Engine [cached since 17.54s ago] ('2026-10-29 07:44:05.168794', 1)
+2026-10-29 07:44:05,170 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:05,170 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:05,171 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:05,171 INFO sqlalchemy.engine.Engine [cached since 17.54s ago] (1,)
+2026-10-29 07:44:05,172 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36200 - "POST /api/v1/auth/login?phone=%2B212600000999&password=Test1234%21 HTTP/1.1" 200 OK
+2026-10-29 07:44:05,187 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:05,188 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:05,188 INFO sqlalchemy.engine.Engine [cached since 7.349s ago] (1, 1, 0)
+2026-10-29 07:44:05,189 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36202 - "GET /api/v1/users/me HTTP/1.1" 200 OK
+2026-10-29 07:44:05,198 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:05,199 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:05,199 INFO sqlalchemy.engine.Engine [generated in 0.00020s] (20, 0)
+2026-10-29 07:44:05,200 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36204 - "GET /api/v1/providers HTTP/1.1" 200 OK
+2026-10-29 07:44:23,239 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:23,240 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:23,240 INFO sqlalchemy.engine.Engine [cached since 41.14s ago] ('+212600000999', 1, 0)
+2026-10-29 07:44:23,517 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:44:23,518 INFO sqlalchemy.engine.Engine [cached since 35.89s ago] ('2026-10-29 07:44:23.517129', 1)
+2026-10-29 07:44:23,518 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:23,519 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:23,519 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:23,519 INFO sqlalchemy.engine.Engine [cached since 35.89s ago] (1,)
+2026-10-29 07:44:23,520 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36206 - "POST /api/v1/auth/login?phone=%2B212600000999&password=Test1234%21 HTTP/1.1" 200 OK
+2026-10-29 07:44:23,537 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:23,537 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:23,537 INFO sqlalchemy.engine.Engine [cached since 25.7s ago] (1, 1, 0)
+2026-10-29 07:44:23,538 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36208 - "GET /api/v1/partnerships/entitlement HTTP/1.1" 200 OK
+2026-10-29 07:44:23,549 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:23,549 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:23,549 INFO sqlalchemy.engine.Engine [cached since 25.71s ago] (1, 1, 0)
+2026-10-29 07:44:23,551 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36210 - "GET /api/v1/partnerships/discover?role=seller HTTP/1.1" 403 Forbidden
+2026-10-29 07:44:23,561 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:23,561 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:23,561 INFO sqlalchemy.engine.Engine [cached since 25.72s ago] (1, 1, 0)
+2026-10-29 07:44:23,563 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36212 - "POST /api/v1/partnerships/invite HTTP/1.1" 403 Forbidden
+2026-10-29 07:44:35,553 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:35,553 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:35,553 INFO sqlalchemy.engine.Engine [cached since 53.45s ago] ('+212600000888', 1, 0)
+2026-10-29 07:44:35,827 INFO sqlalchemy.engine.Engine INSERT INTO users (phone, email, password_hash, full_name, role, status, language, is_demo, first_name, last_name, display_name, avatar_url, country, city, address, notification_prefs, support_contact_email, support_email_verified, twofa_method, phone_verified, updated_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-10-29 07:44:35,827 INFO sqlalchemy.engine.Engine [cached since 53.41s ago] ('+212600000888', None, '$2b$12$THkS8vY81L/3xbT08FbOReV0oIztoNwUflmDyF4J9uB0ZkKGmF1Z.', 'Seller DB Test', 'SELLER', 'active', 'fr', 0, None, None, None, None, None, None, None, '{}', None, 0, None, 0, None, None)
+2026-10-29 07:44:35,828 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:35,829 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:35,829 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone, users.email, users.password_hash, users.full_name, users.role, users.status, users.language, users.is_demo, users.first_name, users.last_name, users.display_name, users.avatar_url, users.country, users.city, users.address, users.notification_prefs, users.support_contact_email, users.support_email_verified, users.twofa_method, users.phone_verified, users.created_at, users.updated_at, users.last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:35,830 INFO sqlalchemy.engine.Engine [cached since 53.41s ago] (2,)
+2026-10-29 07:44:35,831 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36214 - "POST /api/v1/auth/register?phone=%2B212600000888&password=Test1234%21&full_name=Seller%20DB%20Test&role=seller HTTP/1.1" 201 Created
+2026-10-29 07:44:35,843 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:35,844 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:35,844 INFO sqlalchemy.engine.Engine [cached since 53.74s ago] ('+212600000888', 1, 0)
+2026-10-29 07:44:36,141 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:44:36,141 INFO sqlalchemy.engine.Engine [cached since 48.52s ago] ('2026-10-29 07:44:36.141006', 2)
+2026-10-29 07:44:36,142 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:36,143 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,143 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:36,143 INFO sqlalchemy.engine.Engine [cached since 48.52s ago] (2,)
+2026-10-29 07:44:36,144 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36216 - "POST /api/v1/auth/login?phone=%2B212600000888&password=Test1234%21 HTTP/1.1" 200 OK
+2026-10-29 07:44:36,160 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,161 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,161 INFO sqlalchemy.engine.Engine [cached since 38.32s ago] (2, 1, 0)
+2026-10-29 07:44:36,162 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.user_id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,162 INFO sqlalchemy.engine.Engine [cached since 38.32s ago] (2, 1, 0)
+2026-10-29 07:44:36,162 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.slug = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,163 INFO sqlalchemy.engine.Engine [cached since 38.32s ago] ('boutique-db-test', 1, 0)
+2026-10-29 07:44:36,164 INFO sqlalchemy.engine.Engine INSERT INTO provider_profiles (user_id, type, slug, name, avatar, cover, bio, verified, badges, verification_status, verification_data, rating, review_count, jobs_completed, response_time, completion_rate, city, address, service_zone, lat, lng, is_online, languages, specialties, brands, vehicle_types, services, certificates, equipment, gallery, videos, wallet_balance, min_wallet_balance, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, member_since, created_at
+2026-10-29 07:44:36,164 INFO sqlalchemy.engine.Engine [cached since 38.32s ago] (2, 'SELLER', 'boutique-db-test', 'Boutique DB Test', None, None, None, 0, '[]', 'pending', '{}', 0.0, 0, 0, 0, 0.0, 'Casablanca', None, None, None, None, 0, '[]', '[]', '[]', '[]', '[]', '[]', '[]', '[]', '[]', 0, 5000, None)
+2026-10-29 07:44:36,164 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:36,165 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,165 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id, provider_profiles.user_id, provider_profiles.type, provider_profiles.slug, provider_profiles.name, provider_profiles.avatar, provider_profiles.cover, provider_profiles.bio, provider_profiles.verified, provider_profiles.badges, provider_profiles.verification_status, provider_profiles.verification_data, provider_profiles.rating, provider_profiles.review_count, provider_profiles.jobs_completed, provider_profiles.response_time, provider_profiles.completion_rate, provider_profiles.city, provider_profiles.address, provider_profiles.service_zone, provider_profiles.lat, provider_profiles.lng, provider_profiles.is_online, provider_profiles.languages, provider_profiles.specialties, provider_profiles.brands, provider_profiles.vehicle_types, provider_profiles.services, provider_profiles.certificates, provider_profiles.equipment, provider_profiles.gallery, provider_profiles.videos, provider_profiles.wallet_balance, provider_profiles.min_wallet_balance, provider_profiles.member_since, provider_profiles.created_at, provider_profiles.updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.id = ?
+2026-10-29 07:44:36,165 INFO sqlalchemy.engine.Engine [cached since 38.31s ago] (2,)
+2026-10-29 07:44:36,166 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36218 - "POST /api/v1/providers?type=seller&slug=boutique-db-test&name=Boutique%20DB%20Test&city=Casablanca HTTP/1.1" 201 Created
+2026-10-29 07:44:36,178 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,178 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,178 INFO sqlalchemy.engine.Engine [cached since 38.34s ago] (2, 1, 0)
+2026-10-29 07:44:36,180 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.user_id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,180 INFO sqlalchemy.engine.Engine [cached since 38.34s ago] (2, 1, 0)
+2026-10-29 07:44:36,182 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles JOIN users ON users.id = provider_profiles.user_id 
+WHERE provider_profiles.user_id != ? AND users.status = ?
+2026-10-29 07:44:36,182 INFO sqlalchemy.engine.Engine [generated in 0.00018s] (2, 'active')
+2026-10-29 07:44:36,183 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36220 - "GET /api/v1/partnerships/discover HTTP/1.1" 200 OK
+2026-10-29 07:44:36,197 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,198 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,198 INFO sqlalchemy.engine.Engine [cached since 38.36s ago] (2, 1, 0)
+2026-10-29 07:44:36,199 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.user_id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,199 INFO sqlalchemy.engine.Engine [cached since 38.36s ago] (2, 1, 0)
+2026-10-29 07:44:36,201 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,201 INFO sqlalchemy.engine.Engine [generated in 0.00018s] (1, 1, 0)
+2026-10-29 07:44:36,202 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,202 INFO sqlalchemy.engine.Engine [cached since 38.36s ago] (1, 1, 0)
+2026-10-29 07:44:36,204 INFO sqlalchemy.engine.Engine SELECT partnership_invitations.id AS partnership_invitations_id, partnership_invitations.inviter_user_id AS partnership_invitations_inviter_user_id, partnership_invitations.invitee_user_id AS partnership_invitations_invitee_user_id, partnership_invitations.inviter_provider_id AS partnership_invitations_inviter_provider_id, partnership_invitations.invitee_provider_id AS partnership_invitations_invitee_provider_id, partnership_invitations.status AS partnership_invitations_status, partnership_invitations.message AS partnership_invitations_message, partnership_invitations.created_at AS partnership_invitations_created_at, partnership_invitations.updated_at AS partnership_invitations_updated_at, partnership_invitations.responded_at AS partnership_invitations_responded_at, partnership_invitations.extra AS partnership_invitations_extra 
+FROM partnership_invitations 
+WHERE (partnership_invitations.inviter_provider_id = ? AND partnership_invitations.invitee_provider_id = ? OR partnership_invitations.inviter_provider_id = ? AND partnership_invitations.invitee_provider_id = ?) AND partnership_invitations.status IN (?, ?)
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:36,205 INFO sqlalchemy.engine.Engine [generated in 0.00021s] (2, 1, 1, 2, 'pending', 'accepted', 1, 0)
+2026-10-29 07:44:36,206 INFO sqlalchemy.engine.Engine INSERT INTO partnership_invitations (inviter_user_id, invitee_user_id, inviter_provider_id, invitee_provider_id, status, message, updated_at, responded_at, extra) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-10-29 07:44:36,206 INFO sqlalchemy.engine.Engine [generated in 0.00021s] (2, 1, 2, 1, 'pending', 'Invitation test BD', None, None, '{}')
+2026-10-29 07:44:36,208 INFO sqlalchemy.engine.Engine INSERT INTO notifications (user_id, type, title, body, link, data, read) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-10-29 07:44:36,209 INFO sqlalchemy.engine.Engine [generated in 0.00027s] (1, 'partnership_invite', 'Invitation de partenariat', 'Boutique DB Test souhaite devenir votre partenaire. Message : Invitation test BD', '/partnerships/incoming', '{"invitation_id": 1}', 0)
+2026-10-29 07:44:36,209 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:36,210 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:36,211 INFO sqlalchemy.engine.Engine SELECT partnership_invitations.id AS partnership_invitations_id, partnership_invitations.inviter_user_id AS partnership_invitations_inviter_user_id, partnership_invitations.invitee_user_id AS partnership_invitations_invitee_user_id, partnership_invitations.inviter_provider_id AS partnership_invitations_inviter_provider_id, partnership_invitations.invitee_provider_id AS partnership_invitations_invitee_provider_id, partnership_invitations.status AS partnership_invitations_status, partnership_invitations.message AS partnership_invitations_message, partnership_invitations.created_at AS partnership_invitations_created_at, partnership_invitations.updated_at AS partnership_invitations_updated_at, partnership_invitations.responded_at AS partnership_invitations_responded_at, partnership_invitations.extra AS partnership_invitations_extra 
+FROM partnership_invitations 
+WHERE partnership_invitations.id = ?
+2026-10-29 07:44:36,211 INFO sqlalchemy.engine.Engine [generated in 0.00016s] (1,)
+2026-10-29 07:44:36,212 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36222 - "POST /api/v1/partnerships/invite HTTP/1.1" 200 OK
+2026-10-29 07:44:48,263 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,264 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:48,264 INFO sqlalchemy.engine.Engine [cached since 66.16s ago] ('+212600000777', 1, 0)
+2026-10-29 07:44:48,537 INFO sqlalchemy.engine.Engine INSERT INTO users (phone, email, password_hash, full_name, role, status, language, is_demo, first_name, last_name, display_name, avatar_url, country, city, address, notification_prefs, support_contact_email, support_email_verified, twofa_method, phone_verified, updated_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at
+2026-10-29 07:44:48,537 INFO sqlalchemy.engine.Engine [cached since 66.12s ago] ('+212600000777', None, '$2b$12$Dyy5jSwPsTGPyL./8yWtweSk7xJLQDDYcia2XwI.cMyusAfUaiC0e', 'Admin DB Test', 'ADMIN', 'active', 'fr', 0, None, None, None, None, None, None, None, '{}', None, 0, None, 0, None, None)
+2026-10-29 07:44:48,538 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:48,538 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,538 INFO sqlalchemy.engine.Engine SELECT users.id, users.phone, users.email, users.password_hash, users.full_name, users.role, users.status, users.language, users.is_demo, users.first_name, users.last_name, users.display_name, users.avatar_url, users.country, users.city, users.address, users.notification_prefs, users.support_contact_email, users.support_email_verified, users.twofa_method, users.phone_verified, users.created_at, users.updated_at, users.last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:48,538 INFO sqlalchemy.engine.Engine [cached since 66.12s ago] (3,)
+2026-10-29 07:44:48,540 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36224 - "POST /api/v1/auth/register?phone=%2B212600000777&password=Admin1234%21&full_name=Admin%20DB%20Test&role=admin HTTP/1.1" 201 Created
+2026-10-29 07:44:48,555 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,555 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.phone = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:48,555 INFO sqlalchemy.engine.Engine [cached since 66.45s ago] ('+212600000777', 1, 0)
+2026-10-29 07:44:48,857 INFO sqlalchemy.engine.Engine UPDATE users SET updated_at=CURRENT_TIMESTAMP, last_login=? WHERE users.id = ?
+2026-10-29 07:44:48,857 INFO sqlalchemy.engine.Engine [cached since 61.23s ago] ('2026-10-29 07:44:48.856473', 3)
+2026-10-29 07:44:48,858 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-29 07:44:48,858 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,858 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+2026-10-29 07:44:48,858 INFO sqlalchemy.engine.Engine [cached since 61.23s ago] (3,)
+2026-10-29 07:44:48,860 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36226 - "POST /api/v1/auth/login?phone=%2B212600000777&password=Admin1234%21 HTTP/1.1" 200 OK
+2026-10-29 07:44:48,876 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,876 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:48,876 INFO sqlalchemy.engine.Engine [cached since 51.04s ago] (3, 1, 0)
+2026-10-29 07:44:48,882 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users JOIN provider_profiles ON provider_profiles.user_id = users.id 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,882 INFO sqlalchemy.engine.Engine [generated in 0.00017s] ('MECHANIC',)
+2026-10-29 07:44:48,891 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users JOIN provider_profiles ON provider_profiles.user_id = users.id 
+WHERE users.role = ? AND provider_profiles.verified = 1) AS anon_1
+2026-10-29 07:44:48,891 INFO sqlalchemy.engine.Engine [generated in 0.00019s] ('MECHANIC',)
+2026-10-29 07:44:48,895 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.verification_status IN (?, ?)) AS anon_1
+2026-10-29 07:44:48,895 INFO sqlalchemy.engine.Engine [generated in 0.00023s] ('pending', 'under_review')
+2026-10-29 07:44:48,899 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT service_requests.id AS service_requests_id, service_requests.customer_id AS service_requests_customer_id, service_requests.scenario AS service_requests_scenario, service_requests.family AS service_requests_family, service_requests.vehicle_type AS service_requests_vehicle_type, service_requests.description AS service_requests_description, service_requests.photos AS service_requests_photos, service_requests.lat AS service_requests_lat, service_requests.lng AS service_requests_lng, service_requests.address AS service_requests_address, service_requests.proposed_price AS service_requests_proposed_price, service_requests.status AS service_requests_status, service_requests.expires_at AS service_requests_expires_at, service_requests.category_id AS service_requests_category_id, service_requests.urgency AS service_requests_urgency, service_requests.source AS service_requests_source, service_requests.ai_session_id AS service_requests_ai_session_id, service_requests.eligible_provider_ids AS service_requests_eligible_provider_ids, service_requests.preferred_time AS service_requests_preferred_time, service_requests.service_mode AS service_requests_service_mode, service_requests.vehicle_summary AS service_requests_vehicle_summary, service_requests.created_at AS service_requests_created_at, service_requests.updated_at AS service_requests_updated_at 
+FROM service_requests 
+WHERE service_requests.status IN (?, ?)) AS anon_1
+2026-10-29 07:44:48,899 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('open', 'offers_received')
+2026-10-29 07:44:48,903 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT jobs.id AS jobs_id, jobs.request_id AS jobs_request_id, jobs.customer_id AS jobs_customer_id, jobs.provider_id AS jobs_provider_id, jobs.status AS jobs_status, jobs.agreed_price AS jobs_agreed_price, jobs.diagnosis AS jobs_diagnosis, jobs.quote_update AS jobs_quote_update, jobs.quote_update_approved AS jobs_quote_update_approved, jobs.accepted_at AS jobs_accepted_at, jobs.started_at AS jobs_started_at, jobs.completed_at AS jobs_completed_at, jobs.auto_close_deadline AS jobs_auto_close_deadline, jobs.auto_closed AS jobs_auto_closed, jobs.before_photos AS jobs_before_photos, jobs.after_photos AS jobs_after_photos, jobs.final_amount AS jobs_final_amount, jobs.dispute_open AS jobs_dispute_open, jobs.dispute_reason AS jobs_dispute_reason, jobs.created_at AS jobs_created_at, jobs.updated_at AS jobs_updated_at 
+FROM jobs 
+WHERE (jobs.status NOT IN (?, ?, ?))) AS anon_1
+2026-10-29 07:44:48,903 INFO sqlalchemy.engine.Engine [generated in 0.00019s] ('COMPLETED', 'CANCELLED', 'AUTO_CLOSED')
+2026-10-29 07:44:48,906 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT jobs.id AS jobs_id, jobs.request_id AS jobs_request_id, jobs.customer_id AS jobs_customer_id, jobs.provider_id AS jobs_provider_id, jobs.status AS jobs_status, jobs.agreed_price AS jobs_agreed_price, jobs.diagnosis AS jobs_diagnosis, jobs.quote_update AS jobs_quote_update, jobs.quote_update_approved AS jobs_quote_update_approved, jobs.accepted_at AS jobs_accepted_at, jobs.started_at AS jobs_started_at, jobs.completed_at AS jobs_completed_at, jobs.auto_close_deadline AS jobs_auto_close_deadline, jobs.auto_closed AS jobs_auto_closed, jobs.before_photos AS jobs_before_photos, jobs.after_photos AS jobs_after_photos, jobs.final_amount AS jobs_final_amount, jobs.dispute_open AS jobs_dispute_open, jobs.dispute_reason AS jobs_dispute_reason, jobs.created_at AS jobs_created_at, jobs.updated_at AS jobs_updated_at 
+FROM jobs 
+WHERE jobs.status IN (?, ?)) AS anon_1
+2026-10-29 07:44:48,906 INFO sqlalchemy.engine.Engine [generated in 0.00017s] ('COMPLETED', 'AUTO_CLOSED')
+2026-10-29 07:44:48,910 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT jobs.id AS jobs_id, jobs.request_id AS jobs_request_id, jobs.customer_id AS jobs_customer_id, jobs.provider_id AS jobs_provider_id, jobs.status AS jobs_status, jobs.agreed_price AS jobs_agreed_price, jobs.diagnosis AS jobs_diagnosis, jobs.quote_update AS jobs_quote_update, jobs.quote_update_approved AS jobs_quote_update_approved, jobs.accepted_at AS jobs_accepted_at, jobs.started_at AS jobs_started_at, jobs.completed_at AS jobs_completed_at, jobs.auto_close_deadline AS jobs_auto_close_deadline, jobs.auto_closed AS jobs_auto_closed, jobs.before_photos AS jobs_before_photos, jobs.after_photos AS jobs_after_photos, jobs.final_amount AS jobs_final_amount, jobs.dispute_open AS jobs_dispute_open, jobs.dispute_reason AS jobs_dispute_reason, jobs.created_at AS jobs_created_at, jobs.updated_at AS jobs_updated_at 
+FROM jobs 
+WHERE jobs.dispute_open = 1) AS anon_1
+2026-10-29 07:44:48,910 INFO sqlalchemy.engine.Engine [generated in 0.00015s] ()
+2026-10-29 07:44:48,911 INFO sqlalchemy.engine.Engine SELECT coalesce(sum(jobs.agreed_price), ?) AS coalesce_1 
+FROM jobs 
+WHERE jobs.status IN (?, ?)
+2026-10-29 07:44:48,912 INFO sqlalchemy.engine.Engine [generated in 0.00016s] (0, 'COMPLETED', 'AUTO_CLOSED')
+2026-10-29 07:44:48,912 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM users
+2026-10-29 07:44:48,912 INFO sqlalchemy.engine.Engine [generated in 0.00010s] ()
+2026-10-29 07:44:48,915 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,915 INFO sqlalchemy.engine.Engine [generated in 0.00015s] ('CUSTOMER',)
+2026-10-29 07:44:48,916 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,916 INFO sqlalchemy.engine.Engine [cached since 0.0008759s ago] ('TUNER',)
+2026-10-29 07:44:48,916 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,916 INFO sqlalchemy.engine.Engine [cached since 0.001507s ago] ('SELLER',)
+2026-10-29 07:44:48,917 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,917 INFO sqlalchemy.engine.Engine [cached since 0.002125s ago] ('ADMIN',)
+2026-10-29 07:44:48,921 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.status != ?) AS anon_1
+2026-10-29 07:44:48,921 INFO sqlalchemy.engine.Engine [generated in 0.00015s] ('active',)
+2026-10-29 07:44:48,922 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM provider_profiles
+2026-10-29 07:44:48,922 INFO sqlalchemy.engine.Engine [generated in 0.00011s] ()
+2026-10-29 07:44:48,922 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM service_requests
+2026-10-29 07:44:48,922 INFO sqlalchemy.engine.Engine [generated in 0.00010s] ()
+2026-10-29 07:44:48,923 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM offers
+2026-10-29 07:44:48,923 INFO sqlalchemy.engine.Engine [generated in 0.00011s] ()
+2026-10-29 07:44:48,924 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM reviews
+2026-10-29 07:44:48,924 INFO sqlalchemy.engine.Engine [generated in 0.00012s] ()
+2026-10-29 07:44:48,925 INFO sqlalchemy.engine.Engine SELECT avg(reviews.rating) AS avg_1 
+FROM reviews
+2026-10-29 07:44:48,925 INFO sqlalchemy.engine.Engine [generated in 0.00011s] ()
+2026-10-29 07:44:48,926 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36228 - "GET /api/v1/admin/stats HTTP/1.1" 200 OK
+2026-10-29 07:44:48,939 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-29 07:44:48,940 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:48,940 INFO sqlalchemy.engine.Engine [cached since 51.1s ago] (3, 1, 0)
+2026-10-29 07:44:48,942 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ?) AS anon_1
+2026-10-29 07:44:48,942 INFO sqlalchemy.engine.Engine [cached since 0.02698s ago] ('SELLER',)
+2026-10-29 07:44:48,944 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.phone AS users_phone, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.role AS users_role, users.status AS users_status, users.language AS users_language, users.is_demo AS users_is_demo, users.first_name AS users_first_name, users.last_name AS users_last_name, users.display_name AS users_display_name, users.avatar_url AS users_avatar_url, users.country AS users_country, users.city AS users_city, users.address AS users_address, users.notification_prefs AS users_notification_prefs, users.support_contact_email AS users_support_contact_email, users.support_email_verified AS users_support_email_verified, users.twofa_method AS users_twofa_method, users.phone_verified AS users_phone_verified, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.role = ? ORDER BY users.created_at DESC
+ LIMIT ? OFFSET ?
+2026-10-29 07:44:48,944 INFO sqlalchemy.engine.Engine [generated in 0.00031s] ('SELLER', 50, 0)
+2026-10-29 07:44:48,947 INFO sqlalchemy.engine.Engine SELECT provider_profiles.id AS provider_profiles_id, provider_profiles.user_id AS provider_profiles_user_id, provider_profiles.type AS provider_profiles_type, provider_profiles.slug AS provider_profiles_slug, provider_profiles.name AS provider_profiles_name, provider_profiles.avatar AS provider_profiles_avatar, provider_profiles.cover AS provider_profiles_cover, provider_profiles.bio AS provider_profiles_bio, provider_profiles.verified AS provider_profiles_verified, provider_profiles.badges AS provider_profiles_badges, provider_profiles.verification_status AS provider_profiles_verification_status, provider_profiles.verification_data AS provider_profiles_verification_data, provider_profiles.rating AS provider_profiles_rating, provider_profiles.review_count AS provider_profiles_review_count, provider_profiles.jobs_completed AS provider_profiles_jobs_completed, provider_profiles.response_time AS provider_profiles_response_time, provider_profiles.completion_rate AS provider_profiles_completion_rate, provider_profiles.city AS provider_profiles_city, provider_profiles.address AS provider_profiles_address, provider_profiles.service_zone AS provider_profiles_service_zone, provider_profiles.lat AS provider_profiles_lat, provider_profiles.lng AS provider_profiles_lng, provider_profiles.is_online AS provider_profiles_is_online, provider_profiles.languages AS provider_profiles_languages, provider_profiles.specialties AS provider_profiles_specialties, provider_profiles.brands AS provider_profiles_brands, provider_profiles.vehicle_types AS provider_profiles_vehicle_types, provider_profiles.services AS provider_profiles_services, provider_profiles.certificates AS provider_profiles_certificates, provider_profiles.equipment AS provider_profiles_equipment, provider_profiles.gallery AS provider_profiles_gallery, provider_profiles.videos AS provider_profiles_videos, provider_profiles.wallet_balance AS provider_profiles_wallet_balance, provider_profiles.min_wallet_balance AS provider_profiles_min_wallet_balance, provider_profiles.member_since AS provider_profiles_member_since, provider_profiles.created_at AS provider_profiles_created_at, provider_profiles.updated_at AS provider_profiles_updated_at 
+FROM provider_profiles 
+WHERE provider_profiles.user_id IN (?)
+2026-10-29 07:44:48,947 INFO sqlalchemy.engine.Engine [generated in 0.00028s] (2,)
+2026-10-29 07:44:48,948 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:36230 - "GET /api/v1/admin/users?role=seller HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36232 - "OPTIONS /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [386]

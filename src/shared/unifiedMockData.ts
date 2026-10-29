@@ -334,6 +334,13 @@ export const mockNotifications = [
   { id: 'n4', user_id: 'u_c1', type: 'job_update', title: 'Mécanicien en route', body: 'Ahmed Benali est en route vers vous. ETA: 12 minutes.', icon: '🚗', priority: 'high', read: false, created_at: new Date(Date.now() - 1800000).toISOString() },
   { id: 'n5', user_id: 'u_c1', type: 'offer_received', title: 'Nouvelle offre reçue', body: 'Vous avez reçu une offre de Youssef El Amrani pour 320 MAD.', icon: '💰', priority: 'medium', read: true, created_at: new Date(Date.now() - 3600000).toISOString() },
   { id: 'n6', user_id: 'u_c1', type: 'maintenance_reminder', title: 'Vidange à prévoir', body: 'Votre prochaine vidange est prévue dans 500 km ou 1 mois.', icon: '🛢️', priority: 'low', read: false, created_at: new Date(Date.now() - 172800000).toISOString() },
+  // Notifications des autres comptes démo — évite un centre de notifications vide
+  // quel que soit le client connecté (u_c2, u_c3, compte premium…).
+  { id: 'n7', user_id: 'u_c_premium', type: 'job_update', title: 'Intervention terminée', body: 'Ahmed Benali a terminé l’intervention sur votre BMW Série 3. Procédez au paiement.', icon: '✅', priority: 'high', read: false, created_at: new Date(Date.now() - 5400000).toISOString() },
+  { id: 'n8', user_id: 'u_c_premium', type: 'document_expiry', title: 'Assurance Mercedes à renouveler', body: 'L’assurance de votre Classe C expire dans 21 jours.', icon: '🛡️', priority: 'medium', read: false, created_at: new Date(Date.now() - 90000000).toISOString() },
+  { id: 'n9', user_id: 'u_c2', type: 'offer_received', title: '2 nouvelles offres reçues', body: 'Des mécaniciens ont répondu à votre demande vidange.', icon: '💰', priority: 'medium', read: false, created_at: new Date(Date.now() - 4500000).toISOString() },
+  { id: 'n10', user_id: 'u_c2', type: 'job_update', title: 'Mécanicien en route', body: 'Karim Tazi arrive dans environ 10 minutes.', icon: '🚗', priority: 'high', read: true, created_at: new Date(Date.now() - 270000000).toISOString() },
+  { id: 'n11', user_id: 'u_c3', type: 'maintenance_reminder', title: 'Révision des 60 000 km', body: 'Pensez à planifier la révision de votre véhicule.', icon: '🛠️', priority: 'low', read: false, created_at: new Date(Date.now() - 400000000).toISOString() },
 ];
 
 // SERVICE REQUESTS
@@ -478,3 +485,7 @@ export function getUnreadNotificationsCount(userId: string): number {
 export function getExpiringDocumentsCount(userId: string): number {
   return mockLegalDocuments.filter(d => d.user_id === userId && d.status === 'expiring_soon').length;
 }
+
+// Miroir de l'API backend /api/v1/clients/{id} : les écrans "compte client"
+// (profil, véhicules, documents…) cherchent les clients dans mockUsers.clients.
+(mockUsers as any).clients = mockUsers.customers;
