@@ -95,7 +95,7 @@ export const RoleSelectionLogin: React.FC = () => {
             {/* Title */}
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-slate-900 mb-4">
-                Bienvenue sur MécaCasablanca
+                Bienvenue sur TomoBily
               </h1>
               <p className="text-lg text-slate-600">
                 Choisissez comment vous souhaitez utiliser la plateforme
@@ -149,7 +149,7 @@ export const RoleSelectionLogin: React.FC = () => {
                 📱
               </div>
               <h1 className="text-3xl font-bold text-slate-900 mb-4">
-                Téléchargez l'application MécaCasablanca
+                Téléchargez l'application TomoBily
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                 Pour une meilleure expérience, nous vous recommandons d'utiliser notre application mobile. 
@@ -160,7 +160,7 @@ export const RoleSelectionLogin: React.FC = () => {
             {/* Download Buttons */}
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
               <a
-                href="https://apps.apple.com/app/mecago"
+                href="https://apps.apple.com/app/tomobily"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black text-white rounded-2xl p-6 hover:bg-slate-800 transition-colors flex items-center gap-4"
@@ -174,7 +174,7 @@ export const RoleSelectionLogin: React.FC = () => {
               </a>
 
               <a
-                href="https://play.google.com/store/apps/details?id=com.mecago"
+                href="https://play.google.com/store/apps/details?id=com.tomobily"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black text-white rounded-2xl p-6 hover:bg-slate-800 transition-colors flex items-center gap-4"

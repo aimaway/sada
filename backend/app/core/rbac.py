@@ -29,6 +29,13 @@ def get_current_user(
     try:
         payload = jwt.decode(credentials.credentials, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         user_id = payload.get("sub")
+        # Jeton d'authentification partielle (2FA en attente) : ne donne acces
+        # a AUCUNE route protegee. Seul /auth/2fa/challenge l'accepte.
+        if payload.get("stage") == "2fa":
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Second facteur requis"
+            )
         try:
             user_id = int(user_id)
         except (TypeError, ValueError):
@@ -38,6 +45,8 @@ def get_current_user(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Token invalide"
             )
+    except HTTPException:
+        raise
     except jwt.PyJWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

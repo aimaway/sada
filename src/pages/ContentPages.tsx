@@ -12,7 +12,7 @@ export const AboutPage: React.FC = () => {
           <button onClick={() => navigate(-1)} className="p-1 hover:bg-slate-100 rounded-lg">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold text-slate-800">À propos de mecaGO</h1>
+          <h1 className="text-xl font-bold text-slate-800">À propos de TomoBily</h1>
         </div>
       </div>
 
@@ -20,7 +20,7 @@ export const AboutPage: React.FC = () => {
         <div className="bg-white rounded-2xl p-8 shadow-sm mb-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Notre Mission</h2>
           <p className="text-lg text-slate-600 mb-4">
-            mecaGO est né d'une idée simple : rendre la réparation automobile accessible, transparente et abordable pour tous.
+            TomoBily est né d'une idée simple : rendre la réparation automobile accessible, transparente et abordable pour tous.
           </p>
           <p className="text-slate-600 mb-4">
             Fondée en 2024 à Casablanca, notre plateforme connecte les propriétaires de véhicules avec des mécaniciens vérifiés et qualifiés, permettant une réparation à domicile au prix juste.
@@ -85,7 +85,7 @@ export const AboutPage: React.FC = () => {
         </div>
 
         <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-white">
-          <h2 className="text-2xl font-bold mb-4">Rejoignez l'aventure mecaGO</h2>
+          <h2 className="text-2xl font-bold mb-4">Rejoignez l'aventure TomoBily</h2>
           <p className="mb-6 opacity-90">
             Que vous soyez client, mécanicien, vendeur ou tuner, il y a une place pour vous dans notre communauté.
           </p>
@@ -109,7 +109,7 @@ export const CareersPage: React.FC = () => {
       title: 'Développeur React Native Senior',
       type: 'CDI - Temps plein',
       location: 'Casablanca, Maroc',
-      description: 'Rejoignez notre équipe technique pour développer l\'application mobile mecaGO.',
+      description: 'Rejoignez notre équipe technique pour développer l\'application mobile TomoBily.',
     },
     {
       title: 'Responsable Marketing Digital',
@@ -140,7 +140,7 @@ export const CareersPage: React.FC = () => {
         <div className="bg-white rounded-2xl p-8 shadow-sm mb-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Rejoignez notre équipe</h2>
           <p className="text-lg text-slate-600 mb-6">
-            Chez mecaGO, nous croyons que les meilleures idées viennent de personnes diverses et talentueuses. 
+            Chez TomoBily, nous croyons que les meilleures idées viennent de personnes diverses et talentueuses. 
             Rejoignez-nous pour révolutionner la réparation automobile au Maroc.
           </p>
           <div className="grid md:grid-cols-3 gap-4">
@@ -264,12 +264,12 @@ export const FAQPage: React.FC = () => {
 
   const faqs = [
     {
-      question: 'Comment fonctionne mecaGO ?',
-      answer: 'mecaGO vous permet de décrire votre problème automobile, de proposer un prix, et de recevoir des offres de mécaniciens vérifiés à proximité. Vous choisissez le mécanicien qui vous convient, et l\'intervention se fait à domicile.',
+      question: 'Comment fonctionne TomoBily ?',
+      answer: 'TomoBily vous permet de décrire votre problème automobile, de proposer un prix, et de recevoir des offres de mécaniciens vérifiés à proximité. Vous choisissez le mécanicien qui vous convient, et l\'intervention se fait à domicile.',
     },
     {
       question: 'Comment sont vérifiés les mécaniciens ?',
-      answer: 'Tous nos mécaniciens passent par un processus de vérification rigoureux : pièce d\'identité, certificats professionnels, photos de l\'atelier, et références clients. Seuls les mécaniciens vérifiés peuvent intervenir via mecaGO.',
+      answer: 'Tous nos mécaniciens passent par un processus de vérification rigoureux : pièce d\'identité, certificats professionnels, photos de l\'atelier, et références clients. Seuls les mécaniciens vérifiés peuvent intervenir via TomoBily.',
     },
     {
       question: 'Quels sont les moyens de paiement acceptés ?',
@@ -280,8 +280,8 @@ export const FAQPage: React.FC = () => {
       answer: 'Nous offrons une garantie de 30 jours sur toutes les interventions. Si vous n\'êtes pas satisfait, contactez notre support client et nous trouverons une solution (reprise gratuite ou remboursement).',
     },
     {
-      question: 'Combien coûte le service mecaGO ?',
-      answer: 'L\'utilisation de mecaGO est gratuite pour les clients. Nous prenons une commission de 10% sur le prix de l\'intervention, payée par le mécanicien. Aucun frais caché pour vous.',
+      question: 'Combien coûte le service TomoBily ?',
+      answer: 'L\'utilisation de TomoBily est gratuite pour les clients. Nous prenons une commission de 10% sur le prix de l\'intervention, payée par le mécanicien. Aucun frais caché pour vous.',
     },
     {
       question: 'Dans quelles zones intervenez-vous ?',
@@ -371,12 +371,12 @@ export const TermsPage: React.FC = () => {
           <div className="prose prose-slate max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Acceptation des Conditions</h2>
             <p className="text-slate-600 mb-6">
-              En utilisant la plateforme mecaGO, vous acceptez ces conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre service.
+              En utilisant la plateforme TomoBily, vous acceptez ces conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre service.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Description du Service</h2>
             <p className="text-slate-600 mb-6">
-              mecaGO est une plateforme de mise en relation entre clients et mécaniciens vérifiés pour des interventions de réparation automobile à domicile.
+              TomoBily est une plateforme de mise en relation entre clients et mécaniciens vérifiés pour des interventions de réparation automobile à domicile.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">3. Inscription et Compte</h2>
@@ -391,12 +391,12 @@ export const TermsPage: React.FC = () => {
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Paiements et Commissions</h2>
             <p className="text-slate-600 mb-6">
-              Les paiements sont effectués directement entre le client et le mécanicien. mecaGO prélève une commission de 10% sur le prix de l'intervention, payée par le mécanicien.
+              Les paiements sont effectués directement entre le client et le mécanicien. TomoBily prélève une commission de 10% sur le prix de l'intervention, payée par le mécanicien.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Garantie et Responsabilité</h2>
             <p className="text-slate-600 mb-6">
-              mecaGO garantit la qualité des mécaniciens vérifiés. En cas de problème, notre support client est disponible pour trouver une solution satisfaisante.
+              TomoBily garantit la qualité des mécaniciens vérifiés. En cas de problème, notre support client est disponible pour trouver une solution satisfaisante.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Modification des Conditions</h2>
@@ -406,7 +406,7 @@ export const TermsPage: React.FC = () => {
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">8. Contact</h2>
             <p className="text-slate-600">
-              Pour toute question concernant ces conditions, contactez-nous à legal@mecago.app.
+              Pour toute question concernant ces conditions, contactez-nous à legal@tomobily.app.
             </p>
           </div>
         </div>
@@ -456,7 +456,7 @@ export const PrivacyPage: React.FC = () => {
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Vos Droits</h2>
             <p className="text-slate-600 mb-6">
-              Vous avez le droit d'accéder, modifier, ou supprimer vos informations personnelles. Contactez-nous à privacy@mecago.app pour exercer ces droits.
+              Vous avez le droit d'accéder, modifier, ou supprimer vos informations personnelles. Contactez-nous à privacy@tomobily.app pour exercer ces droits.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Cookies</h2>
@@ -466,7 +466,7 @@ export const PrivacyPage: React.FC = () => {
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Contact</h2>
             <p className="text-slate-600">
-              Pour toute question concernant notre politique de confidentialité, contactez-nous à privacy@mecago.app.
+              Pour toute question concernant notre politique de confidentialité, contactez-nous à privacy@tomobily.app.
             </p>
           </div>
         </div>

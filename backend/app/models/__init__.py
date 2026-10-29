@@ -1,5 +1,5 @@
 """
-Modèles SQLAlchemy pour l'application mecaGO
+Modèles SQLAlchemy pour l'application TomoBily
 """
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float, Text, JSON, ForeignKey, Enum as SQLEnum
 from sqlalchemy.orm import relationship
@@ -38,6 +38,18 @@ from app.models.financial import (
     PaymentProvider,
     PayoutMethod,
 )
+
+from app.models.security import (
+    UserTotpSecret,
+    SmsVerificationCode,
+)
+
+from app.models.partnership import (
+    PartnershipInvitation,
+    PartnershipStatus,
+)
+
+from app.models.notification import Notification
 
 
 # Enums
@@ -88,7 +100,24 @@ class User(Base):
     status = Column(String(50), default="active")
     language = Column(String(10), default="fr")
     is_demo = Column(Boolean, default=False)
-    
+
+    # Champs profil étendus (compte / paramètres du portail)
+    first_name = Column(String(120), nullable=True)
+    last_name = Column(String(120), nullable=True)
+    display_name = Column(String(160), nullable=True)
+    avatar_url = Column(String(500), nullable=True)
+    country = Column(String(100), nullable=True)
+    city = Column(String(100), nullable=True)
+    address = Column(String(500), nullable=True)
+    notification_prefs = Column(JSON, default={})  # {"email": true, "sms": false, "push": true}
+    support_contact_email = Column(String(255), nullable=True)  # e-mail de contact SUPPORT (≠ email de connexion)
+    support_email_verified = Column(Boolean, default=False)
+
+    # 2FA — l'état réel vient des modèles UserTotpSecret / SmsVerificationCode ;
+    # ces colonnes mémorisent la méthode ACTIVE choisie (None, "sms" ou "totp").
+    twofa_method = Column(String(10), nullable=True)
+    phone_verified = Column(Boolean, default=False)
+
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     last_login = Column(DateTime(timezone=True), nullable=True)
@@ -114,6 +143,7 @@ class CustomerProfile(Base):
     favorite_providers = Column(JSON, default=[])
     saved_addresses = Column(JSON, default=[])
     vehicles = Column(JSON, default=[])
+    notification_prefs = Column(JSON, default={})
     
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())

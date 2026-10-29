@@ -56,7 +56,7 @@ export const CustomerTerms: React.FC = () => {
           </h3>
           <div className="prose prose-sm text-slate-700 space-y-3">
             <p>
-              Bienvenue sur mecaGO. En utilisant notre plateforme, vous acceptez les présentes conditions d'utilisation.
+              Bienvenue sur TomoBily. En utilisant notre plateforme, vous acceptez les présentes conditions d'utilisation.
             </p>
             <h4 className="font-semibold text-slate-800">1. Acceptation des conditions</h4>
             <p>
@@ -64,7 +64,7 @@ export const CustomerTerms: React.FC = () => {
             </p>
             <h4 className="font-semibold text-slate-800">2. Description du service</h4>
             <p>
-              mecaGO est une plateforme de mise en relation entre clients et professionnels de l'automobile (mécaniciens, vendeurs, tuners). Nous facilitons la demande de services, la négociation de prix, et le paiement des interventions.
+              TomoBily est une plateforme de mise en relation entre clients et professionnels de l'automobile (mécaniciens, vendeurs, tuners). Nous facilitons la demande de services, la négociation de prix, et le paiement des interventions.
             </p>
             <h4 className="font-semibold text-slate-800">3. Comptes utilisateurs</h4>
             <p>
@@ -182,7 +182,7 @@ export const CustomerTerms: React.FC = () => {
           <h3 className="font-semibold text-slate-800 mb-3">⚖️ Limitation de responsabilité</h3>
           <div className="prose prose-sm text-slate-700 space-y-3">
             <p>
-              mecaGO agit uniquement comme intermédiaire entre clients et professionnels.
+              TomoBily agit uniquement comme intermédiaire entre clients et professionnels.
             </p>
             <h4 className="font-semibold text-slate-800">Responsabilité des professionnels</h4>
             <p>
@@ -206,7 +206,7 @@ export const CustomerTerms: React.FC = () => {
             <div>
               <p className="text-sm font-semibold text-emerald-800 mb-1">Acceptation des conditions</p>
               <p className="text-xs text-emerald-700">
-                En continuant à utiliser mecaGO, vous acceptez ces conditions. Si vous n'êtes pas d'accord, veuillez cesser d'utiliser nos services.
+                En continuant à utiliser TomoBily, vous acceptez ces conditions. Si vous n'êtes pas d'accord, veuillez cesser d'utiliser nos services.
               </p>
             </div>
           </div>
@@ -226,10 +226,10 @@ export const CustomerTerms: React.FC = () => {
               Nous contacter
             </button>
             <button
-              onClick={() => window.open('mailto:legal@mecago.app')}
+              onClick={() => window.open('mailto:legal@tomobily.app')}
               className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-medium hover:bg-slate-200"
             >
-              legal@mecago.app
+              legal@tomobily.app
             </button>
           </div>
         </div>

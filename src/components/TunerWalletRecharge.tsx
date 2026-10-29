@@ -116,7 +116,7 @@ export const TunerWalletRecharge: React.FC = () => {
                 </span>
                 <div>
                   <p className="text-sm font-medium text-slate-800">Indiquez le code : <strong className="text-red-600">TUNER2024</strong></p>
-                  <p className="text-xs text-slate-600 mt-1">Ce code identifie votre compte mecaGO</p>
+                  <p className="text-xs text-slate-600 mt-1">Ce code identifie votre compte TomoBily</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">

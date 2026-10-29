@@ -19,7 +19,7 @@ export const mockUsers = {
       total_jobs: 2500,
       rating_given: 5.0,
       member_since: '2021',
-      bio: 'Client fidèle depuis 3 ans. Utilise MécaCasablanca pour tous ses besoins automobiles.',
+      bio: 'Client fidèle depuis 3 ans. Utilise TomoBily pour tous ses besoins automobiles.',
       vehicles: [
         { make: 'BMW', model: 'Serie 3', year: 2020, plate: '12345-A-1' },
         { make: 'Mercedes', model: 'Classe C', year: 2019, plate: '67890-B-2' },

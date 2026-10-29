@@ -1,4 +1,4 @@
-"""Tests du marketplace SADA (demandes, éligibilité, offres, acceptation atomique).
+"""Tests du marketplace TomoBily (demandes, éligibilité, offres, acceptation atomique).
 
 Pattern : dependency_overrides[get_db] + tokens mintés via create_access_token.
 NB: rbac compare payload["sub"] à User.id — coercion str->int ajoutée dans

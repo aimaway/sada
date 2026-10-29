@@ -43,7 +43,7 @@ export interface IfixSession {
   updated_at: string;
 }
 
-const K_SESSIONS = 'sada.ifix.sessions.v1';
+const K_SESSIONS = 'tomobily.ifix.sessions.v1';
 export const FREE_SESSION_ALLOWANCE = 3;
 
 function allSessions(): IfixSession[] {

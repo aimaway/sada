@@ -275,7 +275,7 @@ export function LiveTrackingScreen() {
                 : 'أرسل هذا الرابط لأحد أقربائك لمتابعة الرحلة مباشرة'}
             </p>
             <div className="bg-slate-100 rounded-xl p-3 flex items-center gap-2 mb-4">
-              <span className="text-xs text-slate-500 flex-1 truncate">mecago.app/track/abc123xyz</span>
+              <span className="text-xs text-slate-500 flex-1 truncate">tomobily.app/track/abc123xyz</span>
               <button onClick={() => setLinkCopied(true)} className="p-2 bg-white rounded-lg">
                 {linkCopied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-600" />}
               </button>
@@ -442,7 +442,7 @@ function ReceiptScreen({ total, onDone }: { total: number; onDone: () => void })
         {/* Receipt card */}
         <Card className="w-full max-w-sm p-4 mb-6">
           <div className="text-center mb-3 pb-3 border-b border-dashed border-slate-200">
-            <p className="font-bold text-slate-800">MécaCasablanca</p>
+            <p className="font-bold text-slate-800">TomoBily</p>
             <p className="text-xs text-slate-500">Reçu #{Date.now().toString().slice(-8)}</p>
           </div>
           <div className="space-y-2 text-sm">

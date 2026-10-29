@@ -19,13 +19,13 @@ export const OnBehalfRequest: React.FC = () => {
   ];
 
   const handleSubmit = () => {
-    const mockShareLink = `https://mecago.app/on-behalf/abc123xyz`;
+    const mockShareLink = `https://tomobily.app/on-behalf/abc123xyz`;
     setShareLink(mockShareLink);
     setStep(4);
   };
 
   const handleShare = (platform: string) => {
-    const message = `Bonjour ${beneficiary.name}, j'ai demandé une réparation pour votre véhicule via MécaCasablanca. Cliquez ici pour partager votre localisation et approuver le devis : ${shareLink}`;
+    const message = `Bonjour ${beneficiary.name}, j'ai demandé une réparation pour votre véhicule via TomoBily. Cliquez ici pour partager votre localisation et approuver le devis : ${shareLink}`;
     if (platform === 'whatsapp') {
       window.open(`https://wa.me/${beneficiary.phone}?text=${encodeURIComponent(message)}`);
     } else if (platform === 'sms') {

@@ -93,7 +93,7 @@ export const CustomerContact: React.FC = () => {
             </button>
 
             <button
-              onClick={() => window.open('mailto:support@mecago.app')}
+              onClick={() => window.open('mailto:support@tomobily.app')}
               className="w-full flex items-center gap-3 p-3 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors"
             >
               <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
@@ -101,7 +101,7 @@ export const CustomerContact: React.FC = () => {
               </div>
               <div className="flex-1 text-left">
                 <p className="text-sm font-medium text-slate-800">Envoyer un email</p>
-                <p className="text-xs text-slate-500">support@mecago.app</p>
+                <p className="text-xs text-slate-500">support@tomobily.app</p>
               </div>
             </button>
           </div>
