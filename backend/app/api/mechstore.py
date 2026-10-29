@@ -364,14 +364,22 @@ def _has_idem_col(db: Session) -> bool:
 
 
 def ensure_store_columns(db: Session):
-    """Colonne d'idempotence + indexes (SQLite dev, idempotent)."""
+    """Colonne d'idempotence + index unique (SQLite dev, idempotent).
+
+    NB : SQLite interdit d'ajouter une colonne directement DECLAREEE UNIQUE via
+    ALTER TABLE ; l'unicite est donc garantie par un index unique separe
+    (semantics identiques pour la cle d'idempotence).
+    """
     from sqlalchemy import text as _t
     if db.bind.dialect.name != "sqlite":
         return
     cols = {r[1] for r in db.execute(_t("PRAGMA table_info(orders)"))}
     if "extra_idempotency_key" not in cols:
-        db.execute(_t("ALTER TABLE orders ADD COLUMN extra_idempotency_key VARCHAR(80) UNIQUE"))
+        db.execute(_t("ALTER TABLE orders ADD COLUMN extra_idempotency_key VARCHAR(80)"))
         db.commit()
+    db.execute(_t("CREATE UNIQUE INDEX IF NOT EXISTS ix_orders_extra_idempotency_key "
+                  "ON orders (extra_idempotency_key)"))
+    db.commit()
 
 
 @router.get("/orders")

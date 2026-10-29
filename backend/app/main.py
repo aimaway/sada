@@ -23,7 +23,7 @@ from app.api import marketplace, ifix_ai
 # Import admin router (contrôle total des comptes)
 from app.api import admin as _admin
 # Import 2FA, partnerships et boutique mécanicien
-from app.api import twofa, partnerships, mechstore
+from app.api import twofa, partnerships, mechstore, customer_dashboard
 
 # Create tables
 from app.database import Base
@@ -867,6 +867,7 @@ app.include_router(_admin.router)
 app.include_router(twofa.router)
 app.include_router(partnerships.router, prefix="/api/v1", tags=["Partnerships"])
 app.include_router(mechstore.router, prefix="/api/v1", tags=["Mechanic Store"])
+app.include_router(customer_dashboard.router)
 
 
 @app.get("/")
