@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Button, Card, Avatar, StarRating, PriceDisplay, EmptyState } from '../shared/components';
+import MechanicStoreScreen from '../components/MechanicStore';
 import { ArrowLeft, Power, PowerOff, Wrench, Wallet, TrendingUp, TrendingDown, ShoppingBag, XCircle, MapPin, Clock, CheckCircle2, Navigation, MessageCircle, Phone, AlertTriangle, ChevronRight, Star } from 'lucide-react';
 
 export function MechanicLogin() {
@@ -237,14 +238,6 @@ export function MechanicEarnings() {
 }
 
 export function MechanicShop() {
-  const navigate = useNavigate();
-  return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-white px-4 py-3 border-b flex items-center gap-3">
-        <button onClick={() => navigate('/mechanic/home')} className="p-1.5"><ArrowLeft className="w-5 h-5" /></button>
-        <h1 className="font-semibold">Catalogue Produits</h1>
-      </div>
-      <div className="p-4"><p className="text-sm text-slate-500">Recommandez des produits à vos clients</p></div>
-    </div>
-  );
+  // Ecran reel branche sur /api/v1/store/* — remplace l'ancien placeholder vide.
+  return <MechanicStoreScreen />;
 }

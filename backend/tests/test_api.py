@@ -1,5 +1,5 @@
 """
-Tests unitaires pour l'API mecaGO
+Tests unitaires pour l'API TomoBily
 """
 import pytest
 from fastapi.testclient import TestClient

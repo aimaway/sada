@@ -22,7 +22,7 @@ class PaymentService:
         amount: int,  # en centimes
         method: str,  # "cmi", "orange_money", "inwi_money"
         customer_id: int,
-        description: str = "Paiement mecaGO"
+        description: str = "Paiement TomoBily"
     ) -> Dict:
         """
         Créer un paiement
@@ -133,9 +133,9 @@ class OrangeMoneyClient:
             #         "merchant_key": self.merchant_id,
             #         "amount": amount,
             #         "currency": "MAD",
-            #         "reference": f"mecago_{customer_id}",
-            #         "return_url": "https://mecago.app/payment/success",
-            #         "cancel_url": "https://mecago.app/payment/cancel"
+            #         "reference": f"tomobily_{customer_id}",
+            #         "return_url": "https://tomobily.app/payment/success",
+            #         "cancel_url": "https://tomobily.app/payment/cancel"
             #     }
             # )
             

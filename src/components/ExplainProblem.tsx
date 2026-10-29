@@ -32,7 +32,7 @@ export const ExplainProblem: React.FC = () => {
     // Persist through the marketplace store (dev-phase mirror of the REST API).
     const res = createRequest({
       customer_id: user?.id ?? 'u_c1',
-      customer_name: user?.full_name ?? 'Client SADA',
+      customer_name: user?.full_name ?? 'Client TomoBily',
       vehicle_summary: vehicleSummary,
       category_id: categoryFromDescription(description),
       description,

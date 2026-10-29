@@ -1,6 +1,6 @@
 {
-  "name": "mecaGO - Réparation Auto à Domicile",
-  "short_name": "mecaGO",
+  "name": "TomoBily - Réparation Auto à Domicile",
+  "short_name": "TomoBily",
   "description": "Plateforme de réparation automobile à domicile. Proposez votre prix, choisissez votre mécanicien vérifié.",
   "start_url": "/",
   "display": "standalone",

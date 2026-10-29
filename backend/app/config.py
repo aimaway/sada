@@ -1,5 +1,5 @@
 """
-Configuration de l'application mecaGO
+Configuration de l'application TomoBily
 """
 from pydantic_settings import BaseSettings
 from typing import List
@@ -9,14 +9,14 @@ class Settings(BaseSettings):
     """Configuration globale de l'application"""
     
     # Application
-    APP_NAME: str = "mecaGO"
+    APP_NAME: str = "TomoBily"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     ENVIRONMENT: str = "development"
     API_V1_STR: str = "/api/v1"
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/mecago"
+    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/tomobily"
     DATABASE_POOL_SIZE: int = 20
     DATABASE_MAX_OVERFLOW: int = 10
     
@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:5173",
-        "https://mecago.app"
+        "https://tomobily.app"
     ]
     
     # Payment
@@ -49,6 +49,13 @@ class Settings(BaseSettings):
     TWILIO_ACCOUNT_SID: str = ""
     TWILIO_AUTH_TOKEN: str = ""
     TWILIO_PHONE_NUMBER: str = ""
+
+    # 2FA / codes de vérification SMS
+    DEMO_MODE: bool = True                      # override demo des entitlements + adaptateur SMS de test étiqueté
+    SMS_CODE_TTL_SECONDS: int = 300             # expiration des codes SMS (5 min)
+    SMS_MAX_ATTEMPTS: int = 5                   # tentatives de vérification par code
+    SMS_RESEND_COOLDOWN_SECONDS: int = 60       # anti-spam renvoi
+    TOTP_ISSUER: str = "TomoBily"
     
     WHATSAPP_API_URL: str = "https://graph.facebook.com/v18.0"
     WHATSAPP_ACCESS_TOKEN: str = ""
@@ -80,6 +87,12 @@ class Settings(BaseSettings):
     IFIX_LLM_BASE_URL: str = "https://api.openai.com/v1"
     IFIX_LLM_MODEL: str = "gpt-4o-mini"
     IFIX_LLM_ENABLED: bool = True   # inert si pas de cle ; permet de forcer le mode regles
+
+    # Commission marketplace TomoBily (pourcentage du sous-total produits, ex: 10.0 = 10%).
+    # AUCUNE valeur commerciale n'est inventée : la commission est Ecrite UNIQUEMENT
+    # si COMMISSION_RATE_PERCENT est explicitement configuree (env). En dev/demo,
+    # fixer COMMISSION_RATE_PERCENT=10 par exemple pour tester le calcul.
+    COMMISSION_RATE_PERCENT: float | None = None
     
     class Config:
         env_file = ".env"

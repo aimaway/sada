@@ -30,8 +30,8 @@ try:
             "locales": ["fr", "ar", "en"],
             "default_locale": "fr",
             "legal_texts": {
-                "terms": "https://mecacasablanca.ma/terms",
-                "privacy": "https://mecacasablanca.ma/privacy",
+                "terms": "https://tomobily.ma/terms",
+                "privacy": "https://tomobily.ma/privacy",
             },
             "is_active": True,
             "launch_status": "live",

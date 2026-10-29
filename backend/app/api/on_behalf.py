@@ -33,7 +33,7 @@ def create_on_behalf_request(
 ):
     """Create a request on behalf of someone else"""
     share_token = generate_share_token()
-    share_url = f"https://mecacasablanca.ma/on-behalf/{share_token}"
+    share_url = f"https://tomobily.ma/on-behalf/{share_token}"
     
     db_request = OnBehalfRequest(
         payer_id=payer_id,

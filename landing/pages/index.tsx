@@ -36,7 +36,7 @@ export default function Home() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "MécaCasablanca",
+              "name": "TomoBily",
               "description": t('description'),
               "areaServed": {
                 "@type": "City",
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       messages: {
         landing: {
-          title: 'MécaCasablanca',
+          title: 'TomoBily',
           tagline: 'Fair price, zero scams',
           description: 'On-demand car repair at your location. Propose your price, choose your verified mechanic.',
         }
