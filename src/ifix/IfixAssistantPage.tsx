@@ -87,7 +87,7 @@ export function IfixAssistantPage() {
     const label = mockCategories.find(c => c.id === categoryId)?.name_fr ?? 'Diagnostic';
     const res = createRequest({
       customer_id: customerId,
-      customer_name: user?.full_name ?? 'Client SADA',
+      customer_name: user?.full_name ?? 'Client TomoBily',
       vehicle_summary: vehicleSummary,
       category_id: categoryId,
       description: `[Demande créée via IFIX AI — orientation informationnelle, diagnostic non confirmé] ${session.messages.filter(m => m.role === 'user').map(m => m.text).join(' | ').slice(0, 300)}`,

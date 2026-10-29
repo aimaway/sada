@@ -356,7 +356,7 @@ export const TunerRegistration: React.FC = () => {
                 <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-medium text-blue-900 mb-1">
-                    Prêt à rejoindre mecaGO !
+                    Prêt à rejoindre TomoBily !
                   </p>
                   <p className="text-xs text-blue-700">
                     Votre profil sera examiné par notre équipe sous 24-48h. Vous recevrez une notification une fois approuvé.

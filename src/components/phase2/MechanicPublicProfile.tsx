@@ -38,9 +38,9 @@ export const MechanicPublicProfile: React.FC = () => {
   };
 
   const handleShare = () => {
-    const shareUrl = `https://mecago.app/m/${slug}`;
+    const shareUrl = `https://tomobily.app/m/${slug}`;
     if (navigator.share) {
-      navigator.share({ title: `${mockMechanicProfile.name} - MécaCasablanca`, text: mockMechanicProfile.bio, url: shareUrl });
+      navigator.share({ title: `${mockMechanicProfile.name} - TomoBily`, text: mockMechanicProfile.bio, url: shareUrl });
     } else {
       navigator.clipboard.writeText(shareUrl);
       alert('Lien copié !');

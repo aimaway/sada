@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-emerald rounded-card flex items-center justify-center">
                 <span className="text-xl">🔧</span>
               </div>
-              <span className="text-xl font-bold">MécaCasablanca</span>
+              <span className="text-xl font-bold">TomoBily</span>
             </div>
             <p className="text-navy-300 text-sm mb-4">
               {t('footer.tagline')}
@@ -64,7 +64,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-navy-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-navy-400">
-            © 2024 MécaCasablanca. {t('footer.rights')}
+            © 2024 TomoBily. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="text-navy-400 hover:text-white transition-colors">

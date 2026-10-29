@@ -1,6 +1,6 @@
 {
   "landing": {
-    "title": "MécaCasablanca",
+    "title": "TomoBily",
     "tagline": "Prix juste, zéro arnaque",
     "description": "Réparation auto à domicile à la demande. Proposez votre prix, choisissez votre mécanicien vérifié.",
     
@@ -79,7 +79,7 @@
         "name": "Votre nom",
         "email": "Email professionnel",
         "type": "Type de partenaire",
-        "consent": "J'accepte d'être contacté par l'équipe MécaCasablanca",
+        "consent": "J'accepte d'être contacté par l'équipe TomoBily",
         "submit": "Rejoindre la waitlist"
       }
     },

@@ -1,5 +1,5 @@
 """
-API Marketplace SADA — demandes, distribution aux providers éligibles, offres inDrive-style.
+API Marketplace TomoBily — demandes, distribution aux providers éligibles, offres inDrive-style.
 Réutilise les modèles existants (ServiceRequest, Offer, Job) et ajoute les colonnes
 nécessaires (catégorie, urgence, éligibilité, source AI) sans créer de tables en double.
 """

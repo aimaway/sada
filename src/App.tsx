@@ -46,7 +46,11 @@ import { BeneficiaryShareLink } from './components/phase2/BeneficiaryShareLink';
 import { InspectionReportView } from './components/phase2/InspectionReportView';
 
 // Enhanced Components
-import { CustomerHomeEnhanced } from './components/CustomerHomeEnhanced';
+
+import { CustomerDashboard } from './components/CustomerDashboard';
+import { CustomerPersonalInfo } from './components/CustomerPersonalInfo';
+import { MechanicStoreScreen } from './components/MechanicStore';
+import { SellerPartnershipsScreen } from './components/SellerPartnershipsScreen';
 import { ClientWallet } from './components/ClientWallet';
 import { DocumentsManager } from './components/DocumentsManager';
 import { MechanicProfileEnhanced } from './components/MechanicProfileEnhanced';
@@ -153,7 +157,7 @@ function AppRoutes() {
       {/* Customer */}
       <Route path="/customer/login" element={<CustomerLogin />} />
       <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><CustomerProfileSetup /></ProtectedRoute>} />
-      <Route path="/customer/home" element={<ProtectedRoute role="customer"><PortalSidebar title="Accueil client"><CustomerHomeEnhanced /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/home" element={<ProtectedRoute role="customer"><PortalSidebar title="Accueil client"><CustomerDashboard /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><PortalSidebar title="Notifications"><NotificationsScreen /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Nouvelle demande" backRoute="/customer/home"><NewRequestEnhanced /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/explain-problem" element={<ProtectedRoute role="customer"><PortalSidebar title="Expliquer mon problème" backRoute="/customer/home"><ExplainProblem /></PortalSidebar></ProtectedRoute>} />
@@ -202,7 +206,7 @@ function AppRoutes() {
       <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Job actif"><MechanicActiveJob /></PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portefeuille"><MechanicWallet /></PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/earnings" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Gains"><MechanicEarnings /></PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/shop" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boutique pièces"><MechanicShop /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/shop" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boutique pièces"><MechanicStoreScreen /></PortalSidebar></ProtectedRoute>} />
 
       {/* Seller */}
       <Route path="/seller/login" element={<SellerLogin />} />
@@ -217,7 +221,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-      <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><PortalSidebar title="Partenariats"><SellerPartnerships /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><PortalSidebar title="Partenariats"><SellerPartnershipsScreen /></PortalSidebar></ProtectedRoute>} />
       <Route path="/seller/settings" element={<ProtectedRoute role="seller"><PortalSidebar title="Réglages boutique"><SellerSettings /></PortalSidebar></ProtectedRoute>} />
 
       {/* Tuner */}
@@ -258,6 +262,12 @@ function AppRoutes() {
       <Route path="/customer/profile/help" element={<ProtectedRoute role="customer"><PortalSidebar title="Aide & contact" backRoute="/customer/profile"><CustomerHelp /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/contact" element={<ProtectedRoute role="customer"><PortalSidebar title="Contact" backRoute="/customer/profile"><CustomerContact /></PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/terms" element={<ProtectedRoute role="customer"><PortalSidebar title="Conditions d'utilisation" backRoute="/customer/profile"><CustomerTerms /></PortalSidebar></ProtectedRoute>} />
+      {/* Sous-pages profile manquantes (restaient inaccessibles -> redirection accueil) */}
+      <Route path="/customer/profile/info" element={<ProtectedRoute role="customer"><PortalSidebar title="Informations personnelles" backRoute="/customer/profile"><CustomerPersonalInfo /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/maintenance-history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique maintenance" backRoute="/customer/profile"><MaintenanceLogScreen /></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/privacy" element={<ProtectedRoute role="customer"><PortalSidebar title="Confidentialité" backRoute="/customer/profile"><PrivacyPage /></PortalSidebar></ProtectedRoute>} />
+      {/* Alias garage */}
+      <Route path="/customer/vehicles" element={<Navigate to="/customer/profile/vehicles" replace />} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />
@@ -471,9 +481,56 @@ function AppRoutes() {
       />
       <Route path="/discover" element={<ProtectedRoute role="customer"><ProviderDirectory /></ProtectedRoute>} />
 
-      {/* Catch all */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {/* Catch all — NotFound contextuel : un utilisateur authentifié n'est JAMAIS
+          renvoyé vers la landing publique (ancien bug de redirection accueil). */}
+      <Route path="*" element={<RoleAwareNotFound />} />
     </Routes>
+  );
+}
+
+// Composant défini après App() via hoisting de fonction — utilisé dans les Routes.
+function RoleAwareNotFound() {
+  const { user } = useApp();
+  const homeByRole: Record<string, string> = {
+    customer: '/customer/home',
+    mechanic: '/mechanic/home',
+    seller: '/seller/portal',
+    tuner: '/tuner/portal',
+    admin: '/admin/dashboard',
+  };
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+      <div className="max-w-md w-full text-center bg-white rounded-2xl shadow-lg border border-slate-100 p-8">
+        <div className="mx-auto w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-3xl font-bold mb-4">404</div>
+        <h1 className="text-xl font-bold text-slate-900 mb-2">Page introuvable</h1>
+        <p className="text-sm text-slate-500 mb-6">
+          La page demandée n'existe pas ou a été déplacée. Votre session est toujours active.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          {user ? (
+            <a
+              href={homeByRole[user.role] || '/'}
+              className="px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition"
+            >
+              Retour à mon espace
+            </a>
+          ) : (
+            <a
+              href="/"
+              className="px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition"
+            >
+              Retour à l'accueil TomoBily
+            </a>
+          )}
+          <button
+            onClick={() => window.history.back()}
+            className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition"
+          >
+            Page précédente
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -1,3 +1,4 @@
+import SellerPartnershipsScreen from '../components/SellerPartnershipsScreen';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
@@ -105,17 +106,8 @@ export function SellerOrders() {
 }
 
 export function SellerPartnerships() {
-  const navigate = useNavigate();
-  return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-white px-4 py-3 border-b flex items-center gap-3">
-        <button onClick={() => navigate('/seller/dashboard')} className="p-1.5"><ArrowLeft className="w-5 h-5" /></button>
-        <h1 className="font-semibold flex-1">Partenaires</h1>
-        <Button size="sm"><Plus className="w-4 h-4 me-1" /> Inviter</Button>
-      </div>
-      <div className="p-4"><p className="text-sm text-slate-500">Mécaniciens partenaires</p></div>
-    </div>
-  );
+  // Ecran reel branche sur /api/v1/partnerships/* (premium) — remplace le placeholder.
+  return <SellerPartnershipsScreen />;
 }
 
 export function SellerSettings() {

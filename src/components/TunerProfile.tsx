@@ -61,7 +61,7 @@ export const TunerProfile: React.FC = () => {
   };
 
   const handleShare = () => {
-    const shareUrl = `https://mecago.app/tuner/${slug}`;
+    const shareUrl = `https://tomobily.app/tuner/${slug}`;
     if (navigator.share) {
       navigator.share({ title: tunerProfile.name, text: tunerProfile.description, url: shareUrl });
     } else {

@@ -120,7 +120,7 @@ const profiles: Array<{
   {
     title: 'Clients',
     desc: 'Trouvez le bon service, au bon prix, et en toute simplicité.',
-    media: { src: '/profile-clients.jpg', alt: 'Client utilisant la plateforme mecaGO' },
+    media: { src: '/profile-clients.jpg', alt: 'Client utilisant la plateforme TomoBily' },
     cta: 'En savoir plus',
     to: '/login',
   },
@@ -380,12 +380,12 @@ export default function LandingPage() {
         <div className="lp-header">
           <div className="lp-header-inner">
             {/* Logo (existing brand mark: wrench tile + wordmark) */}
-            <Link to="/" className="lp-logo" aria-label="mecaGO — Accueil">
+            <Link to="/" className="lp-logo" aria-label="TomoBily — Accueil">
               <span className="lp-logo-mark" aria-hidden="true">
                 <Wrench className="w-[21px] h-[21px]" />
               </span>
               <span className="lp-logo-word">
-                meca<em>GO</em>
+                TomoBily
               </span>
             </Link>
 
@@ -576,7 +576,7 @@ export default function LandingPage() {
             <figure className="lp-ifix-figure m-0">
               <img
                 src="/IFIX AI Garage Mascot.png"
-                alt="IFIX AI, la mascotte experte en diagnostic automobile de mecaGO"
+                alt="IFIX AI, la mascotte experte en diagnostic automobile de TomoBily"
                 className="lp-ifix-img"
                 loading="lazy"
                 decoding="async"
@@ -741,7 +741,7 @@ export default function LandingPage() {
               <div className="lp-app-note">
                 <Smartphone className="w-5 h-5" aria-hidden="true" />
                 <span>
-                  Installez mecaGO comme application web (PWA) depuis votre navigateur pour un accès
+                  Installez TomoBily comme application web (PWA) depuis votre navigateur pour un accès
                   rapide, comme sur votre téléphone.
                 </span>
               </div>
@@ -750,7 +750,7 @@ export default function LandingPage() {
               <CardImage
                 source={{
                   src: '/mobile-app-promo.jpg',
-                  alt: 'Utilisateur consultant l’application mecaGO sur son smartphone',
+                  alt: 'Utilisateur consultant l’application TomoBily sur son smartphone',
                 }}
               />
             </figure>
@@ -854,7 +854,7 @@ export default function LandingPage() {
                 <ArrowRight className="w-[18px] h-[18px]" aria-hidden="true" />
               </Link>
               <Link to="/about" className="lp-btn lp-btn-ghost-navy">
-                Découvrir mecaGO
+                Découvrir TomoBily
               </Link>
             </div>
           </div>
@@ -866,12 +866,12 @@ export default function LandingPage() {
         <div className="lp-container">
           <div className="lp-footer-grid">
             <div className="lp-footer-brand">
-              <Link to="/" className="lp-logo" aria-label="mecaGO — Accueil">
+              <Link to="/" className="lp-logo" aria-label="TomoBily — Accueil">
                 <span className="lp-logo-mark" aria-hidden="true">
                   <Wrench className="w-[21px] h-[21px]" />
                 </span>
                 <span className="lp-logo-word">
-                  meca<em>GO</em>
+                  TomoBily
                 </span>
               </Link>
               <p>
@@ -944,7 +944,7 @@ export default function LandingPage() {
           </div>
 
           <div className="lp-footer-bottom">
-            <span className="lp-footer-copy">© 2026 mecaGO. Tous droits réservés.</span>
+            <span className="lp-footer-copy">© 2026 TomoBily. Tous droits réservés.</span>
             <div className="lp-footer-legal">
               <Link to="/terms" className="lp-footer-copy hover:text-[color:var(--lp-cyan)]">
                 Conditions d’utilisation

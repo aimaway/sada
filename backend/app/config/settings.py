@@ -9,13 +9,13 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
     
     # App
-    APP_NAME: str = "MécaCasablanca API"
+    APP_NAME: str = "TomoBily API"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     ENVIRONMENT: str = "development"  # development, staging, production
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/mecacasablanca"
+    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/tomobily"
     
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
@@ -30,14 +30,14 @@ class Settings(BaseSettings):
     CORS_ORIGINS: list[str] = [
         "http://localhost:5173",  # Frontend dev
         "http://localhost:3000",  # Landing dev
-        "https://mecacasablanca.ma",
+        "https://tomobily.ma",
     ]
     
     # Storage (S3-compatible)
     S3_ENDPOINT: str = "http://localhost:9000"
     S3_ACCESS_KEY: str = "minioadmin"
     S3_SECRET_KEY: str = "minioadmin"
-    S3_BUCKET: str = "mecacasablanca"
+    S3_BUCKET: str = "tomobily"
     
     # SMS/WhatsApp (Mock in dev)
     SMS_PROVIDER: str = "mock"  # mock, twilio, nexmo

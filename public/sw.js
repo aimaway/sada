@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mecago-v1';
+const CACHE_NAME = 'tomobily-v1';
 const urlsToCache = [
   '/',
   '/index.html',
