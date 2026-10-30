@@ -1,10 +1,1 @@
-__pycache__/
-*.pyc
-*.pyo
-.env
-.env.local
-.env.*.local
-!.env.example
 dist/
-build/
-*.db
