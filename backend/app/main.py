@@ -22,6 +22,7 @@ from app.api import seller, tuner
 from app.api import marketplace, ifix_ai
 # Import admin router (contrôle total des comptes)
 from app.api import admin as _admin
+from app.api import admin_metrics as _admin_metrics
 # Import 2FA, partnerships et boutique mécanicien
 from app.api import twofa, partnerships, mechstore, customer_dashboard
 
@@ -864,6 +865,7 @@ app.include_router(marketplace.router)
 app.include_router(ifix_ai.router)
 app.include_router(tuner.router, prefix="/api/v1", tags=["Tuner Portal"])
 app.include_router(_admin.router)
+app.include_router(_admin_metrics.router)
 app.include_router(twofa.router)
 app.include_router(partnerships.router, prefix="/api/v1", tags=["Partnerships"])
 app.include_router(mechstore.router, prefix="/api/v1", tags=["Mechanic Store"])
