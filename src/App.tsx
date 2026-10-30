@@ -77,6 +77,7 @@ const AdminUsers = lazyNamed(() => import('./admin/AdminApp'), 'AdminUsers');
 const AdminSettingsPage = lazyNamed(() => import('./admin/AdminApp'), 'AdminSettingsPage');
 const AdminDisputes = lazyNamed(() => import('./admin/AdminApp'), 'AdminDisputes');
 const AdminAudit = lazyNamed(() => import('./admin/AdminApp'), 'AdminAudit');
+const AdminMetricsControl = lazyNamed(() => import('./admin/AdminApp'), 'AdminMetricsControl');
 
 // Phase 2 Components
 const UrgentRequestFlow = lazyNamed(() => import('./components/phase2/UrgentRequestFlow'), 'UrgentRequestFlow');
@@ -322,13 +323,14 @@ function AppRoutes() {
 
       {/* Admin */}
       <Route path="/admin/login" element={<P><AdminLogin /></P>} />
-      <Route path="/admin/dashboard" element={<ProtectedRoute role="admin"><PortalSidebar title="Console admin" autoShell={false}><P><AdminDashboard /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/verification" element={<ProtectedRoute role="admin"><PortalSidebar title="File de vérification" autoShell={false}><P><AdminVerification /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/requests" element={<ProtectedRoute role="admin"><PortalSidebar title="Demandes & Jobs" autoShell={false}><P><AdminRequests /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/users" element={<ProtectedRoute role="admin"><PortalSidebar title="Utilisateurs" autoShell={false}><P><AdminUsers /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/settings" element={<ProtectedRoute role="admin"><PortalSidebar title="Paramètres plateforme" autoShell={false}><P><AdminSettingsPage /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><PortalSidebar title="Litiges" autoShell={false}><P><AdminDisputes /></P></PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><PortalSidebar title="Journal d'audit" autoShell={false}><P><AdminAudit /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/dashboard" element={<ProtectedRoute role="admin"><P><AdminDashboard /></P></ProtectedRoute>} />
+      <Route path="/admin/verification" element={<ProtectedRoute role="admin"><P><AdminVerification /></P></ProtectedRoute>} />
+      <Route path="/admin/requests" element={<ProtectedRoute role="admin"><P><AdminRequests /></P></ProtectedRoute>} />
+      <Route path="/admin/users" element={<ProtectedRoute role="admin"><P><AdminUsers /></P></ProtectedRoute>} />
+      <Route path="/admin/settings" element={<ProtectedRoute role="admin"><P><AdminSettingsPage /></P></ProtectedRoute>} />
+      <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><P><AdminDisputes /></P></ProtectedRoute>} />
+      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><P><AdminAudit />
+      <Route path="/admin/metrics" element={<ProtectedRoute role="admin"><P><AdminMetricsControl /></P></ProtectedRoute>} /></P></ProtectedRoute>} />
 
       {/* Phase 2 - Two-Wheelers & Pros */}
       <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer">{<P><UrgentRequestFlow {...({ vehicleType: "motorcycle" } as any)} /></P>}</ProtectedRoute>} />

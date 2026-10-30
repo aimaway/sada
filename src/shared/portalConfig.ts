@@ -212,6 +212,7 @@ const adminSections: PortalMenuSection[] = [
       { id: 'dashboard', label: 'Tableau de bord', route: '/admin/dashboard', icon: LayoutDashboard },
       { id: 'requests', label: 'Demandes', route: '/admin/requests', icon: Inbox },
       { id: 'users', label: 'Utilisateurs', route: '/admin/users', icon: Users },
+      { id: 'metrics', label: 'Contrôle métriques', route: '/admin/metrics', icon: Star },
       { id: 'verification', label: 'Vérifications', route: '/admin/verification', icon: Shield },
       { id: 'disputes', label: 'Litiges', route: '/admin/disputes', icon: AlertTriangle },
       { id: 'settings', label: 'Paramètres', route: '/admin/settings', icon: SettingsIcon },
