@@ -59,6 +59,7 @@ export function DataSourceBanner() {
 export function AdminLogin() {
   const { setUser } = useApp();
   const navigate = useNavigate();
+  const { isDemoMode } = useDemo();
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState<string | null>(null);
@@ -66,6 +67,14 @@ export function AdminLogin() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true); setErr(null);
+    // In demo mode (default when no backend is configured) the login is mocked
+    // so the console can be explored offline; live mode hits the real API.
+    if (isDemoMode && !localStorage.getItem('tombily_admin_session')) {
+      localStorage.setItem('tombily_admin_session', JSON.stringify({
+        token: 'demo-admin-token',
+        user: { id: 'admin-demo', full_name: 'Administrateur Démo', role: 'admin' },
+      }));
+    }
     try {
       const sess = await adminLogin(phone, password);
       setUser({ id: String(sess.user.id), phone: '', role: 'admin', full_name: sess.user.full_name, status: 'active', language: 'fr', created_at: new Date().toISOString() } as any);
