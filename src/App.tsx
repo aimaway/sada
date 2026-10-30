@@ -541,6 +541,20 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      {/* ── Aliases & routes manquantes (audit complet des liens internes) ── */}
+      // Seller : liens "Compte / Analyses" du portail (SellerDashboard)
+      <Route path="/seller/profile" element={<Navigate to="/seller/settings" replace />} />
+      <Route path="/seller/analytics-sales" element={<Navigate to="/seller/analytics" replace />} />
+      // Tuner : même écran, route alias cohérente avec le reste du portail
+      <Route path="/tuner/dashboard-legacy" element={<Navigate to="/tuner/portal" replace />} />
+      // Mécanicien : diagnostic d'un job (JobManagement) → écran de diagnostic partagé
+      <Route path="/provider/job/:id/diagnosis" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Diagnostic du job" backRoute="/mechanic/jobs"><P><DiagnosticRequest /></P></PortalSidebar></ProtectedRoute>} />
+      // Client : messagerie avec un prestataire (TunerRequestsMap) → onglet messages
+      <Route path="/customer/chat/:id" element={<ProtectedRoute role="customer"><PortalSidebar title="Messagerie" backRoute="/customer/home"><P><MessagesTab /></P></PortalSidebar></ProtectedRoute>} />
+      // Publics : cartes de profil raccourcies du répertoire (ProviderDirectory)
+      <Route path="/t/:slug" element={<Navigate to="/tuner/:slug" replace />} />
+      <Route path="/s/:slug" element={<Navigate to="/seller/:slug" replace />} />
+
       <Route path="/discover" element={<ProtectedRoute role="customer"><P><ProviderDirectory /></P></ProtectedRoute>} />
 
       {/* Catch all — NotFound contextuel : un utilisateur authentifié n'est JAMAIS
