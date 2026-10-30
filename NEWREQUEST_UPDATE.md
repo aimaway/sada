@@ -293,7 +293,7 @@ if (description.includes("ne démarre pas")) {
 ### Prochaine Étape
 **Tester la page sur :**
 ```
-http://localhost:5173/customer/new-request-enhanced
+http://localhost:3000/customer/new-request-enhanced
 ```
 
 Et vérifier que :

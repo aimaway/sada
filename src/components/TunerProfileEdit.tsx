@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { ArrowLeft, Plus, Edit, Upload, CheckCircle2, Star, MapPin, Award, Shield } from 'lucide-react';
 import { mockTunerData } from '../data/mockDataGlobal';
 
 export const TunerProfileEdit: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { user } = useApp();
   const [activeTab, setActiveTab] = useState<'info' | 'specialties' | 'certificates' | 'equipment'>('info');
@@ -414,7 +416,7 @@ export const TunerProfileEdit: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4">
         <button
           onClick={() => {
-            alert('Profil sauvegardé !');
+            toast('Profil sauvegardé !');
             navigate('/tuner/dashboard');
           }}
           className="w-full py-4 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700"

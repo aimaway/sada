@@ -38,15 +38,6 @@ export const UrgentRequestFlow: React.FC<UrgentRequestProps> = ({ vehicleType })
   };
 
   const handleSubmit = () => {
-    console.log('Submitting urgent request:', {
-      vehicleType,
-      issueType,
-      description,
-      price,
-      location,
-      isPro,
-      downtimeCost,
-    });
     navigate('/customer/offers?urgent=true');
   };
 

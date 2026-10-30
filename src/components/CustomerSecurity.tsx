@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import {
@@ -7,6 +8,7 @@ import {
 } from 'lucide-react';
 
 export const CustomerSecurity: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { user } = useApp();
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -23,14 +25,14 @@ export const CustomerSecurity: React.FC = () => {
 
   const handleChangePassword = () => {
     if (passwords.new !== passwords.confirm) {
-      alert('Les mots de passe ne correspondent pas');
+      toast('Les mots de passe ne correspondent pas');
       return;
     }
     if (passwords.new.length < 8) {
-      alert('Le mot de passe doit contenir au moins 8 caractères');
+      toast('Le mot de passe doit contenir au moins 8 caractères');
       return;
     }
-    alert('Mot de passe modifié avec succès !');
+    toast('Mot de passe modifié avec succès !');
     setPasswords({ current: '', new: '', confirm: '' });
   };
 

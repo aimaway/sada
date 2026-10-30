@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Bell, MessageCircle, Mail, Smartphone } from 'lucide-react';
 
 export const TunerNotifications: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState({
     newRequests: true,
@@ -299,7 +301,7 @@ export const TunerNotifications: React.FC = () => {
         {/* Save Button */}
         <button
           onClick={() => {
-            alert('Préférences sauvegardées !');
+            toast('Préférences sauvegardées !');
             navigate('/tuner/dashboard');
           }}
           className="w-full py-4 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700"

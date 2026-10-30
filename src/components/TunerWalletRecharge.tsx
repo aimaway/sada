@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CreditCard, Smartphone, CheckCircle2, AlertCircle } from 'lucide-react';
 import { mockTunerData } from '../data/mockDataGlobal';
 
 export const TunerWalletRecharge: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [amount, setAmount] = useState('');
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
@@ -64,9 +66,9 @@ export const TunerWalletRecharge: React.FC = () => {
       setShowWafacashInstructions(true);
     } else {
       // Simulate payment processing
-      alert(`Rechargement de ${amount} MAD via ${paymentMethods.find(m => m.id === selectedMethod)?.title} en cours...`);
+      toast(`Rechargement de ${amount} MAD via ${paymentMethods.find(m => m.id === selectedMethod)?.title} en cours...`);
       setTimeout(() => {
-        alert('Rechargement réussi !');
+        toast('Rechargement réussi !');
         navigate('/tuner/dashboard');
       }, 2000);
     }
@@ -163,7 +165,7 @@ export const TunerWalletRecharge: React.FC = () => {
 
           <button
             onClick={() => {
-              alert('Demande de rechargement enregistrée ! Vous recevrez une confirmation sous 24-48h.');
+              toast('Demande de rechargement enregistrée ! Vous recevrez une confirmation sous 24-48h.');
               navigate('/tuner/dashboard');
             }}
             className="w-full py-4 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700"

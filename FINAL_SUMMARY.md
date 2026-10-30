@@ -62,11 +62,11 @@
 ```bash
 npm run dev
 ```
-Ouvrir : `http://localhost:5173`
+Ouvrir : `http://localhost:3000`
 
 ### 2. Accéder à la Page de Login
 ```
-http://localhost:5173/login
+http://localhost:3000/login
 ```
 - Cliquer sur le rôle souhaité
 - Pour Client : Voir le message de téléchargement d'app
@@ -103,13 +103,13 @@ Accès direct : /seller/autopieces-maroc
 ### 4. Installer comme PWA sur Mobile
 
 **Android (Chrome) :**
-1. Ouvrir `http://localhost:5173`
+1. Ouvrir `http://localhost:3000`
 2. Menu (⋮) → "Ajouter à l'écran d'accueil"
 3. Confirmer
 4. L'icône mecaGO apparaît
 
 **iOS (Safari) :**
-1. Ouvrir `http://localhost:5173`
+1. Ouvrir `http://localhost:3000`
 2. Bouton Partager (□↑)
 3. "Sur l'écran d'accueil"
 4. Confirmer

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { mockClientData } from '../data/mockDataGlobal';
 import {
@@ -7,6 +8,7 @@ import {
 } from 'lucide-react';
 
 export const CustomerTransactions: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | 'credit' | 'debit'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -149,7 +151,7 @@ export const CustomerTransactions: React.FC = () => {
 
         {/* Export Button */}
         <button
-          onClick={() => alert('Export CSV en cours...')}
+          onClick={() => toast('Export CSV en cours...')}
           className="w-full py-3 bg-slate-100 text-slate-700 rounded-xl font-medium hover:bg-slate-200 flex items-center justify-center gap-2"
         >
           <Download className="w-4 h-4" />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { mockClientData } from '../data/mockDataGlobal';
@@ -11,6 +12,7 @@ import {
 } from 'lucide-react';
 
 export const CustomerProfileComplete: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { user, logout, language, setLanguage } = useApp();
   const [activeSection, setActiveSection] = useState<string>('overview');
@@ -245,7 +247,7 @@ export const CustomerProfileComplete: React.FC = () => {
         <button
           onClick={() => {
             if (confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')) {
-              alert('Compte supprimé (simulation)');
+              toast('Compte supprimé (simulation)');
               navigate('/');
             }
           }}

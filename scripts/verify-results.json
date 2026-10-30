@@ -85,8 +85,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_customer_profile_setup.png"
   },
   {
@@ -95,8 +98,12 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "TypeError: Cannot read properties of undefined (reading 'display_name')\n    at Y (http://localhost:4173/assets/CustomerDashboard-DG8wNWq7.js:11:1340)\n    at ys (http://localhost:4173/assets/index-BaqomKlx.js:39:17075)\n    at Ns (http://localhost:4173/assets/index-BaqomKlx.js:41:3159)\n    at vc (http://localhost:4173/assets/index-BaqomKlx.js:41:45099)\n    at fc (http://localhost:4173/assets/index-BaqomKlx.js:41:39992)\n    at up (http://localhost:4173/assets/index-BaqomKlx.js:41:39920)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39773)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at ac (http://localhost:4173/assets/index-BaqomKlx.js:41:35050)\n    at De (http://localhost:4173/assets/index-BaqomKlx.js:26:1614)",
+      "TypeError: Cannot read properties of undefined (reading 'display_name')"
+    ],
     "screenshot": "shots/desktop-_customer_home.png"
   },
   {
@@ -385,8 +392,11 @@
     "role": "mechanic",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_mechanic_profile_setup.png"
   },
   {
@@ -446,7 +456,9 @@
     "shell": true,
     "overflowPx": 0,
     "ok": true,
-    "consoleErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
     "screenshot": "shots/desktop-_mechanic_shop.png"
   },
   {
@@ -465,8 +477,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_seller_dashboard.png"
   },
   {
@@ -476,7 +491,9 @@
     "shell": true,
     "overflowPx": 0,
     "ok": true,
-    "consoleErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
     "screenshot": "shots/desktop-_seller_partnerships.png"
   },
   {
@@ -515,8 +532,11 @@
     "role": "tuner",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_tuner_dashboard.png"
   },
   {
@@ -605,8 +625,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_mechanic_plans.png"
   },
   {
@@ -615,8 +638,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_seller_plans.png"
   },
   {
@@ -625,8 +651,11 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_customer_profile_vehicles.png"
   },
   {
@@ -754,60 +783,48 @@
     "path": "/admin/dashboard",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_dashboard.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
     "path": "/admin/verification",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_verification.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
     "path": "/admin/requests",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_requests.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
     "path": "/admin/users",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_users.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
     "path": "/admin/settings",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_settings.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
     "path": "/admin/disputes",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/desktop-_admin_disputes.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "desktop",
@@ -815,8 +832,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_customer_urgent_motorcycle.png"
   },
   {
@@ -865,8 +885,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_customer_on_behalf_new.png"
   },
   {
@@ -895,8 +918,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_mechanic_dashboard.png"
   },
   {
@@ -915,8 +941,11 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_customer_recurring_plans.png"
   },
   {
@@ -955,8 +984,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_mechanic_profile_enhanced.png"
   },
   {
@@ -1135,8 +1167,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_seller_portal.png"
   },
   {
@@ -1205,8 +1240,11 @@
     "role": "tuner",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_tuner_portal.png"
   },
   {
@@ -1275,8 +1313,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/desktop-_discover.png"
   },
   {
@@ -1365,8 +1406,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_customer_profile_setup.png"
   },
   {
@@ -1375,8 +1419,12 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "TypeError: Cannot read properties of undefined (reading 'display_name')\n    at Y (http://localhost:4173/assets/CustomerDashboard-DG8wNWq7.js:11:1340)\n    at ys (http://localhost:4173/assets/index-BaqomKlx.js:39:17075)\n    at Ns (http://localhost:4173/assets/index-BaqomKlx.js:41:3159)\n    at vc (http://localhost:4173/assets/index-BaqomKlx.js:41:45099)\n    at fc (http://localhost:4173/assets/index-BaqomKlx.js:41:39992)\n    at up (http://localhost:4173/assets/index-BaqomKlx.js:41:39920)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39773)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at ac (http://localhost:4173/assets/index-BaqomKlx.js:41:35050)\n    at De (http://localhost:4173/assets/index-BaqomKlx.js:26:1614)",
+      "TypeError: Cannot read properties of undefined (reading 'display_name')"
+    ],
     "screenshot": "shots/mobile-_customer_home.png"
   },
   {
@@ -1665,8 +1713,11 @@
     "role": "mechanic",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_mechanic_profile_setup.png"
   },
   {
@@ -1726,7 +1777,9 @@
     "shell": true,
     "overflowPx": 0,
     "ok": true,
-    "consoleErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
     "screenshot": "shots/mobile-_mechanic_shop.png"
   },
   {
@@ -1745,8 +1798,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_seller_dashboard.png"
   },
   {
@@ -1756,7 +1812,9 @@
     "shell": true,
     "overflowPx": 0,
     "ok": true,
-    "consoleErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
     "screenshot": "shots/mobile-_seller_partnerships.png"
   },
   {
@@ -1795,8 +1853,11 @@
     "role": "tuner",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_tuner_dashboard.png"
   },
   {
@@ -1885,8 +1946,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_mechanic_plans.png"
   },
   {
@@ -1895,8 +1959,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_seller_plans.png"
   },
   {
@@ -1905,8 +1972,11 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_customer_profile_vehicles.png"
   },
   {
@@ -2034,60 +2104,48 @@
     "path": "/admin/dashboard",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_dashboard.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
     "path": "/admin/verification",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_verification.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
     "path": "/admin/requests",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_requests.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
     "path": "/admin/users",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_users.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
     "path": "/admin/settings",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_settings.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
     "path": "/admin/disputes",
     "role": "admin",
     "shell": true,
-    "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
-    "screenshot": "shots/mobile-_admin_disputes.png"
+    "ok": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Connexion Admin/i }).first()\u001b[22m\n"
   },
   {
     "vp": "mobile",
@@ -2095,8 +2153,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_customer_urgent_motorcycle.png"
   },
   {
@@ -2145,8 +2206,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_customer_on_behalf_new.png"
   },
   {
@@ -2175,8 +2239,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_mechanic_dashboard.png"
   },
   {
@@ -2195,8 +2262,11 @@
     "role": "customer",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_customer_recurring_plans.png"
   },
   {
@@ -2235,8 +2305,11 @@
     "role": "mechanic",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_mechanic_profile_enhanced.png"
   },
   {
@@ -2415,8 +2488,11 @@
     "role": "seller",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_seller_portal.png"
   },
   {
@@ -2485,8 +2561,11 @@
     "role": "tuner",
     "shell": true,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_tuner_portal.png"
   },
   {
@@ -2555,8 +2634,11 @@
     "role": "customer",
     "shell": false,
     "overflowPx": 0,
-    "ok": true,
-    "consoleErrors": [],
+    "ok": false,
+    "consoleErrors": [
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n    at cc (http://localhost:4173/assets/index-BaqomKlx.js:41:38874)\n    at $l (http://localhost:4173/assets/index-BaqomKlx.js:41:39793)\n    at qs (http://localhost:4173/assets/index-BaqomKlx.js:41:36102)\n    at uc (http://localhost:4173/assets/index-BaqomKlx.js:41:36914)\n    at Gt (http://localhost:4173/assets/index-BaqomKlx.js:39:3273)\n    at http://localhost:4173/assets/index-BaqomKlx.js:41:34413",
+      "Error: Minified React error #426; visit https://reactjs.org/docs/error-decoder.html?invariant=426 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ],
     "screenshot": "shots/mobile-_discover.png"
   }
 ]

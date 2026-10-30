@@ -222,7 +222,7 @@ npm run dev
 
 ### 2. Accéder à la landing page
 ```
-http://localhost:5173/
+http://localhost:3000/
 ```
 
 ### 3. Tester les comptes premium

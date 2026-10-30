@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { mockClientData } from '../data/mockDataGlobal';
 import {
@@ -16,6 +17,7 @@ interface Address {
 }
 
 export const CustomerAddresses: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [addresses, setAddresses] = useState<Address[]>(mockClientData.addresses);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -237,7 +239,7 @@ export const CustomerAddresses: React.FC = () => {
                             });
                           },
                           () => {
-                            alert('Impossible d\'obtenir votre position');
+                            toast('Impossible d\'obtenir votre position');
                           }
                         );
                       }

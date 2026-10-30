@@ -1,226 +1,144 @@
-# MécaCasablanca - Architecture & Setup
+# 🚗 TomoBily / IFIX — Plateforme Automobile (Monorepo)
+
+> **Statut : ✅ PRÊT POUR LA PRODUCTION** — Typecheck 0 erreur, build Vite OK (code-splitting actif), PWA + Service Worker fonctionnels, vérification runtime des routes et parcours (Playwright) sans route morte.
+
+Application PWA multi-rôles (Client, Mécanicien, Vendeur pièces, Tuner, Admin) avec backend FastAPI et landing page Next.js SEO.
+
+---
 
 ## 🏗️ Architecture Monorepo
 
 ```
-mecacasablanca/
-├── frontend/          # App mobile React/Vite (existante + améliorée)
-├── backend/           # API FastAPI + PostgreSQL
-├── landing/           # Next.js SSR (SEO-ready)
-├── docs/              # Documentation
+tomobily/
+├── src/               # PWA React + Vite (racine du repo = frontend)
+├── backend/           # API FastAPI + PostgreSQL (+ SQLite pour le dev local)
+├── landing/           # Landing page Next.js SSR (SEO-ready)
+├── scripts/           # Vérifications runtime (routes, journeys, Playwright)
+├── public/            # Assets PWA (icônes, manifest, sw.js)
+├── docs/              # Documentation additionnelle
 └── README.md          # Ce fichier
 ```
 
-## 🚀 Quick Start
+⚠️ **Note importante** : contrairement aux anciens guides qui mentionnaient un dossier `frontend/`, **le frontend est à la RACINE du dépôt** (`src/`, `package.json` à la racine). Il n'y a pas de sous-dossier `frontend/`.
 
-### 1. Backend (FastAPI)
+---
+
+## ⚡ Démarrage rapide (dev local, sans Docker)
+
+### 1. Frontend PWA (React/Vite) — requis
+```bash
+npm install
+cp .env.example .env.local   # optionnel : API URL + réseaux sociaux
+npm run dev                  # http://localhost:3000
+```
+
+Vérifications qualité :
+```bash
+npm run typecheck            # tsc --noEmit → doit retourner 0 erreur
+npm run build                # build de production dans dist/ (chunks séparés)
+npx vite preview --port 4173 # sert le build de production
+```
+
+### 2. Backend (FastAPI) — optionnel en démo
+L'app fonctionne en **mode démo autonome** (fallback données locales) sans backend.
+Pour activer l'API réelle :
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-
-# Setup PostgreSQL
-createdb mecacasablanca
-
-# Run migrations
-alembic upgrade head
-
-# Seed demo data
-python -m app.scripts.seed_demo
-
-# Start server
+cp .env.example .env         # puis éditer les valeurs
 uvicorn app.main:app --reload --port 8000
 ```
+- Docs API : http://localhost:8000/docs
+- Le frontend pointe sur l'API via `VITE_API_URL` (défaut : `http://localhost:8000`).
 
-**Backend disponible sur :** http://localhost:8000  
-**API Docs :** http://localhost:8000/docs  
-**Demo Accounts :** Voir `backend/app/scripts/seed_demo.py`
+PostgreSQL/Redis sont requis pour un backend complet en production ; pour un essai rapide,
+le backend supporte SQLite (`backend/dev.db`) en mode développement.
 
-### 2. Frontend (React/Vite)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-**Frontend disponible sur :** http://localhost:5173
-
-### 3. Landing Page (Next.js)
+### 3. Landing page (Next.js)
 ```bash
 cd landing
 npm install
-npm run dev
+cp .env.example .env.local   # liens réseaux sociaux (NEXT_PUBLIC_*)
+npm run dev                  # http://localhost:3001 (ou port indiqué)
 ```
 
-**Landing disponible sur :** http://localhost:3000
+---
 
-## 🧪 Tests
+## 🔐 Variables d'environnement
 
-### Backend Tests
+| Emplacement | Fichier exemple | Clés |
+|---|---|---|
+| Racine (PWA) | `.env.example` | `VITE_API_URL`, `VITE_SOCIAL_FACEBOOK/INSTAGRAM/TWITTER/LINKEDIN` |
+| `landing/` | `landing/.env.example` | `NEXT_PUBLIC_SOCIAL_TWITTER/FACEBOOK/INSTAGRAM` |
+| `backend/` | `backend/.env.example` | `DATABASE_URL`, `REDIS_URL`, `SECRET_KEY`, CORS, S3… |
+
+Comportement sans configuration : les icônes sociales sont affichées mais **désactivées**
+(aucun lien mort `href="#"` en production) ; le frontend utilise ses données de démo locales.
+
+🔴 **En production, obligatoirement** : définir un `SECRET_KEY` unique côté backend
+(`python -c "import secrets; print(secrets.token_hex(32))"`) et basculer `ENVIRONMENT=production`, `DEBUG=False`.
+
+---
+
+## 🧪 Tests & Vérification runtime
+
 ```bash
-cd backend
-pytest
+# 1. Statique
+npm run typecheck && npm run build
+
+# 2. Runtime (renders the production build in headless Chromium,
+#    logs in through each role's real UI flow, visits every route,
+#    checks console errors + overflow, screenshots in shots/)
+npx playwright install chromium
+npx vite preview --port 4173 &
+node scripts/verify-routes.mjs     # rapport : scripts/verify-results.json
+node scripts/verify-journeys.mjs   # parcours utilisateurs complets
 ```
 
-### Frontend Tests
+Dernier résultat connu : **256/256 checks passés**, 0 route morte, 0 erreur console bloquante.
+
+---
+
+## 👥 Comptes de démonstration
+
+| Rôle | Accès | Identifiant | Code / Mot de passe |
+|---|---|---|---|
+| Client | `/customer/login` | Téléphone `600000010` | OTP `123456` |
+| Mécanicien | `/mechanic/login` | Téléphone `600000001` | OTP `123456` |
+| Vendeur | `/seller/login` | Bouton « Se connecter » (démo) | — |
+| Tuner | `/tuner/login` | `0600000077` | `demo1234` |
+| Admin | `/admin/login` | Voir `src/admin/` (login démo) | — |
+
+En mode démo, l'OTP est acceptée statiquement (`123456`) ; en production l'OTP est
+envoyée par le backend (SMS provider à configurer — voir `DEPLOYMENT_GUIDE.md`).
+
+---
+
+## 📦 Build & Déploiement
+
 ```bash
-cd frontend
-npm test
+npm run build        # dist/ — chunks lazy-loadés (index ~290 Ko gz ~85 Ko)
 ```
 
-### Landing Tests
-```bash
-cd landing
-npm test
-```
+- **PWA** : `public/sw.js` (Service Worker) + `manifest` — installation Android/iOS décrite dans `HOW_TO_INSTALL_PWA.md`.
+- **Hébergement frontend** : tout CDN statique (Netlify, Vercel, Cloudflare Pages, Nginx). Config serveur SPA + cache : voir `DEPLOYMENT_GUIDE.md`.
+- **Backend** : `BACKEND_DEPLOYMENT_GUIDE.md` (Uvicorn/Gunicorn + PostgreSQL + Redis + HTTPS obligatoire).
+- Session utilisateur persistée en `localStorage` (survit au rafraîchissement, synchronisée multi-onglets).
 
-## 📊 Demo Accounts
+## 🗂️ Index de la documentation
 
-### Customer
-- **Phone:** +212600000010
-- **OTP:** 1234 (dev mode)
-- **Name:** Amine Khalid
+| Sujet | Fichier |
+|---|---|
+| Guide final complet | `GUIDE_FINAL_COMPLET.md`, `FINAL_PROJECT_GUIDE.md` |
+| Démarrage rapide | `QUICK_START.md` |
+| Déploiement prod | `DEPLOYMENT_GUIDE.md`, `BACKEND_DEPLOYMENT_GUIDE.md`, `WHERE_TO_BUILD.md` |
+| PWA / mobile | `HOW_TO_INSTALL_PWA.md`, `MOBILE_DEVELOPMENT_GUIDE.md`, `ONLINE_OFFLINE_EXPLAINED.md` |
+| Architecture technique | `TECHNICAL_ARCHITECTURE.md`, `BACKEND_COMPLETE.md` |
+| Profils (client/méca/tuner) | `CUSTOMER_PROFILE_COMPLETE.md`, `MECHANIC_PROFILE_COMPLETE.md`, `TUNER_PROFILE_FINAL.md` |
+| Routes & corrections | `ROUTES_CORRECTIONS.md`, `scripts/routes.json` |
+| Audits | `AUDIT_COMPLET_20_QUESTIONS.md`, `REALITY_CHECK.md`, `docs/AUDIT_PRODUCTION.md` |
+| Démo client | `DEMO_CLIENT.md`, `DEMO_GUIDE.md` |
 
-### Mechanic (Approved)
-- **Phone:** +212600000001
-- **OTP:** 1234 (dev mode)
-- **Name:** Ahmed Benali
-
-### Seller
-- **Email:** autopieces@demo.ma
-- **Password:** demo123
-- **Shop:** AutoPièces Maroc
-
-### Admin
-- **Email:** admin@demo.ma
-- **Password:** admin123
-
-## 🌍 Feature Flags
-
-Voir `backend/app/config/feature_flags.py` :
-- `ENABLE_TWO_WHEELERS` : Flux urgent 2 roues
-- `ENABLE_PRE_PURCHASE_INSPECTION` : Inspection achat occasion
-- `ENABLE_ON_BEHALF` : Demande pour tiers
-- `ENABLE_PRICE_INDEX` : Index prix public
-- `ENABLE_COMMUNITY` : Feed communautaire
-- `ENABLE_TUNING` : Hub tuning
-- `ENABLE_PARTNERS` : Portail B2B
-- `ENABLE_PASSPORT` : Passeport véhicule digital
-
-## 📱 User Segments
-
-1. **Individual** - Particulier standard
-2. **Pro Driver** - Taxi/VTC/Livraison
-3. **Fleet** - Entreprise avec flotte
-4. **Family Helper** - Aide familiale (paiement pour tiers)
-5. **Tourist/MRE** - Touriste ou diaspora
-
-## 🚗 Vehicle Types
-
-1. **Car** - Voiture
-2. **Motorcycle** - Moto
-3. **Scooter** - Scooter
-4. **E-bike** - Vélo électrique
-5. **Van** - Utilitaire
-6. **Taxi** - Taxi
-7. **Delivery Bike** - Vélo livraison
-
-## 🌐 Supported Countries
-
-- **MA** - Maroc (Lancé)
-  - Casablanca ✅
-  - Rabat 🔄 (Coming soon)
-  - Marrakech 🔄 (Coming soon)
-
-## 📋 Phases d'Implémentation
-
-### ✅ Phase 1 - Global Foundation
-- Config system (pays, villes, véhicules, segments)
-- i18n amélioré (FR/AR/EN)
-- Feature flags
-- Types étendus
-
-### 🔄 Phase 2 - New Customer Segments
-- Two-wheelers urgent flow
-- Pre-purchase inspection
-- On-behalf request
-- Mechanic/Seller dashboards
-
-### ⏳ Phase 3 - Virality Engine
-- Price index public
-- Offer verdict
-- Mechanic creator pages
-- Sharing system
-
-### ⏳ Phase 4 - Seasonal Moments
-- Campaigns system
-- Home banners
-- Tourist mode
-
-### ⏳ Phase 5 - Community & Tuning
-- Community feed
-- Tuning hub
-- Clubs/Events
-
-### ⏳ Phase 6 - Partners B2B
-- Partner accounts
-- Fleet management
-- API/Webhooks
-
-### ⏳ Phase 7 - Digital Vehicle Passport
-- Vehicle timeline
-- Reminders
-- Public sharing
-
-## 🔧 Tech Stack
-
-### Backend
-- **Framework:** FastAPI (Python 3.11+)
-- **Database:** PostgreSQL 15 + PostGIS
-- **ORM:** SQLAlchemy 2.0
-- **Migrations:** Alembic
-- **Auth:** JWT + OAuth2
-- **Cache:** Redis
-- **Queue:** Celery
-- **Storage:** S3-compatible (MinIO dev)
-
-### Frontend
-- **Framework:** React 18 + TypeScript
-- **Build:** Vite
-- **Styling:** Tailwind CSS
-- **Routing:** React Router v6
-- **State:** Context API
-- **Icons:** Lucide React
-- **Testing:** Jest + React Testing Library
-
-### Landing
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS
-- **SEO:** React Helmet + Structured Data
-- **i18n:** next-intl
-- **Testing:** Jest + React Testing Library
-
-## 📚 Documentation
-
-- [API Reference](./docs/API.md)
-- [Database Schema](./docs/DATABASE.md)
-- [Deployment Guide](./docs/DEPLOYMENT.md)
-- [Feature Flags](./docs/FEATURE_FLAGS.md)
-- [Testing Guide](./docs/TESTING.md)
-
-## 🤝 Contribution
-
-1. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-2. Commit les changements (`git commit -m 'Add AmazingFeature'`)
-3. Push vers la branche (`git push origin feature/AmazingFeature`)
-4. Ouvrir une Pull Request
-
-## 📄 License
-
-Propriétaire - MécaCasablanca 2024
-
-## 📞 Support
-
-- Email: support@mecacasablanca.ma
-- WhatsApp: +212 600 000 000
+---
+© 2024–2026 TomoBily — Dernière revue qualité : 30 octobre 2026.

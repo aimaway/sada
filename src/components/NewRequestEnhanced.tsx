@@ -49,15 +49,7 @@ export const NewRequestEnhanced: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    // In production, send to backend
-    console.log('Submitting request:', {
-      scenario: selectedScenario?.slug,
-      family: selectedFamily,
-      vehicleType,
-      description,
-      price,
-      formData,
-    });
+    // In production, the payload would be sent to the backend API here.
     navigate('/customer/offers');
   };
 

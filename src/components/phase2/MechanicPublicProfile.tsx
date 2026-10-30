@@ -1,3 +1,4 @@
+import { useToast } from '../../shared/notify';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Star, MapPin, Clock, Award, Shield, Share2, Camera, Video } from 'lucide-react';
@@ -29,6 +30,7 @@ const mockMechanicProfile = {
 };
 
 export const MechanicPublicProfile: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { slug } = useParams();
   const [activeTab, setActiveTab] = useState<'about' | 'gallery' | 'reviews'>('about');
@@ -43,7 +45,7 @@ export const MechanicPublicProfile: React.FC = () => {
       navigator.share({ title: `${mockMechanicProfile.name} - TomoBily`, text: mockMechanicProfile.bio, url: shareUrl });
     } else {
       navigator.clipboard.writeText(shareUrl);
-      alert('Lien copié !');
+      toast('Lien copié !');
     }
   };
 

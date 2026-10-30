@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
@@ -32,17 +33,13 @@ const plans = {
 };
 
 export const ChoosePlan: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { user, setUser } = useApp();
-  
+
   const planSlug = searchParams.get('plan');
   const plan = planSlug ? plans[planSlug as keyof typeof plans] : null;
-
-  useEffect(() => {
-    // Track funnel event
-    console.log('Plan clicked:', planSlug);
-  }, [planSlug]);
 
   // Handle invalid plan
   if (!plan) {
@@ -100,15 +97,12 @@ export const ChoosePlan: React.FC = () => {
     }
 
     // Logged in - activate plan (mock)
-    console.log('Activating plan:', plan.slug);
-    
+
     // In production, this would call the backend API
     // For demo, we'll just show a success message
-    alert(`Plan ${plan.name} activé avec succès ! (Simulation)`);
-    
-    // Track funnel event
-    console.log('Plan activated:', plan.slug);
-    
+    toast(`Plan ${plan.name} activé avec succès ! (Simulation)`);
+
+
     // Redirect to appropriate portal
     if (plan.audience === 'client') {
       navigate('/customer/portal');

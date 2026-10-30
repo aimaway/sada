@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Bell, Power, PowerOff, Filter, Clock, MapPin, DollarSign, MessageCircle, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
@@ -52,6 +53,7 @@ const mockLiveRequests = [
 ];
 
 export const ProviderPortal: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [isOnline, setIsOnline] = useState(true);
   const [activeTab, setActiveTab] = useState<'live' | 'jobs' | 'stats'>('live');
@@ -93,11 +95,11 @@ export const ProviderPortal: React.FC = () => {
 
   const handleAccept = (requestId: string) => {
     setRequests(requests.filter((r) => r.id !== requestId));
-    alert('Offre acceptée ! (Simulation)');
+    toast('Offre acceptée ! (Simulation)');
   };
 
   const handleCounterOffer = (requestId: string) => {
-    alert('Contre-offre envoyée ! (Simulation)');
+    toast('Contre-offre envoyée ! (Simulation)');
   };
 
   const handleIgnore = (requestId: string) => {

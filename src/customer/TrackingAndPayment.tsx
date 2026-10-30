@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, Avatar, StarRating, PriceDisplay } from '../shared/components';
@@ -10,6 +11,7 @@ import {
 
 // F. Live Job Tracking - Enhanced
 export function LiveTrackingScreen() {
+  const toast = useToast();
   const { language } = useApp();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(2); // 0=accepted, 1=on_way, 2=arrived, 3=diagnosing, 4=in_progress, 5=completed
@@ -189,10 +191,10 @@ export function LiveTrackingScreen() {
                   </p>
                 </div>
                 <div className="flex gap-2 mt-3">
-                  <Button size="sm" className="flex-1" onClick={() => alert(language === 'fr' ? 'Prix approuvé !' : 'تم الموافقة على السعر!')}>
+                  <Button size="sm" className="flex-1" onClick={() => toast(language === 'fr' ? 'Prix approuvé !' : 'تم الموافقة على السعر!')}>
                     {language === 'fr' ? 'Approuver' : 'موافقة'}
                   </Button>
-                  <Button size="sm" variant="outline" className="flex-1" onClick={() => alert(language === 'fr' ? 'Refusé' : 'مرفوض')}>
+                  <Button size="sm" variant="outline" className="flex-1" onClick={() => toast(language === 'fr' ? 'Refusé' : 'مرفوض')}>
                     {language === 'fr' ? 'Refuser' : 'رفض'}
                   </Button>
                 </div>
@@ -426,6 +428,7 @@ export function PaymentScreen() {
 
 // Receipt Screen
 function ReceiptScreen({ total, onDone }: { total: number; onDone: () => void }) {
+  const toast = useToast();
   const { language } = useApp();
 
   return (
@@ -466,7 +469,7 @@ function ReceiptScreen({ total, onDone }: { total: number; onDone: () => void })
         </Card>
 
         <div className="flex gap-3 w-full max-w-sm">
-          <Button variant="outline" className="flex-1" onClick={() => alert('PDF téléchargé')}>
+          <Button variant="outline" className="flex-1" onClick={() => toast('PDF téléchargé')}>
             <Download className="w-4 h-4 me-2" /> PDF
           </Button>
           <Button className="flex-1" onClick={onDone}>
@@ -480,6 +483,7 @@ function ReceiptScreen({ total, onDone }: { total: number; onDone: () => void })
 
 // I. Orders Tab
 export function OrdersTab() {
+  const toast = useToast();
   const { language } = useApp();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'active' | 'scheduled' | 'history'>('active');
@@ -571,7 +575,7 @@ export function OrdersTab() {
               </div>
             </div>
             <div className="flex gap-2 pt-2 border-t border-slate-100">
-              <Button size="sm" variant="outline" className="flex-1" onClick={() => alert('Reçu PDF')}>
+              <Button size="sm" variant="outline" className="flex-1" onClick={() => toast('Reçu PDF')}>
                 <FileText className="w-3 h-3 me-1" /> {language === 'fr' ? 'Reçu' : 'وصل'}
               </Button>
               <Button size="sm" className="flex-1" onClick={() => navigate('/customer/new-request')}>

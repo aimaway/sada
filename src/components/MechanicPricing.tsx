@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, DollarSign, Save, CheckCircle2, TrendingUp } from 'lucide-react';
 
 export const MechanicPricing: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   
   const [pricing, setPricing] = useState({
@@ -60,7 +62,7 @@ export const MechanicPricing: React.FC = () => {
           </div>
           <button
             onClick={() => {
-              alert('Prix mis à jour !');
+              toast('Prix mis à jour !');
               navigate('/mechanic/profile');
             }}
             className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-medium hover:bg-blue-700"

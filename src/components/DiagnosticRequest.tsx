@@ -15,13 +15,6 @@ export const DiagnosticRequest: React.FC = () => {
   const handleSubmit = () => {
     if (warningLight.length === 0) return;
     
-    console.log('Submitting diagnostic request:', {
-      warningLight,
-      when,
-      obdScan,
-      description,
-    });
-    
     navigate('/customer/offers');
   };
 

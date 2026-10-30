@@ -14,11 +14,11 @@ npm run dev
 
 ### 3. Ouvrir dans le Navigateur
 ```
-http://localhost:5173
+http://localhost:3000
 ```
 
 ### 4. Tester comme PWA sur Mobile
-1. Ouvrir `http://localhost:5173` sur votre téléphone
+1. Ouvrir `http://localhost:3000` sur votre téléphone
 2. **Android (Chrome)** : Menu → "Ajouter à l'écran d'accueil"
 3. **iOS (Safari)** : Partager → "Sur l'écran d'accueil"
 
@@ -28,7 +28,7 @@ http://localhost:5173
 
 ### Page Principale
 ```
-http://localhost:5173/
+http://localhost:3000/
 ```
 - Landing page professionnelle
 - Statistiques et témoignages
@@ -36,7 +36,7 @@ http://localhost:5173/
 
 ### Sélection de Rôle
 ```
-http://localhost:5173/login
+http://localhost:3000/login
 ```
 - Choisir entre : Client, Mécanicien, Vendeur, Tuner, Admin
 - Pour les clients : Message de téléchargement d'app

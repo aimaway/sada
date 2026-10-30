@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Bell, MessageCircle, Mail, Smartphone, Save, CheckCircle2,
@@ -6,6 +7,7 @@ import {
 } from 'lucide-react';
 
 export const CustomerNotifications: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState({
     // Types de notifications
@@ -36,7 +38,7 @@ export const CustomerNotifications: React.FC = () => {
   };
 
   const handleSave = () => {
-    alert('Préférences de notifications sauvegardées !');
+    toast('Préférences de notifications sauvegardées !');
     navigate('/customer/profile');
   };
 

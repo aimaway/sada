@@ -7,11 +7,22 @@ interface DemoContextType {
 
 const DemoContext = createContext<DemoContextType | undefined>(undefined);
 
+// Persist the global demo/live toggle so a refresh (or a new tab) keeps the
+// same data source. Default = demo ON (offline-friendly).
+const DEMO_KEY = 'tomobily_demo_mode';
+function readDemoFlag(): boolean {
+  try { return localStorage.getItem(DEMO_KEY) !== 'live'; } catch { return true; }
+}
+
 export const DemoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isDemoMode, setIsDemoMode] = useState(true); // Activé par défaut
+  const [isDemoMode, setIsDemoMode] = useState(readDemoFlag); // Activé par défaut
 
   const toggleDemoMode = () => {
-    setIsDemoMode(!isDemoMode);
+    setIsDemoMode((prev) => {
+      const next = !prev;
+      try { localStorage.setItem(DEMO_KEY, next ? 'demo' : 'live'); } catch {}
+      return next;
+    });
   };
 
   return (

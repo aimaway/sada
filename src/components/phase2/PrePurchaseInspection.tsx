@@ -17,11 +17,6 @@ export const PrePurchaseInspection: React.FC = () => {
   const [inspectionAddress, setInspectionAddress] = useState('');
 
   const handleSubmit = () => {
-    console.log('Creating inspection request:', {
-      vehicleInfo,
-      inspectionDate,
-      inspectionAddress,
-    });
     navigate('/customer/inspections');
   };
 

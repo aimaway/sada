@@ -28,14 +28,12 @@ export const BeneficiaryShareLink: React.FC = () => {
   const handleShareLocation = () => {
     setLocationShared(true);
     setShowLocationConfirm(false);
-    console.log('Location shared:', { lat: 33.5731, lng: -7.5898 });
   };
 
   const handleApproveQuote = (price: number) => {
     setQuoteApproved(true);
     setApprovedPrice(price);
     setShowQuoteApproval(false);
-    console.log('Quote approved:', price);
   };
 
   const handleContactPayer = () => {

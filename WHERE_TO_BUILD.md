@@ -14,7 +14,7 @@
 |--------|----------------|---------------------|
 | **Coût** | ✅ Gratuit | ❌ ~142 MAD/mois |
 | **Accessibilité** | ❌ Seulement vous | ✅ Tout le monde |
-| **URL** | `http://localhost:5173` | `https://mecago.app` |
+| **URL** | `http://localhost:3000` | `https://mecago.app` |
 | **Installation PWA** | ✅ Possible (localhost) | ✅ Possible (HTTPS requis) |
 | **Backend** | ✅ Possible (local) | ✅ Obligatoire |
 | **Base de données** | ✅ Possible (local) | ✅ Obligatoire |
@@ -36,7 +36,7 @@
 ### ❌ Limites
 
 - **Pas accessible** : Autres personnes ne peuvent pas l'utiliser
-- **Pas de domaine** : `localhost:5173` au lieu de `mecago.app`
+- **Pas de domaine** : `localhost:3000` au lieu de `mecago.app`
 - **Pas de HTTPS** : Certaines fonctionnalités PWA limitées
 - **Pas de backend réel** : Données mock seulement
 
@@ -79,14 +79,14 @@ Vous verrez :
 ```
   VITE v6.x.x  ready in xxx ms
 
-  ➜  Local:   http://localhost:5173/
+  ➜  Local:   http://localhost:3000/
   ➜  Network: http://192.168.x.x:5173/
 ```
 
 #### Étape 5 : Ouvrir dans le Navigateur
 
 ```
-http://localhost:5173
+http://localhost:3000
 ```
 
 ✅ **mecaGO fonctionne sur votre machine !**
@@ -423,7 +423,7 @@ vercel
 - [ ] Cloner/télécharger le projet
 - [ ] `npm install`
 - [ ] `npm run dev`
-- [ ] Ouvrir `http://localhost:5173`
+- [ ] Ouvrir `http://localhost:3000`
 - [ ] Tester sur votre téléphone (même WiFi)
 - [ ] Installer comme PWA
 

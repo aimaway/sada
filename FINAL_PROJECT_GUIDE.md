@@ -260,7 +260,7 @@ FINAL_PROJECT_GUIDE.md - Ce document
 
 ### 1. Accéder à la Landing Page
 ```
-http://localhost:5173/
+http://localhost:3000/
 ```
 
 ### 2. Se Connecter
