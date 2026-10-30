@@ -329,8 +329,8 @@ function AppRoutes() {
       <Route path="/admin/users" element={<ProtectedRoute role="admin"><P><AdminUsers /></P></ProtectedRoute>} />
       <Route path="/admin/settings" element={<ProtectedRoute role="admin"><P><AdminSettingsPage /></P></ProtectedRoute>} />
       <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><P><AdminDisputes /></P></ProtectedRoute>} />
-      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><P><AdminAudit />
-      <Route path="/admin/metrics" element={<ProtectedRoute role="admin"><P><AdminMetricsControl /></P></ProtectedRoute>} /></P></ProtectedRoute>} />
+      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><P><AdminAudit /></P></ProtectedRoute>} />
+      <Route path="/admin/metrics" element={<ProtectedRoute role="admin"><P><AdminMetricsControl /></P></ProtectedRoute>} />
 
       {/* Phase 2 - Two-Wheelers & Pros */}
       <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer">{<P><UrgentRequestFlow {...({ vehicleType: "motorcycle" } as any)} /></P>}</ProtectedRoute>} />
