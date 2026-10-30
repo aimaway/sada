@@ -377,6 +377,19 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
       return json({ items: getMockPartnerList() });
     }
 
+    // ------------------------------ CUSTOMER DASHBOARD ------------------------------
+    if (clean.endsWith('/customer/dashboard')) {
+      const cust = (mockUsers.customers as any[])[0] || {};
+      return json({
+        ok: true,
+        stats: { active_requests: 1, offers_received: mockRequests.length, upcoming_bookings: 1, total_spent_centimes: 124500 },
+        profile: { display_name: cust.full_name || 'Client TomoBily', city: cust.city || 'Casablanca', vehicles: mockVehiclesSafe(), loyalty_points: 620 },
+        recent_requests: mockRequests.slice(0, 3).map((r: any) => ({ id: r.id, status: r.status, description: r.description || 'Demande de réparation', offer_count: mockOffersCount(r.id), vehicle_summary: null, created_at: r.created_at || null })),
+        recent_orders: mockOrders.slice(0, 3).map((o: any) => ({ id: o.id, order_number: o.order_number || `CMD-${o.id}`, status: o.status, payment_status: o.payment_status || 'paid', total: o.total_amount ?? o.total ?? 0, created_at: o.created_at || null })),
+        recent_jobs: mockJobs.slice(0, 3).map((j: any) => ({ id: j.id, status: j.status, agreed_price: j.agreed_price || 0, created_at: j.created_at || null })),
+      });
+    }
+
     // ------------------------------ CLIENTS (compte client) ------------------------------
     if (clean.includes('/clients/') || clean.endsWith('/client/orders') || clean.endsWith('/client/documents') || clean.endsWith('/client/vehicles')) {
       return json({ orders: mockOrders, documents: mockLegalDocuments, vehicles: mockVehiclesSafe(), notifications: mockNotifications });

@@ -10,7 +10,10 @@ import { DemoToggle } from './components/DemoToggle';
 // landing page + login. Chunks are cached by the service worker afterwards.
 const lazyNamed = (factory: () => Promise<Record<string, any>>, name: string): React.LazyExoticComponent<any> =>
   React.lazy(async () => ({ default: (await factory())[name] }));
-const P = (el: React.ReactNode) => (
+// Wrap a lazy screen in <Suspense>. IMPORTANT: this must be used as a JSX
+// *component* — <P><Screen /></P> — never as a function call <P><Screen /></P>,
+// which renders the literal text "P(" and an empty page.
+const P = ({ children }: { children: React.ReactNode }) => (
   <Suspense
     fallback={
       <div className="min-h-[60vh] flex items-center justify-center bg-slate-50">
@@ -18,7 +21,7 @@ const P = (el: React.ReactNode) => (
       </div>
     }
   >
-    {el}
+    {children}
   </Suspense>
 );
 
@@ -183,129 +186,129 @@ function AppRoutes() {
       <Route path="/" element={<LandingPage />} />
 
       {/* Role Selection Login */}
-      <Route path="/login" element={P(<RoleSelectionLogin />)} />
+      <Route path="/login" element={<P><RoleSelectionLogin /></P>} />
 
       {/* Public content pages */}
-      <Route path="/about" element={P(<AboutPage />)} />
-      <Route path="/contact" element={P(<ContactPage />)} />
-      <Route path="/faq" element={P(<FAQPage />)} />
-      <Route path="/terms" element={P(<TermsPage />)} />
-      <Route path="/privacy" element={P(<PrivacyPage />)} />
+      <Route path="/about" element={<P><AboutPage /></P>} />
+      <Route path="/contact" element={<P><ContactPage /></P>} />
+      <Route path="/faq" element={<P><FAQPage /></P>} />
+      <Route path="/terms" element={<P><TermsPage /></P>} />
+      <Route path="/privacy" element={<P><PrivacyPage /></P>} />
 
       {/* Customer */}
-      <Route path="/customer/login" element={P(<CustomerLogin />)} />
-      <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer">P(<CustomerProfileSetup />)</ProtectedRoute>} />
-      <Route path="/customer/home" element={<ProtectedRoute role="customer"><PortalSidebar title="Accueil client">P(<CustomerDashboard />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><PortalSidebar title="Notifications">P(<NotificationsScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Nouvelle demande" backRoute="/customer/home">P(<NewRequestEnhanced />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/explain-problem" element={<ProtectedRoute role="customer"><PortalSidebar title="Expliquer mon problème" backRoute="/customer/home">P(<ExplainProblem />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/diagnostic" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande de diagnostic" backRoute="/customer/home">P(<DiagnosticRequest />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/maintenance-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande d'entretien" backRoute="/customer/home">P(<MaintenanceRequest />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/waiting" element={<ProtectedRoute role="customer">P(<CustomerWaiting />)</ProtectedRoute>} />
-      <Route path="/customer/offers" element={<ProtectedRoute role="customer"><PortalSidebar title="Offres reçues">P(<IfixOffersScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/ifix" element={<ProtectedRoute role="customer"><PortalSidebar title="IFIX AI">P(<IfixAssistantPage />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/mechanic-profile/:id" element={<ProtectedRoute role="customer">P(<MechanicProfileScreen />)</ProtectedRoute>} />
-      <Route path="/customer/tracking" element={<ProtectedRoute role="customer"><PortalSidebar title="Suivi en direct">P(<LiveTrackingScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/negotiation" element={<ProtectedRoute role="customer"><PortalSidebar title="Négociation" backRoute="/customer/offers">P(<NegotiationScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/payment" element={<ProtectedRoute role="customer"><PortalSidebar title="Paiement">P(<PaymentScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/rate" element={<ProtectedRoute role="customer"><PortalSidebar title="Notez votre mécanicien" backRoute="/customer/history">P(<CustomerRate />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique">P(<CustomerHistory />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/orders" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes commandes">P(<OrdersTab />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/messages" element={<ProtectedRoute role="customer"><PortalSidebar title="Messages">P(<MessagesTab />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/login" element={<P><CustomerLogin /></P>} />
+      <Route path="/customer/profile-setup" element={<ProtectedRoute role="customer"><P><CustomerProfileSetup /></P></ProtectedRoute>} />
+      <Route path="/customer/home" element={<ProtectedRoute role="customer"><PortalSidebar title="Accueil client"><P><CustomerDashboard /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/notifications" element={<ProtectedRoute role="customer"><PortalSidebar title="Notifications"><P><NotificationsScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/new-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Nouvelle demande" backRoute="/customer/home"><P><NewRequestEnhanced /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/explain-problem" element={<ProtectedRoute role="customer"><PortalSidebar title="Expliquer mon problème" backRoute="/customer/home"><P><ExplainProblem /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/diagnostic" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande de diagnostic" backRoute="/customer/home"><P><DiagnosticRequest /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/maintenance-request" element={<ProtectedRoute role="customer"><PortalSidebar title="Demande d'entretien" backRoute="/customer/home"><P><MaintenanceRequest /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/waiting" element={<ProtectedRoute role="customer"><P><CustomerWaiting /></P></ProtectedRoute>} />
+      <Route path="/customer/offers" element={<ProtectedRoute role="customer"><PortalSidebar title="Offres reçues"><P><IfixOffersScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/ifix" element={<ProtectedRoute role="customer"><PortalSidebar title="IFIX AI"><P><IfixAssistantPage /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/mechanic-profile/:id" element={<ProtectedRoute role="customer"><P><MechanicProfileScreen /></P></ProtectedRoute>} />
+      <Route path="/customer/tracking" element={<ProtectedRoute role="customer"><PortalSidebar title="Suivi en direct"><P><LiveTrackingScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/negotiation" element={<ProtectedRoute role="customer"><PortalSidebar title="Négociation" backRoute="/customer/offers"><P><NegotiationScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/payment" element={<ProtectedRoute role="customer"><PortalSidebar title="Paiement"><P><PaymentScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/rate" element={<ProtectedRoute role="customer"><PortalSidebar title="Notez votre mécanicien" backRoute="/customer/history"><P><CustomerRate /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique"><P><CustomerHistory /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/orders" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes commandes"><P><OrdersTab /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/messages" element={<ProtectedRoute role="customer"><PortalSidebar title="Messages"><P><MessagesTab /></P></PortalSidebar></ProtectedRoute>} />
       {/* Same standard sidebar shell for the customer profile */}
       <Route
         path="/customer/profile"
         element={
           <ProtectedRoute role="customer">
             <PortalSidebar title="Mon Profil">
-              P(<CustomerProfileComplete />)
+              <P><CustomerProfileComplete /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
       />
-      <Route path="/customer/profile-old" element={<ProtectedRoute role="customer"><PortalSidebar title="Ancien profil">P(<ProfileScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/maintenance" element={<ProtectedRoute role="customer"><PortalSidebar title="Entretien Auto">P(<MaintenanceDashboard />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/shop" element={<ProtectedRoute role="customer"><PortalSidebar title="Boutique Auto">P(<ShopScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/maintenance-log" element={<ProtectedRoute role="customer"><PortalSidebar title="Carnet d'entretien">P(<MaintenanceLogScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/reminders" element={<ProtectedRoute role="customer"><PortalSidebar title="Rappels">P(<RemindersScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/documents" element={<ProtectedRoute role="customer"><PortalSidebar title="Documents légaux">P(<LegalDocumentsScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/ai-assistant" element={<ProtectedRoute role="customer"><PortalSidebar title="Assistant IA">P(<AIAssistantScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/warning-scanner" element={<ProtectedRoute role="customer"><PortalSidebar title="Scanner voyants">P(<WarningLightScanner />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/business/wallet" element={<ProtectedRoute role="customer"><PortalSidebar title="Portefeuille pro">P(<MechanicWalletScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/business/anti-bypass" element={<ProtectedRoute role="customer"><PortalSidebar title="Anti-contournement">P(<AntiBypassingScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/business/local" element={<ProtectedRoute role="customer"><PortalSidebar title="Spécificités locales">P(<LocalSpecificsScreen />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile-old" element={<ProtectedRoute role="customer"><PortalSidebar title="Ancien profil"><P><ProfileScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/maintenance" element={<ProtectedRoute role="customer"><PortalSidebar title="Entretien Auto"><P><MaintenanceDashboard /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/shop" element={<ProtectedRoute role="customer"><PortalSidebar title="Boutique Auto"><P><ShopScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/maintenance-log" element={<ProtectedRoute role="customer"><PortalSidebar title="Carnet d'entretien"><P><MaintenanceLogScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/reminders" element={<ProtectedRoute role="customer"><PortalSidebar title="Rappels"><P><RemindersScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/documents" element={<ProtectedRoute role="customer"><PortalSidebar title="Documents légaux"><P><LegalDocumentsScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/ai-assistant" element={<ProtectedRoute role="customer"><PortalSidebar title="Assistant IA"><P><AIAssistantScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/warning-scanner" element={<ProtectedRoute role="customer"><PortalSidebar title="Scanner voyants"><P><WarningLightScanner /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/business/wallet" element={<ProtectedRoute role="customer"><PortalSidebar title="Portefeuille pro"><P><MechanicWalletScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/business/anti-bypass" element={<ProtectedRoute role="customer"><PortalSidebar title="Anti-contournement"><P><AntiBypassingScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/business/local" element={<ProtectedRoute role="customer"><PortalSidebar title="Spécificités locales"><P><LocalSpecificsScreen /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Mechanic */}
-      <Route path="/mechanic/login" element={P(<MechanicLogin />)} />
-      <Route path="/mechanic/profile-setup" element={<ProtectedRoute role="mechanic">P(<MechanicProfileSetup />)</ProtectedRoute>} />
-      <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tableau de bord">P(<MechanicDashboard />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Détail de la demande" backRoute="/mechanic/inbox">P(<RequestOfferDetail />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/inbox" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boîte de réception">P(<ProviderInbox />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Job actif">P(<MechanicActiveJob />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portefeuille">P(<MechanicWallet />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/earnings" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Gains">P(<MechanicEarnings />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/shop" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boutique pièces">P(<MechanicStoreScreen />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/login" element={<P><MechanicLogin /></P>} />
+      <Route path="/mechanic/profile-setup" element={<ProtectedRoute role="mechanic"><P><MechanicProfileSetup /></P></ProtectedRoute>} />
+      <Route path="/mechanic/home" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tableau de bord"><P><MechanicDashboard /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/request/:id" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Détail de la demande" backRoute="/mechanic/inbox"><P><RequestOfferDetail /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/inbox" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boîte de réception"><P><ProviderInbox /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/active-job" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Job actif"><P><MechanicActiveJob /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/wallet" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portefeuille"><P><MechanicWallet /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/earnings" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Gains"><P><MechanicEarnings /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/shop" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Boutique pièces"><P><MechanicStoreScreen /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Seller */}
-      <Route path="/seller/login" element={P(<SellerLogin />)} />
+      <Route path="/seller/login" element={<P><SellerLogin /></P>} />
       {/* Old seller dashboard now renders the NEW experience inside the standard sidebar */}
       <Route
         path="/seller/dashboard"
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar>
-              P(<NewSellerDashboard />)
+              <P><NewSellerDashboard /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
       />
-      <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><PortalSidebar title="Partenariats">P(<SellerPartnershipsScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/seller/settings" element={<ProtectedRoute role="seller"><PortalSidebar title="Réglages boutique">P(<SellerSettings />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/seller/partnerships" element={<ProtectedRoute role="seller"><PortalSidebar title="Partenariats"><P><SellerPartnershipsScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/seller/settings" element={<ProtectedRoute role="seller"><PortalSidebar title="Réglages boutique"><P><SellerSettings /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Tuner */}
-      <Route path="/tuner/login" element={P(<TunerLogin />)} />
-      <Route path="/tuner/register" element={P(<TunerRegistration />)} />
+      <Route path="/tuner/login" element={<P><TunerLogin /></P>} />
+      <Route path="/tuner/register" element={<P><TunerRegistration /></P>} />
       {/* Old tuner dashboard now renders the NEW experience inside the standard sidebar */}
       <Route
         path="/tuner/dashboard"
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar>
-              P(<NewTunerDashboard />)
+              <P><NewTunerDashboard /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
       />
-      <Route path="/tuner/profile-edit" element={<ProtectedRoute role="tuner"><PortalSidebar title="Modifier mon profil" backRoute="/tuner/portal">P(<TunerProfileEdit />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/services" element={<ProtectedRoute role="tuner"><PortalSidebar title="Mes services">P(<TunerServices />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/notifications" element={<ProtectedRoute role="tuner"><PortalSidebar title="Notifications">P(<TunerNotifications />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/payment-methods" element={<ProtectedRoute role="tuner"><PortalSidebar title="Méthodes de paiement">P(<TunerPaymentMethods />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/wallet-recharge" element={<ProtectedRoute role="tuner"><PortalSidebar title="Portefeuille">P(<TunerWalletRecharge />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/gallery-upload" element={<ProtectedRoute role="tuner"><PortalSidebar title="Ajouter au portfolio" backRoute="/tuner/portfolio">P(<TunerGalleryUpload />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/requests-map" element={<ProtectedRoute role="tuner"><PortalSidebar title="Carte des demandes">P(<TunerRequestsMap />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/plans" element={<ProtectedRoute role="tuner"><PortalSidebar title="Abonnement tuner">P(<TunerPlans />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/plans" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Abonnement mécanicien">P(<MechanicPlans />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/seller/plans" element={<ProtectedRoute role="seller"><PortalSidebar title="Abonnement vendeur">P(<SellerPlans />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/profile-edit" element={<ProtectedRoute role="tuner"><PortalSidebar title="Modifier mon profil" backRoute="/tuner/portal"><P><TunerProfileEdit /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/services" element={<ProtectedRoute role="tuner"><PortalSidebar title="Mes services"><P><TunerServices /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/notifications" element={<ProtectedRoute role="tuner"><PortalSidebar title="Notifications"><P><TunerNotifications /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/payment-methods" element={<ProtectedRoute role="tuner"><PortalSidebar title="Méthodes de paiement"><P><TunerPaymentMethods /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/wallet-recharge" element={<ProtectedRoute role="tuner"><PortalSidebar title="Portefeuille"><P><TunerWalletRecharge /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/gallery-upload" element={<ProtectedRoute role="tuner"><PortalSidebar title="Ajouter au portfolio" backRoute="/tuner/portfolio"><P><TunerGalleryUpload /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/requests-map" element={<ProtectedRoute role="tuner"><PortalSidebar title="Carte des demandes"><P><TunerRequestsMap /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/plans" element={<ProtectedRoute role="tuner"><PortalSidebar title="Abonnement tuner"><P><TunerPlans /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/plans" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Abonnement mécanicien"><P><MechanicPlans /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/seller/plans" element={<ProtectedRoute role="seller"><PortalSidebar title="Abonnement vendeur"><P><SellerPlans /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Customer Profile Complete - Sub-routes (same shell as the profile page) */}
-      <Route path="/customer/profile/vehicles" element={<ProtectedRoute role="customer"><PortalSidebar title="Mon garage" backRoute="/customer/profile">P(<CustomerVehicles />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/addresses" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes adresses" backRoute="/customer/profile">P(<CustomerAddresses />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/payment-methods" element={<ProtectedRoute role="customer"><PortalSidebar title="Méthodes de paiement" backRoute="/customer/profile">P(<CustomerPaymentMethods />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/notifications" element={<ProtectedRoute role="customer"><PortalSidebar title="Notifications" backRoute="/customer/profile">P(<CustomerNotifications />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/transactions" element={<ProtectedRoute role="customer"><PortalSidebar title="Transactions" backRoute="/customer/profile">P(<CustomerTransactions />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/reviews" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes avis" backRoute="/customer/profile">P(<CustomerReviews />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/favorites" element={<ProtectedRoute role="customer"><PortalSidebar title="Favoris" backRoute="/customer/profile">P(<CustomerFavorites />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/language" element={<ProtectedRoute role="customer"><PortalSidebar title="Langue" backRoute="/customer/profile">P(<CustomerLanguage />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/security" element={<ProtectedRoute role="customer"><PortalSidebar title="Sécurité" backRoute="/customer/profile">P(<CustomerSecurity />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/help" element={<ProtectedRoute role="customer"><PortalSidebar title="Aide & contact" backRoute="/customer/profile">P(<CustomerHelp />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/contact" element={<ProtectedRoute role="customer"><PortalSidebar title="Contact" backRoute="/customer/profile">P(<CustomerContact />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/terms" element={<ProtectedRoute role="customer"><PortalSidebar title="Conditions d'utilisation" backRoute="/customer/profile">P(<CustomerTerms />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/vehicles" element={<ProtectedRoute role="customer"><PortalSidebar title="Mon garage" backRoute="/customer/profile"><P><CustomerVehicles /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/addresses" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes adresses" backRoute="/customer/profile"><P><CustomerAddresses /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/payment-methods" element={<ProtectedRoute role="customer"><PortalSidebar title="Méthodes de paiement" backRoute="/customer/profile"><P><CustomerPaymentMethods /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/notifications" element={<ProtectedRoute role="customer"><PortalSidebar title="Notifications" backRoute="/customer/profile"><P><CustomerNotifications /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/transactions" element={<ProtectedRoute role="customer"><PortalSidebar title="Transactions" backRoute="/customer/profile"><P><CustomerTransactions /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/reviews" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes avis" backRoute="/customer/profile"><P><CustomerReviews /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/favorites" element={<ProtectedRoute role="customer"><PortalSidebar title="Favoris" backRoute="/customer/profile"><P><CustomerFavorites /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/language" element={<ProtectedRoute role="customer"><PortalSidebar title="Langue" backRoute="/customer/profile"><P><CustomerLanguage /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/security" element={<ProtectedRoute role="customer"><PortalSidebar title="Sécurité" backRoute="/customer/profile"><P><CustomerSecurity /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/help" element={<ProtectedRoute role="customer"><PortalSidebar title="Aide & contact" backRoute="/customer/profile"><P><CustomerHelp /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/contact" element={<ProtectedRoute role="customer"><PortalSidebar title="Contact" backRoute="/customer/profile"><P><CustomerContact /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/terms" element={<ProtectedRoute role="customer"><PortalSidebar title="Conditions d'utilisation" backRoute="/customer/profile"><P><CustomerTerms /></P></PortalSidebar></ProtectedRoute>} />
       {/* Alias : le bouton "Paramètres du compte" du tableau de bord client */}
       <Route path="/customer/profile/settings" element={<Navigate to="/customer/profile" replace />} />
       {/* Sous-pages profile manquantes (restaient inaccessibles -> redirection accueil) */}
-      <Route path="/customer/profile/info" element={<ProtectedRoute role="customer"><PortalSidebar title="Informations personnelles" backRoute="/customer/profile">P(<CustomerPersonalInfo />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/maintenance-history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique maintenance" backRoute="/customer/profile">P(<MaintenanceLogScreen />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/profile/privacy" element={<ProtectedRoute role="customer"><PortalSidebar title="Confidentialité" backRoute="/customer/profile">P(<PrivacyPage />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/info" element={<ProtectedRoute role="customer"><PortalSidebar title="Informations personnelles" backRoute="/customer/profile"><P><CustomerPersonalInfo /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/maintenance-history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique maintenance" backRoute="/customer/profile"><P><MaintenanceLogScreen /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/profile/privacy" element={<ProtectedRoute role="customer"><PortalSidebar title="Confidentialité" backRoute="/customer/profile"><P><PrivacyPage /></P></PortalSidebar></ProtectedRoute>} />
       {/* Alias garage */}
       <Route path="/customer/vehicles" element={<Navigate to="/customer/profile/vehicles" replace />} />
       {/* Alias des anciens liens internes qui n'avaient pas de route (-> 404) */}
@@ -318,78 +321,78 @@ function AppRoutes() {
       <Route path="/customer/subscription" element={<Navigate to="/choose-plan" replace />} />
 
       {/* Admin */}
-      <Route path="/admin/login" element={P(<AdminLogin />)} />
-      <Route path="/admin/dashboard" element={<ProtectedRoute role="admin"><PortalSidebar title="Console admin" autoShell={false}>P(<AdminDashboard />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/verification" element={<ProtectedRoute role="admin"><PortalSidebar title="File de vérification" autoShell={false}>P(<AdminVerification />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/requests" element={<ProtectedRoute role="admin"><PortalSidebar title="Demandes & Jobs" autoShell={false}>P(<AdminRequests />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/users" element={<ProtectedRoute role="admin"><PortalSidebar title="Utilisateurs" autoShell={false}>P(<AdminUsers />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/settings" element={<ProtectedRoute role="admin"><PortalSidebar title="Paramètres plateforme" autoShell={false}>P(<AdminSettingsPage />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><PortalSidebar title="Litiges" autoShell={false}>P(<AdminDisputes />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><PortalSidebar title="Journal d'audit" autoShell={false}>P(<AdminAudit />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/login" element={<P><AdminLogin /></P>} />
+      <Route path="/admin/dashboard" element={<ProtectedRoute role="admin"><PortalSidebar title="Console admin" autoShell={false}><P><AdminDashboard /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/verification" element={<ProtectedRoute role="admin"><PortalSidebar title="File de vérification" autoShell={false}><P><AdminVerification /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/requests" element={<ProtectedRoute role="admin"><PortalSidebar title="Demandes & Jobs" autoShell={false}><P><AdminRequests /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/users" element={<ProtectedRoute role="admin"><PortalSidebar title="Utilisateurs" autoShell={false}><P><AdminUsers /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/settings" element={<ProtectedRoute role="admin"><PortalSidebar title="Paramètres plateforme" autoShell={false}><P><AdminSettingsPage /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/disputes" element={<ProtectedRoute role="admin"><PortalSidebar title="Litiges" autoShell={false}><P><AdminDisputes /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/admin/audit" element={<ProtectedRoute role="admin"><PortalSidebar title="Journal d'audit" autoShell={false}><P><AdminAudit /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Phase 2 - Two-Wheelers & Pros */}
-      <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer">{P(<UrgentRequestFlow {...({ vehicleType: "motorcycle" } as any)} />)}</ProtectedRoute>} />
-      <Route path="/customer/urgent/scooter" element={<ProtectedRoute role="customer">{P(<UrgentRequestFlow {...({ vehicleType: "scooter" } as any)} />)}</ProtectedRoute>} />
-      <Route path="/customer/urgent/ebike" element={<ProtectedRoute role="customer">{P(<UrgentRequestFlow {...({ vehicleType: "ebike" } as any)} />)}</ProtectedRoute>} />
+      <Route path="/customer/urgent/motorcycle" element={<ProtectedRoute role="customer">{<P><UrgentRequestFlow {...({ vehicleType: "motorcycle" } as any)} /></P>}</ProtectedRoute>} />
+      <Route path="/customer/urgent/scooter" element={<ProtectedRoute role="customer">{<P><UrgentRequestFlow {...({ vehicleType: "scooter" } as any)} /></P>}</ProtectedRoute>} />
+      <Route path="/customer/urgent/ebike" element={<ProtectedRoute role="customer">{<P><UrgentRequestFlow {...({ vehicleType: "ebike" } as any)} /></P>}</ProtectedRoute>} />
 
       {/* Phase 2 - Pre-purchase Inspection */}
-      <Route path="/customer/inspection/book" element={<ProtectedRoute role="customer">P(<PrePurchaseInspection />)</ProtectedRoute>} />
-      <Route path="/inspection-report/:slug" element={P(<InspectionReportView />)} />
+      <Route path="/customer/inspection/book" element={<ProtectedRoute role="customer"><P><PrePurchaseInspection /></P></ProtectedRoute>} />
+      <Route path="/inspection-report/:slug" element={<P><InspectionReportView /></P>} />
 
       {/* Phase 2 - On-behalf Request */}
-      <Route path="/customer/on-behalf/new" element={<ProtectedRoute role="customer">P(<OnBehalfRequest />)</ProtectedRoute>} />
-      <Route path="/on-behalf/:token" element={P(<BeneficiaryShareLink />)} />
+      <Route path="/customer/on-behalf/new" element={<ProtectedRoute role="customer"><P><OnBehalfRequest /></P></ProtectedRoute>} />
+      <Route path="/on-behalf/:token" element={<P><BeneficiaryShareLink /></P>} />
 
       {/* Phase 2 - Mechanic Public Profile & Dashboard */}
-      <Route path="/m/:slug" element={P(<MechanicPublicProfile />)} />
-      <Route path="/mechanic/dashboard" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tableau de bord">P(<MechanicDashboard />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/public-profile" element={<ProtectedRoute role="mechanic">P(<MechanicPublicProfile />)</ProtectedRoute>} />
+      <Route path="/m/:slug" element={<P><MechanicPublicProfile /></P>} />
+      <Route path="/mechanic/dashboard" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tableau de bord"><P><MechanicDashboard /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/public-profile" element={<ProtectedRoute role="mechanic"><P><MechanicPublicProfile /></P></ProtectedRoute>} />
 
       {/* Phase 2 - Recurring Plans & Invoices */}
-      <Route path="/customer/recurring-plans" element={<ProtectedRoute role="customer"><PortalSidebar title="Plans récurrents">P(<RecurringPlansDashboard />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/recurring-plans" element={<ProtectedRoute role="customer"><PortalSidebar title="Plans récurrents"><P><RecurringPlansDashboard /></P></PortalSidebar></ProtectedRoute>} />
 
       {/* Enhanced Features */}
       <Route path="/customer/home-enhanced" element={<Navigate to="/customer/home" replace />} />
-      <Route path="/customer/wallet" element={<ProtectedRoute role="customer"><PortalSidebar title="Mon portefeuille">P(<ClientWallet />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes documents">P(<DocumentsManager />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/customer/portal" element={<ProtectedRoute role="customer"><PortalSidebar title="Espace client">P(<ClientPortal />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Profil pro">P(<MechanicProfileEnhanced />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/wallet" element={<ProtectedRoute role="customer"><PortalSidebar title="Mon portefeuille"><P><ClientWallet /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/documents-manage" element={<ProtectedRoute role="customer"><PortalSidebar title="Mes documents"><P><DocumentsManager /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/customer/portal" element={<ProtectedRoute role="customer"><PortalSidebar title="Espace client"><P><ClientPortal /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile-enhanced" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Profil pro"><P><MechanicProfileEnhanced /></P></PortalSidebar></ProtectedRoute>} />
       {/* Same standard sidebar shell for the mechanic profile */}
       <Route
         path="/mechanic/profile"
         element={
           <ProtectedRoute role="mechanic">
             <PortalSidebar title="Mon Profil Pro">
-              P(<MechanicProfileComplete />)
+              <P><MechanicProfileComplete /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
       />
-      <Route path="/mechanic/profile/info" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Informations personnelles" backRoute="/mechanic/profile">P(<MechanicPersonalInfo />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/services" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Mes services" backRoute="/mechanic/profile">P(<MechanicServices />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/area" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Zone d'intervention" backRoute="/mechanic/profile">P(<MechanicServiceArea />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/pricing" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tarifs" backRoute="/mechanic/profile">P(<MechanicPricing />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/verification" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Vérification" backRoute="/mechanic/profile">P(<MechanicVerification />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/stats" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Statistiques" backRoute="/mechanic/profile">P(<MechanicStats />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/reviews" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Avis clients" backRoute="/mechanic/profile">P(<MechanicReviews />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/payouts" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Paiements" backRoute="/mechanic/profile">P(<MechanicPayouts />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/notifications" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Notifications" backRoute="/mechanic/profile">P(<MechanicNotifications />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/visibility" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Visibilité" backRoute="/mechanic/profile">P(<MechanicVisibility />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/info" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Informations personnelles" backRoute="/mechanic/profile"><P><MechanicPersonalInfo /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/services" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Mes services" backRoute="/mechanic/profile"><P><MechanicServices /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/area" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Zone d'intervention" backRoute="/mechanic/profile"><P><MechanicServiceArea /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/pricing" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Tarifs" backRoute="/mechanic/profile"><P><MechanicPricing /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/verification" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Vérification" backRoute="/mechanic/profile"><P><MechanicVerification /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/stats" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Statistiques" backRoute="/mechanic/profile"><P><MechanicStats /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/reviews" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Avis clients" backRoute="/mechanic/profile"><P><MechanicReviews /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/payouts" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Paiements" backRoute="/mechanic/profile"><P><MechanicPayouts /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/notifications" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Notifications" backRoute="/mechanic/profile"><P><MechanicNotifications /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/visibility" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Visibilité" backRoute="/mechanic/profile"><P><MechanicVisibility /></P></PortalSidebar></ProtectedRoute>} />
       {/* Sous-pages du profil mécanicien référencées par le menu "Mon Profil Pro" mais jamais déclarées
           (elles menaient au 404). Réutilisation des écrans partagés, comme côté client. */}
-      <Route path="/mechanic/profile/security" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Sécurité du compte" backRoute="/mechanic/profile">P(<CustomerSecurity />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/help" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Centre d'aide" backRoute="/mechanic/profile">P(<CustomerHelp />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/contact" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Contact" backRoute="/mechanic/profile">P(<CustomerContact />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/terms" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Conditions & Confidentialité" backRoute="/mechanic/profile">P(<CustomerTerms />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/profile/performance" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Métriques de performance" backRoute="/mechanic/profile">P(<MechanicStats />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/security" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Sécurité du compte" backRoute="/mechanic/profile"><P><CustomerSecurity /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/help" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Centre d'aide" backRoute="/mechanic/profile"><P><CustomerHelp /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/contact" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Contact" backRoute="/mechanic/profile"><P><CustomerContact /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/terms" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Conditions & Confidentialité" backRoute="/mechanic/profile"><P><CustomerTerms /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/performance" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Métriques de performance" backRoute="/mechanic/profile"><P><MechanicStats /></P></PortalSidebar></ProtectedRoute>} />
       {/* Alias : "/mechanic/profile-settings" (MécanicProfileDetail) et "/mechanic/dashboard" → espace pro */}
       <Route path="/mechanic/profile-settings" element={<Navigate to="/mechanic/profile" replace />} />
-      <Route path="/mechanic/portal" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portail Pro">P(<ProviderPortal />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/mechanic/jobs" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Mes jobs">P(<JobManagement />)</PortalSidebar></ProtectedRoute>} />
-      <Route path="/tuner/:slug" element={P(<TunerProfile />)} />
-      <Route path="/seller/:slug" element={P(<SellerPublicProfile />)} />
-      <Route path="/gift-plans" element={P(<GiftPlans />)} />
-      <Route path="/choose-plan" element={P(<ChoosePlan />)} />
+      <Route path="/mechanic/portal" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portail Pro"><P><ProviderPortal /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/jobs" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Mes jobs"><P><JobManagement /></P></PortalSidebar></ProtectedRoute>} />
+      <Route path="/tuner/:slug" element={<P><TunerProfile /></P>} />
+      <Route path="/seller/:slug" element={<P><SellerPublicProfile /></P>} />
+      <Route path="/gift-plans" element={<P><GiftPlans /></P>} />
+      <Route path="/choose-plan" element={<P><ChoosePlan /></P>} />
 
       {/* Full Seller Portal (canonical routes — deduplicated) */}
       <Route
@@ -397,7 +400,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Tableau de bord vendeur">
-              P(<NewSellerDashboard />)
+              <P><NewSellerDashboard /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -410,7 +413,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Mes produits">
-              P(<SellerProductsPage />)
+              <P><SellerProductsPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -420,7 +423,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Ajouter un produit" backRoute="/seller/products">
-              P(<SellerNewProductPage />)
+              <P><SellerNewProductPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -430,7 +433,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Toutes les commandes">
-              P(<SellerOrdersPage />)
+              <P><SellerOrdersPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -440,7 +443,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Détail de la commande" backRoute="/seller/orders">
-              P(<SellerOrderDetailPage />)
+              <P><SellerOrderDetailPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -450,7 +453,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Stock & alertes">
-              P(<SellerInventoryPage />)
+              <P><SellerInventoryPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -460,7 +463,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="seller">
             <PortalSidebar title="Statistiques de vente">
-              P(<SellerAnalyticsPage />)
+              <P><SellerAnalyticsPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -472,7 +475,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Tableau de bord tuner">
-              P(<NewTunerDashboard />)
+              <P><NewTunerDashboard /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -483,7 +486,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Demandes reçues">
-              P(<TunerRequestsPage />)
+              <P><TunerRequestsPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -493,7 +496,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Mes projets">
-              P(<TunerProjectsPage />)
+              <P><TunerProjectsPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -503,7 +506,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Détail du projet" backRoute="/tuner/projects">
-              P(<TunerProjectDetailPage />)
+              <P><TunerProjectDetailPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -513,7 +516,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Agenda">
-              P(<TunerCalendarPage />)
+              <P><TunerCalendarPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -523,7 +526,7 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Agenda">
-              P(<TunerCalendarPage />)
+              <P><TunerCalendarPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
@@ -533,12 +536,12 @@ function AppRoutes() {
         element={
           <ProtectedRoute role="tuner">
             <PortalSidebar title="Portfolio">
-              P(<TunerPortfolioPage />)
+              <P><TunerPortfolioPage /></P>
             </PortalSidebar>
           </ProtectedRoute>
         }
       />
-      <Route path="/discover" element={<ProtectedRoute role="customer">P(<ProviderDirectory />)</ProtectedRoute>} />
+      <Route path="/discover" element={<ProtectedRoute role="customer"><P><ProviderDirectory /></P></ProtectedRoute>} />
 
       {/* Catch all — NotFound contextuel : un utilisateur authentifié n'est JAMAIS
           renvoyé vers la landing publique (ancien bug de redirection accueil). */}
