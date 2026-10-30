@@ -300,12 +300,22 @@ function AppRoutes() {
       <Route path="/customer/profile/help" element={<ProtectedRoute role="customer"><PortalSidebar title="Aide & contact" backRoute="/customer/profile">P(<CustomerHelp />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/contact" element={<ProtectedRoute role="customer"><PortalSidebar title="Contact" backRoute="/customer/profile">P(<CustomerContact />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/terms" element={<ProtectedRoute role="customer"><PortalSidebar title="Conditions d'utilisation" backRoute="/customer/profile">P(<CustomerTerms />)</PortalSidebar></ProtectedRoute>} />
+      {/* Alias : le bouton "Paramètres du compte" du tableau de bord client */}
+      <Route path="/customer/profile/settings" element={<Navigate to="/customer/profile" replace />} />
       {/* Sous-pages profile manquantes (restaient inaccessibles -> redirection accueil) */}
       <Route path="/customer/profile/info" element={<ProtectedRoute role="customer"><PortalSidebar title="Informations personnelles" backRoute="/customer/profile">P(<CustomerPersonalInfo />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/maintenance-history" element={<ProtectedRoute role="customer"><PortalSidebar title="Historique maintenance" backRoute="/customer/profile">P(<MaintenanceLogScreen />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/customer/profile/privacy" element={<ProtectedRoute role="customer"><PortalSidebar title="Confidentialité" backRoute="/customer/profile">P(<PrivacyPage />)</PortalSidebar></ProtectedRoute>} />
       {/* Alias garage */}
       <Route path="/customer/vehicles" element={<Navigate to="/customer/profile/vehicles" replace />} />
+      {/* Alias des anciens liens internes qui n'avaient pas de route (-> 404) */}
+      <Route path="/customer/requests" element={<Navigate to="/customer/offers" replace />} />
+      <Route path="/customer/addresses" element={<Navigate to="/customer/profile/addresses" replace />} />
+      <Route path="/customer/new-request-enhanced" element={<Navigate to="/customer/new-request" replace />} />
+      <Route path="/customer/on-behalf" element={<Navigate to="/customer/on-behalf/new" replace />} />
+      <Route path="/customer/inspections" element={<Navigate to="/customer/inspection/book" replace />} />
+      {/* Alias : bouton "Voir les abonnements" de l'assistant IFIX */}
+      <Route path="/customer/subscription" element={<Navigate to="/choose-plan" replace />} />
 
       {/* Admin */}
       <Route path="/admin/login" element={P(<AdminLogin />)} />
@@ -365,6 +375,15 @@ function AppRoutes() {
       <Route path="/mechanic/profile/payouts" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Paiements" backRoute="/mechanic/profile">P(<MechanicPayouts />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/profile/notifications" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Notifications" backRoute="/mechanic/profile">P(<MechanicNotifications />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/profile/visibility" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Visibilité" backRoute="/mechanic/profile">P(<MechanicVisibility />)</PortalSidebar></ProtectedRoute>} />
+      {/* Sous-pages du profil mécanicien référencées par le menu "Mon Profil Pro" mais jamais déclarées
+          (elles menaient au 404). Réutilisation des écrans partagés, comme côté client. */}
+      <Route path="/mechanic/profile/security" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Sécurité du compte" backRoute="/mechanic/profile">P(<CustomerSecurity />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/help" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Centre d'aide" backRoute="/mechanic/profile">P(<CustomerHelp />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/contact" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Contact" backRoute="/mechanic/profile">P(<CustomerContact />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/terms" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Conditions & Confidentialité" backRoute="/mechanic/profile">P(<CustomerTerms />)</PortalSidebar></ProtectedRoute>} />
+      <Route path="/mechanic/profile/performance" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Métriques de performance" backRoute="/mechanic/profile">P(<MechanicStats />)</PortalSidebar></ProtectedRoute>} />
+      {/* Alias : "/mechanic/profile-settings" (MécanicProfileDetail) et "/mechanic/dashboard" → espace pro */}
+      <Route path="/mechanic/profile-settings" element={<Navigate to="/mechanic/profile" replace />} />
       <Route path="/mechanic/portal" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Portail Pro">P(<ProviderPortal />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/mechanic/jobs" element={<ProtectedRoute role="mechanic"><PortalSidebar title="Mes jobs">P(<JobManagement />)</PortalSidebar></ProtectedRoute>} />
       <Route path="/tuner/:slug" element={P(<TunerProfile />)} />
@@ -384,6 +403,8 @@ function AppRoutes() {
         }
       />
       <Route path="/seller/portal-new" element={<Navigate to="/seller/portal" replace />} />
+      {/* Alias : "/seller/dashboard" (cible de SellerLogin) et anciens liens internes → portail officiel */}
+      <Route path="/seller/dashboard" element={<Navigate to="/seller/portal" replace />} />
       <Route
         path="/seller/products"
         element={
