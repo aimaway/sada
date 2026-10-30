@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { getPortalConfig } from '../shared/portalConfig';
@@ -33,6 +34,7 @@ export function PortalSidebar({
   backRoute?: string;
   autoShell?: boolean;
 }) {
+  const toast = useToast();
   const navigate = useNavigate();
   const { user, logout } = useApp();
   const config = getPortalConfig(user?.role);
@@ -125,7 +127,7 @@ export function PortalSidebar({
         <button
           onClick={() => {
             if (confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')) {
-              alert('Compte supprimé (simulation)');
+              toast('Compte supprimé (simulation)');
               navigate('/');
             }
           }}

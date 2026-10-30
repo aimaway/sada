@@ -221,7 +221,7 @@ Voir `BACKEND_DEPLOYMENT_GUIDE.md` pour le guide complet.
 ### Configuration CORS
 Le backend accepte les requêtes depuis :
 - `http://localhost:3000` (React dev)
-- `http://localhost:5173` (Vite dev)
+- `http://localhost:3000` (Vite dev)
 - `https://mecago.app` (Production)
 
 ### Exemple d'appel API depuis le frontend

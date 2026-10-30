@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Star, Wrench, Camera, Video, Share2, Shield, Award, Zap } from 'lucide-react';
 
 export const TunerProfile: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { slug } = useParams();
   const [activeTab, setActiveTab] = useState<'about' | 'stages' | 'gallery' | 'reviews'>('about');
@@ -66,7 +68,7 @@ export const TunerProfile: React.FC = () => {
       navigator.share({ title: tunerProfile.name, text: tunerProfile.description, url: shareUrl });
     } else {
       navigator.clipboard.writeText(shareUrl);
-      alert('Lien copié !');
+      toast('Lien copié !');
     }
   };
 

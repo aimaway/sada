@@ -76,19 +76,37 @@ export const ContactPage: React.FC = () => {
             {/* Social Media */}
             <div className="mt-8">
               <h3 className="font-semibold text-slate-900 mb-4">Suivez-nous</h3>
+              {/* Les URLs des réseaux sociaux sont configurables via .env (VITE_SOCIAL_*).
+                  Sans configuration, les boutons sont désactivés (aucun lien mort en production). */}
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors">
-                  <Facebook className="w-5 h-5 text-slate-600" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors">
-                  <Instagram className="w-5 h-5 text-slate-600" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors">
-                  <Twitter className="w-5 h-5 text-slate-600" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors">
-                  <Linkedin className="w-5 h-5 text-slate-600" />
-                </a>
+                {([
+                  { Icon: Facebook, label: 'Facebook', url: (import.meta as any).env?.VITE_SOCIAL_FACEBOOK as string | undefined },
+                  { Icon: Instagram, label: 'Instagram', url: (import.meta as any).env?.VITE_SOCIAL_INSTAGRAM as string | undefined },
+                  { Icon: Twitter, label: 'Twitter', url: (import.meta as any).env?.VITE_SOCIAL_TWITTER as string | undefined },
+                  { Icon: Linkedin, label: 'LinkedIn', url: (import.meta as any).env?.VITE_SOCIAL_LINKEDIN as string | undefined },
+                ]).map(({ Icon, label, url }) =>
+                  url ? (
+                    <a
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors"
+                    >
+                      <Icon className="w-5 h-5 text-slate-600" />
+                    </a>
+                  ) : (
+                    <span
+                      key={label}
+                      title={`${label} — non configuré (voir .env.example)`}
+                      aria-label={`${label} (bientôt disponible)`}
+                      className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center opacity-40 cursor-not-allowed"
+                    >
+                      <Icon className="w-5 h-5 text-slate-600" />
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>

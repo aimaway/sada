@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { mockMechanicData } from '../data/mockDataGlobal';
 import {
@@ -7,6 +8,7 @@ import {
 } from 'lucide-react';
 
 export const MechanicPayouts: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const wallet = mockMechanicData.wallet;
 
@@ -89,10 +91,10 @@ export const MechanicPayouts: React.FC = () => {
 
   const handleRequestPayout = () => {
     if (wallet.balance < wallet.minBalance) {
-      alert(`Solde insuffisant. Minimum requis : ${(wallet.minBalance / 100).toFixed(0)} MAD`);
+      toast(`Solde insuffisant. Minimum requis : ${(wallet.minBalance / 100).toFixed(0)} MAD`);
       return;
     }
-    alert(`Demande de retrait de ${(wallet.balance / 100).toFixed(0)} MAD envoyée !`);
+    toast(`Demande de retrait de ${(wallet.balance / 100).toFixed(0)} MAD envoyée !`);
   };
 
   return (

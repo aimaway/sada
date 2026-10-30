@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Star, MapPin, Package, Users, Shield, Share2, Award, TrendingUp } from 'lucide-react';
 
 export const SellerPublicProfile: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { slug } = useParams();
   const [activeTab, setActiveTab] = useState<'about' | 'products' | 'partners' | 'reviews'>('about');
@@ -45,7 +47,7 @@ export const SellerPublicProfile: React.FC = () => {
       navigator.share({ title: sellerProfile.name, text: sellerProfile.description, url: shareUrl });
     } else {
       navigator.clipboard.writeText(shareUrl);
-      alert('Lien copié !');
+      toast('Lien copié !');
     }
   };
 

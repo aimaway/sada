@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, HelpCircle, Search, MessageCircle, Phone, Mail, FileText,
@@ -6,6 +7,7 @@ import {
 } from 'lucide-react';
 
 export const CustomerHelp: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -197,7 +199,7 @@ export const CustomerHelp: React.FC = () => {
               {selectedCategoryData?.questions.map((question, index) => (
                 <button
                   key={index}
-                  onClick={() => alert(`Réponse à : ${question}\n\n(Cette fonctionnalité sera implémentée avec le backend)`)}
+                  onClick={() => toast(`Réponse à : ${question}\n\n(Cette fonctionnalité sera implémentée avec le backend)`)}
                   className="w-full bg-white rounded-2xl p-4 border border-slate-200 hover:border-emerald-500 transition-all text-left"
                 >
                   <div className="flex items-start gap-3">
@@ -239,7 +241,7 @@ export const CustomerHelp: React.FC = () => {
             {[1, 2, 3, 4, 5].map((star) => (
               <button
                 key={star}
-                onClick={() => alert(`Merci pour votre évaluation de ${star} étoile${star > 1 ? 's' : ''} !`)}
+                onClick={() => toast(`Merci pour votre évaluation de ${star} étoile${star > 1 ? 's' : ''} !`)}
                 className="flex-1 py-2 bg-white rounded-xl hover:bg-amber-100 transition-colors"
               >
                 <Star className="w-5 h-5 mx-auto text-amber-400" />

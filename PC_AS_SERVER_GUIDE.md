@@ -144,7 +144,7 @@ credentials-file: C:\Users\VOTRE_USER\.cloudflared\a1b2c3d4-e5f6-g7h8-i9j0-k1l2m
 ingress:
   # Frontend (PWA)
   - hostname: mecago.app
-    service: http://localhost:5173
+    service: http://localhost:3000
   
   # Backend API
   - hostname: api.mecago.app
@@ -310,7 +310,7 @@ ngrok http 8000
 
 Vous verrez :
 ```
-Forwarding  https://abc123.ngrok.io -> http://localhost:5173
+Forwarding  https://abc123.ngrok.io -> http://localhost:3000
 ```
 
 ### Limites de la Version Gratuite

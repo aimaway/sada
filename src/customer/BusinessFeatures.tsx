@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
+import { useToast } from '../shared/notify';
 import { Card, Button, Avatar, StatusBadge } from '../shared/components';
 import {
   ArrowLeft, Wallet, Shield, MapPin, Users, TrendingUp, AlertTriangle,
@@ -12,6 +13,7 @@ import {
 export function MechanicWalletScreen() {
   const { language } = useApp();
   const navigate = useNavigate();
+  const toast = useToast();
   const [balance, setBalance] = useState(15000); // in centimes (150 MAD)
   const minThreshold = 5000; // 50 MAD
   const isBlocked = balance < minThreshold;
@@ -61,7 +63,7 @@ export function MechanicWalletScreen() {
                     ? 'Votre solde est en dessous du minimum requis. Rechargez pour recevoir de nouvelles demandes.'
                     : 'رصيدك أقل من الحد الأدنى المطلوب. اشحن لتلقي طلبات جديدة.'}
                 </p>
-                <Button size="sm" variant="danger" className="mt-3" onClick={() => alert(language === 'fr' ? 'Redirection vers rechargement...' : 'إعادة التوجيه للشحن...')}>
+                <Button size="sm" variant="danger" className="mt-3" onClick={() => toast(language === 'fr' ? 'Redirection vers rechargement...' : 'إعادة التوجيه للشحن...', { type: 'success' })}>
                   {language === 'fr' ? 'Recharger maintenant' : 'اشحن الآن'}
                 </Button>
               </div>

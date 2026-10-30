@@ -26,7 +26,7 @@ Vous verrez :
 ```
   VITE v6.x.x  ready in xxx ms
 
-  ➜  Local:   http://localhost:5173/
+  ➜  Local:   http://localhost:3000/
   ➜  Network: http://192.168.x.x:5173/
 ```
 

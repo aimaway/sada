@@ -1,3 +1,4 @@
+import { useToast } from '../../shared/notify';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, AlertTriangle, XCircle, Share2, Download, Camera, FileText } from 'lucide-react';
@@ -24,6 +25,7 @@ const mockInspectionReport = {
 };
 
 export const InspectionReportView: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { slug } = useParams();
 
@@ -55,7 +57,7 @@ export const InspectionReportView: React.FC = () => {
       navigator.share({ title: `Rapport d'inspection - ${mockInspectionReport.vehicle.make} ${mockInspectionReport.vehicle.model}`, text: `Rapport d'inspection complet`, url: shareUrl });
     } else {
       navigator.clipboard.writeText(shareUrl);
-      alert('Lien copié dans le presse-papiers !');
+      toast('Lien copié dans le presse-papiers !');
     }
   };
 

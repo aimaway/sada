@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, MapPin, Filter, List, Map as MapIcon, Navigation, Clock, DollarSign, Star } from 'lucide-react';
 
@@ -40,6 +41,7 @@ const mockRequests = [
 ];
 
 export const TunerRequestsMap: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
   const [filter, setFilter] = useState<'all' | 'urgent' | 'nearby'>('all');
@@ -199,7 +201,7 @@ export const TunerRequestsMap: React.FC = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      alert(`Demande envoyée à ${request.client} !`);
+                      toast(`Demande envoyée à ${request.client} !`);
                     }}
                     className="w-full py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700"
                   >

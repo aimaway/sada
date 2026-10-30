@@ -523,7 +523,7 @@ systemctl restart nginx
 **Solution** :
 Modifier `.env` :
 ```env
-CORS_ORIGINS=["https://mecago.app", "https://www.mecago.app", "http://localhost:5173"]
+CORS_ORIGINS=["https://mecago.app", "https://www.mecago.app", "http://localhost:3000"]
 ```
 
 Redémarrer le backend :

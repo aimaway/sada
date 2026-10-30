@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, Avatar, StarRating, PriceDisplay, CountdownTimer, StatusBadge } from '../shared/components';
@@ -74,6 +75,7 @@ const mockOffers: MechanicOffer[] = [
 
 // D. Offers Screen - inDrive-style bidding
 export function OffersScreen() {
+  const toast = useToast();
   const { language } = useApp();
   const navigate = useNavigate();
   const [offers, setOffers] = useState<MechanicOffer[]>([]);
@@ -357,7 +359,7 @@ export function OffersScreen() {
               <Button variant="outline" className="flex-1" onClick={() => setShowRaisePrice(false)}>
                 {language === 'fr' ? 'Annuler' : 'إلغاء'}
               </Button>
-              <Button className="flex-1" onClick={() => { setShowRaisePrice(false); alert('Prix mis à jour !'); }}>
+              <Button className="flex-1" onClick={() => { setShowRaisePrice(false); toast('Prix mis à jour !'); }}>
                 {language === 'fr' ? 'Confirmer' : 'تأكيد'}
               </Button>
             </div>

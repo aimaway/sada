@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, Avatar, StarRating } from '../shared/components';
@@ -6,6 +7,7 @@ import { mockUsers } from '../shared/unifiedMockData';
 import { ArrowLeft, Shield, MapPin, Clock, Award, Zap, Star, Briefcase, Languages, Wrench, Settings, Power, PowerOff, Camera, Edit, CheckCircle2 } from 'lucide-react';
 
 export function MechanicProfileDetail() {
+  const toast = useToast();
   const { language, user } = useApp();
   const navigate = useNavigate();
   const [isOnline, setIsOnline] = useState(true);
@@ -218,6 +220,7 @@ export function MechanicProfileDetail() {
 }
 
 export function MechanicProfileSettings() {
+  const toast = useToast();
   const { language } = useApp();
   const navigate = useNavigate();
   const mechanic = mockUsers.mechanics[0];
@@ -335,7 +338,7 @@ export function MechanicProfileSettings() {
 
         {/* Save Button */}
         <Button fullWidth size="lg" onClick={() => {
-          alert(language === 'fr' ? 'Paramètres enregistrés !' : 'تم حفظ الإعدادات!');
+          toast(language === 'fr' ? 'Paramètres enregistrés !' : 'تم حفظ الإعدادات!');
           navigate('/mechanic/profile');
         }}>
           {language === 'fr' ? 'Enregistrer' : 'حفظ'}

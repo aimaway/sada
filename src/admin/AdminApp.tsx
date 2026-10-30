@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, StatusBadge } from '../shared/components';
@@ -8,6 +9,7 @@ import { ArrowLeft, LayoutDashboard, Users, FileCheck, Briefcase, AlertTriangle,
 type AnyObj = Record<string, any>;
 
 function useAsync<T>(fn: () => Promise<T>, deps: any[] = []) {
+  const toast = useToast();
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -174,11 +176,12 @@ export function AdminDashboard() {
 }
 
 export function AdminVerification() {
+  const toast = useToast();
   const { data, error, loading, reload } = useAsync<any>(() => api('/api/v1/admin/verifications'), []);
   const act = async (id: number, action: string) => {
     const reason = action === 'reject' ? (prompt('Motif du refus ?') || undefined) : undefined;
     try { await api(`/api/v1/admin/providers/${id}/verify`, { method: 'PUT', body: { action, reason } }); reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   return (
     <AdminLayout activeTab="verification">
@@ -209,13 +212,14 @@ export function AdminVerification() {
 }
 
 export function AdminRequests() {
+  const toast = useToast();
   const reqs = useAsync<any>(() => api('/api/v1/admin/requests?page_size=100'), []);
   const jobs = useAsync<any>(() => api('/api/v1/admin/jobs?page_size=100'), []);
   const [tab, setTab] = useState<'requests' | 'jobs'>('requests');
   const closeReq = async (id: number) => {
     if (!confirm(`Annuler la demande #${id} ?`)) return;
     try { await api(`/api/v1/admin/requests/${id}/close`, { method: 'POST' }); reqs.reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   return (
     <AdminLayout activeTab="requests">
@@ -252,31 +256,32 @@ export function AdminRequests() {
 }
 
 export function AdminUsers() {
+  const toast = useToast();
   const [role, setRole] = useState('');
   const [q, setQ] = useState('');
   const [statusF, setStatusF] = useState('all');
   const users = useAsync<any>(() => api(`/api/v1/admin/users?role=${role}&q=${encodeURIComponent(q)}${statusF !== 'all' ? `&status_filter=${statusF}` : ''}&page_size=100`), [role, q, statusF]);
   const doStatus = async (id: number, status: string) => {
     try { await api(`/api/v1/admin/users/${id}/status`, { method: 'PUT', body: { status } }); users.reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   const resetPw = async (id: number) => {
     const pw = prompt('Nouveau mot de passe (min 6 caractères) ?');
     if (!pw) return;
-    try { await api(`/api/v1/admin/users/${id}/reset-password`, { method: 'PUT', body: { password: pw } }); alert('Mot de passe réinitialisé.'); }
-    catch (e: any) { alert(e.message); }
+    try { await api(`/api/v1/admin/users/${id}/reset-password`, { method: 'PUT', body: { password: pw } }); toast('Mot de passe réinitialisé.'); }
+    catch (e: any) { toast(e.message); }
   };
   const remove = async (id: number) => {
     if (!confirm(`Supprimer définitivement le compte #${id} ?`)) return;
     try { await api(`/api/v1/admin/users/${id}`, { method: 'DELETE' }); users.reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   const create = async () => {
     const full_name = prompt('Nom complet ?'); if (!full_name) return;
     const phone = prompt('Téléphone (+212…) ?'); if (!phone) return;
     const roleNew = prompt('Rôle (customer/mechanic/tuner/seller/admin) ?', 'customer') || 'customer';
     try { await api('/api/v1/admin/users', { method: 'POST', body: { full_name, phone, role: roleNew } }); users.reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   return (
     <AdminLayout activeTab="users">
@@ -325,11 +330,12 @@ export function AdminUsers() {
 }
 
 export function AdminDisputes() {
+  const toast = useToast();
   const { data, error, reload } = useAsync<any>(() => api('/api/v1/admin/disputes'), []);
   const resolve = async (jobId: number, outcome: string) => {
     const note = prompt('Note de résolution ?') || undefined;
     try { await api(`/api/v1/admin/jobs/${jobId}/resolve-dispute`, { method: 'POST', body: { outcome, note } }); reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   return (
     <AdminLayout activeTab="disputes">
@@ -357,6 +363,7 @@ export function AdminDisputes() {
 }
 
 export function AdminAudit() {
+  const toast = useToast();
   const { data, error } = useAsync<any>(() => api('/api/v1/admin/audit?limit=100'), []);
   return (
     <AdminLayout activeTab="audit">
@@ -378,11 +385,12 @@ export function AdminAudit() {
 }
 
 export function AdminSettingsPage() {
+  const toast = useToast();
   const flags = useAsync<any>(() => api('/api/v1/feature-flags'), []);
   const countries = useAsync<any>(() => api('/api/v1/countries'), []);
   const toggle = async (f: AnyObj) => {
     try { await api(`/api/v1/feature-flags/${f.id}`, { method: 'PUT', body: { is_active: !f.is_active } }); flags.reload(); }
-    catch (e: any) { alert(e.message); }
+    catch (e: any) { toast(e.message); }
   };
   const flagList: any[] = Array.isArray(flags.data) ? flags.data : (flags.data?.items ?? []);
   const countryList: any[] = Array.isArray(countries.data) ? countries.data : (countries.data?.items ?? []);

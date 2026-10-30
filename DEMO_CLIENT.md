@@ -18,11 +18,11 @@ npm run dev
 
 ### 📱 Application Mobile (React/Vite)
 ```bash
-cd frontend  # ou le dossier racine
+cd /   # Racine du dépôt (le frontend est à la racine)
 npm install
 npm run dev
 ```
-**URL:** http://localhost:5173
+**URL:** http://localhost:3000
 
 ### 🔧 Backend API (FastAPI)
 ```bash
@@ -337,7 +337,7 @@ pytest
 
 ### Frontend
 ```bash
-cd frontend
+# Le frontend est à la RACINE du dépôt — ne pas faire "cd frontend"
 npm test
 ```
 

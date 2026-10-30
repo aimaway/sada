@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Wrench, Plus, X, Save, CheckCircle2 } from 'lucide-react';
 
 export const MechanicServices: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   
   const [categories, setCategories] = useState([
@@ -98,7 +100,7 @@ export const MechanicServices: React.FC = () => {
           </div>
           <button
             onClick={() => {
-              alert('Services mis à jour !');
+              toast('Services mis à jour !');
               navigate('/mechanic/profile');
             }}
             className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-medium hover:bg-blue-700"

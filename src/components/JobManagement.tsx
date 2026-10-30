@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Clock, AlertTriangle, Camera, DollarSign, MessageCircle } from 'lucide-react';
 
@@ -35,6 +36,7 @@ const mockJobs = [
 ];
 
 export const JobManagement: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [jobs, setJobs] = useState(mockJobs);
 
@@ -51,7 +53,7 @@ export const JobManagement: React.FC = () => {
                 j.id === job.id ? { ...j, status: 'auto_closed', autoClosed: true } : j
               )
             );
-            alert(`Job ${job.id} auto-clôturé après 24h`);
+            toast(`Job ${job.id} auto-clôturé après 24h`);
           }
         }
       });
@@ -83,7 +85,7 @@ export const JobManagement: React.FC = () => {
     setJobs((prev) =>
       prev.map((j) => (j.id === jobId ? { ...j, status: 'completed' } : j))
     );
-    alert('Job clôturé avec succès !');
+    toast('Job clôturé avec succès !');
   };
 
   return (

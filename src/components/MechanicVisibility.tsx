@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Eye, EyeOff, Globe, Users, MapPin, Save, CheckCircle2, Info
 } from 'lucide-react';
 
 export const MechanicVisibility: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   
   const [visibility, setVisibility] = useState({
@@ -22,7 +24,7 @@ export const MechanicVisibility: React.FC = () => {
   });
 
   const handleSave = () => {
-    alert('Paramètres de visibilité mis à jour !');
+    toast('Paramètres de visibilité mis à jour !');
     navigate('/mechanic/profile');
   };
 

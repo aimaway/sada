@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import {
@@ -6,6 +7,7 @@ import {
 } from 'lucide-react';
 
 export const MechanicPersonalInfo: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const { user } = useApp();
 
@@ -22,7 +24,7 @@ export const MechanicPersonalInfo: React.FC = () => {
   });
 
   const handleSave = () => {
-    alert('Profil mis à jour avec succès !');
+    toast('Profil mis à jour avec succès !');
     navigate('/mechanic/profile');
   };
 

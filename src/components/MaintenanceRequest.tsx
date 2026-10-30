@@ -23,14 +23,6 @@ export const MaintenanceRequest: React.FC = () => {
   const handleSubmit = () => {
     if (services.length === 0) return;
     
-    console.log('Submitting maintenance request:', {
-      services,
-      mileage,
-      oilType,
-      ownParts,
-      description,
-    });
-    
     navigate('/customer/offers');
   };
 

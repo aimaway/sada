@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Car, Upload, CheckCircle } from 'lucide-react';
 import { useApp } from '../shared/context';
+import { useToast } from '../shared/notify';
+import { ArrowLeft, Car, Upload, CheckCircle } from 'lucide-react';
 
 export const TunerRegistration: React.FC = () => {
   const navigate = useNavigate();
+  const toast = useToast();
   const { setUser } = useApp();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -57,7 +59,7 @@ export const TunerRegistration: React.FC = () => {
     });
 
     // In production, save to backend
-    console.log('Tuner registered:', { ...formData, id: tunerId });
+    toast('Atelier inscrit avec succès ! (Simulation)', { type: 'success' });
 
     navigate('/tuner/dashboard');
   };

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Upload, Camera, Video, Image as ImageIcon, X, CheckCircle2 } from 'lucide-react';
 import { mockTunerData } from '../data/mockDataGlobal';
 
 export const TunerGalleryUpload: React.FC = () => {
+  const toast = useToast();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'photos' | 'videos'>('photos');
   const [selectedType, setSelectedType] = useState<'before' | 'after'>('before');
@@ -31,14 +33,14 @@ export const TunerGalleryUpload: React.FC = () => {
 
   const handleUpload = () => {
     if (uploadedFiles.length === 0) {
-      alert('Veuillez sélectionner des fichiers');
+      toast('Veuillez sélectionner des fichiers');
       return;
     }
 
     // Simulate upload
-    alert(`Upload de ${uploadedFiles.length} fichier(s) en cours...`);
+    toast(`Upload de ${uploadedFiles.length} fichier(s) en cours...`);
     setTimeout(() => {
-      alert('Upload réussi !');
+      toast('Upload réussi !');
       navigate('/tuner/dashboard');
     }, 2000);
   };
