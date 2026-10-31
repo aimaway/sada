@@ -84,6 +84,8 @@ export function TunerRequestsPage() {
     setRequests(loadState(PROJECT_KEYS.requests, seedTunerRequests));
   }, []);
 
+  const gate = useTunerBudgetGate((id) => update(id, { status: 'accepted' }));
+
   const update = (id: number, patch: Partial<TunerRequest>) => {
     setRequests((prev) => {
       const next = prev.map((r) => (r.id === id ? { ...r, ...patch } : r));
@@ -180,6 +182,13 @@ export function TunerRequestsPage() {
           </div>
         ))}
       </div>
+
+      <InsufficientFundsModal
+        check={gate.budgetCheck}
+        role="tuner"
+        onClose={gate.closeBudget}
+        onAddFunds={gate.topUpAndRetry}
+      />
       </div>
     </main>
   );
