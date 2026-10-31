@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Bell, Power, PowerOff, Filter, Clock, MapPin, DollarSign, MessageCircle, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { checkAcceptanceBudget, addFunds, type BudgetCheckResult } from '../shared/budgetGate';
+import { unlockContact } from '../shared/privacy';
+import { InsufficientFundsModal } from '../shared/InsufficientFundsModal';
 
 // Mock data for demo - In production, this would come from WebSocket/SSE
 const mockLiveRequests = [
@@ -93,9 +96,42 @@ export const ProviderPortal: React.FC = () => {
     return true;
   });
 
-  const handleAccept = (requestId: string) => {
-    setRequests(requests.filter((r) => r.id !== requestId));
-    toast('Offre acceptée ! (Simulation)');
+  // ---- Budget Gate : le mécanicien ne peut accepter une intervention que si
+  // son wallet couvre la commission plateforme (10%). Sinon -> modal d'avertissement.
+  const [budgetCheck, setBudgetCheck] = useState<BudgetCheckResult | null>(null);
+  const pendingRequestId = useRef<string | null>(null);
+
+  const doAccept = (requestId: string) => {
+    setRequests((prev) => prev.filter((r) => r.id !== requestId));
+    unlockContact(); // coordonnées client déverrouillées pour ce job accepté via la plateforme
+    toast('Offre acceptée ! Coordonnées du client déverrouillées.');
+  };
+
+  const handleAccept = async (requestId: string) => {
+    const req = requests.find((r) => r.id === requestId);
+    if (!req) return;
+    const amountCents = Math.round(req.proposedPrice * 100); // prix en MAD -> centimes
+    const result = await checkAcceptanceBudget('mechanic', amountCents);
+    if (result.allowed) {
+      doAccept(requestId);
+    } else {
+      pendingRequestId.current = requestId;
+      setBudgetCheck(result);
+    }
+  };
+
+  const handleTopUpAndAccept = async (cents: number) => {
+    addFunds('mechanic', cents);
+    const req = requests.find((r) => r.id === pendingRequestId.current);
+    if (req) {
+      const result = await checkAcceptanceBudget('mechanic', Math.round(req.proposedPrice * 100));
+      if (result.allowed) {
+        setBudgetCheck(null);
+        doAccept(req.id);
+      } else {
+        setBudgetCheck(result);
+      }
+    }
   };
 
   const handleCounterOffer = (requestId: string) => {
@@ -253,6 +289,14 @@ export const ProviderPortal: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Avertissement bloquant : budget insuffisant pour accepter */}
+      <InsufficientFundsModal
+        role="mechanic"
+        check={budgetCheck}
+        onClose={() => setBudgetCheck(null)}
+        onAddFunds={handleTopUpAndAccept}
+      />
     </div>
   );
 };

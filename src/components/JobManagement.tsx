@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Clock, AlertTriangle, Camera, DollarSign, MessageCircle } from 'lucide-react';
+import { checkAcceptanceBudget, addFunds, type BudgetCheckResult } from '../shared/budgetGate';
+import { InsufficientFundsModal } from '../shared/InsufficientFundsModal';
 
 // Mock data for demo
 const mockJobs = [
@@ -73,12 +75,44 @@ export const JobManagement: React.FC = () => {
     return 'text-slate-600 bg-slate-50';
   };
 
-  const handleStartJob = (jobId: string) => {
+  // ---- Budget Gate : démarrer le job (débit commission 10%) uniquement si le
+  // wallet du mécanicien couvre la commission sur le prix convenu.
+  const [budgetCheck, setBudgetCheck] = useState<BudgetCheckResult | null>(null);
+  const pendingJobId = useRef<string | null>(null);
+
+  const doStartJob = (jobId: string) => {
     setJobs((prev) =>
       prev.map((j) =>
         j.id === jobId ? { ...j, status: 'in_progress', startedAt: new Date().toISOString() } : j
       )
     );
+  };
+
+  const handleStartJob = async (jobId: string) => {
+    const job = jobs.find((j) => j.id === jobId);
+    if (!job) return;
+    const amountCents = Math.round(job.agreedPrice * 100);
+    const result = await checkAcceptanceBudget('mechanic', amountCents);
+    if (result.allowed) {
+      doStartJob(jobId);
+    } else {
+      pendingJobId.current = jobId;
+      setBudgetCheck(result);
+    }
+  };
+
+  const handleTopUpAndStart = async (cents: number) => {
+    addFunds('mechanic', cents);
+    const job = jobs.find((j) => j.id === pendingJobId.current);
+    if (job) {
+      const result = await checkAcceptanceBudget('mechanic', Math.round(job.agreedPrice * 100));
+      if (result.allowed) {
+        setBudgetCheck(null);
+        doStartJob(job.id);
+      } else {
+        setBudgetCheck(result);
+      }
+    }
   };
 
   const handleCloseJob = (jobId: string) => {
@@ -218,6 +252,14 @@ export const JobManagement: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Avertissement bloquant : budget insuffisant pour démarrer le job */}
+      <InsufficientFundsModal
+        role="mechanic"
+        check={budgetCheck}
+        onClose={() => setBudgetCheck(null)}
+        onAddFunds={handleTopUpAndStart}
+      />
     </div>
   );
 };
