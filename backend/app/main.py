@@ -871,6 +871,10 @@ app.include_router(partnerships.router, prefix="/api/v1", tags=["Partnerships"])
 app.include_router(mechstore.router, prefix="/api/v1", tags=["Mechanic Store"])
 app.include_router(customer_dashboard.router)
 
+# Wallet "Budget Gate" (acceptation mission/projet/commande + top-up)
+from app.api import wallet as _wallet
+app.include_router(_wallet.router, prefix="/api/v1", tags=["Wallet"])
+
 
 @app.get("/")
 def root():

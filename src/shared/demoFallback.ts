@@ -251,6 +251,37 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
   const json = (obj: any) => obj as T;
 
   try {
+    // ------------------------------ WALLET (Budget Gate) ------------------------------
+    // Fallback démo pour POST /wallet/check-acceptance et /wallet/top-up, basé
+    // sur les soldes localStorage de budgetGate.ts (mécanisme déjà éprouvé :
+    // import dynamique + champs optionnels -> pas de cycle d'imports).
+    if (clean.endsWith('/wallet/check-acceptance') || clean.endsWith('/wallet/top-up')) {
+      const bg = await import('./budgetGate').catch(() => null);
+      if (bg) {
+        type DemoRole = 'mechanic' | 'tuner' | 'seller';
+        const role = ((opts.body?.provider_type as string) || 'mechanic') as DemoRole;
+        const amount = Number(opts.body?.amount) || 0;
+        const rate = (bg.COMMISSION_RATES as Record<string, number>)[role] ?? 0.1;
+        const commission = Math.round(amount * rate);
+        if (clean.endsWith('/wallet/check-acceptance')) {
+          const balance = bg.getWalletBalance(role);
+          return json({
+            allowed: balance >= commission,
+            balance,
+            commission_required: commission,
+            commission_rate: rate,
+            amount,
+            provider_type: role,
+          });
+        }
+        // top-up : crédite le solde local + journalise dans l'audit démo
+        const added = Math.max(0, Math.round(amount));
+        const balance = bg.addFunds(role, added);
+        pushMockAudit('wallet_top_up', `rechargement wallet ${role} : +${added} centimes (démo)`);
+        return json({ ok: true, balance, added, transaction_id: `TX-W-MOCK-${Date.now()}` });
+      }
+    }
+
     // ------------------------------ ADMIN ------------------------------
     if (clean.includes('/admin/stats')) {
       return json(buildAdminStats());
