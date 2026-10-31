@@ -1,3 +1,4 @@
+import { revealPhone } from '../shared/privacy';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
@@ -105,7 +106,8 @@ export const MechanicProfileComplete: React.FC = () => {
           </div>
           <div className="flex-1">
             <h2 className="text-2xl font-bold">{user?.full_name || 'Mécanicien'}</h2>
-            <p className="text-sm opacity-90">{user?.phone}</p>
+            {/* Confidentialité : numéro masqué tant que le client n'a pas une commande acceptée */}
+            <p className="text-sm opacity-90">{revealPhone(user?.phone)}</p>
             <div className="flex items-center gap-2 mt-2">
               <span className="px-2 py-0.5 bg-white/20 rounded-full text-xs font-medium flex items-center gap-1">
                 <Shield className="w-3 h-3" />
