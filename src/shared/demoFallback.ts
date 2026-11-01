@@ -123,7 +123,7 @@ function buildAdminStats() {
     marketplace: { open_requests: openReq, active_jobs: activeJobs, completed_jobs: completedJobs },
     providers: { verified_mechanics: verified, pending_verifications: pending + 1, total_providers: mechanics.length + (mockUsers.sellers?.length ?? 0) + (mockUsers.tuners?.length ?? 0) },
     users: { total: 12480, customers: (mockUsers.customers as any[]).length + 9842, mechanics: mechanics.length + 1523, tuners: (mockUsers.tuners as any[]).length + 214, sellers: (mockUsers.sellers as any[]).length + 640, admins: 3, suspended: 17 },
-    quality: { open_disputes: 2, resolved_this_month: 14, avg_rating: 4.6 },
+    quality: { open_disputes: 2, resolved_this_month: 14, avg_rating: 4.6, actions_24h: getMockAudit().filter((e) => Date.now() - new Date(e.at).getTime() < 86400000).length },
     revenue: { completed_volume_cents: volume * 100, commission_cents: Math.round(volume * 10), mrr_cents: 18500000 },
   };
 }
@@ -177,14 +177,14 @@ function toAdminJob(j: any, idx: number) {
 
 function buildUserList(role: string, q: string, statusFilter: string) {
   const all: any[] = [
-    ...(mockUsers.customers as any[]).map((u) => ({ ...u, provider: null })),
-    ...(mockUsers.mechanics as any[]).map((u) => ({ ...u, provider: { name: u.full_name, verified: u.profile?.verification_status === 'approved', verification_status: u.profile?.verification_status } })),
-    ...((mockUsers as any).sellers || []).map((u: any) => ({ ...u, provider: { name: u.shop?.shop_name || u.full_name, verified: u.shop?.verification_status === 'verified', verification_status: u.shop?.verification_status } })),
-    ...((mockUsers as any).tuners || []).map((u: any) => ({ ...u, provider: { name: u.shop?.shop_name || u.full_name, verified: u.shop?.verification_status === 'verified', verification_status: u.shop?.verification_status } })),
+    ...(mockUsers.customers as any[]).map((u) => ({ ...u, provider: null, raw: u })),
+    ...(mockUsers.mechanics as any[]).map((u) => ({ ...u, raw: u, provider: { name: u.profile?.shop_name || u.full_name, verified: u.profile?.verification_status === 'approved', verification_status: u.profile?.verification_status } })),
+    ...((mockUsers as any).sellers || []).map((u: any) => ({ ...u, raw: u, provider: { name: u.shop?.shop_name || u.full_name, verified: u.shop?.verification_status === 'verified', verification_status: u.shop?.verification_status } })),
+    ...((mockUsers as any).tuners || []).map((u: any) => ({ ...u, raw: u, provider: { name: u.shop?.shop_name || u.full_name, verified: u.shop?.verification_status === 'verified', verification_status: u.shop?.verification_status } })),
     ...((mockUsers as any).admins || []),
   ];
   const extraCustomers = Array.from({ length: 12 }).map((_, i) => ({
-    id: `ux${i}`, full_name: ['Mohamed Idrissi', 'Fatima Zahra Alaoui', 'Omar Benjelloun', 'Salma Chraibi', 'Reda Bennani', 'Imane Kettani', 'Anas Sebti', 'Khadija Berrada', 'Mehdi Tazi', 'Nadia Lahlou', 'Zakaria Amrani', 'Houda Fikri'][i],
+    id: `ux${i}`, raw: { id: `ux${i}` }, full_name: ['Mohamed Idrissi', 'Fatima Zahra Alaoui', 'Omar Benjelloun', 'Salma Chraibi', 'Reda Bennani', 'Imane Kettani', 'Anas Sebti', 'Khadija Berrada', 'Mehdi Tazi', 'Nadia Lahlou', 'Zakaria Amrani', 'Houda Fikri'][i],
     phone: `+21266100${(1000 + i).toString()}`, role: 'customer', status: i % 6 === 0 ? 'suspended' : 'active', created_at: '2024-05-0' + ((i % 9) + 1), provider: null,
   }));
   const merged = [...all, ...extraCustomers];
@@ -203,7 +203,7 @@ function buildUserList(role: string, q: string, statusFilter: string) {
   return {
     total: filtered.length,
     items: filtered.map((u, i) => ({
-      id: typeof u.id === 'string' ? hashId(u.id) : u.id,
+      id: typeof u.id === 'string' ? hashId(u.id) : u.id, original_id: u.id,
       full_name: u.full_name, phone: u.phone, email: u.email || null, role: u.role,
       status: u.status, provider: u.provider || null, created_at: u.created_at, index: i,
     })),
@@ -251,6 +251,37 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
   const json = (obj: any) => obj as T;
 
   try {
+    // ------------------------------ WALLET (Budget Gate) ------------------------------
+    // Fallback démo pour POST /wallet/check-acceptance et /wallet/top-up, basé
+    // sur les soldes localStorage de budgetGate.ts (mécanisme déjà éprouvé :
+    // import dynamique + champs optionnels -> pas de cycle d'imports).
+    if (clean.endsWith('/wallet/check-acceptance') || clean.endsWith('/wallet/top-up')) {
+      const bg = await import('./budgetGate').catch(() => null);
+      if (bg) {
+        type DemoRole = 'mechanic' | 'tuner' | 'seller';
+        const role = ((opts.body?.provider_type as string) || 'mechanic') as DemoRole;
+        const amount = Number(opts.body?.amount) || 0;
+        const rate = (bg.COMMISSION_RATES as Record<string, number>)[role] ?? 0.1;
+        const commission = Math.round(amount * rate);
+        if (clean.endsWith('/wallet/check-acceptance')) {
+          const balance = bg.getWalletBalance(role);
+          return json({
+            allowed: balance >= commission,
+            balance,
+            commission_required: commission,
+            commission_rate: rate,
+            amount,
+            provider_type: role,
+          });
+        }
+        // top-up : crédite le solde local + journalise dans l'audit démo
+        const added = Math.max(0, Math.round(amount));
+        const balance = bg.addFunds(role, added);
+        pushMockAudit('wallet_top_up', `rechargement wallet ${role} : +${added} centimes (démo)`);
+        return json({ ok: true, balance, added, transaction_id: `TX-W-MOCK-${Date.now()}` });
+      }
+    }
+
     // ------------------------------ ADMIN ------------------------------
     if (clean.includes('/admin/stats')) {
       return json(buildAdminStats());
@@ -281,6 +312,7 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
     }
     if (/\/admin\/users\/[^/]+\/status$/.test(clean)) {
       const st = opts.body?.status || 'active';
+      setUserOverride(seg[seg.indexOf('users') + 1], { status: st });
       pushMockAudit('user_status', `utilisateur #${seg[seg.indexOf('users') + 1]} → ${st}`);
       return json({ ok: true, status: st });
     }
@@ -289,6 +321,7 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
       return json({ ok: true });
     }
     if (/\/admin\/users\/[^/]+$/.test(clean) && method === 'DELETE') {
+      setUserOverride(seg[seg.length - 1], { deleted: true });
       pushMockAudit('user_delete', `suppression utilisateur #${seg[seg.length - 1]}`);
       return json({ ok: true });
     }
@@ -299,6 +332,62 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
       }
       const qs = new URLSearchParams(url.split('?')[1] || '');
       return json(buildUserList(qs.get('role') || '', (qs.get('q') || '').trim(), qs.get('status_filter') || 'all'));
+    }
+    // ---- Control Center métriques (étoiles / jobs / profil client) ----
+    if (/^\/api\/v1\/admin\/metrics\/[0-9]+$/.test(clean)) {
+      const id = seg[seg.length - 1];
+      const list = buildUserList('', '', 'all');
+      const u: any = list.items.find((x: any) => String(x.id) === id || String(x.original_id) === id);
+      let ov: any = {};
+      try {
+        const allOv = JSON.parse(localStorage.getItem('tombily_mock_metrics_overrides') || '{}');
+        ov = allOv[String(id)] || (u ? allOv[String(u.original_id)] : null) || {};
+      } catch {}
+      const raw = u?.raw || u || {};
+      const prof = u?.provider;
+      const seedReviews = [
+        { rating: 5, comment: 'Travail impeccable, je recommande vivement.', created_at: new Date(Date.now() - 86400000 * 3).toISOString() },
+        { rating: 4, comment: 'Bon service, un peu d’attente au départ.', created_at: new Date(Date.now() - 86400000 * 9).toISOString() },
+        { rating: 5, comment: 'Rapide, propre et honnête sur le devis.', created_at: new Date(Date.now() - 86400000 * 16).toISOString() },
+      ];
+      return json({
+        user_id: u?.id ?? Number(id), full_name: u?.full_name ?? 'Inconnu', phone: u?.phone ?? '', role: u?.role ?? 'customer',
+        provider: prof ? {
+          id: hashId('prov' + (u?.original_id ?? id)), type: u.role, name: prof.name,
+          rating: ov.provider?.rating ?? raw.profile?.rating_avg ?? raw.shop?.rating_avg ?? 4.2,
+          review_count: ov.provider?.review_count ?? raw.profile?.reviews_count ?? raw.shop?.total_sales ?? 40,
+          jobs_completed: ov.provider?.jobs_completed ?? raw.profile?.jobs_completed ?? raw.shop?.total_sales ?? 10,
+          response_time: ov.provider?.response_time ?? raw.profile?.response_time_min ?? 15,
+          completion_rate: ov.provider?.completion_rate ?? raw.profile?.completion_rate ?? 95,
+          verified: ov.provider?.verified ?? !!prof.verified, verification_status: prof.verification_status,
+          reviews: ((raw.profile?.reviews || raw.shop?.reviews || seedReviews) as any[]).map((r: any) => ({
+            id: r.id || Math.random().toString(36).slice(2), rating: r.rating ?? 5,
+            comment: r.comment || r.text || 'Avis de démonstration.',
+            created_at: r.date ? new Date(r.date).toISOString() : r.created_at || null,
+          })),
+        } : null,
+        customer: u?.role === 'customer' ? {
+          loyalty_points: ov.customer?.loyalty_points ?? raw.loyalty_points ?? 0,
+          total_jobs: ov.customer?.total_jobs ?? 3,
+          total_spent: ov.customer?.total_spent ?? 125000,
+        } : null,
+      });
+    }
+    if (/^\/api\/v1\/admin\/metrics\/[0-9]+\/provider$/.test(clean) && method === 'PUT') {
+      const id = seg[seg.length - 3];
+      pushMockAudit('provider_metrics_update', `compteurs pro #${id} → ${JSON.stringify(opts.body)}`);
+      return json({ ok: true, provider: opts.body });
+    }
+    if (/^\/api\/v1\/admin\/metrics\/[0-9]+\/customer$/.test(clean) && method === 'PUT') {
+      const id = seg[seg.length - 3];
+      pushMockAudit('customer_metrics_update', `profil client #${id} → ${JSON.stringify(opts.body)}`);
+      return json({ ok: true, customer: opts.body });
+    }
+    if (/\/providers\/[0-9]+\/seed-reviews$/.test(clean) && clean.includes('/admin/')) {
+      const count = Number(opts.body?.count ?? 10);
+      const avg = Math.max(0, Math.min(5, Number(opts.body?.avg_rating ?? 4.8)));
+      pushMockAudit('provider_seed_reviews', `amorçage ${count} avis (moyenne ${avg})`);
+      return json({ ok: true, rating: Math.round(avg * 100) / 100, review_count: count });
     }
     if (clean.endsWith('/admin/disputes')) {
       return json({
@@ -375,6 +464,19 @@ export async function resolveWithFallback<T = any>(path: string, opts: { method?
     }
     if (clean.endsWith('/partnerships/partners')) {
       return json({ items: getMockPartnerList() });
+    }
+
+    // ------------------------------ CUSTOMER DASHBOARD ------------------------------
+    if (clean.endsWith('/customer/dashboard')) {
+      const cust = (mockUsers.customers as any[])[0] || {};
+      return json({
+        ok: true,
+        stats: { active_requests: 1, offers_received: mockRequests.length, upcoming_bookings: 1, total_spent_centimes: 124500 },
+        profile: { display_name: cust.full_name || 'Client TomoBily', city: cust.city || 'Casablanca', vehicles: mockVehiclesSafe(), loyalty_points: 620 },
+        recent_requests: mockRequests.slice(0, 3).map((r: any) => ({ id: r.id, status: r.status, description: r.description || 'Demande de réparation', offer_count: mockOffersCount(r.id), vehicle_summary: null, created_at: r.created_at || null })),
+        recent_orders: mockOrders.slice(0, 3).map((o: any) => ({ id: o.id, order_number: o.order_number || `CMD-${o.id}`, status: o.status, payment_status: o.payment_status || 'paid', total: o.total_amount ?? o.total ?? 0, created_at: o.created_at || null })),
+        recent_jobs: mockJobs.slice(0, 3).map((j: any) => ({ id: j.id, status: j.status, agreed_price: j.agreed_price || 0, created_at: j.created_at || null })),
+      });
     }
 
     // ------------------------------ CLIENTS (compte client) ------------------------------

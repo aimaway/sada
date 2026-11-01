@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, Avatar, StarRating } from '../shared/components';
 import { mockUsers } from '../shared/unifiedMockData';
-import { ArrowLeft, Shield, MapPin, Clock, Award, Zap, Star, Briefcase, Languages, Wrench, Settings, Power, PowerOff, Camera, Edit, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Shield, MapPin, Clock, Award, Zap, Star, Briefcase, Languages, Wrench, Settings, Power, PowerOff, Camera, Edit, CheckCircle2, Lock } from 'lucide-react';
+import { revealPhone, isContactUnlocked } from '../shared/privacy';
 
 export function MechanicProfileDetail() {
   const toast = useToast();
@@ -42,7 +43,15 @@ export function MechanicProfileDetail() {
             )}
           </div>
           <h2 className="text-xl font-bold text-slate-800 mt-3">{mechanic.full_name}</h2>
-          <p className="text-sm text-slate-500">{mechanic.phone}</p>
+          {/* Confidentialité : le numéro n'est visible (par les clients) qu'après acceptation de la mission */}
+          <div className="flex items-center justify-center gap-1.5">
+            <p className="text-sm text-slate-500">{revealPhone(mechanic.phone)}</p>
+            {!isContactUnlocked() && (
+              <span title="Coordonnées protégées jusqu'à l'acceptation de la commande" className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                <Lock className="w-3 h-3" /> {language === 'fr' ? 'Protégé' : 'محمي'}
+              </span>
+            )}
+          </div>
           
           {/* Online Status */}
           <div className="mt-4 flex items-center justify-center gap-3">

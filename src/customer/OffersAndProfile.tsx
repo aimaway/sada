@@ -3,6 +3,7 @@ import { useToast } from '../shared/notify';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../shared/context';
 import { Card, Button, Avatar, StarRating, PriceDisplay, CountdownTimer, StatusBadge } from '../shared/components';
+import { unlockContact } from '../shared/privacy';
 import { 
   ArrowLeft, Shield, Clock, MapPin, MessageCircle, Phone, X, 
   Check, Star, Wrench, Zap, Award, ChevronRight, AlertTriangle,
@@ -296,7 +297,13 @@ export function OffersScreen() {
               {/* Actions */}
               <div className="grid grid-cols-5 gap-2">
                 <button
-                  onClick={() => navigate('/customer/tracking')}
+                  onClick={() => {
+                    // Le client accepte l'offre via la plateforme : les coordonnées
+                    // du mécanicien sont déverrouillées (numéro + adresse exacte).
+                    unlockContact();
+                    toast(language === 'fr' ? 'Offre acceptée — coordonnées du mécanicien déverrouillées.' : 'تم قبول العرض — تم فتح بيانات التواصل مع الميكانيكي.');
+                    navigate('/customer/tracking');
+                  }}
                   className="col-span-2 bg-emerald-600 text-white rounded-xl py-2.5 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center justify-center gap-1"
                 >
                   <Check className="w-4 h-4" />

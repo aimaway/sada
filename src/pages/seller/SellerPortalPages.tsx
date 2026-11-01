@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, Package, Plus, Trash2, Truck, X } from 'lucide-react';
 import { OrderStatusBadge } from '../../components/ui/OrderStatusBadge';
@@ -12,8 +12,57 @@ import {
   SellerOrder,
   SellerProduct,
 } from '../../shared/portalStore';
+import { checkAcceptanceBudget, addFunds, type BudgetCheckResult } from '../../shared/budgetGate';
+import { unlockContact } from '../../shared/privacy';
+import { InsufficientFundsModal } from '../../shared/InsufficientFundsModal';
+import { useToast } from '../../shared/notify';
 
 const KEYS = { products: 'seller.products', orders: 'seller.orders' };
+
+/**
+ * Hook "Budget Gate" vendeur : une commande ne peut être acceptée
+ * (confirmée / en préparation) que si le wallet couvre la commission (5%).
+ */
+function useSellerBudgetGate(applyStatus: (id: number, status: SellerOrder['status']) => void) {
+  const toast = useToast();
+  const [budgetCheck, setBudgetCheck] = useState<BudgetCheckResult | null>(null);
+  const pending = useRef<{ id: number; status: SellerOrder['status']; total: number } | null>(null);
+
+  const gatedSetStatus = async (id: number, status: SellerOrder['status'], totalCents: number) => {
+    // Seules les étapes d'acceptation sont facturées ; les autres libres.
+    if (status !== 'confirmed' && status !== 'processing') {
+      applyStatus(id, status);
+      return;
+    }
+    const result = await checkAcceptanceBudget('seller', totalCents);
+    if (result.allowed) {
+      applyStatus(id, status);
+      unlockContact(); // coordonnées déverrouillées après acceptation payée via la plateforme
+      toast('Commande acceptée — commission couverte par votre wallet.');
+    } else {
+      pending.current = { id, status, total: totalCents };
+      setBudgetCheck(result);
+    }
+  };
+
+  const topUpAndRetry = async (cents: number) => {
+    addFunds('seller', cents);
+    const p = pending.current;
+    if (p) {
+      const result = await checkAcceptanceBudget('seller', p.total);
+      if (result.allowed) {
+        setBudgetCheck(null);
+        applyStatus(p.id, p.status);
+        unlockContact();
+        toast('Commande acceptée après rechargement du wallet.');
+      } else {
+        setBudgetCheck(result);
+      }
+    }
+  };
+
+  return { budgetCheck, closeBudget: () => setBudgetCheck(null), gatedSetStatus, topUpAndRetry };
+}
 
 // ---------------- Orders list ----------------
 
@@ -32,6 +81,9 @@ export function SellerOrdersPage() {
       return next;
     });
   };
+
+  // Budget Gate vendeur (commission 5%) sur l'acceptation de commande
+  const gate = useSellerBudgetGate(setStatus);
 
   const visible = filter === 'all' ? orders : orders.filter((o) => o.status === filter);
   const filters: Array<'all' | SellerOrder['status']> = ['all', 'pending', 'processing', 'shipped', 'delivered'];
@@ -84,7 +136,7 @@ export function SellerOrdersPage() {
               {order.status === 'pending' && (
                 <>
                   <button
-                    onClick={() => setStatus(order.id, 'confirmed')}
+                    onClick={() => gate.gatedSetStatus(order.id, 'confirmed', order.total)}
                     className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
                   >
                     Confirmer
@@ -117,6 +169,14 @@ export function SellerOrdersPage() {
           </div>
         ))}
       </div>
+
+      {/* Avertissement bloquant : wallet insuffisant pour accepter la commande */}
+      <InsufficientFundsModal
+        role="seller"
+        check={gate.budgetCheck}
+        onClose={gate.closeBudget}
+        onAddFunds={gate.topUpAndRetry}
+      />
       </div>
     </main>
   );
@@ -163,6 +223,9 @@ export function SellerOrderDetailPage() {
       return next;
     });
   };
+
+  // Budget Gate vendeur (commission 5%) sur "Accepter et préparer"
+  const gate = useSellerBudgetGate((_id, status) => setStatus(status));
 
   return (
     <main className="h-full overflow-y-auto"><div className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6 lg:p-8">
@@ -218,7 +281,7 @@ export function SellerOrderDetailPage() {
         <div className="mt-6 flex flex-wrap gap-2">
           {order.status === 'pending' && (
             <button
-              onClick={() => setStatus('processing')}
+              onClick={() => gate.gatedSetStatus(order.id, 'processing', order.total)}
               className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
             >
               <Check className="mr-1.5 inline-block h-4 w-4" />
@@ -252,6 +315,14 @@ export function SellerOrderDetailPage() {
           )}
         </div>
       </div>
+
+      {/* Avertissement bloquant : wallet insuffisant pour accepter la commande */}
+      <InsufficientFundsModal
+        role="seller"
+        check={gate.budgetCheck}
+        onClose={gate.closeBudget}
+        onAddFunds={gate.topUpAndRetry}
+      />
       </div>
     </main>
   );

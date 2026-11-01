@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Eye, Star } from 'lucide-react';
 import { StatCard } from '../../components/ui/StatCard';
@@ -13,8 +13,53 @@ import {
   TunerProject,
   TunerRequest,
 } from '../../shared/portalStore';
+import { checkAcceptanceBudget, addFunds, type BudgetCheckResult } from '../../shared/budgetGate';
+import { unlockContact } from '../../shared/privacy';
+import { InsufficientFundsModal } from '../../shared/InsufficientFundsModal';
+import { useToast } from '../../shared/notify';
 
 const PROJECT_KEYS = { projects: 'tuner.projects', requests: 'tuner.requests', appointments: 'tuner.appointments' };
+
+/**
+ * Hook "Budget Gate" tuner : un projet ne peut être marqué accepté que si le
+ * wallet du tuner couvre la commission plateforme (7%) sur le budget estimé.
+ */
+function useTunerBudgetGate(applyAccept: (id: number) => void) {
+  const toast = useToast();
+  const [budgetCheck, setBudgetCheck] = useState<BudgetCheckResult | null>(null);
+  const pendingId = useRef<number | null>(null);
+
+  const gatedAccept = async (id: number, budgetCents: number) => {
+    const result = await checkAcceptanceBudget('tuner', budgetCents);
+    if (result.allowed) {
+      applyAccept(id);
+      unlockContact();
+      toast('Projet accepté — commission couverte par votre wallet.');
+    } else {
+      pendingId.current = id;
+      setBudgetCheck(result);
+    }
+  };
+
+  const topUpAndRetry = async (cents: number) => {
+    addFunds('tuner', cents);
+    const id = pendingId.current;
+    const req = loadState<TunerRequest[]>(PROJECT_KEYS.requests, seedTunerRequests).find((r) => r.id === id);
+    if (req) {
+      const result = await checkAcceptanceBudget('tuner', req.budget);
+      if (result.allowed) {
+        setBudgetCheck(null);
+        applyAccept(id!);
+        unlockContact();
+        toast('Projet accepté après rechargement du wallet.');
+      } else {
+        setBudgetCheck(result);
+      }
+    }
+  };
+
+  return { budgetCheck, closeBudget: () => setBudgetCheck(null), gatedAccept, topUpAndRetry };
+}
 
 const projectStatusLabels: Record<TunerProject['status'], string> = {
   quote: 'Devis envoyé',
@@ -38,6 +83,8 @@ export function TunerRequestsPage() {
   useEffect(() => {
     setRequests(loadState(PROJECT_KEYS.requests, seedTunerRequests));
   }, []);
+
+  const gate = useTunerBudgetGate((id) => update(id, { status: 'accepted' }));
 
   const update = (id: number, patch: Partial<TunerRequest>) => {
     setRequests((prev) => {
@@ -116,7 +163,7 @@ export function TunerRequestsPage() {
                 )}
                 {req.status === 'quoted' && (
                   <button
-                    onClick={() => update(req.id, { status: 'accepted' })}
+                    onClick={() => gate.gatedAccept(req.id, req.budget)}
                     className="rounded-lg bg-green-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-700"
                   >
                     Marquer comme acceptée
@@ -135,6 +182,13 @@ export function TunerRequestsPage() {
           </div>
         ))}
       </div>
+
+      <InsufficientFundsModal
+        check={gate.budgetCheck}
+        role="tuner"
+        onClose={gate.closeBudget}
+        onAddFunds={gate.topUpAndRetry}
+      />
       </div>
     </main>
   );
